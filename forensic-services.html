@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forensic Services & Expert Witness — HH Global</title>
+  <link rel="icon" href="data:image/png;base64,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" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1F3F;
+      --navy-mid: #152D55;
+      --navy-light: #1E3A6E;
+      --gold: #C5A25B;
+      --gold-light: #D4B76E;
+      --gold-dim: rgba(197,162,91,0.12);
+      --cream: #FAF8F5;
+      --cream-dark: #F0EDE7;
+      --text: #1A1A2E;
+      --text-mid: #4A5568;
+      --text-light: #718096;
+      --border: #E2DDD5;
+      --white: #FFFFFF;
+      --max: 1200px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 500; line-height: 1.2; }
+    h1 { font-size: clamp(32px, 5.5vw, 60px); }
+    h2 { font-size: clamp(26px, 3.8vw, 42px); }
+    h3 { font-size: clamp(18px, 2.2vw, 24px); }
+    h4 { font-size: 18px; font-weight: 600; font-family: 'Inter', sans-serif; }
+    p { font-size: 16px; line-height: 1.7; color: var(--text-mid); }
+    .body-lg { font-size: 18px; color: var(--text-mid); }
+    .body-sm { font-size: 14px; color: var(--text-light); }
+
+    .section-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-heading { margin-bottom: 16px; color: var(--navy); }
+    .section-lead { font-size: 18px; line-height: 1.7; color: var(--text-mid); max-width: 680px; }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+    .section { padding: 100px 0; }
+    .section-alt { background: var(--cream); }
+    .section-dark { background: var(--navy); }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(11,31,63,0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      width: 100%;
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      height: 68px; padding: 0 32px;
+    }
+    .nav-logo img { height: 38px; display: block; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.72); text-decoration: none;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      padding: 10px 24px;
+      background: var(--gold);
+      color: var(--navy);
+      border-radius: 5px;
+      font-size: 13px; font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    .hero {
+      min-height: calc(100vh - 68px);
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: flex-start;
+      position: relative; overflow: visible;
+      padding: 120px 0 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 70% 40%, rgba(197,162,91,0.06) 0%, transparent 70%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 680px; margin-left: 0; }
+    .hero .section-tag { margin-bottom: 16px; text-align: left; }
+    .hero h1 { color: var(--white); margin-bottom: 24px; text-align: left; }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero p {
+      color: rgba(255,255,255,0.68);
+      font-size: 18px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+      max-width: 580px;
+      text-align: left;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-start; }
+    .btn {
+      display: inline-block;
+      padding: 14px 30px;
+      border-radius: 5px;
+      font-size: 13px; font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.25s;
+    }
+    .btn-gold { background: var(--gold); color: var(--navy); }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-outline { border: 1px solid rgba(255,255,255,0.25); color: var(--white); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px; margin-top: 56px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px 24px;
+      transition: all 0.25s;
+    }
+    .service-card:hover { border-color: var(--gold); box-shadow: 0 8px 30px rgba(197,162,91,0.08); }
+    .service-card h4 { color: var(--navy); margin-bottom: 10px; }
+    .service-card p { font-size: 14px; line-height: 1.65; }
+
+    .expert-section {
+      background: var(--cream);
+      border-radius: 10px;
+      padding: 54px;
+      margin-top: 56px;
+    }
+    .expert-inner { max-width: 900px; margin: 0 auto; }
+    .expert-title {
+      font-size: 14px;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .expert-heading {
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 28px;
+      font-family: 'Playfair Display', serif;
+    }
+    .expert-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: start;
+    }
+    .expert-bio h4 { margin-bottom: 6px; color: var(--navy); }
+    .expert-role {
+      font-size: 12px;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .expert-bio p { margin-bottom: 16px; font-size: 15px; }
+    .expert-creds {
+      background: var(--white);
+      border-left: 3px solid var(--gold);
+      padding: 20px;
+      margin-top: 24px;
+      border-radius: 5px;
+    }
+    .expert-creds h5 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .expert-creds ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .expert-creds li {
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 6px;
+      color: var(--text-mid);
+    }
+    .expert-services {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .service-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+      border-left: 3px solid var(--gold);
+    }
+    .service-item h5 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .service-item p {
+      font-size: 13px;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    .clients-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 20px; margin-top: 56px;
+    }
+    .client-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+      transition: all 0.25s;
+    }
+    .client-card:hover { border-color: var(--gold); }
+    .client-card h4 { color: var(--navy); margin-bottom: 8px; font-size: 16px; }
+    .client-card p { font-size: 13px; line-height: 1.65; }
+
+    .cta-section {
+      background: var(--navy);
+      color: var(--white);
+      padding: 80px 0;
+      text-align: center;
+    }
+    .cta-section h2 { color: var(--white); margin-bottom: 20px; }
+    .cta-section p { color: rgba(255,255,255,0.72); max-width: 600px; margin: 0 auto 32px; }
+    .cta-section .btn { margin: 0 8px; }
+
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.72);
+      padding: 48px 0;
+      font-size: 13px;
+      line-height: 1.8;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 2fr;
+      gap: 40px;
+    }
+    .footer-brand img { height: 32px; margin-bottom: 16px; display: block; }
+    .footer-links, .footer-legal { color: rgba(255,255,255,0.68); }
+    .footer-links a { color: rgba(255,255,255,0.72); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .services-grid, .clients-grid { grid-template-columns: 1fr; }
+      .expert-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfUAAAHyCAYAAADyTVepAAAAAXNSR0IArs4c6QAAJQ==" alt="HH Global" style="height:32px;"></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="company.html">Company</a></li>
+      <li><a href="samuel.html">Leadership</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="mailto:info@hhglobalholdings.com" class="nav-cta">Get in Touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="section-tag">Expert Evidence & Forensic Science</div>
+      <h1>Scientific Authority<br><em>Built for Court.</em></h1>
+      <p>Independent forensic services with expert witness testimony. Environmental analysis, mould forensics, and evidence packages for legal proceedings — delivering court-admissible results that inform housing disputes, insurance claims, and regulatory compliance.</p>
+      <div class="hero-btns">
+        <a href="#expert" class="btn btn-gold">Meet Our Expert</a>
+        <a href="#clients" class="btn btn-outline">Who We Work With</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY FORENSIC SCIENCE MATTERS -->
+<section class="section">
+  <div class="container">
+    <div class="section-tag">The Regulatory Landscape</div>
+    <h2 class="section-heading">Why Independent Forensic <em>Analysis Matters</em></h2>
+    <p class="section-lead">Following Awaab's Law (2023), social housing providers and tenants are legally required to address damp and mould within fixed timescales. This has triggered a litigation explosion — with solicitors, loss adjusters, and housing authorities requiring independent, court-admissible forensic evidence to support claims, remediation decisions, and regulatory compliance.</p>
+    <p style="margin-top: 24px; color: var(--text-mid);">Our forensic services bridge the gap between environmental testing and legal standards, delivering scientific rigour that courts and regulators expect.</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section-alt">
+  <div class="container">
+    <div class="section-tag">Our Services</div>
+    <h2 class="section-heading">Forensic & Environmental <em>Analysis</em></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h4>Mould Species Identification</h4>
+        <p>Molecular and microscopic analysis of fungal isolates using DNA sequencing, viable culture, and morphological assessment — identifying species and assessing health risk.</p>
+      </div>
+      <div class="service-card">
+        <h4>Air Quality & Spore Sampling</h4>
+        <p>Baseline indoor air quality assessment, spore quantification per m³, and environmental testing to establish mould burden and distribution across residential or commercial spaces.</p>
+      </div>
+      <div class="service-card">
+        <h4>Chain-of-Custody Documentation</h4>
+        <p>Legally defensible sample collection, labelling, transport, and storage protocols — ensuring sample integrity from collection through analysis and court presentation.</p>
+      </div>
+      <div class="service-card">
+        <h4>Expert Witness Reports</h4>
+        <p>Court-ready scientific opinions detailing findings, methodology, limitations, and conclusions — prepared by qualified forensic specialists with court experience.</p>
+      </div>
+      <div class="service-card">
+        <h4>Court Attendance & Testimony</h4>
+        <p>Expert witness testimony in housing disputes, insurance claims, and regulatory proceedings — providing independent scientific evidence under oath.</p>
+      </div>
+      <div class="service-card">
+        <h4>Site Investigation & Assessment</h4>
+        <p>Full forensic site surveys, environmental assessment, building investigation, and comprehensive reports supporting remediation decisions and legal claims.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERT WITNESS SECTION -->
+<section class="section" id="expert">
+  <div class="container">
+    <div class="expert-section">
+      <div class="expert-inner">
+        <div class="expert-title">Expert Witness</div>
+        <div class="expert-heading">Dr Samuel J. White</div>
+        <div class="expert-grid">
+          <div class="expert-bio">
+            <h4>CEO, HH Global Holdings Ltd</h4>
+            <div class="expert-role">PhD Applied Immunology · Translational Research Leader</div>
+            <p>Dr White brings 15+ years of translational research, diagnostics development, and forensic expertise to expert witness testimony. His background in immunodiagnostics, environmental health, and One Health frameworks informs rigorous analysis of mould exposure, air quality, and health impact assessments.</p>
+            <p>With publications in peer-reviewed journals, media expertise (The Times, The Telegraph, BBC), and government advisory work in MedTech, Dr White delivers expert evidence that meets court standards while remaining accessible to legal professionals and clients.</p>
+            <div class="expert-creds">
+              <h5>Qualifications & Credentials</h5>
+              <ul>
+                <li>PhD in Applied Immunology (University of Nottingham)</li>
+                <li>Honorary Associate Professor of Translational Immunology, University of Nottingham</li>
+                <li>Former Senior Lecturer, Nottingham Trent University</li>
+                <li>15+ years in translational research, diagnostics, and One Health</li>
+                <li>Government advisory work in MedTech and regulatory affairs</li>
+                <li>Science communicator: The Times, The Telegraph, BBC Radio 4</li>
+                <li>Expert witness in environmental health and forensic mycology</li>
+              </ul>
+            </div>
+          </div>
+          <div class="expert-services">
+            <div class="service-item">
+              <h5>Forensic Mycology & Environmental Health</h5>
+              <p>Expert analysis and testimony on mould species, indoor air quality, exposure assessment, and health implications in residential and commercial environments.</p>
+            </div>
+            <div class="service-item">
+              <h5>Residential Mould Exposure</h5>
+              <p>Independent forensic investigation and evidence packages for housing disputes, tenant claims, and social housing remediation following Awaab's Law compliance requirements.</p>
+            </div>
+            <div class="service-item">
+              <h5>Chain-of-Custody & Court Preparation</h5>
+              <p>Legally defensible sampling protocols, evidence documentation, and expert reports prepared to court-admissibility standards with testimony support.</p>
+            </div>
+            <div class="service-item">
+              <h5>Regulatory Compliance</h5>
+              <p>Support for NHS Estates, environmental health authorities, and social housing providers on mould risk, air quality standards, and regulatory compliance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE WORK WITH -->
+<section class="section-alt" id="clients">
+  <div class="container">
+    <div class="section-tag">Our Clients</div>
+    <h2 class="section-heading">Who We Serve</h2>
+    <div class="clients-grid">
+      <div class="client-card">
+        <h4>Housing Solicitors & Tenant Law Firms</h4>
+        <p>Forensic mycology reports and expert witness testimony supporting mould claims in housing disputes, tenant rights, and post-Awaab's Law litigation.</p>
+      </div>
+      <div class="client-card">
+        <h4>Insurance Loss Adjusters</h4>
+        <p>Independent forensic assessment of damp, mould, and building damage claims — providing chain-of-custody documentation and expert validation of losses.</p>
+      </div>
+      <div class="client-card">
+        <h4>Social Housing Providers & RSLs</h4>
+        <p>Compliance support under Awaab's Law, remediation assessment, environmental testing, and evidence documentation for housing disputes and regulatory proceedings.</p>
+      </div>
+      <div class="client-card">
+        <h4>NHS Estates & Infection Control</h4>
+        <p>Environmental health assessment, mould investigation, and air quality testing supporting patient safety, CQC compliance, and healthcare facility management.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE ENGAGE -->
+<section class="section">
+  <div class="container text-center">
+    <div class="section-tag">Our Process</div>
+    <h2 class="section-heading">From Enquiry<br><em>to Evidence</em></h2>
+    <p class="section-lead mx-auto" style="max-width: 700px;">Every forensic engagement follows a structured, gated process — ensuring sample integrity, scientific rigour, and court-admissible results at every stage.</p>
+    <div class="services-grid" style="margin-top: 54px;">
+      <div style="text-align: left;">
+        <h4 style="color: var(--navy); margin-bottom: 12px;">1. Discovery & Scoping</h4>
+        <p style="font-size: 14px;">Initial consultation on your requirements, sampling strategy, timeline, and deliverables — from housing dispute to regulatory compliance.</p>
+      </div>
+      <div style="text-align: left;">
+        <h4 style="color: var(--navy); margin-bottom: 12px;">2. Sampling & Analysis</h4>
+        <p style="font-size: 14px;">On-site sampling with chain-of-custody protocols, laboratory analysis using DNA/culture/morphology, and rigorous documentation of findings.</p>
+      </div>
+      <div style="text-align: left;">
+        <h4 style="color: var(--navy); margin-bottom: 12px;">3. Expert Report & Court Prep</h4>
+        <p style="font-size: 14px;">Comprehensive expert witness report, legal review for court admissibility, and testimony support — including attendance for cross-examination if required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-tag" style="color:var(--gold)">Start a Conversation</div>
+    <h2>Let's Discuss Your Forensic Needs</h2>
+    <p>Whether you're a solicitor preparing a housing claim, an insurer assessing a mould loss, or a housing authority requiring compliance support — we're ready to discuss your requirements and timeline.</p>
+    <a href="mailto:info@hhglobalholdings.com" class="btn btn-gold">Get in Touch →</a>
+    <a href="https://www.linkedin.com/company/110136969" target="_blank" class="btn btn-outline" style="margin-left: 8px;">Follow on LinkedIn</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfUAAAHyCAYAAADyTVepAAAAAXNSR0IArs4c6QAAJQ==" alt="HH Global">
+      <p>Scientific Authority<br>Built for Impact</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>&nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="company.html">Company</a>&nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="samuel.html">Leadership</a>&nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="mailto:info@hhglobalholdings.com">Contact</a>&nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="https://www.linkedin.com/company/110136969" target="_blank">LinkedIn</a>
+    </div>
+    <div class="footer-legal">
+      <p>HH Global Holdings Ltd<br>Nottingham Science Park, Nottingham<br>© 2026 HH Global Holdings Ltd. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
