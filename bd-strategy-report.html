@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HH Global — BD Strategy Report</title>
+<meta name="description" content="Client Growth & Business Development Strategy for HH Global Holdings. Revenue streams, client personas, targeting plan, and 30-day priorities.">
+<meta name="theme-color" content="#0B1F3F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1F3F;
+  --navy-2: #152D55;
+  --navy-3: #1E3A6E;
+  --gold: #C5A25B;
+  --gold-2: #D4B76E;
+  --gold-soft: rgba(197,162,91,0.12);
+  --paper: #FFFFFF;
+  --paper-alt: #F8FAF9;
+  --rule: #E2E8F0;
+  --ink: #111827;
+  --ink-2: #374151;
+  --ink-muted: #64748B;
+  --green: #047857;
+  --green-soft: #D1FAE5;
+  --amber: #B45309;
+  --amber-soft: #FEF3C7;
+  --red: #B91C1C;
+  --red-soft: #FEE2E2;
+  --display: "Playfair Display", Georgia, serif;
+  --body: "Inter", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --section-y: clamp(2rem, 4vw, 3.5rem);
+  --max: 1200px;
+  --radius: 10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-row {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.85rem var(--gutter);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.brand-mark {
+  width: 30px;
+  height: 30px;
+  background: var(--gold);
+  color: var(--navy);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 16px;
+}
+.brand-name {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--navy);
+}
+.nav-meta {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+/* HERO */
+.hero {
+  padding: clamp(2.5rem, 6vw, 4rem) var(--gutter);
+  background: var(--navy);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 350px;
+  height: 350px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  opacity: 0.2;
+}
+.hero-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  position: relative;
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+.hero h1 {
+  font-family: var(--display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem;
+  color: #fff;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-lede {
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  color: var(--gold-2);
+  max-width: 60ch;
+  margin: 0 0 1.25rem;
+}
+
+/* LAYOUT */
+.layout {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2.5rem;
+  padding: var(--section-y) var(--gutter);
+}
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: sticky;
+  top: 85px;
+  align-self: start;
+}
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+}
+.sidebar h4 {
+  font-family: var(--body);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 0.75rem;
+}
+.toc {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.toc li {
+  margin-bottom: 0.15rem;
+}
+.toc a {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--ink-muted);
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.toc a:hover, .toc a.active {
+  background: var(--paper-alt);
+  color: var(--navy);
+}
+.toc a.active {
+  font-weight: 600;
+}
+
+/* MAIN */
+.main {
+  min-width: 0;
+}
+
+/* SECTIONS */
+.sec {
+  margin-bottom: 3rem;
+}
+.sec-title {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+}
+.sec-note {
+  font-size: 14px;
+  color: var(--ink-muted);
+  margin-bottom: 1.5rem;
+  max-width: 700px;
+}
+
+/* TABLES */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+th {
+  text-align: left;
+  padding: 0.8rem 1rem;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  border-bottom: 2px solid var(--rule);
+  background: var(--paper-alt);
+}
+td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+tr:last-child td {
+  border-bottom: none;
+}
+td strong {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+/* CARDS */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+@media (max-width: 700px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: all 0.2s;
+}
+.card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(197,162,91,0.08);
+}
+.card h3 {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+.card h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+.card p {
+  font-size: 14px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+.card p:last-of-type {
+  margin-bottom: 0;
+}
+.card ul {
+  margin: 0.75rem 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+.card li {
+  font-size: 13.5px;
+  color: var(--ink-muted);
+  margin-bottom: 0.35rem;
+  line-height: 1.55;
+  padding-left: 0;
+}
+.card li::before {
+  content: "•";
+  color: var(--gold);
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+/* BADGES */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.badge-urgent {
+  background: var(--red-soft);
+  color: var(--red);
+}
+.badge-high {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+.badge-medium {
+  background: var(--green-soft);
+  color: var(--green);
+}
+.badge-revenue {
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+
+/* TARGET CARDS */
+.target-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  page-break-inside: avoid;
+}
+.target-card h3 {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+.target-card .details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--paper-alt);
+  border-radius: 6px;
+  font-size: 13.5px;
+}
+@media (max-width: 600px) {
+  .target-card .details {
+    grid-template-columns: 1fr;
+  }
+}
+.target-card .details dt {
+  font-weight: 600;
+  color: var(--navy);
+}
+.target-card .details dd {
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+/* PRIORITY TABLE */
+.priority-table {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.priority-row {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  border-bottom: 1px solid var(--rule);
+  padding: 0;
+}
+.priority-row:last-child {
+  border-bottom: none;
+}
+@media (max-width: 700px) {
+  .priority-row {
+    grid-template-columns: 1fr;
+  }
+}
+.priority-num {
+  padding: 1rem;
+  background: var(--navy);
+  color: var(--gold);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+}
+.priority-row:nth-child(1) .priority-num {
+  background: var(--red);
+  color: #fff;
+}
+.priority-row:nth-child(2) .priority-num {
+  background: var(--red);
+  color: #fff;
+}
+.priority-row:nth-child(3) .priority-num {
+  background: var(--amber);
+  color: #fff;
+}
+.priority-row:nth-child(4) .priority-num {
+  background: var(--amber);
+  color: #fff;
+}
+.priority-row:nth-child(5) .priority-num {
+  background: var(--amber);
+  color: #fff;
+}
+.priority-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.priority-action {
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 14px;
+  margin-bottom: 0.25rem;
+}
+.priority-reason {
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+/* HIGHLIGHT BOX */
+.highlight {
+  background: var(--gold-soft);
+  border-left: 3px solid var(--gold);
+  padding: 1rem 1.25rem;
+  border-radius: 0 6px 6px 0;
+  margin: 1rem 0;
+}
+.highlight p {
+  font-size: 14px;
+  color: var(--ink-2);
+  margin: 0;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+.footer {
+  background: var(--navy);
+  padding: 2rem var(--gutter);
+  text-align: center;
+  margin-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+.footer p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin: 0.5rem 0;
+}
+.footer .brand {
+  color: var(--gold);
+  font-weight: 600;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* PRINT */
+@media print {
+  .nav, .sidebar {
+    display: none;
+  }
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+  .card, .target-card {
+    page-break-inside: avoid;
+  }
+  a {
+    color: var(--navy);
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-row">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">H</div>
+      <div class="brand-name">HH Global</div>
+    </a>
+    <div class="nav-meta">BD Strategy Report · 28 April 2026</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Business Development</span>
+    <h1>Client Growth & <em>Revenue Strategy</em></h1>
+    <p class="hero-lede">
+      Current revenue streams, existing client personas, service gaps, five new client targets (£200K each), and the 30-day execution plan.
+    </p>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <h4>Contents</h4>
+  <ul class="toc">
+    <li><a href="#revenue">Current Revenue</a></li>
+    <li><a href="#personas">Client Personas</a></li>
+    <li><a href="#gaps">Service Gaps</a></li>
+    <li><a href="#targets">Five Targets</a></li>
+    <li><a href="#priorities">30-Day Plan</a></li>
+    <li><a href="#positioning">Strategic Note</a></li>
+  </ul>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+<!-- SECTION 1: CURRENT REVENUE -->
+<section class="sec" id="revenue">
+  <h2 class="sec-title">Current Revenue & Active Clients</h2>
+  <p class="sec-note">As of April 2026, HH Global generates revenue across four active engagements with one major paused opportunity. This is strong for a company four months old — but fragile.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Monthly Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Genetix Labs</strong><br><small>(owner of Opal)</small></td>
+          <td>R&D retainer + advisory</td>
+          <td><span class="badge badge-urgent">Ends May 2026</span></td>
+          <td>£3–5K/month</td>
+        </tr>
+        <tr>
+          <td><strong>Drug development client</strong></td>
+          <td>Preclinical CRO (full pathway)</td>
+          <td>Active, 1yr 4mo remaining</td>
+          <td>£10K+/month</td>
+        </tr>
+        <tr>
+          <td><strong>Micro-testing R&D</strong></td>
+          <td>R&D development</td>
+          <td>Starting ~June 2026</td>
+          <td>TBC</td>
+        </tr>
+        <tr>
+          <td><strong>CBD consultancy</strong></td>
+          <td>Scientific advisory</td>
+          <td>Active, smaller</td>
+          <td>£1–2K/month</td>
+        </tr>
+        <tr>
+          <td><strong>ALS Global</strong><br><small>(multiplex LFT)</small></td>
+          <td>Diagnostics R&D partnership</td>
+          <td><span class="badge badge-urgent">Paused</span></td>
+          <td>£300K+ project</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="highlight">
+    <p><strong>Current estimated MRR: £14–17K/month</strong> (excluding ALS). The Genetix Labs retainer ending in May without renewal creates an immediate revenue protection problem. This must be the first BD priority.</p>
+  </div>
+</section>
+
+<!-- SECTION 2: CLIENT PERSONAS -->
+<section class="sec" id="personas">
+  <h2 class="sec-title">Four Client Personas: What They Buy & Why</h2>
+  <p class="sec-note">Understanding what our existing clients actually buy is the foundation for replicating those relationships at scale.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4>Persona A — R&D Retainer Client</h4>
+      <p><strong>Example:</strong> Genetix Labs, CBD consultancy</p>
+      <p>SMEs or early-stage startups with a product concept and no in-house scientific resource. They need credentialled scientists who will execute the work, not just advise.</p>
+      <ul>
+        <li>Systematic review and literature validation</li>
+        <li>Bench R&D — assay development, sample testing</li>
+        <li>Technical advisory on regulatory roadmap</li>
+        <li>Credibility-by-association with academic credentials</li>
+      </ul>
+      <p><strong>Deal pattern:</strong> Starts at £3–5K/month, grows as trust builds. Genetix Labs evolved into Sam holding equity.</p>
+      <p><strong>Under-monetised:</strong> Not buying ISO validation, expert witness services, or diagnostics development yet.</p>
+    </div>
+
+    <div class="card">
+      <h4>Persona B — Drug Development Client</h4>
+      <p><strong>Example:</strong> Current preclinical CRO contract (1yr 4mo remaining)</p>
+      <p>Pharma or biotech companies with a compound needing to reach human trial readiness. They need a full CRO pathway but can't afford or don't want Big CRO overhead.</p>
+      <ul>
+        <li>Preclinical study design and execution</li>
+        <li>Mouse model development</li>
+        <li>Biomarker identification and validation</li>
+        <li>Phase 1 trial readiness preparation</li>
+      </ul>
+      <p><strong>Why HH:</strong> One of the only organisations that can take a client from systematic review through R&D, validation, regulatory compliance, preclinical work, and Phase 1 under one roof.</p>
+      <p><strong>Critical gap:</strong> This client is NOT being offered a companion diagnostic. Our multiplex LFT platform is the natural cross-sell.</p>
+    </div>
+
+    <div class="card">
+      <h4>Persona C — Forensic & Legal Client</h4>
+      <p><strong>Example:</strong> Emerging — Legal Futures talk drove 78% LinkedIn uplift</p>
+      <p>Solicitors, housing authorities, insurers, criminal defence and family law firms who require a credentialled, court-ready expert witness or independent scientific report.</p>
+      <ul>
+        <li>Mould and environmental testing for housing litigation</li>
+        <li>Expert witness reports (EWS1/cladding, drug testing)</li>
+        <li>Forensic drug testing for criminal and family law</li>
+        <li>Independent scientific input for environmental cases</li>
+      </ul>
+      <p><strong>Why HH:</strong> Prof Wilson is Forbes 30u30, NHS CSO, government committee advisor. Dr White spoke at Legal Futures — 78% LinkedIn uplift from 12 minutes on stage.</p>
+      <p><strong>Volume potential:</strong> One law firm handling 200+ cases/year at £500–2,000 per instruction = £100–400K/year from a single client.</p>
+    </div>
+
+    <div class="card">
+      <h4>Persona D — Diagnostics Partner</h4>
+      <p><strong>Example:</strong> ALS Global (paused); pipeline: Historon</p>
+      <p>Companies with a diagnostic idea, patent, or market need who lack wet lab capability to develop, validate, and seek regulatory approval.</p>
+      <ul>
+        <li>Lateral flow test design and microarray development</li>
+        <li>Antibody and protein panel validation</li>
+        <li>IP co-development (our multiplex LFT is patent-pending and world-first)</li>
+        <li>Regulatory pathway strategy (MHRA, CE/UKCA, ISO 17025)</li>
+      </ul>
+      <p><strong>Why HH:</strong> The multiplex LFT is genuinely novel — ALS Global was willing to fund £300K+ before the pause.</p>
+      <p><strong>Deal pattern:</strong> £100K–£500K+ project-based. ALS model: exclusive licence + 10% revenue share.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: SERVICE GAPS -->
+<section class="sec" id="gaps">
+  <h2 class="sec-title">Service Gap Analysis</h2>
+  <p class="sec-note">What we have that clients aren't buying yet — and where the cross-sell opportunities are.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Currently Active?</th>
+          <th>Who Should Be Buying It</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>ISO 17025 Lab Build</strong> ("Lab-in-a-Box")</td>
+          <td>Not productised</td>
+          <td>NHS Trusts, overseas health ministries, drug development client</td>
+        </tr>
+        <tr>
+          <td><strong>Expert witness / forensic drug testing</strong></td>
+          <td>Emerging — no retainer</td>
+          <td>Criminal defence, family law, housing authorities</td>
+        </tr>
+        <tr>
+          <td><strong>Companion diagnostics</strong> (multiplex LFT)</td>
+          <td>Patent pending — no client yet</td>
+          <td><strong>Current drug development client</strong>, ALS reactivation</td>
+        </tr>
+        <tr>
+          <td><strong>Genomic air sampling</strong></td>
+          <td>In-house R&D</td>
+          <td>Environmental agencies, food safety, UK defence</td>
+        </tr>
+        <tr>
+          <td><strong>Bio defence / CBRN</strong></td>
+          <td>In scoping</td>
+          <td>MOD, NHS, NATO supply chain</td>
+        </tr>
+        <tr>
+          <td><strong>One Health data intelligence</strong></td>
+          <td>Stated capability — no clients</td>
+          <td>Government, public health agencies, Innovate UK</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="highlight">
+    <p><strong>Headline gap:</strong> We are delivering preclinical CRO services to a drug development client while sitting on a patent-pending diagnostic platform directly relevant to their compound. That cross-sell conversation is overdue.</p>
+  </div>
+</section>
+
+<!-- SECTION 4: FIVE NEW CLIENT TARGETS -->
+<section class="sec" id="targets">
+  <h2 class="sec-title">Five New Client Targets — £200K Each</h2>
+  <p class="sec-note">Prioritised by speed-to-revenue. The forensic/legal market moves fastest; diagnostics partnerships are worth more but take longer.</p>
+
+  <div class="target-card">
+    <span class="badge badge-urgent">TARGET 1 — FASTEST PATH TO REVENUE</span>
+    <h3>Criminal Defence or Family Law Firm</h3>
+    <p><strong>Persona match:</strong> Forensic/Legal (Persona C)</p>
+
+    <div class="details">
+      <div>
+        <dt>Why now</dt>
+        <dd>Sam's Legal Futures talk created 78% LinkedIn uplift. We have the demand signal; we lack structured follow-up.</dd>
+      </div>
+      <div>
+        <dt>Revenue model</dt>
+        <dd>Expert witness retainer (£2–5K/month) + per-case reports (£500–3K). 100+ cases/year = £100–300K+/year.</dd>
+      </div>
+      <div>
+        <dt>How to reach</dt>
+        <dd>Request Legal Futures attendee list. LinkedIn warm outreach. Target firms with 20+ fee earners in Manchester, Birmingham, London.</dd>
+      </div>
+      <div>
+        <dt>Key question</dt>
+        <dd>"Do you have a preferred forensic drug testing expert witness? How many cases per year?"</dd>
+      </div>
+    </div>
+  </div>
+
+  <div class="target-card">
+    <span class="badge badge-high">TARGET 2 — COMPLIANCE-DRIVEN DEMAND</span>
+    <h3>Housing Association or Local Authority</h3>
+    <p><strong>Persona match:</strong> Forensic/Legal (Persona C) + R&D Retainer (Persona A)</p>
+
+    <div class="details">
+      <div>
+        <dt>Why now</dt>
+        <dd>Awaab's Law (2023, enforcement 2025–26) requires scientific testing for damp/mould as legal compliance. Framework agreement is the play.</dd>
+      </div>
+      <div>
+        <dt>Revenue model</dt>
+        <dd>Framework contract for mould testing + expert witness on disrepair claims. 5,000+ units = 50–150 claims/year. £500–3K per assessment = £100–300K/year.</dd>
+      </div>
+      <div>
+        <dt>How to reach</dt>
+        <dd>CIOH member directory. LinkedIn: "Head of Asset Management" at Registered Providers (2,000+ units). Priority: Midlands and North West.</dd>
+      </div>
+      <div>
+        <dt>Key question</dt>
+        <dd>"How are you meeting the scientific evidence requirement under the new damp/mould regulations? Do you have an accredited testing partner?"</dd>
+      </div>
+    </div>
+  </div>
+
+  <div class="target-card">
+    <span class="badge badge-revenue">TARGET 3 — HIGHEST VALUE OPPORTUNITY</span>
+    <h3>UK Biotech or Pharma SME (Companion Diagnostics)</h3>
+    <p><strong>Persona match:</strong> Diagnostics Partner (Persona D)</p>
+
+    <div class="details">
+      <div>
+        <dt>Why now</dt>
+        <dd>ALS Global is the reference proof — £300K+ commitment before pause. Companies filing UK/EU patents in the last 12–18 months are at exactly this stage.</dd>
+      </div>
+      <div>
+        <dt>Revenue model</dt>
+        <dd>Funded R&D contract (£100K–£300K/year) + exclusive licence + 10% revenue share. Single engagement = £200–500K/year.</dd>
+      </div>
+      <div>
+        <dt>How to reach</dt>
+        <dd>Innovate UK UKRI Gateway to Research. Espacenet patent search (UK biotech, therapeutics/diagnostics, 2024–26). ABHI member directory.</dd>
+      </div>
+      <div>
+        <dt>Key question</dt>
+        <dd>"Do you have a companion diagnostic strategy? Have you identified a wet lab partner for lateral flow development?"</dd>
+      </div>
+    </div>
+  </div>
+
+  <div class="target-card">
+    <span class="badge badge-high">TARGET 4 — SUBCONTRACTOR RELATIONSHIP</span>
+    <h3>Environmental Consultancy</h3>
+    <p><strong>Persona match:</strong> Forensic/Legal (Persona C) + R&D Retainer (Persona A)</p>
+
+    <div class="details">
+      <div>
+        <dt>Why now</dt>
+        <dd>Environmental consultancies handling contaminated land and indoor air quality regularly encounter mycological cases they cannot assess in-house.</dd>
+      </div>
+      <div>
+        <dt>Revenue model</dt>
+        <dd>Preferred subcontractor for specialist ID (£500–5K per instruction) + expert witness. 100+ site assessments/year = £50–250K depending on complexity.</dd>
+      </div>
+      <div>
+        <dt>How to reach</dt>
+        <dd>CIEEM and IAQM member directories. LinkedIn: "Technical Director" at environmental consultancies (20–200 employees).</dd>
+      </div>
+      <div>
+        <dt>Key question</dt>
+        <dd>"When you encounter contentious mould/mycotoxin cases, who do you use for specialist ID? Do you have a preferred expert witness?"</dd>
+      </div>
+    </div>
+  </div>
+
+  <div class="target-card">
+    <span class="badge badge-medium">TARGET 5 — REGULATORY COMPLIANCE ANGLE</span>
+    <h3>Drug Discovery or Novel Therapeutics Company</h3>
+    <p><strong>Persona match:</strong> Diagnostics Partner (Persona D) + R&D Retainer (Persona A)</p>
+
+    <div class="details">
+      <div>
+        <dt>Why now</dt>
+        <dd>CBD/novel cannabinoid regulation (FSA Novel Foods register) requires ISO 17025 accredited analytical partners. Every UK CBD company in active submission needs this.</dd>
+      </div>
+      <div>
+        <dt>Revenue model</dt>
+        <dd>Analytical services contract (£10–20K/month) + optional assay co-development with IP protection. 12-month engagement = £120–240K.</dd>
+      </div>
+      <div>
+        <dt>How to reach</dt>
+        <dd>FSA Novel Foods register (lists all UK CBD companies). LinkedIn: "Founder" or "CSO" at UK CBD and botanical companies. Note: ByCortex is an existing relationship.</dd>
+      </div>
+      <div>
+        <dt>Key question</dt>
+        <dd>"Do you have an ISO 17025 accredited analytical partner for your FSA/MHRA submission? Are you developing proprietary assays you'd want to protect?"</dd>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: PRIORITIES -->
+<section class="sec" id="priorities">
+  <h2 class="sec-title">30-Day Execution Priorities</h2>
+  <p class="sec-note">Five actions that cannot wait. Listed by urgency.</p>
+
+  <div class="priority-table">
+    <div class="priority-row">
+      <div class="priority-num">1</div>
+      <div class="priority-content">
+        <div class="priority-action">Renew/upgrade Genetix Labs retainer before May</div>
+        <div class="priority-reason">If this lapses without a renewal conversation, we lose our longest-standing recurring revenue. First BD conversation on the calendar now.</div>
+      </div>
+    </div>
+
+    <div class="priority-row">
+      <div class="priority-num">2</div>
+      <div class="priority-content">
+        <div class="priority-action">Get Legal Futures attendee list from organisers</div>
+        <div class="priority-reason">Every week we wait, the post-event warmth cools. This is our fastest route to new clients. Request this week.</div>
+      </div>
+    </div>
+
+    <div class="priority-row">
+      <div class="priority-num">3</div>
+      <div class="priority-content">
+        <div class="priority-action">Reactivate ALS Global — identify who holds the budget</div>
+        <div class="priority-reason">£300K+ is sitting on the table. Tim Lumb is the contact. Find out why the project paused and what it would take to restart.</div>
+      </div>
+    </div>
+
+    <div class="priority-row">
+      <div class="priority-num">4</div>
+      <div class="priority-content">
+        <div class="priority-action">Cross-sell companion diagnostic to drug development client</div>
+        <div class="priority-reason">They are already in contract with us. This is the lowest-friction upsell available in our portfolio. Conversation this month.</div>
+      </div>
+    </div>
+
+    <div class="priority-row">
+      <div class="priority-num">5</div>
+      <div class="priority-content">
+        <div class="priority-action">Begin Legal Futures warm outreach (criminal defence + family law first)</div>
+        <div class="priority-reason">Fastest-moving persona. Project-based work, short sales cycle. Start while demand signal is fresh.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: STRATEGIC POSITIONING -->
+<section class="sec" id="positioning">
+  <h2 class="sec-title">Strategic Positioning Note</h2>
+
+  <div class="card">
+    <h4>What We Need to Say Differently</h4>
+    <p>HH Global's competitive position is not <em>"we are a CRO."</em> It is:</p>
+
+    <div class="highlight">
+      <p>"We are one of the only organisations in the UK that can take you from a research question to a validated, commercially deployable scientific product — under one roof, with world-class academic credentials and no university bureaucracy."</p>
+    </div>
+
+    <p>Prof Wilson's NHS CSO role, government committee appointments, and Forbes 30u30 recognition should be in the first paragraph of every outbound communication, not buried in a bio page. Dr White's Legal Futures impact (78% LinkedIn uplift from 12 minutes on stage) is proof that credibility converts — we need to systematise that.</p>
+
+    <p><strong>The £1M new ARR target is achievable within 12 months if:</strong></p>
+    <ul>
+      <li>Genetix Labs is protected (May renewal conversation)</li>
+      <li>ALS is reactivated (£300K+ entry to diagnostics market)</li>
+      <li>Two new forensic/legal clients are secured from Legal Futures pipeline (fastest path to revenue)</li>
+    </ul>
+
+    <p>The other three targets are 6–12 month plays. But the combination of quick-win legal clients + high-value diagnostics partnerships puts us at £1M new revenue within the engagement timeline.</p>
+  </div>
+</section>
+
+</main>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="brand">
+    <div class="brand-mark">H</div>
+    <div style="flex-grow: 1;">HH Global Holdings Ltd</div>
+  </div>
+  <p>73 Cornhill, London EC3V 3QQ · Company No. 16865238</p>
+  <p>Report prepared by: Interim Business Development Director (contracted via BridgePointAI) · 28 April 2026</p>
+  <p style="margin-top:1rem;font-style:italic;color:rgba(255,255,255,0.3);">⚔️</p>
+</div>
+
+</body>
+</html>
