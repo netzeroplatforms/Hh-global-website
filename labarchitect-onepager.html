@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LabArchitect — HH Global Holdings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1F3F;
+      --navy-mid: #152D55;
+      --gold: #C5A25B;
+      --gold-light: #D4B76E;
+      --cream: #FAF8F5;
+      --cream-dark: #F0EDE7;
+      --text: #1A1A2E;
+      --text-mid: #4A5568;
+      --text-light: #718096;
+      --border: #E2DDD5;
+      --white: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ── HEADER ── */
+    .page-header {
+      background: var(--navy);
+      padding: 18px 32px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .header-left {}
+    .header-brand {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+    .brand-product {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: -0.3px;
+      line-height: 1;
+    }
+    .brand-product em {
+      color: var(--gold);
+      font-style: italic;
+    }
+    .brand-by {
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.5px;
+    }
+    .header-tagline {
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .header-contact {
+      text-align: right;
+      color: rgba(255,255,255,0.6);
+      font-size: 10.5px;
+      line-height: 1.8;
+    }
+    .header-contact a { color: var(--gold); text-decoration: none; }
+
+    .gold-rule { height: 3px; background: var(--gold); }
+
+    /* ── POSITIONING ── */
+    .positioning {
+      padding: 14px 32px;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+    }
+    .positioning p {
+      font-size: 12.5px;
+      line-height: 1.7;
+      color: var(--text-mid);
+    }
+    .positioning strong { color: var(--navy); font-weight: 600; }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    /* ── DIFFERENTIATOR STRIP ── */
+    .diff-strip {
+      background: var(--navy-mid);
+      display: flex;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .diff-item {
+      flex: 1;
+      padding: 9px 14px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.2px;
+    }
+    .diff-item:last-child { border-right: none; }
+    .diff-item::before { content: '→'; color: var(--gold); margin-right: 6px; }
+
+    /* ── MODULES SECTION ── */
+    .modules-section {
+      padding: 16px 32px 0;
+    }
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px;
+    }
+    .module {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 10px 11px;
+      position: relative;
+    }
+    .module-num {
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(197,162,91,0.2);
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .module h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .module p {
+      font-size: 9.5px;
+      color: var(--text-light);
+      line-height: 1.55;
+    }
+
+    /* ── LOWER ── */
+    .lower {
+      padding: 14px 32px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    /* ── OUTCOMES BOX ── */
+    .outcomes-box {
+      background: var(--navy);
+      border-radius: 5px;
+      padding: 14px 16px;
+    }
+    .outcomes-box .section-label { margin-bottom: 10px; }
+    .outcome-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .outcome-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .outcome-check {
+      width: 14px;
+      height: 14px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .outcome-text {
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.5;
+    }
+    .outcome-text strong { color: var(--white); }
+
+    /* ── RIGHT LOWER ── */
+    .right-lower {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* ── WHO WE BUILD FOR ── */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+    }
+    .client-tag {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 6px 9px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+
+    /* ── SUPPORT TIER ── */
+    .support-box {
+      background: var(--cream-dark);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+      padding: 11px 14px;
+    }
+    .support-box .s-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+    .support-box p {
+      font-size: 10.5px;
+      color: var(--text-mid);
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+    .support-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px 10px;
+    }
+    .support-list li {
+      font-size: 9.5px;
+      color: var(--text-light);
+      padding-left: 8px;
+      position: relative;
+    }
+    .support-list li::before { content: '–'; position: absolute; left: 0; color: var(--gold); }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      margin: 14px 32px 0;
+      padding: 11px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .page-footer .company-info {
+      font-size: 9px;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+    .page-footer .cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 3px;
+    }
+    .page-footer .cta {
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .page-footer .sub-cta {
+      font-size: 9px;
+      color: var(--text-light);
+    }
+
+    @media print {
+      body { width: 210mm; margin: 0; }
+      @page { size: A4 portrait; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="header-left">
+    <div class="header-brand">
+      <span class="brand-product">Lab<em>Architect</em></span>
+      <span class="brand-by">by HH Global Holdings</span>
+    </div>
+    <div class="header-tagline">ISO 17025-Aligned Laboratory Deployment System</div>
+  </div>
+  <div class="header-contact">
+    73 Cornhill, London, EC3V 3QQ<br>
+    <a href="mailto:info@hhglobalholdings.com">info@hhglobalholdings.com</a><br>
+    linkedin.com/company/110136969
+  </div>
+</div>
+<div class="gold-rule"></div>
+
+<!-- DIFFERENTIATOR STRIP -->
+<div class="diff-strip">
+  <div class="diff-item">8-module structured deployment</div>
+  <div class="diff-item">Compliance by design, not retrofit</div>
+  <div class="diff-item">Empty room to audit-ready</div>
+  <div class="diff-item">One partner, full accountability</div>
+  <div class="diff-item">100% client retention</div>
+</div>
+
+<!-- POSITIONING -->
+<div class="positioning">
+  <p>
+    Most laboratories fail ISO 17025 audit not because the science is wrong — but because compliance was bolted on after the fact. <strong>LabArchitect</strong> is HH Global's structured laboratory deployment system: eight integrated modules that build governance, infrastructure, workflows, data systems, and quality management in sequence, from day one. The result is a laboratory that produces valid, traceable, defensible results — and is audit-ready without expensive rework.
+  </p>
+</div>
+
+<!-- 8 MODULES -->
+<div class="modules-section">
+  <div class="section-label">The Eight Modules</div>
+  <div class="modules-grid">
+
+    <div class="module">
+      <div class="module-num">01</div>
+      <h4>Laboratory Governance</h4>
+      <p>Organisational structure, authority matrix, impartiality framework, and data protection controls — the compliance foundation before a single test is run.</p>
+    </div>
+
+    <div class="module">
+      <div class="module-num">02</div>
+      <h4>Infrastructure &amp; Resources</h4>
+      <p>Lab layout, zoning, environmental controls, equipment specification, procurement, installation, calibration schedules, and asset management.</p>
+    </div>
+
+    <div class="module">
+      <div class="module-num">03</div>
+      <h4>Validated Workflow Engine</h4>
+      <p>End-to-end workflow design, SOPs, method verification and validation, batch structure, throughput modelling, and process timing documentation.</p>
+    </div>
+
+    <div class="module">
+      <div class="module-num">04</div>
+      <h4>Sample &amp; Data Traceability</h4>
+      <p>Sample ID schema, barcode systems, chain-of-custody processes, storage SOPs, and LIMS integration — full traceability from receipt to report.</p>
+    </div>
+
+    <div class="module">
+      <div class="module-num">05</div>
+      <h4>Digital Lab Backbone</h4>
+      <p>LIMS configuration, instrument-to-report data flow, data integrity controls, access permissions, audit trails, and full system validation.</p>
+    </div>
+
+    <div class="module">
+      <div class="module-num">06</div>
+      <h4>Quality Control &amp; Assurance</h4>
+      <p>QC framework, acceptance criteria, statistical monitoring, trend analysis, and continuous assurance of result validity across all workflows.</p>
+    </div>
+
+    <div class="module">
+      <div class="module-num">07</div>
+      <h4>Defensible Reporting Suite</h4>
+      <p>Standardised report templates, result interpretation frameworks, conformity and decision rules — outputs aligned to regulatory and legal standards.</p>
+    </div>
+
+    <div class="module">
+      <div class="module-num">08</div>
+      <h4>ISO Management System</h4>
+      <p>Quality manual, SOP library mapped to ISO clauses, document control, internal audit programme, CAPA processes, and management review framework.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- OUTCOMES + CLIENTS + SUPPORT -->
+<div class="lower">
+
+  <div>
+    <div class="section-label">What You Get at Completion</div>
+    <div class="outcomes-box">
+      <div class="outcome-item">
+        <div class="outcome-check">✓</div>
+        <div class="outcome-text"><strong>Audit-ready from day one</strong> — structured for ISO 17025 accreditation with no retrofit rework required</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-check">✓</div>
+        <div class="outcome-text"><strong>Valid, traceable, reproducible results</strong> — every output defensible under regulatory or legal scrutiny</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-check">✓</div>
+        <div class="outcome-text"><strong>Integrated systems</strong> — governance, workflows, data, QC, and reporting all connected from the start</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-check">✓</div>
+        <div class="outcome-text"><strong>Operational team</strong> — roles defined, trained, and embedded in a functioning quality management system</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-check">✓</div>
+        <div class="outcome-text"><strong>HH-backed scientific credibility</strong> — 1,566+ citations, Forbes 30 Under 30, RSC Joseph Black Medal</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-lower">
+
+    <div>
+      <div class="section-label">Who We Build For</div>
+      <div class="clients-grid">
+        <div class="client-tag">NHS Trusts &amp; Healthcare Estates</div>
+        <div class="client-tag">Universities &amp; Research Institutes</div>
+        <div class="client-tag">Overseas Health Ministries</div>
+        <div class="client-tag">Private &amp; Commercial Laboratories</div>
+        <div class="client-tag">Forensic Diagnostics Companies</div>
+        <div class="client-tag">Pharma &amp; Biotech Start-Ups</div>
+      </div>
+    </div>
+
+    <div class="support-box">
+      <div class="s-label">Optional Ongoing Partnership</div>
+      <p>After deployment, HH remains available as your retained scientific partner — ensuring the lab you built stays compliant as it scales.</p>
+      <ul class="support-list">
+        <li>ISO readiness &amp; accreditation support</li>
+        <li>Ongoing QA oversight &amp; audits</li>
+        <li>Workflow optimisation &amp; scale-up</li>
+        <li>Continuous compliance monitoring</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="page-footer">
+  <div class="company-info">
+    LabArchitect is delivered by HH Insight Ltd, a subsidiary of HH Global Holdings Ltd<br>
+    73 Cornhill, London, EC3V 3QQ · Company No. 16865238 · Registered in England &amp; Wales
+  </div>
+  <div class="cta-group">
+    <a href="mailto:info@hhglobalholdings.com" class="cta">Discuss Your Lab Build →</a>
+    <span class="sub-cta">hhglobalholdings.com</span>
+  </div>
+</div>
+
+</body>
+</html>

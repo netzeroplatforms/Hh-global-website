@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HH Global Holdings — Capabilities Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1F3F;
+      --navy-mid: #152D55;
+      --gold: #C5A25B;
+      --gold-light: #D4B76E;
+      --cream: #FAF8F5;
+      --cream-dark: #F0EDE7;
+      --text: #1A1A2E;
+      --text-mid: #4A5568;
+      --text-light: #718096;
+      --border: #E2DDD5;
+      --white: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ── HEADER ── */
+    .page-header {
+      background: var(--navy);
+      padding: 18px 32px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .header-brand h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .header-brand .tagline {
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 4px;
+    }
+    .header-contact {
+      text-align: right;
+      color: rgba(255,255,255,0.6);
+      font-size: 10.5px;
+      line-height: 1.8;
+    }
+    .header-contact a { color: var(--gold); text-decoration: none; }
+
+    .gold-rule { height: 3px; background: var(--gold); }
+
+    /* ── CREDENTIALS BAR ── */
+    .cred-bar {
+      background: var(--cream-dark);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+    }
+    .cred-item {
+      flex: 1;
+      padding: 9px 12px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-mid);
+      letter-spacing: 0.3px;
+    }
+    .cred-item:last-child { border-right: none; }
+    .cred-item::before { content: '★'; color: var(--gold); margin-right: 5px; }
+
+    /* ── POSITIONING ── */
+    .positioning {
+      padding: 15px 32px;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+    }
+    .positioning p {
+      font-size: 12.5px;
+      line-height: 1.7;
+      color: var(--text-mid);
+    }
+    .positioning strong { color: var(--navy); font-weight: 600; }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    /* ── THREE SUBSIDIARIES ── */
+    .subsidiaries {
+      padding: 16px 32px 0;
+    }
+    .sub-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .sub {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 13px 14px;
+      position: relative;
+    }
+    .sub-num {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      color: rgba(197,162,91,0.25);
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+    }
+    .sub h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+      line-height: 1.3;
+      padding-right: 20px;
+    }
+    .sub .sub-tag {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 7px;
+      display: block;
+    }
+    .sub ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sub ul li {
+      font-size: 10px;
+      color: var(--text-light);
+      line-height: 1.6;
+      padding-left: 9px;
+      position: relative;
+    }
+    .sub ul li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+    .sub ul li strong { color: var(--text-mid); font-weight: 600; }
+
+    /* ── LOWER SECTION ── */
+    .lower {
+      padding: 14px 32px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    /* ── TEAM ── */
+    .team-box {
+      background: var(--navy);
+      border-radius: 5px;
+      padding: 14px 16px;
+    }
+    .team-member {
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .team-member:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+    .team-member .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 1px;
+    }
+    .team-member .role {
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+    .team-member p {
+      font-size: 10px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.55;
+    }
+
+    /* ── RIGHT LOWER ── */
+    .right-lower {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* ── SECTORS ── */
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+    }
+    .sector-tag {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 6px 9px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+
+    /* ── ONE HEALTH BOX ── */
+    .onehealth-box {
+      background: var(--cream-dark);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+      padding: 11px 14px;
+    }
+    .onehealth-box .oh-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+    .onehealth-box p {
+      font-size: 10.5px;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      margin: 14px 32px 0;
+      padding: 11px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .page-footer .company-info {
+      font-size: 9px;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+    .page-footer .cta {
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    @media print {
+      body { width: 210mm; margin: 0; }
+      @page { size: A4 portrait; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="header-brand">
+    <h1>HH Global Holdings</h1>
+    <div class="tagline">Full-Pipeline CRO · One Health · Human · Animal · Environmental</div>
+  </div>
+  <div class="header-contact">
+    73 Cornhill, London, EC3V 3QQ<br>
+    <a href="mailto:info@hhglobalholdings.com">info@hhglobalholdings.com</a><br>
+    linkedin.com/company/110136969
+  </div>
+</div>
+<div class="gold-rule"></div>
+
+<!-- CREDENTIALS BAR -->
+<div class="cred-bar">
+  <div class="cred-item">1,566+ Peer-Reviewed Citations</div>
+  <div class="cred-item">Forbes 30 Under 30 · Science &amp; Healthcare</div>
+  <div class="cred-item">RSC Joseph Black Medal</div>
+  <div class="cred-item">ISO 17025 Accreditation Pathway</div>
+  <div class="cred-item">100% Client Retention</div>
+</div>
+
+<!-- POSITIONING -->
+<div class="positioning">
+  <p>
+    <strong>HH Global Holdings</strong> is a full-pipeline Contract Research Organisation operating across human, animal, and environmental health — the One Health framework. We cover the complete development pathway: from biomarker identification and preclinical research through to ISO 17025 validation, regulatory submission, and expert evidence generation. Three integrated subsidiaries. One point of accountability. No handoff gaps.
+  </p>
+</div>
+
+<!-- THREE SUBSIDIARIES -->
+<div class="subsidiaries">
+  <div class="section-label">Operating Companies</div>
+  <div class="sub-grid">
+
+    <div class="sub">
+      <span class="sub-num">01</span>
+      <span class="sub-tag">Research &amp; Innovation</span>
+      <h4>HH Research &amp; Innovation Ltd</h4>
+      <ul>
+        <li><strong>Full CRO services</strong> — proof-of-concept to Phase I regulatory submission</li>
+        <li>Diagnostic &amp; therapeutic assay development</li>
+        <li><strong>Multiplex lateral flow (UK patent-pending)</strong> — 20–60 proteins per test from 3 drops of blood</li>
+        <li>Genomics, proteomics, metabolomics, immunology</li>
+        <li>Validation studies &amp; CE/UKCA technical dossiers</li>
+        <li>Lab design built to ISO 17025 from inception</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <span class="sub-num">02</span>
+      <span class="sub-tag">Data &amp; Evidence</span>
+      <h4>HH Data &amp; Evidence Services Ltd</h4>
+      <ul>
+        <li>Systematic reviews &amp; meta-analyses</li>
+        <li><strong>Expert witness services</strong> (CPR-35 aligned) — forensic mycology, environmental health, drug testing</li>
+        <li>Epidemiological &amp; disease modelling</li>
+        <li>One Health pathway analysis</li>
+        <li>Large-scale data analysis &amp; serialised reporting</li>
+        <li>Evidence packages for regulatory &amp; court proceedings</li>
+        <li>Scientific paper writing &amp; publication support</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <span class="sub-num">03</span>
+      <span class="sub-tag">Regulatory &amp; Insight</span>
+      <h4>HH Insight Ltd</h4>
+      <ul>
+        <li>Regulatory pathway strategy — diagnostics, labs, therapeutics</li>
+        <li>ISO frameworks: 9001, 13485, 15189, 17025 · QMS implementation</li>
+        <li>Readiness assessments &amp; compliance audits</li>
+        <li>Market entry strategy &amp; workflow design</li>
+        <li><strong>LabArchitect</strong> — complete 8-module laboratory deployment system, ISO 17025-aligned from inception</li>
+        <li>Start-up support packages</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- LOWER: TEAM + SECTORS + ONE HEALTH -->
+<div class="lower">
+
+  <div>
+    <div class="section-label">Scientific Leadership</div>
+    <div class="team-box">
+      <div class="team-member">
+        <div class="name">Professor Philippe B. Wilson</div>
+        <div class="role">Executive Chairman &amp; Chief Scientific Officer · Forbes 30 Under 30 · RSC Joseph Black Medal</div>
+        <p>1,566+ peer-reviewed citations spanning metabolomics, immunodiagnostics, and One Health science. Government advisory committees. Clinical trials with AstraZeneca. The scientific foundation underpinning every HH programme.</p>
+      </div>
+      <div class="team-member">
+        <div class="name">Dr Samuel J. White</div>
+        <div class="role">CEO · PhD Applied Immunology · Expert Witness</div>
+        <p>15+ years translational research and diagnostics. Honorary Associate Professor, University of Nottingham. Court-recognised expert witness in environmental health &amp; forensic mycology. Science communicator: The Times · Telegraph · BBC.</p>
+      </div>
+      <div class="team-member">
+        <div class="name">Tracy Holbrook</div>
+        <div class="role">Director of Operations</div>
+        <p>Operational delivery, client engagement, and commercial strategy across HH Global's programme portfolio.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="right-lower">
+
+    <div>
+      <div class="section-label">Who We Serve</div>
+      <div class="sectors-grid">
+        <div class="sector-tag">Pharmaceutical &amp; Biotech</div>
+        <div class="sector-tag">Drug Discovery Companies</div>
+        <div class="sector-tag">NHS &amp; Healthcare Estates</div>
+        <div class="sector-tag">Legal &amp; Litigation Teams</div>
+        <div class="sector-tag">Social Housing &amp; RSLs</div>
+        <div class="sector-tag">Insurance &amp; Loss Adjusters</div>
+        <div class="sector-tag">International Health Ministries</div>
+        <div class="sector-tag">Veterinary &amp; AgriHealth</div>
+      </div>
+    </div>
+
+    <div class="onehealth-box">
+      <div class="oh-label">One Health · One Platform</div>
+      <p>
+        The same multiplex microarray technology that identifies allergens in horses detects pathogens in livestock, screens drug targets in humans, and tests soil microbiomes in agriculture. One scientific investment. Multiplied commercial value across every domain we operate in.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="page-footer">
+  <div class="company-info">
+    HH Global Holdings Ltd · 73 Cornhill, London, EC3V 3QQ · Company No. 16865238<br>
+    Registered in England &amp; Wales · © 2026 HH Global Holdings Ltd. All rights reserved.
+  </div>
+  <a href="mailto:info@hhglobalholdings.com" class="cta">Start a Conversation →</a>
+</div>
+
+</body>
+</html>
