@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HH Global — Forensic Science for Construction & Property Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; }
+
+:root {
+  --navy: #0B1F3F;
+  --navy-2: #152D55;
+  --gold: #C5A25B;
+  --gold-soft: rgba(197,162,91,0.12);
+  --paper: #FFFFFF;
+  --cream: #FAF8F5;
+  --rule: #E2DDD5;
+  --ink: #1A1A2E;
+  --ink-2: #374151;
+  --ink-muted: #6B7280;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.page {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: var(--paper);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+}
+
+/* HEADER BAND */
+.header {
+  background: var(--navy);
+  padding: 2.5rem 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 180px;
+  height: 180px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  opacity: 0.15;
+}
+.header-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+.header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
+}
+.header h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.header-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  max-width: 60ch;
+  line-height: 1.6;
+}
+
+/* STAT BAR */
+.stat-bar {
+  background: var(--gold);
+  padding: 1rem 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  text-align: center;
+}
+.stat-item .stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+.stat-item .stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.75;
+}
+
+/* BODY GRID */
+.body {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 0;
+}
+.col-left {
+  padding: 2rem 2rem 2rem 2.5rem;
+  border-right: 1px solid var(--rule);
+}
+.col-right {
+  padding: 2rem 2.5rem 2rem 2rem;
+  background: var(--cream);
+}
+
+/* SECTION HEADING */
+.sec-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+/* CALLOUT BOX */
+.context-box {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.context-box p {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+.context-box p:last-child { margin-bottom: 0; }
+.context-box strong { color: var(--gold); }
+
+/* SERVICE LIST */
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+}
+.service-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13px;
+  color: var(--ink-2);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.service-list li:last-child { border-bottom: none; }
+.service-list li::before {
+  content: "→";
+  color: var(--gold);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* PROFILE CARDS */
+.profile {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.1rem;
+  margin-bottom: 1rem;
+}
+.profile-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.15rem;
+}
+.profile-role {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.65rem;
+}
+.cred-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.cred-list li {
+  font-size: 12px;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  line-height: 1.4;
+}
+.cred-list li::before {
+  content: "★";
+  color: var(--gold);
+  font-size: 9px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* BOTTOM BAR */
+.bottom {
+  background: var(--navy-2);
+  padding: 1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.bottom-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+.bottom-brand span {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.45);
+  display: block;
+  margin-top: 1px;
+}
+.bottom-contact {
+  text-align: right;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+.bottom-contact a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* PRINT */
+@media print {
+  body { background: white; }
+  .page { margin: 0; box-shadow: none; max-width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="header-tag">HH Global Holdings · Construction & Property Management</span>
+    <h1>Science That Protects Buildings.<br><em>And the People in Them.</em></h1>
+    <p class="header-sub">Independent forensic testing, materials analysis, and expert witness services for property managers, developers, and construction materials manufacturers — navigating post-Grenfell, Building Safety Act, and Awaab's Law compliance.</p>
+  </div>
+
+  <!-- STAT BAR -->
+  <div class="stat-bar">
+    <div class="stat-item">
+      <div class="stat-num">50,000+</div>
+      <div class="stat-label">Housing disrepair claims/year — up from 6,500 in 2019</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2022</div>
+      <div class="stat-label">Building Safety Act — new duty of care for developers, managers &amp; owners</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Client retention — every client we've worked with has returned</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- LEFT: CONTEXT + SERVICES -->
+    <div class="col-left">
+
+      <div class="context-box">
+        <p><strong>The regulatory picture has changed permanently.</strong> The Building Safety Act 2022 and Awaab's Law (December 2024) have together created a new duty-of-care landscape for every organisation that builds, manages, or is responsible for the built environment.</p>
+        <p>Property managers must now <strong>investigate damp and mould within 14 days</strong>, with emergency hazard remediation inside 24 hours. Every failure is directly actionable. Meanwhile, construction materials manufacturers face tightening UKCA obligations, COSHH requirements, and post-Grenfell scrutiny that demands defensible analytical documentation at every stage.</p>
+        <p>The common thread: <strong>independent scientific evidence</strong>. Neither sector can rely on informal assessments any more.</p>
+      </div>
+
+      <div class="sec-label">What HH Global Provides</div>
+      <ul class="service-list">
+        <li>Damp, mould, and indoor air quality forensics — accredited laboratory testing for managed properties</li>
+        <li>Post-remediation verification — independent confirmation that works are complete and conditions resolved</li>
+        <li>Expert witness reports for building safety, housing, and environmental claims</li>
+        <li>Construction materials characterisation — VOCs, formaldehyde, heavy metals, asbestos fibres</li>
+        <li>COSHH and REACH compliance testing with defensible chain-of-custody documentation</li>
+        <li>UKCA analytical support and batch quality control</li>
+        <li>Full chain of custody — lab testing and expert opinion, one team</li>
+      </ul>
+
+      <p style="font-size:12px;color:var(--ink-muted);font-style:italic;margin-top:0.75rem;">"One 12-minute talk at Legal Futures generated a 78% increase in LinkedIn profile searches in a single week. The demand is there. We're now building the commercial partnerships to meet it."<br><strong style="color:var(--navy);font-style:normal;">— Dr Samuel White, CEO, HH Global Holdings</strong></p>
+
+    </div>
+
+    <!-- RIGHT: THE TEAM -->
+    <div class="col-right">
+
+      <div class="sec-label">The People Behind the Reports</div>
+      <p style="font-size:13px;color:var(--ink-2);margin-bottom:1rem;">When independent evidence is challenged, the expert's credentials are scrutinised first. Ours are not challenged easily.</p>
+
+      <div class="profile">
+        <div class="profile-name">Prof Philippe B. Wilson</div>
+        <div class="profile-role">Executive Chairman · HH Global Holdings</div>
+        <ul class="cred-list">
+          <li><strong>Forbes 30 Under 30</strong> — Healthcare & Science (2018)</li>
+          <li>Former NHS Chief Scientific Officer, Willows Health (largest Primary Care Network in NHS Leicestershire)</li>
+          <li>Professor of One Health, York St John University</li>
+          <li>Government adviser — DEFRA Genetics Committee; PHE/FSA Committee on Toxicity</li>
+          <li>Led AstraZeneca TACKLE clinical trial unit (COVID-19)</li>
+          <li>Fellow: Royal Society of Biology · Royal Society of Medicine · Linnean Society</li>
+          <li>1,566+ peer-reviewed citations</li>
+        </ul>
+      </div>
+
+      <div class="profile">
+        <div class="profile-name">Dr Samuel J. White</div>
+        <div class="profile-role">CEO · HH Global Holdings</div>
+        <ul class="cred-list">
+          <li>Applied immunologist — mould, allergens, environmental biomarkers</li>
+          <li>Former Associate Professor & Head of Projects, Nottingham Trent University</li>
+          <li>Forensic diagnostics, chain-of-custody lab testing</li>
+          <li>Expert witness — housing disrepair, environmental health, building safety</li>
+          <li>Legal Futures speaker — 78% LinkedIn uplift from single talk</li>
+          <li>Research collaboration with University of Bern (immunotherapy)</li>
+        </ul>
+      </div>
+
+      <div style="background:var(--gold-soft);border-left:3px solid var(--gold);padding:0.9rem 1rem;border-radius:0 6px 6px 0;margin-top:0.5rem;">
+        <p style="font-size:12.5px;color:var(--ink);line-height:1.6;margin:0;">HH Global operates from Nottingham Science Park — a fully equipped wet laboratory with ISO 17025 accreditation pathway. Not a paper exercise. Real science, real scientists, court-ready results.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="bottom">
+    <div>
+      <div class="bottom-brand">HH Global Holdings Ltd
+        <span>73 Cornhill, London EC3V 3QQ · Company No. 16865238</span>
+      </div>
+    </div>
+    <div class="bottom-contact">
+      <a href="https://netzeroplatforms.github.io/Hh-global-website/forensic-services.html">netzeroplatforms.github.io/Hh-global-website</a><br>
+      info@hhglobalholdings.com · 01400 222940
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
