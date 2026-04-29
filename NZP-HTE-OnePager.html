@@ -31,19 +31,24 @@
         .logo-area .tagline { font-size: 0.82em; opacity: 0.75; margin-top: 3px; letter-spacing: 0.3px; text-transform: uppercase; }
         .badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 5px 14px; font-size: 0.78em; opacity: 0.9; }
         .header-sub { font-size: 1em; opacity: 0.88; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 14px; line-height: 1.5; }
+        .ets-flag { display: inline-block; background: rgba(245,158,11,0.25); border: 1px solid rgba(245,158,11,0.5); border-radius: 4px; padding: 2px 8px; font-size: 0.78em; color: #fde68a; margin-top: 6px; }
         .partners-strip { background: #f7fafc; border-bottom: 1px solid #e2e8f0; padding: 13px 40px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .partners-label { font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.8px; color: #718096; white-space: nowrap; margin-right: 4px; }
         .partner-chip { background: #fff; border: 1px solid #cbd5e0; border-radius: 4px; padding: 4px 12px; font-size: 0.77em; font-weight: 700; color: #2d3748; letter-spacing: 0.3px; }
         .partner-chip.highlight { background: #ebf8ff; border-color: #90cdf4; color: #2b6cb0; }
         .body { padding: 28px 40px 32px; }
         .intro { font-size: 1em; color: #2d3748; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 2px solid #e2e8f0; line-height: 1.65; }
-        .platform-mockup { background: #0f1e35; border-radius: 10px; padding: 18px 22px; margin-bottom: 20px; color: #fff; }
+        .platform-mockup { background: #0f1e35; border-radius: 10px; padding: 18px 22px; margin-bottom: 8px; color: #fff; }
         .platform-title { font-size: 0.7em; text-transform: uppercase; letter-spacing: 1px; color: #63b3ed; margin-bottom: 12px; }
-        .platform-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+        .platform-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
         .metric-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 11px 13px; }
+        .metric-card.ets { border-color: rgba(245,158,11,0.4); background: rgba(245,158,11,0.08); }
         .metric-value { font-size: 1.5em; font-weight: 700; color: #68d391; line-height: 1; margin-bottom: 3px; }
+        .metric-card.ets .metric-value { color: #fcd34d; }
         .metric-label { font-size: 0.7em; color: #a0aec0; text-transform: uppercase; letter-spacing: 0.4px; }
         .metric-sub { font-size: 0.68em; color: #63b3ed; margin-top: 3px; }
+        .metric-card.ets .metric-sub { color: #fbbf24; }
+        .platform-footnote { font-size: 0.68em; color: #4a5568; margin-bottom: 14px; padding: 0 2px; }
         .scenario-row { display: flex; gap: 8px; flex-wrap: wrap; }
         .scenario-chip { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 4px 11px; font-size: 0.73em; color: #e2e8f0; }
         .scenario-chip.active { background: rgba(99,179,237,0.2); border-color: #63b3ed; color: #bee3f8; font-weight: 600; }
@@ -82,12 +87,20 @@
         .offer-box h3 { color: #2b6cb0; font-size: 0.9em; margin-bottom: 8px; }
         .offer-box ul { margin: 0 0 0 16px; }
         .offer-box li { font-size: 0.84em; color: #2d3748; margin-bottom: 4px; }
-        .pipeline-box { background: #fffff0; border-left: 4px solid #d69e2e; border-radius: 0 8px 8px 0; padding: 12px 18px; margin-bottom: 6px; }
+        .steps-row { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+        .step { background: #fff; border: 1px solid #bee3f8; border-radius: 6px; padding: 8px 12px; flex: 1; min-width: 140px; }
+        .step-num { font-size: 0.68em; text-transform: uppercase; letter-spacing: 0.5px; color: #3182ce; font-weight: 700; margin-bottom: 2px; }
+        .step-text { font-size: 0.78em; color: #2d3748; }
+        .pipeline-box { background: #fffff0; border-left: 4px solid #d69e2e; border-radius: 0 8px 8px 0; padding: 12px 18px; margin-bottom: 18px; }
         .pipeline-box h3 { color: #744210; font-size: 0.85em; margin-bottom: 7px; }
         .pipeline-sites { display: flex; gap: 7px; flex-wrap: wrap; }
         .site-tag { border-radius: 12px; padding: 3px 11px; font-size: 0.76em; }
         .site-tag.locked { background: #fed7d7; border: 1px solid #fc8181; color: #742a2a; }
         .site-tag.open { background: #c6f6d5; border: 1px solid #68d391; color: #22543d; font-weight: 600; }
+        .objection-box { background: #fffaf0; border-left: 4px solid #ed8936; border-radius: 0 8px 8px 0; padding: 13px 18px; margin-bottom: 18px; }
+        .objection-box h3 { color: #c05621; font-size: 0.85em; margin-bottom: 7px; }
+        .objection-box p { font-size: 0.8em; color: #4a5568; line-height: 1.5; margin-bottom: 5px; }
+        .objection-box p strong { color: #2d3748; }
         .footer-strip { background: #0f2442; color: #fff; padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; }
         .contact-info strong { display: block; font-size: 0.9em; }
         .contact-info span { font-size: 0.78em; opacity: 0.7; }
@@ -131,6 +144,7 @@
             </div>
             <div class="header-sub">
                 How NZP can support Hydrogen Transition Energy's UK pipeline — starting with a free, no-commitment modelling run on your Manston waste profile.
+                <br><span class="ets-flag">UK ETS expands to EfW January 2026 (MRV live now) · Carbon liability is already on the clock</span>
             </div>
         </div>
 
@@ -167,6 +181,14 @@
                         <div class="metric-label">Payback Period</div>
                         <div class="metric-sub">↑ Modular deployment</div>
                     </div>
+                    <div class="metric-card ets">
+                        <div class="metric-value">£47/t</div>
+                        <div class="metric-label">UK ETS Credit</div>
+                        <div class="metric-sub">↑ Live from 2026 MRV</div>
+                    </div>
+                </div>
+                <div class="platform-footnote">
+                    EBITDA based on gate fees (£80–120/t) + SAF offtake at blended $3.50/gal + UK ETS carbon credit income from 2026 MRV phase. Payback period assumes modular phased deployment. Full assumptions and sensitivity analysis delivered in your modelling run.
                 </div>
                 <div class="scenario-row">
                     <span class="scenario-chip">H₂ only</span>
@@ -223,8 +245,8 @@
                     <ul>
                         <li>InEnTec's plasma cleanup (Step 2) reaches the same 10,000°C as NZP — we understand the technology well</li>
                         <li>NZP has prior technical engagement with InEnTec — we know how the system operates</li>
-                        <li>On future sites, NZP's single-step approach simplifies the process train — but the plasma expertise is shared territory</li>
-                        <li>Collaboration opportunity: NZP's software platform can serve Manston's modelling and investor reporting today, independently of technology choice</li>
+                        <li>We're not changing Manston's technology decision. We're offering to strengthen Manston's financial model and investor reporting — today, independently of any technology change</li>
+                        <li>On future sites, NZP's single-step approach simplifies the process train and reduces capex — the right conversation for Cwmbran</li>
                     </ul>
                 </div>
             </div>
@@ -236,6 +258,13 @@
                     <h4>Signed SAF Offtake — Major Global Energy Company · Domestic &amp; International</h4>
                     <p>80 million gallons/year at 1,000 TPD scale · ASTM D7566 certified · $3–5/gal premium · Already contracted. Your Cwmbran project can access this offtake directly — no separate negotiation required. No other UK operator can offer this today.</p>
                 </div>
+            </div>
+
+            <!-- OBJECTION PRE-EMPTION -->
+            <div class="objection-box">
+                <h3>On Gasification Technology: Why NZP Is Different</h3>
+                <p>The UK has seen high-profile gasification failures — including biomass EfW plants with significant investor losses. These failures share a common cause: <strong>lower-temperature gasification (800–1,000°C) that could not handle feedstock variability at commercial scale.</strong></p>
+                <p>NZP's UHTMG process operates at <strong>10,000°C</strong> — an order of magnitude higher. At this temperature, all organic compounds are destroyed in a single step, feedstock variability is irrelevant, and the output is a clean, consistent syngas. This is the same thermal physics used in steel-making arc furnaces — a technology with 200+ commercial deployments and 25+ years of operating history. The failures that preceded us are not cautionary tales about plasma gasification. They are the reason NZP exists.</p>
             </div>
 
             <div class="two-col">
@@ -269,10 +298,24 @@
                 <h3>Our Offer to HTE — No Cost, No Commitment</h3>
                 <ul>
                     <li><strong>Free modelling run</strong> on your Manston waste profile (44,000 tpa) — real numbers, not estimates</li>
-                    <li><strong>Scenario comparison</strong> — gate fees, offtake prices, capex phasing, carbon credits, full sensitivity</li>
-                    <li><strong>Investor-grade outputs</strong> ready for your lenders and financing partners</li>
+                    <li><strong>Scenario comparison</strong> — gate fees, offtake prices, capex phasing, carbon credits, UK ETS from 2026 MRV, full sensitivity</li>
+                    <li><strong>Investor-grade outputs</strong> ready for your lenders and financing partners within 10 working days</li>
                     <li><strong>Cwmbran pipeline planning</strong> — show your investors a fully modelled, offtake-backed second site before Manston breaks ground</li>
                 </ul>
+                <div class="steps-row">
+                    <div class="step">
+                        <div class="step-num">Step 1 — Week 1</div>
+                        <div class="step-text">Share Manston waste profile &amp; composition data</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">Step 2 — Week 2</div>
+                        <div class="step-text">NZP delivers modelled scenarios across all product mixes</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">Step 3 — Week 3</div>
+                        <div class="step-text">Review outputs with HTE's FD and lenders — Cwmbran JV discussion</div>
+                    </div>
+                </div>
             </div>
 
             <div class="pipeline-box">
