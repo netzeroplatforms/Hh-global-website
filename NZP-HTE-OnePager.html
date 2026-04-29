@@ -14,264 +14,82 @@
             padding: 24px 16px;
         }
         .page {
-            max-width: 840px;
+            max-width: 860px;
             margin: 0 auto;
             background: #fff;
             box-shadow: 0 4px 24px rgba(0,0,0,0.13);
             border-radius: 12px;
             overflow: hidden;
         }
-
-        /* HEADER */
         .header {
             background: linear-gradient(135deg, #0f2442 0%, #1a4a7a 100%);
             color: #fff;
             padding: 36px 40px 24px;
         }
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 14px;
-        }
+        .header-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
         .logo-area h1 { font-size: 1.75em; font-weight: 800; letter-spacing: -0.5px; }
-        .logo-area .tagline { font-size: 0.85em; opacity: 0.75; margin-top: 3px; letter-spacing: 0.3px; text-transform: uppercase; }
-        .badge {
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.25);
-            border-radius: 20px;
-            padding: 5px 14px;
-            font-size: 0.78em;
-            opacity: 0.9;
-        }
-        .header-sub {
-            font-size: 1em;
-            opacity: 0.88;
-            border-top: 1px solid rgba(255,255,255,0.18);
-            padding-top: 14px;
-            line-height: 1.5;
-        }
-
-        /* PARTNERS STRIP */
-        .partners-strip {
-            background: #f7fafc;
-            border-bottom: 1px solid #e2e8f0;
-            padding: 14px 40px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .partners-label {
-            font-size: 0.72em;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: #718096;
-            white-space: nowrap;
-            margin-right: 4px;
-        }
-        .partner-chip {
-            background: #fff;
-            border: 1px solid #cbd5e0;
-            border-radius: 4px;
-            padding: 4px 12px;
-            font-size: 0.78em;
-            font-weight: 700;
-            color: #2d3748;
-            letter-spacing: 0.3px;
-        }
-        .partner-chip.highlight {
-            background: #ebf8ff;
-            border-color: #90cdf4;
-            color: #2b6cb0;
-        }
-
-        /* BODY */
+        .logo-area .tagline { font-size: 0.82em; opacity: 0.75; margin-top: 3px; letter-spacing: 0.3px; text-transform: uppercase; }
+        .badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 5px 14px; font-size: 0.78em; opacity: 0.9; }
+        .header-sub { font-size: 1em; opacity: 0.88; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 14px; line-height: 1.5; }
+        .partners-strip { background: #f7fafc; border-bottom: 1px solid #e2e8f0; padding: 13px 40px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .partners-label { font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.8px; color: #718096; white-space: nowrap; margin-right: 4px; }
+        .partner-chip { background: #fff; border: 1px solid #cbd5e0; border-radius: 4px; padding: 4px 12px; font-size: 0.77em; font-weight: 700; color: #2d3748; letter-spacing: 0.3px; }
+        .partner-chip.highlight { background: #ebf8ff; border-color: #90cdf4; color: #2b6cb0; }
         .body { padding: 28px 40px 32px; }
-
-        .intro {
-            font-size: 1.02em;
-            color: #2d3748;
-            margin-bottom: 24px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #e2e8f0;
-            line-height: 1.65;
-        }
-
-        /* PLATFORM MOCKUP */
-        .platform-mockup {
-            background: #0f1e35;
-            border-radius: 10px;
-            padding: 20px 24px;
-            margin-bottom: 24px;
-            color: #fff;
-        }
-        .platform-title {
-            font-size: 0.72em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #63b3ed;
-            margin-bottom: 14px;
-        }
-        .platform-metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-        .metric-card {
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            padding: 12px 14px;
-        }
-        .metric-value {
-            font-size: 1.6em;
-            font-weight: 700;
-            color: #68d391;
-            line-height: 1;
-            margin-bottom: 4px;
-        }
-        .metric-label {
-            font-size: 0.72em;
-            color: #a0aec0;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-        }
-        .metric-sub {
-            font-size: 0.7em;
-            color: #63b3ed;
-            margin-top: 3px;
-        }
-        .scenario-row {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        .scenario-chip {
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 4px;
-            padding: 4px 12px;
-            font-size: 0.75em;
-            color: #e2e8f0;
-        }
-        .scenario-chip.active {
-            background: rgba(99,179,237,0.2);
-            border-color: #63b3ed;
-            color: #bee3f8;
-            font-weight: 600;
-        }
-
-        /* STATS GRID */
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-        .card {
-            background: #f7fafc;
-            border-radius: 8px;
-            padding: 18px 20px;
-            border: 1px solid #e2e8f0;
-        }
-        .card h3 {
-            color: #1a365d;
-            font-size: 0.78em;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            margin-bottom: 12px;
-        }
-        .stat-row {
-            display: flex;
-            align-items: baseline;
-            gap: 8px;
-            margin-bottom: 7px;
-        }
-        .stat-num { font-size: 1.3em; font-weight: 700; color: #1a365d; }
-        .stat-label { font-size: 0.82em; color: #718096; }
-
-        /* OFFTAKE HIGHLIGHT */
-        .offtake-box {
-            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
-            color: #fff;
-            border-radius: 8px;
-            padding: 18px 22px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .offtake-icon { font-size: 2em; opacity: 0.8; }
-        .offtake-text h4 { font-size: 0.95em; font-weight: 700; margin-bottom: 4px; }
-        .offtake-text p { font-size: 0.82em; opacity: 0.85; line-height: 1.4; }
-
-        /* OUTPUTS */
-        .output-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        .output-chip {
-            background: #e6fffa;
-            border: 1px solid #81e6d9;
-            border-radius: 6px;
-            padding: 8px 6px;
-            text-align: center;
-            font-size: 0.78em;
-            font-weight: 600;
-            color: #234e52;
-        }
-
-        /* OFFER BOX */
-        .offer-box {
-            background: #ebf8ff;
-            border-left: 4px solid #3182ce;
-            border-radius: 0 8px 8px 0;
-            padding: 16px 20px;
-            margin-bottom: 20px;
-        }
-        .offer-box h3 { color: #2b6cb0; font-size: 0.95em; margin-bottom: 10px; }
-        .offer-box ul { margin: 0 0 0 18px; }
-        .offer-box li { font-size: 0.88em; color: #2d3748; margin-bottom: 5px; }
-
-        /* PIPELINE */
-        .pipeline-box {
-            background: #fffff0;
-            border-left: 4px solid #d69e2e;
-            border-radius: 0 8px 8px 0;
-            padding: 14px 20px;
-            margin-bottom: 8px;
-        }
-        .pipeline-box h3 { color: #744210; font-size: 0.88em; margin-bottom: 8px; }
-        .pipeline-sites { display: flex; gap: 8px; flex-wrap: wrap; }
-        .site-tag {
-            border-radius: 12px;
-            padding: 3px 12px;
-            font-size: 0.78em;
-        }
+        .intro { font-size: 1em; color: #2d3748; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 2px solid #e2e8f0; line-height: 1.65; }
+        .platform-mockup { background: #0f1e35; border-radius: 10px; padding: 18px 22px; margin-bottom: 20px; color: #fff; }
+        .platform-title { font-size: 0.7em; text-transform: uppercase; letter-spacing: 1px; color: #63b3ed; margin-bottom: 12px; }
+        .platform-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+        .metric-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 11px 13px; }
+        .metric-value { font-size: 1.5em; font-weight: 700; color: #68d391; line-height: 1; margin-bottom: 3px; }
+        .metric-label { font-size: 0.7em; color: #a0aec0; text-transform: uppercase; letter-spacing: 0.4px; }
+        .metric-sub { font-size: 0.68em; color: #63b3ed; margin-top: 3px; }
+        .scenario-row { display: flex; gap: 8px; flex-wrap: wrap; }
+        .scenario-chip { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 4px 11px; font-size: 0.73em; color: #e2e8f0; }
+        .scenario-chip.active { background: rgba(99,179,237,0.2); border-color: #63b3ed; color: #bee3f8; font-weight: 600; }
+        .offtake-box { background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); color: #fff; border-radius: 8px; padding: 16px 20px; margin-bottom: 18px; display: flex; align-items: center; gap: 18px; }
+        .offtake-icon { font-size: 1.8em; opacity: 0.8; }
+        .offtake-text h4 { font-size: 0.92em; font-weight: 700; margin-bottom: 3px; }
+        .offtake-text p { font-size: 0.8em; opacity: 0.85; line-height: 1.4; }
+        .ip-box { background: #faf5ff; border-left: 4px solid #805ad5; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 18px; }
+        .ip-box h3 { color: #553c9a; font-size: 0.88em; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+        .ip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .ip-item { background: #fff; border: 1px solid #d6bcfa; border-radius: 6px; padding: 8px 12px; }
+        .ip-item strong { display: block; font-size: 0.83em; color: #44337a; margin-bottom: 2px; }
+        .ip-item span { font-size: 0.77em; color: #718096; }
+        .section-title { font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.7px; color: #718096; margin-bottom: 10px; }
+        .diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+        .diff-card { border-radius: 8px; padding: 14px 16px; border: 1px solid; }
+        .diff-card.vs { background: #fff5f5; border-color: #fed7d7; }
+        .diff-card.collab { background: #f0fff4; border-color: #c6f6d5; }
+        .diff-card h4 { font-size: 0.82em; font-weight: 700; margin-bottom: 8px; }
+        .diff-card.vs h4 { color: #c53030; }
+        .diff-card.collab h4 { color: #276749; }
+        .diff-card ul { margin: 0 0 0 16px; }
+        .diff-card li { font-size: 0.8em; color: #4a5568; margin-bottom: 4px; line-height: 1.4; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+        .card { background: #f7fafc; border-radius: 8px; padding: 16px 18px; border: 1px solid #e2e8f0; }
+        .card h3 { color: #1a365d; font-size: 0.75em; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 10px; }
+        .stat-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+        .stat-num { font-size: 1.25em; font-weight: 700; color: #1a365d; }
+        .stat-label { font-size: 0.8em; color: #718096; }
+        .output-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; margin-bottom: 18px; }
+        .output-chip { background: #e6fffa; border: 1px solid #81e6d9; border-radius: 6px; padding: 7px 5px; text-align: center; font-size: 0.76em; font-weight: 600; color: #234e52; }
+        .offer-box { background: #ebf8ff; border-left: 4px solid #3182ce; border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 18px; }
+        .offer-box h3 { color: #2b6cb0; font-size: 0.9em; margin-bottom: 8px; }
+        .offer-box ul { margin: 0 0 0 16px; }
+        .offer-box li { font-size: 0.84em; color: #2d3748; margin-bottom: 4px; }
+        .pipeline-box { background: #fffff0; border-left: 4px solid #d69e2e; border-radius: 0 8px 8px 0; padding: 12px 18px; margin-bottom: 6px; }
+        .pipeline-box h3 { color: #744210; font-size: 0.85em; margin-bottom: 7px; }
+        .pipeline-sites { display: flex; gap: 7px; flex-wrap: wrap; }
+        .site-tag { border-radius: 12px; padding: 3px 11px; font-size: 0.76em; }
         .site-tag.locked { background: #fed7d7; border: 1px solid #fc8181; color: #742a2a; }
         .site-tag.open { background: #c6f6d5; border: 1px solid #68d391; color: #22543d; font-weight: 600; }
-
-        /* FOOTER */
-        .footer-strip {
-            background: #0f2442;
-            color: #fff;
-            padding: 16px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .contact-info strong { display: block; font-size: 0.92em; }
-        .contact-info span { font-size: 0.8em; opacity: 0.7; }
-        .website { font-size: 0.85em; opacity: 0.8; }
-
-        @media print {
-            body { background: #fff; padding: 0; }
-            .page { box-shadow: none; }
-        }
+        .footer-strip { background: #0f2442; color: #fff; padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; }
+        .contact-info strong { display: block; font-size: 0.9em; }
+        .contact-info span { font-size: 0.78em; opacity: 0.7; }
+        .website { font-size: 0.84em; opacity: 0.8; }
+        @media print { body { background: #fff; padding: 0; } .page { box-shadow: none; } }
     </style>
 </head>
 <body>
@@ -281,7 +99,7 @@
             <div class="header-top">
                 <div class="logo-area">
                     <h1>NetZeroPlatforms</h1>
-                    <div class="tagline">Plasma Gasification · Software Platform · Waste-to-Value</div>
+                    <div class="tagline">Plasma Gasification · Proprietary Software · Waste-to-Value</div>
                 </div>
                 <div class="badge">Prepared for HTE</div>
             </div>
@@ -290,7 +108,6 @@
             </div>
         </div>
 
-        <!-- PARTNERS STRIP -->
         <div class="partners-strip">
             <span class="partners-label">Backed by &amp; working with</span>
             <span class="partner-chip">HITACHI ENERGY</span>
@@ -302,7 +119,7 @@
         <div class="body">
 
             <p class="intro">
-                NetZeroPlatforms operates one of the world's most proven plasma gasification technologies — 200+ systems deployed across 25+ years of commercial operation. We bring signed offtake agreements with major energy companies and a global FMCG consortium, backed by Hitachi Energy and Westinghouse. We're not here to compete with Manston. We're here to make your next sites more profitable, faster to finance, and easier to de-risk.
+                NetZeroPlatforms operates one of the world's most proven plasma gasification technologies — 200+ systems, 25+ years of commercial operation, and signed offtake agreements with a major global energy company and a FMCG consortium. We're not here to displace what HTE has built at Manston. We're here to make your next four sites significantly more profitable, more financeable, and faster to close — using proprietary technology and contracted routes to market that no other operator in the UK can offer today.
             </p>
 
             <!-- PLATFORM MOCKUP -->
@@ -317,7 +134,7 @@
                     <div class="metric-card">
                         <div class="metric-value">74%</div>
                         <div class="metric-label">EBITDA Margin</div>
-                        <div class="metric-sub">↑ Gate fees + product mix</div>
+                        <div class="metric-sub">↑ Gate fees + full product mix</div>
                     </div>
                     <div class="metric-card">
                         <div class="metric-value">5.8 yrs</div>
@@ -330,16 +147,62 @@
                     <span class="scenario-chip">H₂ + Power</span>
                     <span class="scenario-chip active">SAF + H₂ ✓</span>
                     <span class="scenario-chip active">Full mix ✓</span>
-                    <span class="scenario-chip" style="color:#718096;">Run on your feedstock →</span>
+                    <span class="scenario-chip" style="color:#718096; font-size:0.7em;">→ Run on your feedstock, free</span>
                 </div>
             </div>
 
-            <!-- OFFTAKE HIGHLIGHT -->
+            <!-- UNIQUE IP -->
+            <div class="ip-box">
+                <h3>Proprietary IP &amp; Exclusive Advantages</h3>
+                <div class="ip-grid">
+                    <div class="ip-item">
+                        <strong>UHTMG Technology</strong>
+                        <span>Proprietary ultra-high temperature molten gasification — 10,000°C single-step plasma process. No tar. No ash. No CO₂ by design.</span>
+                    </div>
+                    <div class="ip-item">
+                        <strong>Syngas Optimisation Platform</strong>
+                        <span>Proprietary software — real feedstock data in, investor-grade outputs out. No equivalent exists in the UK market today.</span>
+                    </div>
+                    <div class="ip-item">
+                        <strong>Signed SAF Offtake Agreement</strong>
+                        <span>ASTM D7566 certified pathway. 80M gal/yr at scale. Major global energy company. Domestic &amp; international. Exclusive channel.</span>
+                    </div>
+                    <div class="ip-item">
+                        <strong>Submerged Arc Furnace Supply Chain</strong>
+                        <span>Steel industry-grade technology — globally proven, commercially available at scale. No single-supplier dependency.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HOW WE DIFFER / COLLABORATE -->
+            <div class="section-title">How NZP differs from your current technology partners — and where we can work together</div>
+            <div class="diff-grid">
+                <div class="diff-card vs">
+                    <h4>vs Plagazi (Step 1 Gasifier)</h4>
+                    <ul>
+                        <li>Plagazi is a two-step process; NZP achieves full gasification in a single step</li>
+                        <li>Plagazi's Step 1 intentionally produces CO₂ as a major output — NZP retains carbon as CO, a high-value syngas component</li>
+                        <li>NZP: 200+ commercial deployments vs Plagazi's emerging track record</li>
+                        <li>NZP's single-step approach means lower operational complexity and higher syngas yield per tonne</li>
+                    </ul>
+                </div>
+                <div class="diff-card collab">
+                    <h4>With InEnTec — Collaboration, Not Competition</h4>
+                    <ul>
+                        <li>InEnTec's plasma cleanup (Step 2) reaches the same 10,000°C as NZP — we understand the technology well</li>
+                        <li>NZP has prior technical engagement with InEnTec — we know how the system operates</li>
+                        <li>On future sites, NZP's single-step approach simplifies the process train — but the plasma expertise is shared territory</li>
+                        <li>Collaboration opportunity: NZP's software platform can serve Manston's modelling and investor reporting today, independently of technology choice</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- OFFTAKE -->
             <div class="offtake-box">
                 <div class="offtake-icon">✈️</div>
                 <div class="offtake-text">
-                    <h4>Signed SAF Offtake — Major Global Energy Company</h4>
-                    <p>80 million gallons/year at 1,000 TPD scale · ASTM D7566 certified pathway · $3–5/gal premium over commodity · Domestic &amp; international offtake secured. Your Cwmbran project can plug directly into this agreement.</p>
+                    <h4>Signed SAF Offtake — Major Global Energy Company · Domestic &amp; International</h4>
+                    <p>80 million gallons/year at 1,000 TPD scale · ASTM D7566 certified · $3–5/gal premium · Already contracted. Your Cwmbran project can access this offtake directly — no separate negotiation required. No other UK operator can offer this today.</p>
                 </div>
             </div>
 
@@ -349,20 +212,19 @@
                     <div class="stat-row"><span class="stat-num">200+</span><span class="stat-label">systems deployed globally</span></div>
                     <div class="stat-row"><span class="stat-num">25+</span><span class="stat-label">years commercial operation</span></div>
                     <div class="stat-row"><span class="stat-num">99.99%</span><span class="stat-label">waste destruction efficiency</span></div>
-                    <div class="stat-row"><span class="stat-num">10,000°C</span><span class="stat-label">single-step plasma process</span></div>
+                    <div class="stat-row"><span class="stat-num">10,000°C</span><span class="stat-label">single-step — start to finish</span></div>
                 </div>
                 <div class="card">
-                    <h3>What This Means for Your Pipeline</h3>
-                    <div class="stat-row"><span class="stat-num">€15–25M</span><span class="stat-label">Phase 1 modular entry point</span></div>
-                    <div class="stat-row"><span class="stat-num">£200M</span><span class="stat-label">Cwmbran — NZP config available</span></div>
-                    <div class="stat-row"><span class="stat-num">4 sites</span><span class="stat-label">beyond Manston, uncommitted</span></div>
-                    <div class="stat-row"><span class="stat-num">Free</span><span class="stat-label">modelling run, no commitment</span></div>
+                    <h3>Collaboration Models Available</h3>
+                    <div class="stat-row"><span class="stat-num" style="font-size:0.95em;">Platform</span><span class="stat-label">License NZP software for Manston now</span></div>
+                    <div class="stat-row"><span class="stat-num" style="font-size:0.95em;">JV</span><span class="stat-label">NZP tech + HTE planning on Cwmbran</span></div>
+                    <div class="stat-row"><span class="stat-num" style="font-size:0.95em;">Offtake</span><span class="stat-label">Plug Manston H₂ into NZP's network</span></div>
+                    <div class="stat-row"><span class="stat-num" style="font-size:0.95em;">Pipeline</span><span class="stat-label">NZP as tech partner, Birmingham → Belfast</span></div>
                 </div>
             </div>
 
-            <!-- OUTPUTS -->
-            <div style="margin-bottom:8px;font-size:0.78em;text-transform:uppercase;letter-spacing:0.6px;color:#718096;">Output flexibility — one feedstock, multiple contracted revenue streams</div>
-            <div class="output-grid" style="margin-bottom:20px;">
+            <div class="section-title">Output flexibility — one feedstock, multiple contracted revenue streams</div>
+            <div class="output-grid">
                 <div class="output-chip">Green Hydrogen</div>
                 <div class="output-chip">Sustainable Aviation Fuel</div>
                 <div class="output-chip">Power Export</div>
@@ -370,22 +232,20 @@
                 <div class="output-chip">Ammonia</div>
             </div>
 
-            <!-- OFFER -->
             <div class="offer-box">
                 <h3>Our Offer to HTE — No Cost, No Commitment</h3>
                 <ul>
                     <li><strong>Free modelling run</strong> on your Manston waste profile (44,000 tpa) — real numbers, not estimates</li>
                     <li><strong>Scenario comparison</strong> — gate fees, offtake prices, capex phasing, carbon credits, full sensitivity</li>
                     <li><strong>Investor-grade outputs</strong> ready for your lenders and financing partners</li>
-                    <li><strong>Cwmbran pipeline planning</strong> — show your investors a fully modelled, offtake-backed second site</li>
+                    <li><strong>Cwmbran pipeline planning</strong> — show your investors a fully modelled, offtake-backed second site before Manston breaks ground</li>
                 </ul>
             </div>
 
-            <!-- PIPELINE -->
             <div class="pipeline-box">
                 <h3>HTE's UK Pipeline — Where NZP Fits</h3>
                 <div class="pipeline-sites">
-                    <span class="site-tag locked">Manston — Plagazi locked. We respect that.</span>
+                    <span class="site-tag locked">Manston — Plagazi locked. Fully respected.</span>
                     <span class="site-tag open">Cwmbran — NZP ready</span>
                     <span class="site-tag open">Birmingham</span>
                     <span class="site-tag open">Perth</span>
