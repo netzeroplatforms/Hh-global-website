@@ -93,6 +93,29 @@
         .contact-info span { font-size: 0.78em; opacity: 0.7; }
         .website { font-size: 0.84em; opacity: 0.8; }
         @media print { body { background: #fff; padding: 0; } .page { box-shadow: none; } }
+        @media (max-width: 600px) {
+            body { padding: 0; }
+            .page { border-radius: 0; }
+            .header { padding: 22px 18px 18px; }
+            .logo-area h1 { font-size: 1.3em; }
+            .logo-area .tagline { font-size: 0.72em; }
+            .badge { font-size: 0.7em; padding: 4px 10px; }
+            .header-sub { font-size: 0.88em; }
+            .partners-strip { padding: 10px 18px; gap: 7px; }
+            .body { padding: 16px 18px 24px; }
+            .intro { font-size: 0.9em; }
+            .platform-metrics { grid-template-columns: 1fr; gap: 7px; }
+            .patent-banner { flex-direction: column; align-items: flex-start; gap: 8px; padding: 12px 14px; }
+            .patent-num { font-size: 1em; }
+            .patent-detail { font-size: 0.8em; }
+            .ip-grid { grid-template-columns: 1fr; }
+            .diff-grid { grid-template-columns: 1fr; }
+            .two-col { grid-template-columns: 1fr; }
+            .output-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+            .offtake-box { flex-direction: column; gap: 10px; padding: 14px 16px; }
+            .offtake-icon { font-size: 1.4em; }
+            .footer-strip { flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 18px; }
+        }
     </style>
 </head>
 <body>
