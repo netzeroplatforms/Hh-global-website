@@ -1328,35 +1328,20 @@
       position: relative;
       overflow: hidden;
     }
-    .stat-card,
-    .pillar-card,
-    .ip-category,
-    .case-card,
-    .flow-step,
-    .pub-card,
-    .subsidiary-card,
-    .synergy-card,
-    .team-card,
-    .service-card,
-    .service-item,
-    .client-card,
-    .expert-creds,
-    .module-card,
-    .outcome-item {}
-    .stat-card,
-    .pillar-card,
-    .ip-category,
-    .case-card,
-    .flow-step,
-    .pub-card,
-    .subsidiary-card,
-    .synergy-card,
-    .team-card,
-    .service-card,
-    .service-item,
-    .client-card,
-    .expert-creds,
-    .module-card,
+    .stat-card::before,
+    .pillar-card::before,
+    .ip-category::before,
+    .case-card::before,
+    .flow-step::before,
+    .pub-card::before,
+    .subsidiary-card::before,
+    .synergy-card::before,
+    .team-card::before,
+    .service-card::before,
+    .service-item::before,
+    .client-card::before,
+    .expert-creds::before,
+    .module-card::before,
     .outcome-item::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0;
@@ -1381,8 +1366,8 @@
     .expert-creds:hover,
     .module-card:hover,
     .outcome-item:hover {
-      border-color: var(--gold);
-      box-shadow: 0 8px 30px rgba(201,170,125,0.10);
+      border-color: var(--gold) !important;
+      box-shadow: 0 8px 30px rgba(201,170,125,0.12) !important;
       transform: translateY(-2px);
       transition: all 0.25s;
     }
