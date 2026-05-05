@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stoma Alert — Commercialisation Master Document</title>
+<style>
+:root {
+  --navy: #0D2137;
+  --navy-2: #1B3A5F;
+  --mint: #7ABFA5;
+  --mint-2: #B8DDD2;
+  --bg: #eef4f7;
+  --card: #ffffff;
+  --text: #314155;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --red: #dc2626;
+  --amber: #d97706;
+  --green: #059669;
+  --shadow: 0 10px 26px rgba(13,33,55,.08);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  background: linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
+  color: var(--text);
+  line-height: 1.6;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, var(--navy), #081522 100%);
+  color: #fff;
+  padding: 24px 18px;
+  border-right: 1px solid rgba(255,255,255,.08);
+  overflow-y: auto;
+}
+.logo {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+.nav-section {
+  margin-bottom: 16px;
+}
+.nav-title {
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.48);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.nav-link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: rgba(255,255,255,.76);
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 4px;
+  transition: all .2s;
+}
+.nav-link:hover, .nav-link.active {
+  background: rgba(122,191,165,.16);
+  color: #fff;
+}
+.main {
+  padding: 32px 40px;
+  overflow-y: auto;
+}
+.hero {
+  background: linear-gradient(135deg, var(--navy-2), var(--navy));
+  color: #fff;
+  border-radius: 24px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow);
+}
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: 42px;
+  line-height: 1.1;
+}
+.hero p {
+  margin: 0 0 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: .9;
+}
+.meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.chip {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 999px;
+  font-size: 12px;
+  color: rgba(255,255,255,.85);
+}
+.section {
+  margin-bottom: 32px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.section-head {
+  padding: 20px 24px;
+  background: var(--navy-2);
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+.section-head h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+.section-head p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  opacity: .85;
+}
+.section-body {
+  padding: 24px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-bottom: 20px;
+}
+.card {
+  background: #f9fafb;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+}
+.card h4 {
+  margin: 0 0 10px;
+  color: var(--navy-2);
+  font-size: 15px;
+}
+.card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 16px;
+}
+th {
+  background: var(--navy-2);
+  color: #fff;
+  padding: 12px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+td {
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+}
+tr:nth-child(even) td {
+  background: #fafbfd;
+}
+.notice {
+  padding: 16px;
+  border-left: 5px solid;
+  border-radius: 12px;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.notice.mint {
+  border-color: var(--mint);
+  background: rgba(122,191,165,.08);
+}
+.notice.amber {
+  border-color: var(--amber);
+  background: rgba(217,119,6,.08);
+}
+.notice.red {
+  border-color: var(--red);
+  background: rgba(220,38,38,.08);
+}
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+.tag.green {
+  background: #ecfdf5;
+  color: var(--green);
+}
+.tag.amber {
+  background: #fff4dd;
+  color: var(--amber);
+}
+.tag.red {
+  background: #fef2f2;
+  color: var(--red);
+}
+.tag.navy {
+  background: #edf4fb;
+  color: var(--navy-2);
+}
+.accordion {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.accordion-btn {
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  background: #f9fafb;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--navy-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background .2s;
+}
+.accordion-btn:hover {
+  background: #f0f1f3;
+}
+.accordion-content {
+  display: none;
+  padding: 0 16px 16px;
+  background: #fff;
+}
+.accordion.open .accordion-content {
+  display: block;
+}
+.accordion.open .accordion-btn {
+  background: #edf4fb;
+}
+.chev {
+  transition: transform .2s;
+  font-size: 18px;
+}
+.accordion.open .chev {
+  transform: rotate(180deg);
+}
+.revenue-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 120px 100px;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+.revenue-row:last-child {
+  border-bottom: 0;
+}
+.revenue-stream {
+  font-weight: 600;
+  color: var(--navy-2);
+}
+.revenue-detail {
+  color: var(--muted);
+  line-height: 1.4;
+}
+.revenue-when {
+  background: rgba(122,191,165,.12);
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: var(--navy-2);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+.revenue-range {
+  text-align: right;
+  font-weight: 700;
+  color: var(--mint);
+}
+.callout {
+  background: linear-gradient(135deg, rgba(122,191,165,.08), rgba(122,191,165,.04));
+  border: 1px solid rgba(122,191,165,.16);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.callout strong {
+  color: var(--navy-2);
+}
+.footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--muted);
+  font-size: 12px;
+  border-top: 1px solid var(--line);
+  margin-top: 32px;
+}
+@media (max-width: 1024px) {
+  .wrapper { grid-template-columns: 1fr; }
+  .sidebar { position: relative; height: auto; }
+  .main { padding: 20px; }
+  .grid { grid-template-columns: 1fr; }
+  .revenue-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+<aside class="sidebar">
+<div class="logo">📊 STOMA ALERT</div>
+<div class="nav-section">
+<div class="nav-title">Master Document</div>
+<a class="nav-link" href="#overview">Executive overview</a>
+<a class="nav-link" href="#aristotle">Aristotelian framework</a>
+<a class="nav-link" href="#audiences">Target audiences</a>
+<a class="nav-link" href="#revenue">Revenue architecture</a>
+<a class="nav-link" href="#critical">Critical path (6 months)</a>
+<a class="nav-link" href="#fastmoney">Fast revenue (90 days)</a>
+<a class="nav-link" href="#callprep">Call prep — tomorrow</a>
+<a class="nav-link" href="#insights">Key insights from deck</a>
+<a class="nav-link" href="#horizon">Horizon call analysis</a>
+</div>
+</aside>
+
+<main class="main">
+<div class="hero">
+<h1>Stoma Alert Commercialisation</h1>
+<p>Master strategy document — all insight collated for execution and decision-making.</p>
+<div class="meta">
+<span class="chip">£5M acquisition target</span>
+<span class="chip">€2.9M Horizon opportunity</span>
+<span class="chip">6-month critical path</span>
+<span class="chip">Manufacturer-first approach</span>
+</div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="section" id="overview">
+<div class="section-head">
+<h2>Executive Overview</h2>
+<p>Composite position — what is real, what is missing, what must happen next</p>
+</div>
+<div class="section-body">
+<div class="grid">
+<div class="card">
+<h4>What is real today</h4>
+<p>CE-marked, ISO 13485-compliant platform. 493-class diagnostic ontology. 200+ patients tested across 5 Polish hospitals. SUS scores 87.5 (clinicians) / 76.9 (patients). Patented Stoma Stick. 12,500-member community access. PHIN MED Ltd already UK-incorporated.</p>
+</div>
+<div class="card">
+<h4>What is missing</h4>
+<p>MHRA UK registration. DCB0129 clinical safety. UK hosting. ISO 27001. IP assignment clarity. Phone SSO blocks community pilot. Zero UK commercial proof (no contracts, no pilots, no NHS traction).</p>
+</div>
+<div class="card">
+<h4>The constraint</h4>
+<p>This is an execution gap, not a product gap. The 493-class framework is credible. The data is real. The only barrier is finishing UK operational readiness before manufacturers and NHS will engage at scale.</p>
+</div>
+</div>
+<div class="notice mint">
+<strong>Key insight from pitch deck:</strong> Joanna Mik-Wojtczak (PHIN MED Limited, 73 Cornhill, London) IS the decision-maker. Tomorrow's meeting is a founder conversation. She is already plugged into EU funding networks and DBT trade programme support.
+</div>
+</div>
+</div>
+
+<!-- ARISTOTELIAN FRAMEWORK -->
+<div class="section" id="aristotle">
+<div class="section-head">
+<h2>The Aristotelian Commercialisation Framework</h2>
+<p>Formal material cause, efficient cause, final cause</p>
+</div>
+<div class="section-body">
+<div class="callout">
+<strong>The fundamental reframe:</strong> Stoma Alert is not a telehealth app competing on convenience. It is the independent clinical assessment platform for peri-stomal skin — the only one with a structured diagnostic ontology. That independence is the moat. The manufacturers cannot buy it from another manufacturer. They can only rent it or acquire it.
+</div>
+
+<h3 style="margin-top: 24px; color: var(--navy-2);">THREE MARKETS — IN ORDER</h3>
+
+<div class="accordion">
+<button class="accordion-btn" onclick="this.parentElement.classList.toggle('open')">
+<span><strong>1. MANUFACTURERS (Months 1–9)</strong> — Fastest monetisation path</span>
+<span class="chev">⌄</span>
+</button>
+<div class="accordion-content">
+<p><strong>Who:</strong> Coloplast, ConvaTec, Salts Healthcare, Hollister, B. Braun</p>
+<p><strong>Why they engage:</strong> They spend millions on clinical evidence annually. Their own branded apps are dismissed as marketing, not science. Stoma Alert is independent. That credibility is what they cannot build themselves — only acquire or license.</p>
+<p><strong>Revenue mechanisms:</strong></p>
+<ul>
+<li><strong>Product evaluation service:</strong> £50–150K per study. A manufacturer wants to launch a new baseplate or adhesive ring; they pay Stoma Alert to run a structured clinical evaluation.</li>
+<li><strong>Data licensing:</strong> £20–50K/year for anonymised peri-stomal skin outcomes by product type.</li>
+<li><strong>Partnership fee:</strong> £30–100K/year for preferred-partner status and featured placement.</li>
+<li><strong>Acquisition:</strong> The £5M thesis. Once two or three manufacturers are engaged, the exit conversation starts itself.</li>
+</ul>
+<p><strong>The message:</strong> "We are the only independent clinical platform with a structured assessment tool for peri-stomal skin. We have 200+ patients tested, a patented device, and a 12,500-person community ready to pilot. Your app is branded. Ours isn't. That difference is what makes our data worth something."</p>
+<p><strong>How to reach them:</strong> Go through corporate development or digital health, NOT sales. Open with the research service angle. Get them in a room to talk about a product evaluation study. The commercial relationship follows.</p>
+</div>
+</div>
+
+<div class="accordion">
+<button class="accordion-btn" onclick="this.parentElement.classList.toggle('open')">
+<span><strong>2. NHS / ICBs (Months 6–18)</strong> — Credibility multiplier</span>
+<span class="chev">⌄</span>
+</button>
+<div class="accordion-content">
+<p><strong>Who:</strong> SBRI Healthcare, Kent &amp; Medway ICB, ASCN UK, King's College Hospital, UHB, Leeds</p>
+<p><strong>Why they engage:</strong> £8,000 per prevented hospitalisation. Remote triage reduces stoma nurse workload. Alignment with digital-first care.</p>
+<p><strong>Revenue mechanisms:</strong></p>
+<ul>
+<li><strong>SBRI Phase 1:</strong> £100K non-dilutive grant. Apply immediately. Gateway to NHS credibility.</li>
+<li><strong>Per-patient NHS pricing:</strong> £150–300/year once a pilot is live.</li>
+<li><strong>ICB contract:</strong> Once community pilot evidence exists.</li>
+</ul>
+<p><strong>The message:</strong> "£8,000 per prevented hospitalisation. Half the admin load on stoma nurses. We want to run a funded pilot. SBRI pays for it."</p>
+<p><strong>How to reach them:</strong> SBRI Phase 1 application is the mechanism. Then ASCN conference for clinical champions. Then approach Kent &amp; Medway ICB as co-design partner once SBRI is in train.</p>
+</div>
+</div>
+
+<div class="accordion">
+<button class="accordion-btn" onclick="this.parentElement.classList.toggle('open')">
+<span><strong>3. PATIENTS / COMMUNITY (Immediate)</strong> — Evidence engine</span>
+<span class="chev">⌄</span>
+</button>
+<div class="accordion-content">
+<p><strong>Who:</strong> Clare Pascoe's 12,500-member Facebook group, Colostomy UK, Ileostomy Association, hospital discharge pathways</p>
+<p><strong>Why they matter:</strong> 200 documented UK patient interactions transform every manufacturer and NHS conversation. Patients are not the primary revenue — they are the evidence factory.</p>
+<p><strong>Revenue mechanisms:</strong></p>
+<ul>
+<li><strong>Freemium:</strong> Free education, paid consultation credits (current model).</li>
+<li><strong>Subscription:</strong> £4.99–9.99/month for unlimited monitoring.</li>
+<li><strong>Stoma Stick device:</strong> £50–80 consumer, £25–40 bulk through pharmacies.</li>
+</ul>
+<p><strong>The message:</strong> "Expert stoma care from home. Leak detection. 24/7 access. Clinical assessment in 12 hours — not 12 weeks."</p>
+<p><strong>Hook:</strong> LEAK DETECTION. Not infection monitoring. Not wellness. The single biggest fear for stoma patients.</p>
+<p><strong>Channels:</strong> Facebook group (closed beta with Clare Pascoe), Colostomy UK newsletter, hospital discharge packs.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TARGET AUDIENCES -->
+<div class="section" id="audiences">
+<div class="section-head">
+<h2>Target Audiences — Detailed</h2>
+<p>Who buys, why they buy, what they need to hear</p>
+</div>
+<div class="section-body">
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Timeline</th>
+<th>Why they engage</th>
+<th>Primary channels / entry point</th>
+<th>Revenue potential</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stoma bag suppliers</strong></td>
+<td>6–9 months</td>
+<td>Commercial threat from patient switching, real-world outcomes data, faster NHS leverage through an independent layer</td>
+<td>Coloplast, ConvaTec, Salts; manufacturer corporate development</td>
+<td>£30–150K per contract</td>
+</tr>
+<tr>
+<td><strong>NHS / ICBs</strong></td>
+<td>18–24 months</td>
+<td>£8K per prevented hospitalisation, workload reduction for stoma nurses, digital-first alignment</td>
+<td>SBRI Phase 1 → Kent &amp; Medway ICB → ASCN demo → Phase 2 / NIHR</td>
+<td>£150–300 per patient per year</td>
+</tr>
+<tr>
+<td><strong>Patients / community</strong></td>
+<td>Immediate</td>
+<td>Leak detection, social confidence, community support, fast expert access</td>
+<td>Facebook group, Colostomy UK, IA, hospital discharge packs</td>
+<td>£5–10/month subscription + device sales</td>
+</tr>
+<tr>
+<td><strong>Home delivery pharmacies</strong></td>
+<td>3–6 months</td>
+<td>Patient acquisition and recommendation-linked commercial model</td>
+<td>Fittleworth, Pelican, Medilink</td>
+<td>£20–50K partnership</td>
+</tr>
+<tr>
+<td><strong>Private insurers</strong></td>
+<td>6–12 months</td>
+<td>B2B2C reimbursement or member-benefit model</td>
+<td>AXA, Bupa, Aviva</td>
+<td>£50–100K pilot</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- REVENUE ARCHITECTURE -->
+<div class="section" id="revenue">
+<div class="section-head">
+<h2>Revenue Architecture</h2>
+<p>Nine streams — timing, entry points, realistic bands</p>
+</div>
+<div class="section-body">
+<div style="margin-top: 20px;">
+<div class="revenue-row" style="grid-template-columns: 160px 1fr 100px 140px; font-weight: 700; margin-bottom: 16px;">
+<div class="revenue-stream">Stream</div>
+<div>Who pays / Why</div>
+<div class="revenue-when">When</div>
+<div class="revenue-range">Band</div>
+</div>
+
+<div class="revenue-row">
+<div class="revenue-stream">1. Market intelligence report</div>
+<div class="revenue-detail">"UK Stoma Care Market: Clinical Data Landscape 2026" — sell to manufacturers</div>
+<div class="revenue-when">Month 1</div>
+<div class="revenue-range">£15–75K</div>
+</div>
+
+<div class="revenue-row">
+<div class="revenue-stream">2. Product evaluation studies</div>
+<div class="revenue-detail">Manufacturer wants to launch new product; pays for structured clinical evaluation</div>
+<div class="revenue-when">Month 6–9</div>
+<div class="revenue-range">£50–150K per study</div>
+</div>
+
+<div class="revenue-row">
+<div class="revenue-stream">3. Data licensing</div>
+<div class="revenue-detail">Anonymised peri-stomal outcomes data by product type, indexed by complication class</div>
+<div class="revenue-when">Month 9+</div>
+<div class="revenue-range">£20–50K/year</div>
+</div>
+
+<div class="revenue-row">
+<div class="revenue-stream">4. Partnership fees</div>
+<div class="revenue-detail">Preferred-partner status, co-developed content, featured placement</div>
+<div class="revenue-when">Month 9+</div>
+<div class="revenue-range">£30–100K/year</div>
+</div>
+
+<div class="revenue-row">
+<div class="revenue-stream">5. CPD training for nurses</div>
+<div class="revenue-detail">3-hour accredited online course on peri-stomal skin assessment via ASCN</div>
+<div class="revenue-when">Month 2–3</div>
+<div class="revenue-range">£30–75K</div>
+</div>
+
+<div class="revenue-row">
+<div class="revenue-stream">6. Stoma Stick device sales</div>
+<div class="revenue-detail">£60 consumer (Amazon, Colostomy UK shop), £35 bulk through pharmacies</div>
+<div class="revenue-when">Immediate</div>
+<div class="revenue-range">£20–60K</div>
+</div>
+
+<div class="revenue-row">
+<div class="revenue-stream">7. SBRI Phase 1 grant</div>
+<div class="revenue-detail">Non-dilutive funding for UK pilot setup and community evidence generation</div>
+<div class="revenue-when">Month 3–5</div>
+<div class="revenue-range">£100K</div>
+</div>
+
+<div class="revenue-row">
+<div class="revenue-stream">8. Manufacturer-funded regulatory sprint</div>
+<div class="revenue-detail">One manufacturer co-funds MHRA work in exchange for first-access data rights</div>
+<div class="revenue-when">Month 3–6</div>
+<div class="revenue-range">£40–70K</div>
+</div>
+
+<div class="revenue-row">
+<div class="revenue-stream">9. Ontology / framework licensing</div>
+<div class="revenue-detail">License the 493-class diagnostic ontology to healthcare organisations and med ed platforms</div>
+<div class="revenue-when">Month 3–4</div>
+<div class="revenue-range">£30–50K</div>
+</div>
+</div>
+
+<div class="notice mint" style="margin-top: 24px;">
+<strong>6-month realistic total:</strong> £150–400K depending on execution speed. This funds operating costs and buys time to reach month 6 critical gate (MHRA clarity, 1,000 UK users, first manufacturer NDA).
+</div>
+</div>
+</div>
+
+<!-- CRITICAL PATH -->
+<div class="section" id="critical">
+<div class="section-head">
+<h2>6-Month Critical Path</h2>
+<p>What must happen when — dependencies are strict</p>
+</div>
+<div class="section-body">
+<table>
+<thead>
+<tr>
+<th style="width: 120px;">Phase</th>
+<th>What must happen</th>
+<th>Owner</th>
+<th>Done when?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Month 1–2<br/>Foundation</strong></td>
+<td>
+• IP assignment clarity (PHIN Consulting PL to PHIN MED UK)<br/>
+• MHRA registration process started (named consultant, dated plan)<br/>
+• UK cloud destination fixed (Azure UK South or AWS eu-west-2)<br/>
+• Developer sprint booked: email/link auth to replace phone SSO<br/>
+• Insurance stack live (professional liability, product liability, cyber)
+</td>
+<td>Kevin + Joanna</td>
+<td>Week 8</td>
+</tr>
+<tr>
+<td><strong>Month 2–3<br/>Unlock access</strong></td>
+<td>
+• Phone SSO replacement delivered<br/>
+• 12,500-person community can access platform (beta)<br/>
+• UK hosting migration complete<br/>
+• SBRI Phase 1 application submitted with named PI
+</td>
+<td>Kevin (dev) + Joanna (SBRI)</td>
+<td>Week 10</td>
+</tr>
+<tr>
+<td><strong>Month 3–4<br/>Build evidence</strong></td>
+<td>
+• Community pilot live via Facebook / Clare Pascoe<br/>
+• 200+ documented UK interactions captured<br/>
+• Ethics submission for clinical study progressing<br/>
+• Manufacturer first meetings opened (Coloplast, ConvaTec, Salts)<br/>
+• Market intelligence report drafted
+</td>
+<td>Mark (outreach) + Kevin (data)</td>
+<td>Week 16</td>
+</tr>
+<tr>
+<td><strong>Month 5–6<br/>Activate market</strong></td>
+<td>
+• At least one manufacturer NDA or LOI signed<br/>
+• SBRI Phase 1 decision received (awarded or resubmit)<br/>
+• One NHS site / ICB named for co-design (Kent &amp; Medway)<br/>
+• Three clinical champions identified<br/>
+• Acquisition data room structure in place
+</td>
+<td>Mark (commercial) + Joanna (NHS)</td>
+<td>Week 24</td>
+</tr>
+<tr style="background: rgba(220,38,38,.04); border-color: var(--red);">
+<td><strong>Month 6 gate<br/>Go/no-go</strong></td>
+<td>
+<strong>Prove momentum:</strong><br/>
+✓ 1,000+ UK users or clear path to it<br/>
+✓ MHRA in motion (clear timeline)<br/>
+✓ IP chain signed<br/>
+✓ At least one manufacturer engaged<br/>
+✓ Grant or co-funded pathway open
+</td>
+<td>Joanna (board decision)</td>
+<td>Day 180</td>
+</tr>
+</tbody>
+</table>
+
+<div class="notice amber" style="margin-top: 20px;">
+<strong>Key dependency:</strong> The phone SSO fix unlocks everything. Until the 12,500-person community can actually access the platform, there is no evidence. Without evidence, there is no manufacturer conversation. Without the manufacturer conversation, there is no money and no exit. That auth fix is not technical hygiene — it is a commercial unlock worth millions.
+</div>
+</div>
+</div>
+
+<!-- FAST REVENUE -->
+<div class="section" id="fastmoney">
+<div class="section-head">
+<h2>Fast Revenue — 30–90 Days</h2>
+<p>Things you can do immediately, before MHRA is done</p>
+</div>
+<div class="section-body">
+<div class="grid">
+<div class="card">
+<h4>1. Market Intelligence Report (30 days, £7–15K per sale)</h4>
+<p>"UK Stoma Care Market: Clinical Data Landscape 2026." Manufacturers buy market intelligence constantly. You already have the data. Write it, package it, sell five copies to Coloplast, ConvaTec, Salts, Hollister, B. Braun.</p>
+<p><span class="tag amber">Quick win</span></p>
+</div>
+
+<div class="card">
+<h4>2. CPD Training for Stoma Nurses (60 days, £200–350 per nurse)</h4>
+<p>The 493-class ontology IS a curriculum. Build a 3-hour accredited online course. Partner with ASCN to accredit it. Sell to 3,000+ UK stoma nurses. 200 nurses at £250 = £50K.</p>
+<p><span class="tag green">No regulatory barrier</span></p>
+</div>
+
+<div class="card">
+<h4>3. Stoma Stick Direct Sales (Immediate, £50–80 consumer)</h4>
+<p>Patent 244744. If positioned as a photographic tool (not a diagnostic device), it may sit outside MHRA scope. Sell on Amazon UK, Colostomy UK shop, Fittleworth catalogue. 5% conversion from 12,500 community = 625 units = £37K.</p>
+<p><span class="tag navy">Physical product</span></p>
+</div>
+
+<div class="card">
+<h4>4. BridgePoint Retainer (Immediate, £3–5K/month)</h4>
+<p>You are doing BD work. Bill for it. Formal retainer + success fees for any commercial deal landed. Six months baseline = £18–30K + outcomes.</p>
+<p><span class="tag green">Done</span></p>
+</div>
+
+<div class="card">
+<h4>5. Manufacturer-Funded Regulatory Sprint (60–90 days, £40–70K)</h4>
+<p>Don't pay for MHRA yourself. Ask a manufacturer to co-fund the regulatory sprint in exchange for first-access data rights. This converts your biggest cost into a revenue event.</p>
+<p><span class="tag amber">Strategic flip</span></p>
+</div>
+
+<div class="card">
+<h4>6. Ontology Licensing (90 days, £15–25K/year per licensee)</h4>
+<p>The 493-class framework is IP that wound care companies, medical education platforms, and NHS training departments will pay to license. Two licensees = serious operating costs covered.</p>
+<p><span class="tag navy">Scalable</span></p>
+</div>
+</div>
+
+<div class="callout">
+<strong>Key insight:</strong> The platform does NOT have to be UK-approved to generate UK revenue. Market intelligence, education, device sales, and manufacturer consulting all sit outside medical device regulation. Build those streams now, in parallel. By the time MHRA is done, you arrive at manufacturer conversations with cash in the bank and evidence already building.
+</div>
+</div>
+</div>
+
+<!-- CALL PREP -->
+<div class="section" id="callprep">
+<div class="section-head">
+<h2>Tomorrow's Call with Joanna — Prep</h2>
+<p>Eight critical questions + decision logic</p>
+</div>
+<div class="section-body">
+<h3 style="color: var(--navy-2); margin-top: 20px; margin-bottom: 16px;">The eight burden-shifting questions</h3>
+
+<div class="accordion">
+<button class="accordion-btn" onclick="this.parentElement.classList.toggle('open')">
+<span><strong>Q1:</strong> MHRA registration status — has the process started?</span>
+<span class="chev">⌄</span>
+</button>
+<div class="accordion-content">
+<p><strong>What to listen for:</strong> Named consultant, submission stage, completion date.</p>
+<p><span class="tag red">Red flag:</span> "We know we need to do it" OR expectation that BridgePoint will handle it.</p>
+<p><strong>If red flag:</strong> This is a gating item. Pause until ownership is clear.</p>
+</div>
+</div>
+
+<div class="accordion">
+<button class="accordion-btn" onclick="this.parentElement.classList.toggle('open')">
+<span><strong>Q2:</strong> IP ownership structure — can they show assignment docs?</span>
+<span class="chev">⌄</span>
+</button>
+<div class="accordion-content">
+<p><strong>What to listen for:</strong> Signed agreement from PHIN Consulting PL to PHIN MED UK, available immediately.</p>
+<p><span class="tag red">Red flag:</span> "It is being sorted" OR any hesitation OR vagueness.</p>
+<p><strong>If red flag:</strong> This is a diligence killer. Do not proceed without clear documentation.</p>
+</div>
+</div>
+
+<div class="accordion">
+<button class="accordion-btn" onclick="this.parentElement.classList.toggle('open')">
+<span><strong>Q3:</strong> Demo authentication — when is phone SSO replaced with email/link?</span>
+<span class="chev">⌄</span>
+</button>
+<div class="accordion-content">
+<p><strong>What to listen for:</strong> Named developer, sprint date, committed delivery.</p>
+<p><span class="tag red">Red flag:</span> "It is on the backlog" OR no developer assigned.</p>
+<p><strong>Why it matters:</strong> This unlocks the 12,500-person community pilot. Everything downstream depends on it.</p>
+</div>
+</div>
+
+<div class="accordion">
+<button class="accordion-btn" onclick="this.parentElement.classList.toggle('open')">
+<span><strong>Q4:</strong> AI classification accuracy — what does the system actually do?</span>
+<span class="chev">⌄</span>
+</button>
+<div class="accordion-content">
+<p><strong>What to listen for:</strong> "Semi-automated clinical decision support, not fully automated image classification." Clear framing of what the algorithm does and does not do in production.</p>
+<p><span class="tag red">Red flag:</span> Overclaiming image AI capability. Vague language about automation.</p>
+<p><strong>Why it matters:</strong> Overclaiming kills credibility with NHS and acquirers. Get the framing right now.</p>
+</div>
+</div>
+
+<div class="accordion">
+<button class="accordion-btn" onclick="this.parentElement.classList.toggle('open')">
+<span><strong>Q5:</strong> Prior consultant settlement — is everything closed?</span>
+<span class="chev">⌄</span>
+</button>
+<div class="accordion-content">
+<p><strong>What to listen for:</strong> Written closure evidence. All prior agreements terminated. No residual equity claims outstanding.</p>
+<p><span class="tag red">Red flag:</span> Ambiguous settlement OR unresolved legacy claims.</p>
+<p><strong>Why it matters:</strong> This is a standard diligence question any buyer will ask. Clarity now saves trouble later.</p>
+</div>
+</div>
+
+<div class="accordion">
+<button class="accordion-btn" onclick="this.parentElement.classList.toggle('open')">
+<span><strong>Q6:</strong> Grant applications — SBRI / NIHR / Innovate UK status?</span>
+<span class="chev">⌄</span>
+</button>
+<div class="accordion-content">
+<p><strong>What to listen for:</strong> Active application calendar. Specific timelines. Named PIs if NHS applications are in train.</p>
+<p><span class="tag red">Red flag:</span> "No bandwidth" OR "Not aware of these programmes."</p>
+<p><strong>Why it matters:</strong> Grants are the fastest non-dilutive funding route. Missing this is leaving money on the table.</p>
+</div>
+</div>
+
+<div class="accordion">
+<button class="accordion-btn" onclick="this.parentElement.classList.toggle('open')">
+<span><strong>Q7:</strong> UK clinical study timeline — when is ethics submission?</span>
+<span class="chev">⌄</span>
+</button>
+<div class="accordion-content">
+<p><strong>What to listen for:</strong> Named NHS trust (lead site). Dated ethics submission plan. Protocol ready or in final draft.</p>
+<p><span class="tag red">Red flag:</span> "Protocol exists but nothing has moved" OR no named site.</p>
+<p><strong>Why it matters:</strong> This is the evidence engine for everything downstream. It needs to be in motion.</p>
+</div>
+</div>
+
+<div class="accordion">
+<button class="accordion-btn" onclick="this.parentElement.classList.toggle('open')">
+<span><strong>Q8:</strong> Equity expectations — what does PHIN MED actually want?</span>
+<span class="chev">⌄</span>
+</button>
+<div class="accordion-content">
+<p><strong>What to listen for:</strong> Specific position or milestone-based structure. Clear numbers.</p>
+<p><span class="tag red">Red flag:</span> "We can discuss that later" OR deferred terms while strategic value is extracted now.</p>
+<p><strong>Why it matters:</strong> You need to know the ask before committing time and capital. Get it explicit.</p>
+</div>
+</div>
+
+<h3 style="color: var(--navy-2); margin-top: 24px; margin-bottom: 16px;">Decision matrix for BridgePoint</h3>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+<div class="card">
+<h4 style="color: var(--green);">Proceed conditionally if:</h4>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>IP assignment docs exist</li>
+<li>MHRA has an owner &amp; dated plan</li>
+<li>Auth fix is a real sprint with a named dev</li>
+<li>Grant applications are mobilised</li>
+<li>Equity expectations are explicit</li>
+</ul>
+</div>
+<div class="card">
+<h4 style="color: var(--red);">Walk away if:</h4>
+<ul style="margin: 0; padding-left: 20px; font-size: 14px;">
+<li>IP ownership is vague or disputed</li>
+<li>BridgePoint expected to absorb regulatory burden without protection</li>
+<li>Demo timelines remain fuzzy</li>
+<li>Prior consultant claims unresolved</li>
+<li>Terms deferred while value is extracted now</li>
+</ul>
+</div>
+</div>
+
+<div class="notice mint" style="margin-top: 20px;">
+<strong>The key question for tomorrow:</strong> "Joanna — the product already collects opinions on stoma care products in the consultation workflow. Have you ever sold that data or service to a manufacturer? If not, why not — and what would we need to do it next month?" Her answer tells you where the real blockers are.
+</div>
+</div>
+</div>
+
+<!-- KEY INSIGHTS FROM DECK -->
+<div class="section" id="insights">
+<div class="section-head">
+<h2>Key Insights from Pitch Deck</h2>
+<p>Three things that change the strategic picture</p>
+</div>
+<div class="section-body">
+<div class="accordion">
+<button class="accordion-btn" onclick="this.parentElement.classList.toggle('open')">
+<span><strong>1. Joanna IS the company</strong></span>
+<span class="chev">⌄</span>
+</button>
+<div class="accordion-content">
+<p>Joanna Mik-Wojtczak is the contact on the final slide — PHIN MED LIMITED, 73 Cornhill, London EC3V 3QQ. Tomorrow's meeting is not with a strategic intermediary. She is the decision-maker and founder. Treat it as a founder conversation. This changes the tone and the negotiation dynamics entirely.</p>
+</div>
+</div>
+
+<div class="accordion">
+<button class="accordion-btn" onclick="this.parentElement.classList.toggle('open')">
+<span><strong>2. The manufacturer revenue stream is already built</strong></span>
+<span class="chev">⌄</span>
+</button>
+<div class="accordion-content">
+<p>Slide 23 explicitly lists "collecting data and opinions on stoma care products" as a key advantage. The medical staff workflow already includes product selection in the consultation flow. The clinical research service for manufacturers is not a future concept — it is an existing feature of the product.</p>
+<p>This is a fundamentally stronger sales position than "we could do this." You have "here is the data structure. Here is what a study looks like." That is product-market fit, not speculation.</p>
+</div>
+</div>
+
+<div class="accordion">
+<button class="accordion-btn" onclick="this.parentElement.classList.toggle('open')">
+<span><strong>3. The DBT relationship is warm and unused</strong></span>
+<span class="chev">⌄</span>
+</button>
+<div class="accordion-content">
+<p>The deck was presented under UK Department for Business &amp; Trade and British Embassy Warsaw logos. PHIN MED has already been through a UK trade programme. You should contact the DBT trade adviser who ran that programme. They have grant pathways, introduction networks, and NHS Digital connection points. This is a free door that is already open.</p>
+<p><strong>Action:</strong> Ask Joanna for the DBT contact name tomorrow. This is a 30-minute call that can unlock £100K+ in grant pathways and NHS introductions.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- HORIZON ANALYSIS -->
+<div class="section" id="horizon">
+<div class="section-head">
+<h2>Horizon AGI Call Analysis</h2>
+<p>HORIZON-HLTH-2027-03-TOOL-08 — what to do with it</p>
+</div>
+<div class="section-body">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Call title</strong></td>
+<td>Towards Artificial General Intelligence (AGI) for healthcare</td>
+</tr>
+<tr>
+<td><strong>Budget</strong></td>
+<td>€2.9M for a single project</td>
+</tr>
+<tr>
+<td><strong>Opens</strong></td>
+<td>3 June 2027</td>
+</tr>
+<tr>
+<td><strong>Closes</strong></td>
+<td>22 September 2027</td>
+</tr>
+<tr>
+<td><strong>Action type</strong></td>
+<td>Coordination and Support Action (CSA) — NOT product development</td>
+</tr>
+<tr>
+<td><strong>Focus</strong></td>
+<td>Roadmapping/coordination toward safe, trustworthy AGI for health; standards, ethics, governance</td>
+</tr>
+</tbody>
+</table>
+
+<div class="notice amber" style="margin-top: 20px;">
+<strong>The honest read:</strong> CSAs are won by university consortia with research track records. A commercial medtech company leading an AGI roadmapping consortium is unlikely to succeed.
+</div>
+
+<div class="notice mint" style="margin-top: 12px;">
+<strong>The right play:</strong> JOIN a consortium as industry partner. Stoma Alert becomes a named healthcare AI use-case in a €2.9M EU programme. You get access to EU health data infrastructure networks and credibility with European manufacturers and NHS innovation bodies.
+</div>
+
+<h3 style="color: var(--navy-2); margin-top: 20px;">What to do</h3>
+<ol style="line-height: 1.8;">
+<li><strong>Tomorrow's question:</strong> "Joanna — on the Horizon AGI call you shared, do you already have a consortium lead in mind? We should either join an existing bid or help you find a university partner."</li>
+<li><strong>If no lead yet:</strong> Help her identify a UK university partner (Imperial, UCL, King's) who would want Stoma Alert as a named clinical use-case.</li>
+<li><strong>Timeline:</strong> This is a 16-month play. Don't let it distract from the 6-month critical path. File it. Revisit in Q1 2027.</li>
+</ol>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+<p>Master document compiled May 2026 | All insight collated for execution | BridgePointAI confidential</p>
+<p>Next review: After call with Joanna (May 6, 2026) | Updates to critical path, revenue bands, and decision logic based on her responses</p>
+</div>
+</main>
+</div>
+
+<script>
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+  });
+  if (link.getAttribute('href') === window.location.hash) {
+    link.classList.add('active');
+  }
+});
+window.addEventListener('hashchange', () => {
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const active = document.querySelector('.nav-link[href="' + window.location.hash + '"]');
+  if (active) active.classList.add('active');
+});
+</script>
+</body>
+</html>
