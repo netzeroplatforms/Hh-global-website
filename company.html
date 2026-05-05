@@ -17,7 +17,7 @@
       --gold-light: #D8BF94;
       --gold-dim: rgba(201,170,125,0.12);
       --cream: #FAF8F5;
-      --cream-dark: #F0EDE9;
+      --cream-dark: #F0EDE7;
       --text: #1A1A2E;
       --text-mid: #4A5568;
       --text-light: #718096;
@@ -33,7 +33,7 @@
       font-family: 'Inter', -apple-system, sans-serif;
       color: var(--text);
       line-height: 1.45;
-      background: var(--cream-dark);
+      background: var(--white);
       -webkit-font-smoothing: antialiased;
     }
 
@@ -43,8 +43,8 @@
     h2 { font-size: clamp(18px, 2.6vw, 32px); }
     h3 { font-size: clamp(16px, 1.8vw, 21px); }
     h4 { font-size: 18px; font-weight: 600; font-family: 'Inter', sans-serif; }
-    p { font-size: 16px; line-height: 1.4; color: var(--text-mid); }
-    .body-lg { font-size: 18px; color: var(--text-mid); }
+    p { font-size: 15px; line-height: 1.4; color: var(--text-mid); }
+    .body-lg { font-size: 16px; color: var(--text-mid); }
     .body-sm { font-size: 14px; color: var(--text-light); }
 
     .section-tag {
@@ -63,7 +63,7 @@
     }
 
     .section-lead {
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.2;
       color: var(--text-mid);
       max-width: 680px;
@@ -71,8 +71,8 @@
 
     /* ─ LAYOUT ─ */
     .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
-    .section { padding: 80px 0; background: var(--cream-dark); }
-    .section-alt { background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 0; }
+    .section { padding: 80px 0; }
+    .section-alt { background: #F0EDE9; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 0; }
     .section-dark { background: var(--navy); }
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
@@ -125,7 +125,9 @@
     /* ─ HERO ─ */
     .hero {
       min-height: 82vh;
-      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 40%, var(--navy-light) 100%);
+      background:
+        linear-gradient(160deg, rgba(11,31,63,0.55) 0%, rgba(21,45,85,0.55) 40%, rgba(30,58,110,0.55) 100%),
+        url('hero-bg-cells.jpg') center/cover no-repeat;
       display: flex; align-items: center; justify-content: flex-start;
       position: relative; overflow: hidden;
       padding: 120px 0 80px;
@@ -147,6 +149,7 @@
       color: var(--white);
       margin-bottom: 24px;
       text-align: left;
+      font-size: clamp(26px, 4vw, 42px);
     }
     .hero h1 em {
       color: var(--gold);
@@ -154,7 +157,7 @@
     }
     .hero p {
       color: rgba(255,255,255,0.68);
-      font-size: 18px;
+      font-size: 15px;
       line-height: 1.45;
       margin-bottom: 40px;
       max-width: 580px;
@@ -171,7 +174,7 @@
       text-transform: uppercase;
       transition: all 0.25s;
     }
-    .btn-gold { background: var(--gold); color: var(--navy); }
+    .btn-gold { background: var(--gold); color: var(--navy); font-weight: 700; }
     .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
     .btn-outline { border: 1px solid rgba(255,255,255,0.25); color: var(--white); }
     .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
