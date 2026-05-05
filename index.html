@@ -305,12 +305,19 @@
       border-radius: 10px;
       padding: 32px;
       transition: all 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .ip-category::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--gold);
+      transform: scaleX(0); transition: transform 0.3s ease; z-index: 1;
     }
     .ip-category:hover {
       border-color: var(--gold);
-      box-shadow: 0 8px 30px rgba(201,170,125,0.08);
-      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(201,170,125,0.12);
+      transform: translateY(-2px);
     }
+    .ip-category:hover::before { transform: scaleX(1); }
     .ip-category h3 {
       color: var(--navy);
       font-size: 20px;
@@ -428,8 +435,15 @@
       border: 1px solid var(--border);
       border-radius: 10px; padding: 32px;
       transition: all 0.25s;
+      position: relative; overflow: hidden;
     }
-    .case-card:hover { border-color: var(--gold); }
+    .case-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--gold);
+      transform: scaleX(0); transition: transform 0.3s ease; z-index: 1;
+    }
+    .case-card:hover { border-color: var(--gold); box-shadow: 0 8px 30px rgba(201,170,125,0.12); transform: translateY(-2px); }
+    .case-card:hover::before { transform: scaleX(1); }
     .case-tag {
       font-size: 10px; font-weight: 700;
       letter-spacing: 1.5px; text-transform: uppercase;
