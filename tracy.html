@@ -1203,10 +1203,24 @@
 
     /* ── Bio page extras ── */
     .bio-hero {
-      background: linear-gradient(160deg, rgba(11,31,63,0.90), rgba(30,58,110,0.82)), url('hero-bg-cells.jpg') center/cover;
+      background:
+        linear-gradient(160deg, rgba(11,31,63,0.55) 0%, rgba(21,45,85,0.55) 40%, rgba(30,58,110,0.55) 100%),
+        url('hero-bg-cells.jpg') center/cover no-repeat;
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
       padding: 120px 32px 80px;
       text-align: center;
       color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    .bio-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 70% 40%, rgba(201,170,125,0.06) 0%, transparent 70%);
     }
     .bio-hero-photo {
       width: 180px;
@@ -1419,6 +1433,26 @@
   <div class="bio-hero-role">Director of Operations</div>
   <div class="bio-badges">
     <span class="team-badge">ISO 17025 Lead</span><span class="team-badge">QMS &amp; SOP Development</span><span class="team-badge">Regulatory Compliance</span><span class="team-badge">Operations Director</span>
+  </div>
+</div>
+
+<!-- SCIENTIFIC LEADERSHIP BAR -->
+<section class="science-bar">
+  <div class="science-bar-inner">
+    <div class="science-item">Forbes 30 Under 30 — Science &amp; Healthcare</div>
+    <div class="science-item">Royal Society of Chemistry Joseph Black Medal</div>
+    <div class="science-item">FRSB · FRSM · FLS</div>
+    <div class="science-item">UK Committee on Toxicity</div>
+  </div>
+</section>
+<!-- CREDIBILITY BAR -->
+<div class="cred-bar">
+  <div class="cred-inner">
+    <div class="cred-item"><div class="cred-label">100% Client Retention</div></div>
+    <div class="cred-item"><div class="cred-label">ISO 17025 Accredited</div></div>
+    <div class="cred-item"><div class="cred-label">AstraZeneca Trial Delivery</div></div>
+    <div class="cred-item"><div class="cred-label">NHS Clinical Access</div></div>
+    <div class="cred-item"><div class="cred-label">Government Advisory</div></div>
   </div>
 </div>
 
