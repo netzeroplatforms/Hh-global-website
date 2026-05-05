@@ -1308,6 +1308,101 @@
       letter-spacing: 0.5px;
     }
     .bio-back:hover { opacity: 0.8; }
+
+    /* ─ GOLD TOP-BORDER HOVER — all cards ─ */
+    .stat-card,
+    .pillar-card,
+    .ip-category,
+    .case-card,
+    .flow-step,
+    .pub-card,
+    .subsidiary-card,
+    .synergy-card,
+    .team-card,
+    .service-card,
+    .service-item,
+    .client-card,
+    .expert-creds,
+    .module-card,
+    .outcome-item {
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card,
+    .pillar-card,
+    .ip-category,
+    .case-card,
+    .flow-step,
+    .pub-card,
+    .subsidiary-card,
+    .synergy-card,
+    .team-card,
+    .service-card,
+    .service-item,
+    .client-card,
+    .expert-creds,
+    .module-card,
+    .outcome-item {}
+    .stat-card,
+    .pillar-card,
+    .ip-category,
+    .case-card,
+    .flow-step,
+    .pub-card,
+    .subsidiary-card,
+    .synergy-card,
+    .team-card,
+    .service-card,
+    .service-item,
+    .client-card,
+    .expert-creds,
+    .module-card,
+    .outcome-item::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+      z-index: 1;
+    }
+    .stat-card:hover,
+    .pillar-card:hover,
+    .ip-category:hover,
+    .case-card:hover,
+    .flow-step:hover,
+    .pub-card:hover,
+    .subsidiary-card:hover,
+    .synergy-card:hover,
+    .team-card:hover,
+    .service-card:hover,
+    .service-item:hover,
+    .client-card:hover,
+    .expert-creds:hover,
+    .module-card:hover,
+    .outcome-item:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 30px rgba(201,170,125,0.10);
+      transform: translateY(-2px);
+      transition: all 0.25s;
+    }
+    .stat-card:hover::before,
+    .pillar-card:hover::before,
+    .ip-category:hover::before,
+    .case-card:hover::before,
+    .flow-step:hover::before,
+    .pub-card:hover::before,
+    .subsidiary-card:hover::before,
+    .synergy-card:hover::before,
+    .team-card:hover::before,
+    .service-card:hover::before,
+    .service-item:hover::before,
+    .client-card:hover::before,
+    .expert-creds:hover::before,
+    .module-card:hover::before,
+    .outcome-item:hover::before {
+      transform: scaleX(1);
+    }
   </style>
 </head>
 <body>
