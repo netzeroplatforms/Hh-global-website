@@ -32,36 +32,36 @@
     body {
       font-family: 'Inter', -apple-system, sans-serif;
       color: var(--text);
-      line-height: 1.45;
-      background: var(--cream-dark);
+      line-height: 1.6;
+      background: var(--white);
       -webkit-font-smoothing: antialiased;
     }
 
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 500; line-height: 1.2; }
-    h1 { font-size: clamp(26px, 3.5vw, 44px); }
-    h2 { font-size: clamp(18px, 2.6vw, 32px); }
-    h3 { font-size: clamp(16px, 1.8vw, 21px); }
-    h4 { font-size: 18px; font-weight: 600; font-family: 'Inter', sans-serif; }
-    p { font-size: 16px; line-height: 1.4; color: var(--text-mid); }
-    .body-lg { font-size: 18px; color: var(--text-mid); }
-    .body-sm { font-size: 14px; color: var(--text-light); }
+    h1 { font-size: clamp(28px, 3.5vw, 46px); }
+    h2 { font-size: clamp(22px, 2.8vw, 34px); }
+    h3 { font-size: clamp(17px, 1.9vw, 22px); }
+    h4 { font-size: 20px; font-weight: 600; font-family: 'Playfair Display', serif; }
+    p { font-size: 14px; line-height: 1.65; color: var(--text-mid); }
+    .body-lg { font-size: 16px; line-height: 1.65; color: var(--text-mid); }
+    .body-sm { font-size: 13px; color: var(--text-light); }
 
     .section-tag {
       font-family: 'Inter', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 3.5px;
+      letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 12px;
     }
 
-    .section-heading { margin-bottom: 16px; color: var(--navy); }
-    .section-lead { font-size: 18px; line-height: 1.2; color: var(--text-mid); max-width: 680px; }
+    .section-heading { margin-bottom: 20px; color: var(--navy); }
+    .section-lead { font-size: 16px; line-height: 1.6; color: var(--text-mid); max-width: 680px; }
 
     .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
-    .section { padding: 80px 0; background: var(--cream-dark); }
-    .section-alt { background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 0; }
+    .section { padding: 60px 0; }
+    .section-alt { background: #F0EDE9; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 0; }
     .section-dark { background: var(--navy); }
     .text-center { text-align: center; }
     .mx-auto { margin-left: auto; margin-right: auto; }
@@ -111,11 +111,11 @@
     }
 
     .hero {
-      min-height: 82vh;
+      min-height: 55vh;
       background: var(--navy);
       display: flex; align-items: center; justify-content: flex-start;
-      position: relative; overflow: visible;
-      padding: 120px 0 80px;
+      position: relative; overflow: hidden;
+      padding: 96px 0 56px;
     }
     .hero::before {
       content: '';
@@ -410,10 +410,11 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="company.html">Company</a></li>
+      <li><a href="index.html">← Home</a></li>
+      <li><a href="company.html">Company Profile</a></li>
+      <li><a href="company.html#impact">Publications</a></li>
       <li><a href="company.html#team">Leadership</a></li>
-      <li><a href="company.html#contact">Contact</a></li>
+      <li><a href="#contact">Contact Us</a></li>
     </ul>
     <a href="mailto:info@hhglobalholdings.com" class="nav-cta">Get in Touch</a>
   </div>
@@ -594,29 +595,129 @@
   </div>
 </section>
 
-<!-- CONTACT CTA -->
-<section class="cta-section">
+<!-- CONTACT -->
+<section style="padding:100px 32px;background:linear-gradient(160deg,var(--navy),var(--navy-light));" id="contact">
   <div class="container">
-    <div class="section-tag" style="color:var(--gold)">Start a Conversation</div>
-    <h2>Let's Discuss Your Forensic Needs</h2>
-    <p>Whether you're a solicitor preparing a housing claim, an insurer assessing a mould loss, a criminal defence or family law firm requiring forensic drug testing, an environmental consultancy needing specialist ID, a drug discovery company requiring analytical services, or a housing authority requiring compliance support — we're ready to discuss your requirements and timeline.</p>
-    <a href="mailto:info@hhglobalholdings.com" class="btn btn-gold">Get in Touch →</a>
-    <a href="https://www.linkedin.com/company/110136969" target="_blank" class="btn btn-outline" style="margin-left: 8px;">Follow on LinkedIn</a>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;">
+      <div>
+        <div class="section-tag" style="color:var(--gold)">Start a Conversation</div>
+        <h2 style="color:var(--white);margin-bottom:20px;">Let's Discuss Your<br>Forensic <em style="color:var(--gold);font-style:italic;">Requirements</em></h2>
+        <p style="color:rgba(255,255,255,0.65);font-size:17px;line-height:1.45;margin-bottom:32px;">Whether you're a solicitor, loss adjuster, housing authority, environmental consultancy, or criminal defence firm — we're ready to discuss your requirements and timeline.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div>
+            <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Email</div>
+            <a href="mailto:info@hhglobalholdings.com" style="color:rgba(255,255,255,0.8);text-decoration:none;font-size:15px;">info@hhglobalholdings.com</a>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Address</div>
+            <p style="color:rgba(255,255,255,0.6);font-size:14px;margin:0;line-height:1.4;">73 Cornhill, London<br>EC3V 3QQ</p>
+          </div>
+          <div>
+            <a href="https://www.linkedin.com/company/110136969" target="_blank" style="color:var(--gold);font-size:13px;font-weight:600;text-decoration:none;letter-spacing:0.5px;">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:40px;">
+        <form id="hh-contact-form" style="display:flex;flex-direction:column;gap:18px;">
+          <div class="contact-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div>
+              <label style="display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Full Name *</label>
+              <input type="text" id="hh-name" required placeholder=""
+                style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;">
+            </div>
+            <div>
+              <label style="display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Company / Organisation *</label>
+              <input type="text" id="hh-company" required placeholder=""
+                style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;">
+            </div>
+          </div>
+          <div class="contact-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div>
+              <label style="display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Email Address *</label>
+              <input type="email" id="hh-email" required placeholder=""
+                style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;">
+            </div>
+            <div>
+              <label style="display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Phone Number</label>
+              <input type="tel" id="hh-phone" placeholder=""
+                style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;">
+            </div>
+          </div>
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Type of Enquiry *</label>
+            <select id="hh-theme" required
+              style="width:100%;padding:12px 14px;background:rgba(11,31,63,0.9);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;appearance:none;cursor:pointer;box-sizing:border-box;">
+              <option value="" disabled selected style="color:rgba(255,255,255,0.4);">Select a type…</option>
+              <option value="Expert Witness / Court Report">Expert Witness / Court Report</option>
+              <option value="Mould Species Identification">Mould Species Identification</option>
+              <option value="Air Quality & Spore Sampling">Air Quality &amp; Spore Sampling</option>
+              <option value="Housing Dispute / Awaab's Law">Housing Dispute / Awaab's Law</option>
+              <option value="Insurance Loss Assessment">Insurance Loss Assessment</option>
+              <option value="Drug Testing (Hair / Follicle)">Drug Testing (Hair / Follicle)</option>
+              <option value="Site Investigation">Site Investigation</option>
+              <option value="General Enquiry">General Enquiry</option>
+            </select>
+          </div>
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Tell Us About Your Case</label>
+            <textarea id="hh-message" rows="3" placeholder=""
+              style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;resize:vertical;box-sizing:border-box;"></textarea>
+          </div>
+          <button type="submit"
+            style="padding:15px 32px;background:var(--gold);color:var(--navy);border:none;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;">
+            Send Enquiry →
+          </button>
+          <p id="hh-form-msg" style="font-size:13px;color:rgba(255,255,255,0.5);margin:0;text-align:center;display:none;"></p>
+        </form>
+      </div>
+    </div>
   </div>
 </section>
+<style>
+  #hh-contact-form input:focus,
+  #hh-contact-form select:focus,
+  #hh-contact-form textarea:focus { border-color: var(--gold) !important; background: rgba(255,255,255,0.1) !important; }
+  #hh-contact-form input::placeholder,
+  #hh-contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+  #hh-contact-form button:hover { background: var(--gold-light); transform: translateY(-1px); }
+  @media (max-width: 768px) {
+    .contact-form-row { grid-template-columns: 1fr !important; }
+    #contact > .container > div { grid-template-columns: 1fr !important; }
+  }
+</style>
+<script>
+  document.getElementById('hh-contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name    = document.getElementById('hh-name').value.trim();
+    var company = document.getElementById('hh-company').value.trim();
+    var email   = document.getElementById('hh-email').value.trim();
+    var phone   = document.getElementById('hh-phone').value.trim();
+    var theme   = document.getElementById('hh-theme').value;
+    var message = document.getElementById('hh-message').value.trim();
+    var subject = 'HH Global Forensic Enquiry — ' + theme + ' (' + company + ')';
+    var body    = 'Name: ' + name
+      + '\nCompany: ' + company
+      + '\nEmail: ' + email
+      + (phone ? '\nPhone: ' + phone : '')
+      + '\nEnquiry Type: ' + theme
+      + (message ? '\n\nCase overview:\n' + message : '');
+    var msg = document.getElementById('hh-form-msg');
+    msg.style.display = 'block';
+    msg.textContent = 'Opening your email client…';
+    window.location.href = 'mailto:info@hhglobalholdings.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+</script>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfUAAAHyCAYAAADyTVepAAAAAXNSR0IArs4c6QAAJQ==" alt="HH Global">
-      <p>Scientific Authority<br>Built for Impact</p>
+      <p>Science, Evidence &amp; Innovation<br>Delivered with Integrity</p>
     </div>
     <div class="footer-links">
-      <a href="index.html">Home</a>&nbsp;&nbsp;·&nbsp;&nbsp;
-      <a href="company.html">Company</a>&nbsp;&nbsp;·&nbsp;&nbsp;
-      <a href="company.html#team">Leadership</a>&nbsp;&nbsp;·&nbsp;&nbsp;
-      <a href="company.html#contact">Contact</a>&nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="index.html">← Back to Home</a>&nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="#contact">Contact</a>&nbsp;&nbsp;·&nbsp;&nbsp;
       <a href="https://www.linkedin.com/company/110136969" target="_blank">LinkedIn</a>
     </div>
     <div class="footer-legal">
