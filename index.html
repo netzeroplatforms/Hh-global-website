@@ -1203,6 +1203,34 @@
     @media (max-width: 900px) {
       .pub-grid { grid-template-columns: 1fr; }
     }
+
+    /* ─ HERO CREDENTIAL PILLS ─ */
+    .hero-creds {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .hero-cred-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      padding: 6px 14px;
+      border: 1px solid rgba(201,170,125,0.35);
+      border-radius: 20px;
+      background: rgba(201,170,125,0.08);
+    }
+    .hero-cred-item::before {
+      content: '★';
+      color: var(--gold);
+      font-size: 9px;
+    }
 </style>
 <body>
 
