@@ -287,6 +287,75 @@
       margin-bottom: 18px;
     }
 
+    /* ─ PIPELINE FLOWCHART ─ */
+    .pipeline-flow {
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+      margin-bottom: 48px;
+    }
+    .pipeline-flow::before {
+      content: '';
+      position: absolute;
+      top: 21px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+      z-index: 0;
+    }
+    .pipeline-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .pipeline-node {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--navy);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 16px;
+    }
+    .pipeline-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .pipeline-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 12px;
+      text-align: center;
+      width: 90%;
+      transition: all 0.25s;
+    }
+    .pipeline-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 6px 20px rgba(201,170,125,0.1);
+    }
+    .pipeline-card h4 {
+      font-size: 15px;
+      color: var(--navy);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .pipeline-card p {
+      font-size: 12px;
+      color: var(--text-light);
+      margin: 0;
+    }
+
         /* ─ INNOVATION & IP ─ */
     .ip-category-grid {
       display: grid;
@@ -1241,26 +1310,34 @@
       <h2 class="section-heading">One Integrated <em>Pathway</em></h2>
       <p class="section-lead">Most programmes fail at the handoff points between discovery, evidence generation, and regulatory navigation. Our three companies are designed to eliminate those gaps — each covering one critical stage, all under unified scientific leadership and shared IP.</p>
     </div>
-    <div class="pillars-grid" style="margin-bottom:48px;">
-      <div class="pillar-card fade-in" style="text-align:center;padding:28px 20px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Step 01</div>
-        <h4 style="font-size:17px;margin-bottom:8px;">Discover &amp; Develop</h4>
-        <p style="font-size:13px;color:var(--text-light);margin:0;">HH Research &amp; Innovation</p>
+    <div class="pipeline-flow">
+      <div class="pipeline-step">
+        <div class="pipeline-node"><span class="pipeline-num">01</span></div>
+        <div class="pipeline-card">
+          <h4>Discover &amp; Develop</h4>
+          <p>HH Research &amp; Innovation</p>
+        </div>
       </div>
-      <div class="pillar-card fade-in" style="text-align:center;padding:28px 20px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Step 02</div>
-        <h4 style="font-size:17px;margin-bottom:8px;">Generate Evidence</h4>
-        <p style="font-size:13px;color:var(--text-light);margin:0;">HH Data &amp; Evidence</p>
+      <div class="pipeline-step">
+        <div class="pipeline-node"><span class="pipeline-num">02</span></div>
+        <div class="pipeline-card">
+          <h4>Generate Evidence</h4>
+          <p>HH Data &amp; Evidence</p>
+        </div>
       </div>
-      <div class="pillar-card fade-in" style="text-align:center;padding:28px 20px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Step 03</div>
-        <h4 style="font-size:17px;margin-bottom:8px;">Navigate Regulation</h4>
-        <p style="font-size:13px;color:var(--text-light);margin:0;">HH Insight</p>
+      <div class="pipeline-step">
+        <div class="pipeline-node"><span class="pipeline-num">03</span></div>
+        <div class="pipeline-card">
+          <h4>Navigate Regulation</h4>
+          <p>HH Insight</p>
+        </div>
       </div>
-      <div class="pillar-card fade-in" style="text-align:center;padding:28px 20px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Step 04</div>
-        <h4 style="font-size:17px;margin-bottom:8px;">Real-World Delivery</h4>
-        <p style="font-size:13px;color:var(--text-light);margin:0;">Clinical / Commercial</p>
+      <div class="pipeline-step">
+        <div class="pipeline-node"><span class="pipeline-num">04</span></div>
+        <div class="pipeline-card">
+          <h4>Real-World Delivery</h4>
+          <p>Clinical / Commercial</p>
+        </div>
       </div>
     </div>
     <div style="margin-bottom:40px;">
