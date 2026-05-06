@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CityFi × Telensa — Partnership Overview</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0c0e12;
+      --surface: rgba(255,255,255,0.04);
+      --surface2: rgba(255,255,255,0.07);
+      --border:  rgba(255,255,255,0.08);
+      --text:    #eef2f7;
+      --muted:   #8b9cb8;
+      --dim:     #b8c4d4;
+      --orange:  #f97316;
+      --orange2: #fb923c;
+      --orange3: rgba(249,115,22,0.12);
+      --teal:    #14b8a6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* ────────────────────────────────
+       HERO
+    ──────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse 80% 60% at 10% 40%, rgba(249,115,22,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse 60% 50% at 90% 70%, rgba(20,184,166,0.05) 0%, transparent 55%),
+                  var(--bg);
+    }
+
+    /* subtle grid overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.75rem;
+    }
+
+    .eyebrow-line {
+      width: 32px;
+      height: 2px;
+      background: var(--orange);
+      border-radius: 2px;
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span { color: var(--orange2); }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--dim);
+      max-width: 620px;
+      line-height: 1.75;
+      margin-bottom: 2.75rem;
+    }
+
+    /* stat strip */
+    .stat-strip {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--surface);
+      max-width: 700px;
+    }
+
+    .strip-stat {
+      flex: 1;
+      padding: 1.1rem 1.25rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .strip-stat:last-child { border-right: none; }
+
+    .strip-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--orange2);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .strip-lab {
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ────────────────────────────────
+       SECTIONS
+    ──────────────────────────────── */
+    section {
+      padding: 5rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+    }
+
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    p {
+      color: var(--dim);
+      font-size: 0.93rem;
+      margin-bottom: 0.85rem;
+      line-height: 1.7;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+    /* ────────────────────────────────
+       SENSOR GRID
+    ──────────────────────────────── */
+    .sensor-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+
+    .sensor-cell {
+      background: var(--bg);
+      padding: 1.1rem 1.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .sensor-icon {
+      font-size: 1.1rem;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--orange3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sensor-cell h4 {
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+      color: var(--text);
+    }
+
+    .sensor-cell p {
+      font-size: 0.74rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* ────────────────────────────────
+       COMPARISON TABLE
+    ──────────────────────────────── */
+    .compare {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+
+    .compare-head {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.2fr;
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-head div {
+      padding: 0.75rem 1rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .compare-head div:not(:first-child) {
+      border-left: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.2fr;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .compare-row:last-child { border-bottom: none; }
+
+    .compare-row div {
+      padding: 0.85rem 1rem;
+      font-size: 0.84rem;
+      color: var(--dim);
+      display: flex;
+      align-items: center;
+    }
+
+    .compare-row div:first-child { font-weight: 500; color: var(--text); }
+
+    .compare-row div:not(:first-child) {
+      border-left: 1px solid rgba(255,255,255,0.04);
+      justify-content: center;
+      text-align: center;
+    }
+
+    .yes { color: var(--orange2); font-weight: 700; }
+    .no  { color: var(--muted); }
+    .highlight-col { background: rgba(249,115,22,0.05); }
+
+    /* ────────────────────────────────
+       OPPORTUNITY BLOCK
+    ──────────────────────────────── */
+    .opp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .opp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem;
+    }
+
+    .opp-card.accent {
+      background: var(--orange3);
+      border-color: rgba(249,115,22,0.25);
+    }
+
+    .opp-card .big {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--orange2);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .opp-card h3 { margin-bottom: 0.5rem; font-size: 0.9rem; }
+    .opp-card p  { font-size: 0.8rem; color: var(--muted); margin: 0; }
+
+    /* ────────────────────────────────
+       THE PARTNERSHIP
+    ──────────────────────────────── */
+    .partnership-flow {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+
+    .pf-block {
+      flex: 1;
+      padding: 1.5rem;
+      background: var(--surface);
+      position: relative;
+    }
+
+    .pf-block.center {
+      flex: 0 0 auto;
+      width: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--orange3);
+      border-left: 1px solid rgba(249,115,22,0.2);
+      border-right: 1px solid rgba(249,115,22,0.2);
+      font-size: 1.4rem;
+    }
+
+    .pf-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .pf-label.orange { color: var(--orange); }
+    .pf-label.teal   { color: var(--teal); }
+
+    .pf-block h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+
+    .pf-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .pf-list li {
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .pf-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+    }
+
+    /* ────────────────────────────────
+       CTA
+    ──────────────────────────────── */
+    .cta-section {
+      background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(249,115,22,0.07) 0%, transparent 70%),
+                  var(--surface);
+      border: 1px solid rgba(249,115,22,0.2);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section p {
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta-contacts {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-person {
+      text-align: left;
+    }
+
+    .cta-person .name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+
+    .cta-person .role {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ────────────────────────────────
+       FOOTER
+    ──────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    /* ────────────────────────────────
+       PRINT
+    ──────────────────────────────── */
+    @media print {
+      body { background: #fff; color: #111; }
+      .hero { min-height: auto; padding: 3rem 2rem 2rem; background: #fff; }
+      .hero::before { display: none; }
+      section { padding: 2rem; border-color: #e5e7eb; }
+      .strip-val, .yes, h1 span, .section-label, .opp-card .big, .eyebrow { color: #c2410c; }
+      h1, h2, h3 { color: #111; }
+      p, .strip-lab, .sensor-cell p, .pf-list li, .opp-card p { color: #4b5563; }
+      .sensor-cell, .opp-card, .pf-block, .compare { border-color: #e5e7eb; background: #fafafa; }
+      .stat-strip, .compare-head { background: #f3f4f6; }
+      .cta-section { background: #fff7ed; border-color: #fed7aa; }
+    }
+
+    @media (max-width: 640px) {
+      .sensor-grid { grid-template-columns: 1fr 1fr; }
+      .opp-grid { grid-template-columns: 1fr; }
+      .partnership-flow { flex-direction: column; }
+      .pf-block.center { width: 100%; height: 50px; border: none; border-top: 1px solid rgba(249,115,22,0.2); border-bottom: 1px solid rgba(249,115,22,0.2); }
+      .stat-strip { flex-direction: column; }
+      .strip-stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .strip-stat:last-child { border-bottom: none; }
+      .compare-head, .compare-row { grid-template-columns: 1.5fr 1fr 1fr; }
+      .cta-contacts { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-inner">
+
+    <div class="eyebrow">
+      <span class="eyebrow-line"></span>
+      Partnership Overview — Confidential
+    </div>
+
+    <h1>17 Sensors.<br><span>2.1 Million Poles.</span><br>One Partnership.</h1>
+
+    <p class="hero-sub">
+      Telensa built the world's most trusted smart streetlight network. CityFi built the most capable multi-sensor device to run on it. Together, this isn't just a product upgrade — it's a market redefinition.
+    </p>
+
+    <div class="stat-strip">
+      <div class="strip-stat">
+        <div class="strip-val">2.1M+</div>
+        <div class="strip-lab">Telensa-controlled streetlights globally</div>
+      </div>
+      <div class="strip-stat">
+        <div class="strip-val">17</div>
+        <div class="strip-lab">Integrated sensors in one LuxMetrix device</div>
+      </div>
+      <div class="strip-stat">
+        <div class="strip-val">7.5M</div>
+        <div class="strip-lab">UK streetlights — the addressable upgrade market</div>
+      </div>
+      <div class="strip-stat">
+        <div class="strip-val">£0</div>
+        <div class="strip-lab">New pole infrastructure required</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     TELENSA'S POSITION
+════════════════════════════════════════ -->
+<section>
+  <div class="inner">
+    <p class="section-label">The Starting Point</p>
+    <h2>Telensa Has Already Done the Hard Part.</h2>
+    <p>
+      Fifteen years of deployment. 2.1 million connected control nodes. PLANet — the world's most trusted lighting management platform. Urban IQ — the sensor connectivity layer that proved streetlight poles are the smart city infrastructure backbone. Signify's global distribution.
+    </p>
+    <p>
+      Telensa is not a streetlight company that dabbles in smart cities. It is the smart city infrastructure company that happens to control the lights. That distinction matters — because it defines what the next chapter looks like.
+    </p>
+
+    <hr>
+
+    <p class="section-label">The Opportunity</p>
+    <h2>Urban IQ Opened the Door. CityFi Walks Through It.</h2>
+    <p>
+      Urban IQ connected the principle: streetlight poles are the natural host for city-wide sensing. It brought in air quality, environmental, waste and road sensors from multiple third-party vendors. The platform works. The concept is proven.
+    </p>
+    <p>
+      The friction is vendor complexity. Every sensor type requires a separate provider, separate hardware, separate integration, separate commercial relationship. CityFi solves that in a single device.
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     CITYFI PRODUCT
+════════════════════════════════════════ -->
+<section>
+  <div class="inner">
+    <p class="section-label">The CityFi LuxMetrix Device</p>
+    <h2>One Retrofit. Seventeen Capabilities.</h2>
+    <p>
+      LuxMetrix mounts directly onto existing streetlight infrastructure — NEMA and Zhaga standard housings — with no pole replacement, no new cable runs, and no civil engineering. It activates immediately on existing wireless networks.
+    </p>
+
+    <div class="sensor-grid">
+      <div class="sensor-cell">
+        <div class="sensor-icon">🌫️</div>
+        <div>
+          <h4>CO₂ Monitoring</h4>
+          <p>Continuous atmospheric carbon measurement at street level</p>
+        </div>
+      </div>
+      <div class="sensor-cell">
+        <div class="sensor-icon">☁️</div>
+        <div>
+          <h4>VOC Detection</h4>
+          <p>Volatile organic compounds — pollution and industrial leak alerts</p>
+        </div>
+      </div>
+      <div class="sensor-cell">
+        <div class="sensor-icon">🏭</div>
+        <div>
+          <h4>NO₂ Sensing</h4>
+          <p>Nitrogen dioxide — traffic and industrial air quality compliance</p>
+        </div>
+      </div>
+      <div class="sensor-cell">
+        <div class="sensor-icon">🌡️</div>
+        <div>
+          <h4>Temperature & Humidity</h4>
+          <p>Real-time microclimate data across the street network</p>
+        </div>
+      </div>
+      <div class="sensor-cell">
+        <div class="sensor-icon">☀️</div>
+        <div>
+          <h4>UV Index</h4>
+          <p>Ultraviolet exposure monitoring for public health applications</p>
+        </div>
+      </div>
+      <div class="sensor-cell">
+        <div class="sensor-icon">💨</div>
+        <div>
+          <h4>Gas Detection</h4>
+          <p>Configurable gas sensors — industrial hazard and utility monitoring</p>
+        </div>
+      </div>
+      <div class="sensor-cell">
+        <div class="sensor-icon">📳</div>
+        <div>
+          <h4>Accelerometer</h4>
+          <p>Structural movement — pole integrity and seismic events</p>
+        </div>
+      </div>
+      <div class="sensor-cell">
+        <div class="sensor-icon">🔊</div>
+        <div>
+          <h4>Sound Detection</h4>
+          <p>Noise pollution monitoring, incident detection, anti-social behaviour</p>
+        </div>
+      </div>
+      <div class="sensor-cell">
+        <div class="sensor-icon">🚨</div>
+        <div>
+          <h4>Collision Detection</h4>
+          <p>Vibration-triggered accident alerts to emergency services and TMC</p>
+        </div>
+      </div>
+      <div class="sensor-cell">
+        <div class="sensor-icon">👁️</div>
+        <div>
+          <h4>Motion — PIR / Radar</h4>
+          <p>Pedestrian and vehicle movement for adaptive lighting and safety</p>
+        </div>
+      </div>
+      <div class="sensor-cell">
+        <div class="sensor-icon">💡</div>
+        <div>
+          <h4>LED Colour Control</h4>
+          <p>Programmable lighting states — emergency guidance, event management</p>
+        </div>
+      </div>
+      <div class="sensor-cell">
+        <div class="sensor-icon">⚡</div>
+        <div>
+          <h4>Power & Fault Monitoring</h4>
+          <p>Outage detection, abnormal consumption alerts, predictive maintenance</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-top:1.5rem;">Connectivity</p>
+    <p>LoRaWAN · 4G/5G · Wi-Fi · Bluetooth · Zigbee · Thread — operates on existing networks, including Telensa UNB. Open API. AES-256 encryption. No vendor lock-in.</p>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     COMPARISON
+════════════════════════════════════════ -->
+<section>
+  <div class="inner">
+    <p class="section-label">The Case for Partnership</p>
+    <h2>What Telensa + CityFi Delivers That Neither Does Alone.</h2>
+
+    <div class="compare">
+      <div class="compare-head">
+        <div>Capability</div>
+        <div>Telensa PLANet alone</div>
+        <div class="highlight-col">Telensa + CityFi</div>
+      </div>
+      <div class="compare-row">
+        <div>Remote lighting control</div>
+        <div class="yes">✓ World-class</div>
+        <div class="yes highlight-col">✓ World-class</div>
+      </div>
+      <div class="compare-row">
+        <div>Energy & maintenance savings</div>
+        <div class="yes">✓ Up to 70% / 50%</div>
+        <div class="yes highlight-col">✓ Up to 70% / 50%</div>
+      </div>
+      <div class="compare-row">
+        <div>Air quality monitoring</div>
+        <div class="no">Multi-vendor via Urban IQ</div>
+        <div class="yes highlight-col">✓ Integrated, single device</div>
+      </div>
+      <div class="compare-row">
+        <div>Noise & incident detection</div>
+        <div class="no">Not available</div>
+        <div class="yes highlight-col">✓ Native capability</div>
+      </div>
+      <div class="compare-row">
+        <div>Structural / vibration sensing</div>
+        <div class="no">Not available</div>
+        <div class="yes highlight-col">✓ Accelerometer + vibration</div>
+      </div>
+      <div class="compare-row">
+        <div>Emergency LED response</div>
+        <div class="no">On/off, dim only</div>
+        <div class="yes highlight-col">✓ Full colour programmable</div>
+      </div>
+      <div class="compare-row">
+        <div>Single device, single API</div>
+        <div class="no">Multiple vendor integrations</div>
+        <div class="yes highlight-col">✓ One device. One API.</div>
+      </div>
+      <div class="compare-row">
+        <div>Patent-protected sensor architecture</div>
+        <div class="no">—</div>
+        <div class="yes highlight-col">✓ CityFi IP — patent pending</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     OPPORTUNITY
+════════════════════════════════════════ -->
+<section>
+  <div class="inner">
+    <p class="section-label">Market Opportunity</p>
+    <h2>The Numbers Behind the Conversation.</h2>
+
+    <div class="opp-grid">
+      <div class="opp-card accent">
+        <div class="big">7.5M</div>
+        <h3>UK Streetlights</h3>
+        <p>The total UK addressable market for LuxMetrix retrofit. At current pricing, a fraction of this represents a nine-figure revenue opportunity.</p>
+      </div>
+      <div class="opp-card">
+        <div class="big">2.1M</div>
+        <h3>Telensa's Installed Base</h3>
+        <p>Already controlled, already connected — the immediate upgrade opportunity without a single new customer acquisition.</p>
+      </div>
+      <div class="opp-card">
+        <div class="big">30+</div>
+        <h3>Cities Already Onboard</h3>
+        <p>Telensa's existing municipal relationships are CityFi's distribution channel. No cold outreach required.</p>
+      </div>
+      <div class="opp-card accent">
+        <div class="big">17</div>
+        <h3>Sensors vs. Zero</h3>
+        <p>Current Telecell nodes deliver lighting control. LuxMetrix adds 17 sensor capabilities — all the data councils are now mandated to collect.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     THE PARTNERSHIP
+════════════════════════════════════════ -->
+<section>
+  <div class="inner">
+    <p class="section-label">The Proposition</p>
+    <h2>A Licensing Partnership. Not a Vendor Relationship.</h2>
+    <p>CityFi is not here to sell Telensa hardware. The proposition is a licensing arrangement — CityFi's patent-pending multi-sensor IP integrated into Telensa's PLANet platform and distributed through Telensa's global network and municipal relationships.</p>
+
+    <div class="partnership-flow">
+      <div class="pf-block">
+        <p class="pf-label orange">CityFi Brings</p>
+        <h3>The Intelligence Layer</h3>
+        <ul class="pf-list">
+          <li>Patent-pending 17-sensor LuxMetrix architecture</li>
+          <li>Proven LoRaWAN + multi-protocol integration</li>
+          <li>Environmental, safety and structural sensing IP</li>
+          <li>Open API — no lock-in, PLANet-compatible</li>
+          <li>Active Hull trials and council pipeline</li>
+        </ul>
+      </div>
+      <div class="pf-block center">⚡</div>
+      <div class="pf-block">
+        <p class="pf-label teal">Telensa Brings</p>
+        <h3>The Distribution Platform</h3>
+        <ul class="pf-list">
+          <li>2.1M+ installed control nodes — immediate install base</li>
+          <li>30+ city municipal relationships — warm pipeline</li>
+          <li>PLANet CMS — proven management platform</li>
+          <li>Signify's global distribution and brand</li>
+          <li>15 years of regulatory trust and accreditation</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>The result: Telensa moves from smart streetlight leader to definitive smart city data infrastructure provider — without rebuilding its hardware stack, without new customer acquisition, and with protected IP underpinning the upgrade proposition.</p>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     CTA
+════════════════════════════════════════ -->
+<section style="border-top:none; padding-top:0;">
+  <div class="inner">
+    <div class="cta-section">
+      <h2>Let's talk about what your<br>2.1 million poles can become.</h2>
+      <p>We're inviting a focused conversation with Telensa's leadership team to explore the licensing opportunity, the technical integration path, and what a joint go-to-market could look like.</p>
+
+      <div class="cta-contacts">
+        <div class="cta-person">
+          <div class="name">Mark Evans-Smith</div>
+          <div class="role">BridgePoint AI &nbsp;·&nbsp; mark@bridgepointai.com</div>
+        </div>
+        <div class="cta-person">
+          <div class="name">Hayden Barton</div>
+          <div class="role">CityFi &nbsp;·&nbsp; Founder &amp; Inventor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 CityFi · A BridgePoint AI Portfolio Company &nbsp;·&nbsp; Confidential — for discussion purposes with Telensa only
+</footer>
+
+</body>
+</html>

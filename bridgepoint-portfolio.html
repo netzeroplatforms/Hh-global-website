@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BridgePoint AI — Portfolio Overview</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d1117;
+      --surface: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --text: #eef2f7;
+      --muted: #8b9cb8;
+      --dim: #c4cdd8;
+      --nzp:      #22c55e;
+      --byzgen:   #60a5fa;
+      --cityfi:   #fb923c;
+      --truelens: #a78bfa;
+      --bp:       #94a3b8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(13,17,23,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      height: 54px;
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+      gap: 1.5rem;
+    }
+
+    .nav-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      padding-right: 1.5rem;
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.35rem 0.65rem;
+      border-radius: 5px;
+      transition: color 0.15s, background 0.15s;
+      white-space: nowrap;
+    }
+    nav a:hover { color: #fff; background: rgba(255,255,255,0.07); }
+
+    /* ── SECTIONS ── */
+    section {
+      min-height: 100vh;
+      padding: 80px 0 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* ── BADGE ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.28rem 0.8rem;
+      border-radius: 100px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      border: 1px solid currentColor;
+      opacity: 0.85;
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+    /* ── HERO ── */
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.13;
+      margin-bottom: 1.1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .lead {
+      font-size: 1.05rem;
+      color: var(--dim);
+      max-width: 660px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    /* ── LABEL ── */
+    .label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+      margin-top: 2.5rem;
+    }
+
+    /* ── STATS ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+      gap: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.1rem 1rem;
+    }
+
+    .stat-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-lab {
+      font-size: 0.74rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ── FEATURES ── */
+    .features { display: grid; gap: 0.7rem; margin: 0.5rem 0; }
+
+    .feat {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+    }
+
+    .feat-icon {
+      font-size: 1rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .feat h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .feat p  { font-size: 0.81rem; color: var(--muted); margin: 0; line-height: 1.55; }
+
+    /* ── TABLE ── */
+    table { width: 100%; border-collapse: collapse; font-size: 0.87rem; margin: 0.5rem 0; }
+    th {
+      text-align: left;
+      padding: 0.7rem 0.9rem;
+      background: rgba(255,255,255,0.04);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 0.8rem 0.9rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--dim);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+    tr:last-child td { border-bottom: none; }
+    td:first-child { font-weight: 600; color: var(--text); width: 40%; }
+
+    /* ── TAGS ── */
+    .tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0.5rem 0; }
+    .tag {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.22rem 0.7rem;
+      font-size: 0.76rem;
+      color: var(--dim);
+    }
+
+    /* ── DIVIDER ── */
+    hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+    /* ── STACK VISUAL ── */
+    .stack {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 1rem 0 0;
+    }
+    .stack-row {
+      display: flex;
+      align-items: stretch;
+      border-bottom: 1px solid var(--border);
+    }
+    .stack-row:last-child { border-bottom: none; }
+    .stack-co {
+      width: 110px;
+      flex-shrink: 0;
+      padding: 1.1rem 1rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+    }
+    .stack-desc {
+      flex: 1;
+      padding: 1.1rem 1.1rem;
+      font-size: 0.83rem;
+      color: var(--dim);
+      border-left: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      line-height: 1.55;
+    }
+
+    /* ── CONTACT CARD ── */
+    .contact {
+      margin-top: 2.5rem;
+      padding: 1.4rem 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .contact p { margin: 0; }
+    .contact .name { font-weight: 600; color: var(--text); font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .contact .role { font-size: 0.82rem; color: var(--muted); }
+
+    /* ── SECTION TINTS ── */
+    #nzp      { background: radial-gradient(ellipse at top left, rgba(22,163,74,0.06) 0%, transparent 60%), var(--bg); }
+    #byzgen   { background: radial-gradient(ellipse at top left, rgba(37,99,235,0.07) 0%, transparent 60%), var(--bg); }
+    #cityfi   { background: radial-gradient(ellipse at top left, rgba(234,88,12,0.07) 0%, transparent 60%), var(--bg); }
+    #truelens { background: radial-gradient(ellipse at top left, rgba(124,58,237,0.07) 0%, transparent 60%), var(--bg); }
+    #bp       { background: var(--bg); }
+
+    /* accent colours */
+    #nzp .badge, #nzp .stat-val  { color: var(--nzp); }
+    #byzgen .badge, #byzgen .stat-val { color: var(--byzgen); }
+    #cityfi .badge, #cityfi .stat-val { color: var(--cityfi); }
+    #truelens .badge, #truelens .stat-val { color: var(--truelens); }
+    #bp .badge { color: var(--bp); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      nav { display: none !important; }
+      section { min-height: auto; page-break-after: always; padding: 2rem 0; border: none; }
+      section:last-of-type { page-break-after: avoid; }
+      body { background: #fff; color: #111; }
+      .stat, .feat, .stack, .contact { border-color: #e5e7eb !important; }
+      p, td, .feat p, .lead, .stack-desc { color: #4b5563 !important; }
+      h1, td:first-child, .contact .name { color: #111 !important; }
+      .stat-val, .badge { color: #111 !important; }
+      .tag { border-color: #d1d5db; color: #6b7280; }
+    }
+
+    @media (max-width: 580px) {
+      nav { gap: 0.75rem; padding: 0 1rem; }
+      .inner { padding: 2rem 1.25rem; }
+      h1 { font-size: 1.85rem; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      td:first-child { width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">BridgePoint AI</span>
+  <a href="#nzp">NZP</a>
+  <a href="#byzgen">ByzGen</a>
+  <a href="#cityfi">CityFi</a>
+  <a href="#truelens">TrueLens</a>
+  <a href="#bp">Ecosystem</a>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     NET ZERO PLATFORMS
+═══════════════════════════════════════════ -->
+<section id="nzp">
+  <div class="inner">
+
+    <div class="badge"><span class="dot"></span>Net Zero Platforms</div>
+
+    <h1>Turn Your Waste Liability<br>Into a Revenue Stream.</h1>
+    <p class="lead">Legacy waste isn't a problem to manage. It's a feedstock waiting to be monetised. NZP converts coal ash, PFAS, industrial tailings, and mixed waste into hydrogen, sustainable aviation fuel, power, and verified carbon credits — using patented plasma gasification technology.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-val">10,000°C</div>
+        <div class="stat-lab">Operating temperature — 8× conventional gasification</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">74%</div>
+        <div class="stat-lab">EBITDA margin on reference case</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">5.8 yr</div>
+        <div class="stat-lab">Capital payback period</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">£43.7M</div>
+        <div class="stat-lab">Annual gate fee revenue (850 TPD case)</div>
+      </div>
+    </div>
+
+    <p class="label">Why 10,000°C Matters</p>
+    <p>Conventional gasification operates at 1,200°C. At 10,000°C, molecular bonds that no other process can break — including the C-F bonds in PFAS "forever chemicals" — are fully dissociated. NZP is the only commercially viable pathway for PFAS destruction at scale. No pre-treatment required. Feedstock moisture above 50% accepted.</p>
+
+    <hr>
+
+    <p class="label">The Transfer Liability Model</p>
+    <p>For operators holding coal ash ponds, PFAS-contaminated sites, or legacy industrial tailings — NZP converts your regulatory obligation into a revenue-generating feedstock. The liability becomes the asset. The remediation cost becomes gate fee income.</p>
+
+    <div class="features" style="margin-top:1rem;">
+      <div class="feat">
+        <div class="feat-icon">⚗️</div>
+        <div>
+          <h4>UHTMG Technology</h4>
+          <p>Ultra-High-Temperature Modular Gasification. Submerged arc plasma. Feedstock agnostic. Output: clean syngas (50–55% H₂, 45–50% CO), zero tar contamination. Byproduct: vitrified aggregate.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📊</div>
+        <div>
+          <h4>Model First, Invest Later</h4>
+          <p>Four stages — Model, Optimise, De-risk, Invest. Full capital deployed only after offtake is secured. The software models it. The hardware delivers it.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🛡️</div>
+        <div>
+          <h4>US Patent 10,435,295</h4>
+          <p>200+ generation-one systems. 25+ years commercial operation. Senior technical team with ex-US government programme roles.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="label">Reference Economics — 850 TPD Mixed Commercial Waste</p>
+    <table>
+      <tr><th>Metric</th><th>Output</th></tr>
+      <tr><td>Gate fee revenue</td><td>£43.7M / year</td></tr>
+      <tr><td>Hydrogen output</td><td>22,300 tonnes / year (99.999% purity)</td></tr>
+      <tr><td>Carbon credits</td><td>£8.1M / year eligible</td></tr>
+      <tr><td>EBITDA margin</td><td>74%</td></tr>
+      <tr><td>Phase 1 capex</td><td>€15–25M (modular)</td></tr>
+      <tr><td>Payback period</td><td>5.8 years</td></tr>
+    </table>
+
+    <p class="label">Technology Partners</p>
+    <div class="tags">
+      <span class="tag">SMS Group</span>
+      <span class="tag">Tenova</span>
+      <span class="tag">GE Vernova</span>
+      <span class="tag">Siemens</span>
+      <span class="tag">Air Products</span>
+      <span class="tag">Air Liquide</span>
+      <span class="tag">AON (Insurance)</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BYZGEN
+═══════════════════════════════════════════ -->
+<section id="byzgen">
+  <div class="inner">
+
+    <div class="badge"><span class="dot"></span>ByzGen</div>
+
+    <h1>Nuclear-Grade Data Integrity.<br>For Any Regulated Industry.</h1>
+    <p class="lead">In nuclear, defence, finance, and regulated infrastructure, data integrity isn't a feature — it's a legal and contractual requirement. Falsified records, lost provenance, and challenged audit trails carry catastrophic consequences. ByzGen's FALKOR platform eliminates that risk.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-val">&lt;100ms</div>
+        <div class="stat-lab">Smart contract validation — real-time enforcement</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">60 yr</div>
+        <div class="stat-lab">Immutable archiving for long-lifecycle assets</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">40–60%</div>
+        <div class="stat-lab">Reduction in integration complexity via Azure</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">EU AI Act</div>
+        <div class="stat-lab">Compliant AI training data provenance — unique capability</div>
+      </div>
+    </div>
+
+    <p class="label">The FALKOR Platform</p>
+    <p>A private, enterprise-grade blockchain platform that deploys inside your existing Azure tenant — inheriting your security policies and access controls. No external black box. No vendor lock-in. Integrates with Azure Logic Apps, Elasticsearch, and Microsoft Purview.</p>
+
+    <div class="features" style="margin-top:1rem;">
+      <div class="feat">
+        <div class="feat-icon">🔒</div>
+        <div>
+          <h4>Immutable Audit Trails</h4>
+          <p>Tamper-proof records for regulatory, legal, and contractual purposes. Once written to the chain, no one can alter the data.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">⚡</div>
+        <div>
+          <h4>Smart Contract Enforcement</h4>
+          <p>Real-time validation at sub-100ms — automated enforcement of compliance milestones without user friction.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🔗</div>
+        <div>
+          <h4>Supply Chain Provenance</h4>
+          <p>Multi-tier qualification tracking with automated expiry alerts at 90, 60, and 30 days. Complete chain of custody from tier 1 to tertiary supplier.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🌍</div>
+        <div>
+          <h4>Cross-Border Data Governance</h4>
+          <p>Cryptographic proof that sensitive data stayed within authorised geographic and organisational boundaries.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🤖</div>
+        <div>
+          <h4>AI / LLM Provenance</h4>
+          <p>Only blockchain-verified data trains your custom AI models. Directly addresses EU AI Act requirements. No comparable platform provides this capability.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <p class="label">Live Deployments</p>
+    <table>
+      <tr><th>Client</th><th>Use Case</th></tr>
+      <tr><td>Rolls-Royce SMR Programme</td><td>Nuclear supply chain provenance, manufacturing audit trails, 60-year component lifecycle archiving</td></tr>
+      <tr><td>UK Ministry of Defence</td><td>Secure IP exchange and data governance for consortium programmes</td></tr>
+      <tr><td>Atos</td><td>Enterprise data integrity and secure exchange at scale</td></tr>
+      <tr><td>Financial sector</td><td>MiFID II compliance — life reinsurance policy data management</td></tr>
+    </table>
+
+    <p style="font-size:0.83rem; color:var(--muted); font-style:italic; margin-top:1rem;">If FALKOR is trusted for nuclear programme documentation, it is trusted for anything.</p>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CITYFI
+═══════════════════════════════════════════ -->
+<section id="cityfi">
+  <div class="inner">
+
+    <div class="badge"><span class="dot"></span>CityFi</div>
+
+    <h1>Your City's Infrastructure Is Already<br>a Sensor Network. Activate It.</h1>
+    <p class="lead">Every streetlight is a potential data point. CityFi's LuxMetrix device retrofits existing street infrastructure — without replacement, without new cable runs — turning municipal lighting networks into real-time environmental and operational intelligence systems.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-val">37%</div>
+        <div class="stat-lab">Energy savings via smart dimming and motion-aware control</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">6+</div>
+        <div class="stat-lab">Environmental sensor types per device</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">5G</div>
+        <div class="stat-lab">Multi-protocol: LoRaWAN, Wi-Fi, Bluetooth, Zigbee</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">Zero</div>
+        <div class="stat-lab">New infrastructure required — fits NEMA/Zhaga housings</div>
+      </div>
+    </div>
+
+    <p class="label">What LuxMetrix Monitors</p>
+    <div class="tags" style="margin-bottom:1.5rem;">
+      <span class="tag">CO₂</span>
+      <span class="tag">VOC</span>
+      <span class="tag">NO₂</span>
+      <span class="tag">Temperature</span>
+      <span class="tag">Humidity</span>
+      <span class="tag">UV Index</span>
+      <span class="tag">Gas Detection</span>
+      <span class="tag">Movement — PIR / Radar / Camera</span>
+      <span class="tag">Power Consumption</span>
+      <span class="tag">Fault Detection</span>
+    </div>
+
+    <div class="features">
+      <div class="feat">
+        <div class="feat-icon">🏙️</div>
+        <div>
+          <h4>Retrofit, Not Replace</h4>
+          <p>LuxMetrix fits NEMA and Zhaga standard housings — activate the sensor network already installed across every street in every city. Lower capex. Faster deployment.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📡</div>
+        <div>
+          <h4>Open API Integration</h4>
+          <p>Connects to council systems, GIS platforms, and third-party analytics tools. Your data stays yours. AES-256 encryption, TLS 1.3, OAuth 2.0.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">⚡</div>
+        <div>
+          <h4>Smart Lighting Control</h4>
+          <p>Remote brightness, motion-aware dimming, scheduled states, emergency beacon alerts, collision detection response — all from a single device.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <p class="label">Target Clients</p>
+    <p>Local authorities, councils, infrastructure managers, and contractors responsible for public street assets at scale. Any organisation that needs verifiable, continuous environmental data across an urban or peri-urban geography — without building new infrastructure.</p>
+
+    <p class="label">Connectivity Stack</p>
+    <div class="tags">
+      <span class="tag">4G / 5G</span>
+      <span class="tag">LoRaWAN</span>
+      <span class="tag">Wi-Fi</span>
+      <span class="tag">Bluetooth</span>
+      <span class="tag">Zigbee</span>
+      <span class="tag">Thread</span>
+      <span class="tag">DALI</span>
+      <span class="tag">0-10V</span>
+      <span class="tag">PWM</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     TRUELENS
+═══════════════════════════════════════════ -->
+<section id="truelens">
+  <div class="inner">
+
+    <div class="badge"><span class="dot"></span>TrueLens</div>
+
+    <h1>AI Compliance Checking.<br>1 Hour. Not 10 Days.</h1>
+    <p class="lead">In regulated industries, compliance checking is slow, expensive, and human-dependent. A single regulatory submission — checked manually against the full applicable framework — takes a qualified professional 10 working days. One missed clause triggers rejection, delay, and rework. TrueLens eliminates that bottleneck.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-val">73%</div>
+        <div class="stat-lab">Reduction in compliance checking time</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">1 hr</div>
+        <div class="stat-lab">To check a full submission — vs 10 days manual</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">£70k+</div>
+        <div class="stat-lab">Saved per submission vs manual checking cost</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">2 min</div>
+        <div class="stat-lab">Average processing time per page</div>
+      </div>
+    </div>
+
+    <p class="label">How It Works</p>
+    <p>Upload the submission. TrueLens ingests every document and checks every word against every applicable regulatory standard — completely, consistently, without fatigue. Output: structured findings, flagged non-compliances, missing information, and regulatory risk assessment. In under an hour.</p>
+
+    <div class="features" style="margin-top:1rem;">
+      <div class="feat">
+        <div class="feat-icon">🧠</div>
+        <div>
+          <h4>Complete Document Coverage</h4>
+          <p>Every word checked with equal depth — no section treated as routine, no regulatory category skipped or assumed compliant.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🔐</div>
+        <div>
+          <h4>Blockchain-Validated Data Quality Gate</h4>
+          <p>Only provenance-verified data trains TrueLens AI models — directly addressing EU AI Act requirements. No comparable platform provides this for custom model training.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📋</div>
+        <div>
+          <h4>Structured Risk Output</h4>
+          <p>Non-compliances flagged, missing information identified, regulatory risks categorised — ready for direct action before submission reaches the regulator.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <p class="label">Deployment &amp; Expansion</p>
+    <table>
+      <tr><th>Area</th><th>Detail</th></tr>
+      <tr><td>Current focus</td><td>UK Building Safety Act — BSR Gateway 2 compliance for higher-risk residential buildings</td></tr>
+      <tr><td>Proven cost saving</td><td>£31,458 total platform cost vs £100k+ manual checking per submission</td></tr>
+      <tr><td>Expansion thesis</td><td>The same AI compliance architecture applies wherever regulated industries face complex, document-heavy submissions: environmental permits, infrastructure safety cases, energy regulatory filings</td></tr>
+      <tr><td>Data security</td><td>UK/EU jurisdiction only — GDPR compliant, London-based infrastructure</td></tr>
+    </table>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     BRIDGEPOINT AI — ECOSYSTEM BRIEF
+═══════════════════════════════════════════ -->
+<section id="bp">
+  <div class="inner">
+
+    <div class="badge"><span class="dot"></span>BridgePoint AI</div>
+
+    <h1>Building the Complete Stack<br>for Regulated Industries.</h1>
+    <p class="lead">BridgePoint AI is a specialist technology investment firm with a single thesis: in sectors where compliance, environmental accountability, data integrity, and infrastructure intelligence converge, no single technology company provides the complete answer. We build the portfolio that does.</p>
+
+    <hr>
+
+    <p class="label">The Portfolio</p>
+    <table>
+      <tr><th>Company</th><th>Capability</th><th>Proven Sector</th></tr>
+      <tr>
+        <td>Net Zero Platforms</td>
+        <td>Waste-to-value conversion at industrial scale. Transfer Liability model converts regulatory obligations into bankable revenue.</td>
+        <td>Waste, energy, environmental remediation</td>
+      </tr>
+      <tr>
+        <td>ByzGen</td>
+        <td>Immutable data integrity and smart contract enforcement via FALKOR blockchain platform.</td>
+        <td>Nuclear, defence, financial services</td>
+      </tr>
+      <tr>
+        <td>CityFi</td>
+        <td>Real-time environmental sensing via existing street infrastructure — no new hardware capex.</td>
+        <td>Local authority, smart cities, infrastructure</td>
+      </tr>
+      <tr>
+        <td>TrueLens</td>
+        <td>AI-powered compliance intelligence — 73% faster, £70k+ cheaper per submission.</td>
+        <td>Construction, regulated industries</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <p class="label">Applied: USA Legacy Waste Remediation</p>
+    <p>Legacy coal ash ponds, PFAS sites, and abandoned industrial tailings represent one of the largest unresolved environmental liabilities in the United States. EPA enforcement is tightening. Climate risk repricing is accelerating. Capital wants in — but only where the proposition is investable: technically proven, regulatorily defensible, and commercially structured from day one.</p>
+    <p style="margin-top:0.75rem;">The BridgePoint AI portfolio delivers exactly that.</p>
+
+    <div class="stack" style="margin-top:1.5rem;">
+      <div class="stack-row">
+        <div class="stack-co" style="background:rgba(22,163,74,0.1); color:var(--nzp);">NZP</div>
+        <div class="stack-desc">Converts waste into hydrogen, SAF, and carbon credits — the liability becomes the asset, remediation cost becomes gate fee income</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-co" style="background:rgba(234,88,12,0.1); color:var(--cityfi);">CityFi</div>
+        <div class="stack-desc">Continuous real-time air quality and environmental monitoring at site level — verifiable data from existing infrastructure from day one of operations</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-co" style="background:rgba(37,99,235,0.1); color:var(--byzgen);">ByzGen</div>
+        <div class="stack-desc">Immutable, tamper-proof record of every monitoring data point and compliance milestone — nuclear-grade architecture; no operator can falsify a reading</div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-co" style="background:rgba(124,58,237,0.1); color:var(--truelens);">TrueLens</div>
+        <div class="stack-desc">AI checks every EPA and state-level regulatory filing against applicable standards before submission — non-compliance caught before it costs months of delay</div>
+      </div>
+    </div>
+
+    <hr>
+
+    <p style="font-size:1rem; font-weight:600; color:var(--text); margin-bottom:0.6rem;">This is not a technology pitch. It is investable infrastructure.</p>
+    <p>From liability identification to compliant, revenue-generating operation — the BridgePoint AI portfolio provides the complete operating layer. Each company can be engaged independently. Together, they de-risk the entire remediation investment thesis.</p>
+
+    <div class="contact">
+      <p class="name">Mark Evans-Smith</p>
+      <p class="role">BridgePoint AI &nbsp;·&nbsp; mark@bridgepointai.com</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 BridgePoint AI — Confidential. For discussion purposes only.
+</footer>
+
+</body>
+</html>
