@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HH Global — GTM Action Plan (8 May 2026)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; }
+
+:root {
+  --navy: #0B1F3F;
+  --navy-2: #152D55;
+  --gold: #C5A25B;
+  --gold-soft: rgba(197,162,91,0.12);
+  --paper: #FFFFFF;
+  --cream: #FAF8F5;
+  --rule: #E2DDD5;
+  --ink: #1A1A2E;
+  --ink-2: #374151;
+  --ink-muted: #6B7280;
+  --green: #2F7D4F;
+  --green-bg: #EEF5EF;
+  --amber: #C9842F;
+  --amber-bg: #FBF1E6;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 980px;
+  margin: 2rem auto;
+  background: var(--paper);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+}
+
+.header {
+  background: var(--navy);
+  padding: 2.8rem 3rem 2.4rem;
+  position: relative;
+  overflow: hidden;
+}
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 220px;
+  height: 220px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  opacity: 0.15;
+}
+.header-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 0.7rem;
+}
+.header h1 em { font-style: italic; color: var(--gold); }
+.header-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  max-width: 65ch;
+  line-height: 1.65;
+}
+
+.meta-bar {
+  background: var(--navy-2);
+  padding: 0.9rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 11px;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.5px;
+}
+.meta-bar strong {
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-size: 10px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.content { padding: 2.5rem 3rem 1rem; }
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 2.2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 50px;
+  height: 2px;
+  background: var(--gold);
+}
+h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin: 1.3rem 0 0.5rem; }
+
+p { margin-bottom: 0.8rem; }
+ul, ol { margin: 0.5rem 0 1rem 1.3rem; }
+li { margin-bottom: 0.35rem; }
+
+.lede {
+  font-size: 15px;
+  color: var(--ink);
+  border-left: 3px solid var(--gold);
+  padding: 0.2rem 0 0.2rem 1.2rem;
+  margin: 1.2rem 0 1.5rem;
+  font-style: italic;
+}
+
+/* Traction banner */
+.traction {
+  background: var(--green-bg);
+  border-left: 5px solid var(--green);
+  border-radius: 4px;
+  padding: 1.1rem 1.4rem;
+  margin: 1.4rem 0 0;
+}
+.traction-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.4rem;
+}
+.traction ul { margin: 0.3rem 0 0 1.2rem; }
+.traction li { font-size: 13px; }
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.8rem 0 1.4rem;
+  font-size: 13px;
+}
+th, td {
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+th {
+  background: var(--navy);
+  color: #fff;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+tbody tr:hover { background: var(--gold-soft); }
+td.num {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: var(--gold);
+  text-align: center;
+  width: 40px;
+}
+
+/* Cards */
+.card {
+  border: 1px solid var(--rule);
+  padding: 1.3rem 1.5rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  background: #fff;
+  page-break-inside: avoid;
+}
+.card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-bottom: 0.7rem;
+  flex-wrap: wrap;
+}
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.tag-gold { background: var(--gold); color: var(--navy); }
+.tag-green { background: var(--green); color: #fff; }
+.tag-amber { background: var(--amber); color: #fff; }
+.tag-muted { background: var(--rule); color: var(--ink-2); }
+
+/* Reply blocks */
+.reply {
+  background: var(--gold-soft);
+  border-left: 3px solid var(--gold);
+  padding: 0.9rem 1.1rem;
+  margin: 0.8rem 0;
+  font-size: 13px;
+  border-radius: 2px;
+  font-family: 'Inter', sans-serif;
+  white-space: pre-wrap;
+}
+.reply-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+/* Recommendation block */
+.recommendation {
+  background: var(--navy);
+  color: #fff;
+  padding: 2rem 2.2rem;
+  margin: 2rem -3rem 0;
+  position: relative;
+}
+.recommendation::before {
+  content: "NEXT 3 MOVES — TODAY";
+  position: absolute;
+  top: -10px;
+  left: 3rem;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  padding: 4px 14px;
+}
+.recommendation h2 {
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  margin-top: 0.5rem;
+}
+.recommendation h2::before { background: var(--gold); }
+.recommendation p { color: rgba(255,255,255,0.85); }
+.recommendation strong { color: #fff; }
+
+.action-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+.action-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 1rem 1.1rem;
+  border-radius: 4px;
+}
+.action-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--gold);
+  font-weight: 600;
+  line-height: 1;
+}
+.action-text {
+  margin-top: 0.5rem;
+  font-size: 13px;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.5;
+}
+
+.footer {
+  padding: 1.4rem 3rem 2rem;
+  font-size: 11px;
+  color: var(--ink-muted);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 720px) {
+  .content { padding: 1.6rem 1.4rem; }
+  .header { padding: 2rem 1.4rem; }
+  .meta-bar { padding: 0.8rem 1.4rem; }
+  .recommendation { margin: 2rem -1.4rem 0; padding: 1.5rem 1.4rem; }
+  .action-list { grid-template-columns: 1fr; }
+}
+
+@media print {
+  body { background: #fff; }
+  .page { box-shadow: none; margin: 0; max-width: 100%; }
+  .card, .recommendation { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <span class="header-tag">HH Global · Strategy Room</span>
+    <h1>GTM <em>Action Plan</em></h1>
+    <p class="header-sub">Consolidated playbook from the Mark &amp; Tracy session — asks, calls, accounts, and sequencing for the next 7 days.</p>
+  </div>
+
+  <div class="meta-bar">
+    <div><strong>Date</strong>8 May 2026</div>
+    <div><strong>Owner</strong>Mark Evans-Smith</div>
+    <div><strong>Lead</strong>Sam White</div>
+    <div><strong>Window</strong>Week of 12 May</div>
+  </div>
+
+  <div class="content">
+
+    <div class="traction">
+      <div class="traction-title">Traction Signal</div>
+      <ul>
+        <li><strong>Two warm calls locked next week</strong> — Andrew (Tue 12 May) and Verity / Hysteron (Thu 14 May), Sam leading both.</li>
+        <li><strong>Verity follow-up doc</strong> received same day as first call — active, scientifically rich engagement.</li>
+        <li><strong>Legal partner pre-positioned</strong> (HM3) for fast trigger once decision is made.</li>
+      </ul>
+    </div>
+
+    <h2>1 · Asks — Sam &amp; Tracy (this week)</h2>
+    <table>
+      <thead><tr><th style="width:40px">#</th><th>Ask</th><th style="width:160px">Owner</th><th style="width:130px">Output</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td>Review HH website — suggest changes, updates, language improvements</td><td>Sam &amp; Tracy</td><td>Edit list</td></tr>
+        <tr><td class="num">2</td><td>Review current Genetix agreement &amp; clear approval for off-record discussion with a 3rd-party law / specialist firm</td><td>Sam &amp; Tracy</td><td>Go / no-go</td></tr>
+        <tr><td class="num">3</td><td>Review Genetix <strong>structure</strong> — identify whether HH (Sam) can generate Professional Witness / Expert Witness revenue without conflicting the existing Genetix consulting agreement</td><td>Tracy &amp; Sam</td><td>Conflict map + revenue route</td></tr>
+      </tbody>
+    </table>
+
+    <div class="card" style="border-left:5px solid var(--gold);background:var(--gold-soft);">
+      <div class="card-head">
+        <div class="card-title" style="font-size:1.05rem;">Strategic principle — no dilution</div>
+        <span class="tag tag-gold">Guard rail</span>
+      </div>
+      <p>We <strong>cannot dilute existing income</strong> from the Genetix consulting agreement. Any new revenue stream — Professional Witness, Expert Witness, advisory, lab partnership — must <strong>replace and grow</strong>, not cannibalise.</p>
+      <p>This is the test every new engagement passes through before we commit Sam's time.</p>
+    </div>
+
+    <h2>2 · Legal Route — gated</h2>
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">HM3 Legal — Lindsay Kidd</div>
+        <span class="tag tag-amber">Gated</span>
+        <span class="tag tag-muted">Warm &amp; safe</span>
+      </div>
+      <p><strong>Trigger:</strong> only after Sam &amp; Tracy clear the Genetix agreement <em>and</em> we decide to proceed.</p>
+      <p><strong>Sequence:</strong> agreement review → proceed decision → engage Lindsay → off-record scoping call → next step.</p>
+      <p><em>Why pre-position:</em> zero delay between decision and action. We move the day Sam green-lights.</p>
+    </div>
+
+    <h2>3 · Calls Scheduled — Sam leads</h2>
+    <table>
+      <thead><tr><th>Who</th><th>When</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Andrew</strong></td>
+          <td>Tue 12 May 2026, 14:00 UK · 45 min</td>
+          <td><span class="tag tag-gold">Awaiting confirm</span></td>
+        </tr>
+        <tr>
+          <td><strong>Verity Fotheringham</strong><br><span style="color:var(--ink-muted);font-size:12px">Founder &amp; CEO, Hysteron</span></td>
+          <td>Thu 14 May 2026, 11:00 UK · 45 min</td>
+          <td><span class="tag tag-gold">Awaiting confirm</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>4 · Andrew</h2>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">Reply — send today</div>
+      </div>
+      <div class="reply">
+<span class="reply-label">Email Draft</span>Hi Andrew,
+
+Thanks — Tuesday works. Could we lock 2pm UK, 12 May, 45 min? Sam will join and lead. I'll send the invite and a short brief beforehand.
+
+BW,
+Mark</div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">Call Brief — four-vector frame</div>
+      </div>
+      <p><strong>Objective:</strong> convert Andrew from advisor → active partner &amp; introducer.</p>
+      <table>
+        <thead><tr><th>Vector</th><th>Question to land</th><th>Our ask</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Help</strong></td><td>Where do you plug in operationally?</td><td>Specific role: advisor, NED, deal sponsor</td></tr>
+          <tr><td><strong>Advise</strong></td><td>Lens on HH GTM &amp; the Genetix angle?</td><td>Honest read on positioning gaps</td></tr>
+          <tr><td><strong>Partner</strong></td><td>JV, channel, or co-pitch?</td><td>One concrete joint motion in next 90 days</td></tr>
+          <tr><td><strong>Introduce</strong></td><td>Who in your network fits?</td><td>3 named warm intros — priority: Charles River microbial solutions lead</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:12px;color:var(--ink-muted);"><em>Need: Andrew's LinkedIn / 2-line bio to tighten brief.</em></p>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">Charles River — wedge</div>
+        <span class="tag tag-gold">Mold specialism</span>
+      </div>
+      <p>Charles River Laboratories (criver.com) — global preclinical CRO. CRL dominates endotoxin &amp; bacterial ID via Accugenix; <strong>fungal / mold ID is not their headline strength</strong>. HH positions as the mold specialist — partner, not competitor.</p>
+      <table>
+        <thead><tr><th>Route</th><th>Move</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Partner</strong></td><td>HH = mold specialist supplier into CRL's microbial solutions division</td></tr>
+          <tr><td><strong>Client</strong></td><td>HH co-pitches mold expertise to CRL's pharma / biotech end-clients</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Andrew's job on the call:</strong> warm intro to CRL's microbial solutions / contamination-control lead at director level.</p>
+    </div>
+
+    <h2>5 · Verity — Hysteron <span style="font-family:'Inter',sans-serif;font-size:11px;background:var(--green);color:#fff;padding:3px 9px;border-radius:3px;letter-spacing:1.5px;vertical-align:middle;margin-left:0.5rem;">TRACTION</span></h2>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">Who they are</div>
+      </div>
+      <p>Founder-led women's health diagnostics. <strong>5 blood biomarker panels live</strong> (£32–£58.50), peri / postmenopausal focus. Scientifically rigorous, R&amp;D-hungry.</p>
+
+      <h3>Their wishlist (= HH plug-in points)</h3>
+      <ul>
+        <li><strong>Blood panel expansion:</strong> fasting insulin / HOMA-IR, oestrone (E1), homocysteine, ApoB, bone turnover (CTx, P1NP)</li>
+        <li><strong>Genetic risk layer:</strong> polygenic risk score for early menopause (Ruth et al., 2021 — 290 loci, ovarian ageing)</li>
+        <li><strong>Microbiome:</strong> estrobolome (gut) + vaginal microbiome correlated with HbA1c</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">Three plays</div>
+      </div>
+      <table>
+        <thead><tr><th>Play</th><th>Move</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Lab partner</strong></td><td>White-label HH capacity for expanded panel — recurring revenue</td></tr>
+          <tr><td><strong>Co-development</strong></td><td>Genetic + microbiome assays = joint IP, novel category offering</td></tr>
+          <tr><td><strong>Advisory swap</strong></td><td>Verity advises HH on women's health vertical; HH gives science + scale</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Lead play:</strong> lab partner now → co-development next. Lands revenue fast, builds trust for the bigger IP play.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">Call angle (Sam leads)</div>
+      </div>
+      <ul>
+        <li><strong>Open</strong> — HH capability stack vs. her wishlist</li>
+        <li><strong>Probe</strong> — which expansion is most commercially urgent? (Insulin / HOMA-IR likely the quick win)</li>
+        <li><strong>Frame</strong> — "the engine room for women's health diagnostics innovation"</li>
+        <li><strong>Close</strong> — pilot proposal: one expansion panel, fast turnaround, joint case study</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">Reply — send today</div>
+      </div>
+      <div class="reply">
+<span class="reply-label">Email Draft</span>Hi V,
+
+Thursday works — would 11am UK on Thu 14 May, 45 min suit? Sam will join and lead. I'll send the invite shortly.
+
+Best,
+Mark</div>
+    </div>
+
+    <h2>6 · Other Accounts</h2>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-title">Multiplex — three-track parallel attack</div>
+      </div>
+      <table>
+        <thead><tr><th style="width:40px">#</th><th>Track</th><th>Move</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td><strong>ALS re-pitch</strong></td><td>Rebuild the pitch — new angle, not the same deck</td></tr>
+          <tr><td class="num">2</td><td><strong>Kate Ireland</strong></td><td>Parallel pitch — different relationship, different angle</td></tr>
+          <tr><td class="num">3</td><td><strong>ALS competitors</strong></td><td>Sweep target list — Eurofins, SGS, Intertek, Bureau Veritas (confirm shortlist)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>7 · Missing / Dependencies</h2>
+    <table>
+      <thead><tr><th>Item</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td>Sam's Tue 14:00 UK availability (Andrew)</td><td>Mark → Sam</td></tr>
+        <tr><td>Sam's Thu 11:00 UK availability (Verity)</td><td>Mark → Sam</td></tr>
+        <tr><td>Andrew's LinkedIn / 2-line bio — to sharpen brief</td><td>Mark</td></tr>
+        <tr><td><strong>HH capability check:</strong> insulin, ApoB, CTx, P1NP — assays in-house or flag-planting?</td><td>Sam / Tracy</td></tr>
+        <tr><td>ALS competitor shortlist confirmed</td><td>Mark + Sam</td></tr>
+        <tr><td>HM3 / Lindsay Kidd relationship — who holds the warmth?</td><td>Mark</td></tr>
+        <tr><td><strong>Genetix structure conflict map</strong> — does PW / EW route stay clean of existing consulting agreement?</td><td>Tracy &amp; Sam</td></tr>
+      </tbody>
+    </table>
+
+    <div class="recommendation">
+      <h2>Next 3 Moves — Today</h2>
+      <p>Three things must move before close of play to keep the momentum we have built.</p>
+      <div class="action-list">
+        <div class="action-card">
+          <div class="action-num">01</div>
+          <div class="action-text"><strong>Send Sam &amp; Tracy</strong> the consolidated ask: website review + Genetix clearance for off-record consult.</div>
+        </div>
+        <div class="action-card">
+          <div class="action-num">02</div>
+          <div class="action-text"><strong>Reply to Andrew</strong> — lock Tue 12 May, 14:00 UK, 45 min. Sam to lead.</div>
+        </div>
+        <div class="action-card">
+          <div class="action-num">03</div>
+          <div class="action-text"><strong>Reply to Verity</strong> — propose Thu 14 May, 11:00 UK, 45 min. Sam to lead.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div>HH Global — Strategy Room · Internal working document</div>
+    <div>Compiled 8 May 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
