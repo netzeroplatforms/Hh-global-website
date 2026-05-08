@@ -119,10 +119,12 @@
     .hero {
       min-height: 82vh;
       background: var(--navy);
-      display: flex; align-items: center; justify-content: flex-start;
+      display: grid;
+      align-content: center;
       position: relative; overflow: visible;
       padding: 120px 0 80px;
     }
+    .hero > .container { width: 100%; }
     .hero::before {
       content: '';
       position: absolute; inset: 0;
@@ -549,7 +551,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">HH Global Holdings <span>Global</span></a>
+    <a href="index.html" class="nav-logo">HH Global <span>Holdings</span></a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
     </button>
