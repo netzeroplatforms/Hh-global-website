@@ -271,7 +271,7 @@
       </div>
       <div class="cta-actions">
         <button class="btn-secondary" onclick="document.getElementById('postcode').focus();document.getElementById('postcode').scrollIntoView({behavior:'smooth'})">Screen another site</button>
-        <button class="btn-primary" onclick="alert('Coming in v2 — bundled with the screening.')">Start application →</button>
+        <button class="btn-primary" id="bridge-to-app">Start application →</button>
       </div>
     </div>
   </div>
@@ -616,6 +616,15 @@ document.getElementById('run').addEventListener('click', ()=>{
 // Pre-fill demo data on load for instant visual
 document.getElementById('postcode').value = 'NR1 1AA';
 document.getElementById('capacity').value = '500';
+
+// Bridge: pass site data into the G99 form (current Headroom execution layer)
+document.getElementById('bridge-to-app').addEventListener('click', ()=>{
+  const pc = document.getElementById('postcode').value.trim();
+  const cap = document.getElementById('capacity').value.trim();
+  const asset = document.getElementById('asset').value;
+  const params = new URLSearchParams({postcode: pc, capacity: cap, asset, from: 'intelligence-v1'});
+  window.location.href = `./demo-preview.html?${params.toString()}#g99`;
+});
 </script>
 </body>
 </html>
