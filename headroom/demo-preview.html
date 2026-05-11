@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headroom — G99 Application Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f0fdf4;--surface:#fff;--border:#d1fae5;--text:#052e16;--text-body:#166534;--text-muted:#4b7c5c;--primary:#16a34a;--green:#16a34a;--green-bg:#f0fdf4;--green-border:#bbf7d0;--amber:#d97706;--amber-bg:#fffbeb;--red:#dc2626;--red-bg:#fef2f2}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text-body);font-size:14px;line-height:1.5;min-height:100vh}
+
+/* Header */
+.header{background:#052e16;border-bottom:1px solid #14532d;height:64px;display:flex;align-items:center;padding:0 32px;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(5,46,22,0.3)}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-logo{width:36px;height:36px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-weight:800}
+.brand-name{font-size:17px;font-weight:800;color:#fff;letter-spacing:-0.3px}
+.brand-tag{font-size:11px;color:#86efac;font-weight:500;letter-spacing:0.05em;text-transform:uppercase}
+
+/* Layout */
+.container{max-width:900px;margin:0 auto;padding:32px}
+.page-title{font-size:24px;font-weight:700;color:var(--text);margin-bottom:4px}
+.page-sub{font-size:13px;color:var(--text-muted);margin-bottom:28px}
+
+/* DNO Lookup */
+.lookup-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:24px}
+.lookup-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.lookup-row{display:flex;gap:10px;align-items:flex-start}
+.lookup-input{flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:6px;font-size:14px;font-family:inherit;color:var(--text);text-transform:uppercase}
+.lookup-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 2px rgba(22,163,74,0.15)}
+.lookup-btn{padding:10px 20px;background:#0f172a;color:#fff;font-size:13px;font-weight:700;border:none;border-radius:6px;cursor:pointer;white-space:nowrap}
+.lookup-btn:hover{background:#1e293b}
+.lookup-result{margin-top:12px;padding:12px 14px;border-radius:6px;font-size:13px;display:none}
+.lookup-result.found{background:var(--green-bg);border:1px solid var(--green-border);color:var(--text-body)}
+.lookup-result.error{background:var(--red-bg);border:1px solid #fecaca;color:#991b1b}
+.dno-badge{display:inline-flex;align-items:center;gap:6px;background:#052e16;color:#fff;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:600;margin-top:8px}
+
+/* Steps */
+.steps{display:flex;gap:0;margin-bottom:28px;border-bottom:2px solid var(--green-border)}
+.step{flex:1;padding:14px 8px;font-size:12px;font-weight:600;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;text-align:center;background:none;border-top:none;border-left:none;border-right:none;transition:all .15s;white-space:nowrap}
+.step:hover{color:var(--text)}
+.step.active{color:var(--green);border-bottom-color:var(--green)}
+.step.completed{color:var(--green)}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:var(--border);color:var(--text-muted);border-radius:50%;font-size:10px;font-weight:700;margin-right:4px}
+.step.active .step-num,.step.completed .step-num{background:var(--green);color:#fff}
+
+/* Cards */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:16px}
+.card-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.card-title .icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px}
+
+/* Form */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}}
+.form-group{margin-bottom:4px}
+.form-label{font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:5px;display:block}
+.form-label .req{color:#dc2626}
+.form-input,.form-select{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:inherit;color:var(--text);background:#fff}
+.form-input:focus,.form-select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 2px rgba(22,163,74,0.15)}
+.form-input::placeholder{color:#9ca3af}
+
+/* File upload */
+.file-upload{border:2px dashed var(--border);border-radius:8px;padding:20px;text-align:center;cursor:pointer;transition:all .15s;display:block}
+.file-upload:hover{border-color:var(--primary);background:#f0fdf4}
+.file-upload input[type="file"]{display:none}
+.file-icon{font-size:24px;margin-bottom:6px}
+.file-text{font-size:12px;color:var(--text-muted);font-weight:500}
+.file-hint{font-size:11px;color:#9ca3af;margin-top:3px}
+
+/* Nav */
+.nav-btns{display:flex;gap:10px;margin-top:20px;justify-content:space-between}
+.btn{padding:10px 18px;font-size:13px;font-weight:700;border:none;border-radius:6px;cursor:pointer;font-family:inherit;transition:background .15s}
+.btn-primary{background:#052e16;color:#fff}
+.btn-primary:hover{background:#04240f}
+.btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{background:#f9fafb}
+
+/* Summary */
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+@media(max-width:600px){.summary-grid{grid-template-columns:1fr}}
+.summary-item{background:#f9fafb;padding:10px 12px;border-radius:6px}
+.summary-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px}
+.summary-value{font-size:13px;font-weight:600;color:var(--text)}
+
+/* Status box */
+.status-box{background:var(--green-bg);border:1px solid var(--green-border);border-radius:8px;padding:16px;margin-top:16px}
+.status-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px}
+.status-text{font-size:12px;color:var(--text-muted)}
+.status-steps{display:flex;gap:4px;margin-top:12px}
+.status-step{width:28px;height:4px;border-radius:2px;background:var(--border)}
+.status-step.done{background:var(--green)}
+.status-step.current{background:var(--amber)}
+
+/* Download section */
+.download-section{display:none;margin-top:16px;background:var(--surface);border:1px solid var(--green-border);border-radius:10px;padding:20px}
+.download-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px}
+.download-text{font-size:12px;color:var(--text-muted);margin-bottom:14px}
+.download-btns{display:flex;gap:10px;flex-wrap:wrap}
+
+/* Hidden */
+.section{display:none}
+.section.active{display:block}
+
+/* Footer */
+.footer{text-align:center;padding:20px;font-size:11px;color:var(--text-muted);border-top:1px solid var(--border);margin-top:40px}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="brand">
+    <div class="brand-logo">H</div>
+    <div>
+      <div class="brand-name">Headroom</div>
+      <div class="brand-tag">G99 Application Platform</div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <h1 class="page-title">Submit Your DNO Application</h1>
+  <p class="page-sub">Generate a complete G98 or G99 application for any UK DNO in under 5 minutes.</p>
+
+  <!-- DNO LOOKUP -->
+  <div class="lookup-card">
+    <div class="lookup-title">🔍 Find Your DNO</div>
+    <div class="lookup-row">
+      <input type="text" id="postcode-input" class="lookup-input" placeholder="e.g. CV37 6YL" maxlength="8" autocomplete="off">
+      <button class="lookup-btn" onclick="lookupDNO()">Find DNO</button>
+    </div>
+    <div id="lookup-result" class="lookup-result"></div>
+  </div>
+
+  <!-- STEPS -->
+  <div class="steps">
+    <button class="step active" onclick="goStep(1)" id="step-1"><span class="step-num">1</span>Installer</button>
+    <button class="step" onclick="goStep(2)" id="step-2"><span class="step-num">2</span>Site</button>
+    <button class="step" onclick="goStep(3)" id="step-3"><span class="step-num">3</span>Device</button>
+    <button class="step" onclick="goStep(4)" id="step-4"><span class="step-num">4</span>Docs</button>
+    <button class="step" onclick="goStep(5)" id="step-5"><span class="step-num">5</span>Submit</button>
+  </div>
+
+  <!-- STEP 1: Installer -->
+  <div class="section active" id="section-1">
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:#dbeafe">👤</span> Installer Details</div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Company Name <span class="req">*</span></label><input class="form-input" id="installer-company" placeholder="e.g. Stratford Energy Solutions"></div>
+        <div class="form-group"><label class="form-label">Contact Name <span class="req">*</span></label><input class="form-input" id="installer-name" placeholder="e.g. John Smith"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">MCS Certificate Number <span class="req">*</span></label><input class="form-input" id="mcs-number" placeholder="e.g. MCS 12345" maxlength="12"><a href="https://mcscertified.com/find-an-installer/" target="_blank" style="font-size:11px;color:var(--primary);text-decoration:none;margin-top:4px;display:inline-block">🔍 Look up your MCS number</a></div>
+        <div class="form-group"><label class="form-label">NICEIC / ELECSA Number</label><input class="form-input" id="niceic-number" placeholder="Scheme member number"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Email <span class="req">*</span></label><input class="form-input" id="installer-email" type="email" placeholder="installer@company.co.uk"></div>
+        <div class="form-group"><label class="form-label">Phone <span class="req">*</span></label><input class="form-input" id="installer-phone" type="tel" placeholder="07xxx xxx xxx"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Company Address</label><input class="form-input" id="installer-address" placeholder="Full company address"></div>
+      </div>
+    </div>
+    <div class="nav-btns"><div></div><button class="btn btn-primary" onclick="nextStep()">Next → Site Details</button></div>
+  </div>
+
+  <!-- STEP 2: Site -->
+  <div class="section" id="section-2">
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:#fef3c7">🏠</span> Site & Customer Details</div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Customer Name <span class="req">*</span></label><input class="form-input" id="customer-name" placeholder="Full name or business name"></div>
+        <div class="form-group"><label class="form-label">Export MPAN</label><input class="form-input" id="mpan" placeholder="21-digit MPAN" maxlength="21"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Installation Address</label><input class="form-input" id="site-address" placeholder="Full property address"><span id="address-lookup-status" style="font-size:11px;color:var(--text-muted)"></span></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Customer Email</label><input class="form-input" id="customer-email" type="email" placeholder="customer@email.com"></div>
+        <div class="form-group"><label class="form-label">Customer Phone</label><input class="form-input" id="customer-phone" type="tel" placeholder="07xxx xxx xxx"></div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-secondary" onclick="prevStep()">← Installer</button>
+      <button class="btn btn-primary" onclick="nextStep()">Next → Device Info</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: Device -->
+  <div class="section" id="section-3">
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:#dcfce7">⚡</span> Generation Device Details</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Application Type</label>
+          <select class="form-select" id="app-type">
+            <option value="G98 Notification">G98 Notification (≤3.68kW/phase)</option>
+            <option value="G99 Part A: Fast Track" selected>G99 Part A: Fast Track (≤50kW)</option>
+            <option value="G99 Part B: Standard">G99 Part B: Standard (>50kW)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Device Type</label>
+          <select class="form-select" id="device-type">
+            <option value="Solar PV" selected>☀️ Solar PV</option>
+            <option value="Wind">💨 Wind</option>
+            <option value="Hydro">💧 Hydro</option>
+            <option value="Other">🔧 Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Inverter Manufacturer</label><select class="form-select" id="inv-manufacturer"><option value="">Select...</option><option value="SolarEdge">SolarEdge</option><option value="Enphase">Enphase</option><option value="Huawei">Huawei</option><option value="SMA">SMA</option><option value="GoodWe">GoodWe</option><option value="Growatt">Growatt</option><option value="Sungrow">Sungrow</option><option value="Ginlong (Solis)">Ginlong (Solis)</option><option value="Fimer">Fimer</option><option value="Other">Other</option></select></div>
+        <div class="form-group"><label class="form-label">Inverter Model</label><select class="form-select" id="inv-model"><option value="">Select manufacturer first...</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">AC-Rated Capacity (kW)</label><input class="form-input" id="ac-capacity" type="number" step="0.1" placeholder="e.g. 6.8"></div>
+        <div class="form-group"><label class="form-label">Number of Inverters</label><input class="form-input" id="inv-count" type="number" value="1" min="1"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">ENA Type Test Ref</label><input class="form-input" id="type-test-ref" placeholder="If applicable"></div>
+        <div class="form-group"><label class="form-label">Reactive Power</label><select class="form-select" id="reactive-power"><option value="Auto (PF ±0.8)" selected>Auto (PF ±0.8)</option><option value="Fixed">Fixed</option><option value="None">None</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">G100 Export Limiting Device</label><input class="form-input" id="export-limit" placeholder="Make / Model — or N/A"></div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-secondary" onclick="prevStep()">← Site</button>
+      <button class="btn btn-primary" onclick="nextStep()">Next → Documents</button>
+    </div>
+  </div>
+
+  <!-- STEP 4: Documents -->
+  <div class="section" id="section-4">
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:#fef2f2">📎</span> Supporting Documents</div>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px">Upload required documents. PDF or PNG/JPG (max 5MB each).</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Single Line Diagram <span class="req">*</span></label>
+          <label class="file-upload"><input type="file" accept=".pdf,.png,.jpg"><div class="file-icon">📄</div><div class="file-text">Click to upload SLD</div><div class="file-hint">PDF, PNG or JPG — max 5MB</div></label>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Site Plan / Layout <span class="req">*</span></label>
+          <label class="file-upload"><input type="file" accept=".pdf,.png,.jpg"><div class="file-icon">🏗️</div><div class="file-text">Click to upload site plan</div><div class="file-hint">PDF, PNG or JPG — max 5MB</div></label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Inverter Datasheet</label>
+          <label class="file-upload"><input type="file" accept=".pdf,.png,.jpg"><div class="file-icon">📋</div><div class="file-text">Click to upload datasheet</div><div class="file-hint">PDF, PNG or JPG — max 5MB</div></label>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Protection Settings</label>
+          <label class="file-upload"><input type="file" accept=".pdf,.png,.jpg"><div class="file-icon">🛡️</div><div class="file-text">Click to upload settings</div><div class="file-hint">PDF, PNG or JPG — max 5MB</div></label>
+        </div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-secondary" onclick="prevStep()">← Device</button>
+      <button class="btn btn-primary" onclick="nextStep()">Next → Review</button>
+    </div>
+  </div>
+
+  <!-- STEP 5: Review & Submit -->
+  <div class="section" id="section-5">
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:#dcfce7">✅</span> Review & Submit</div>
+      <div id="review-content">
+        <div class="summary-grid">
+          <div class="summary-item"><div class="summary-label">Application Type</div><div class="summary-value" id="review-type">—</div></div>
+          <div class="summary-item"><div class="summary-label">DNO Region</div><div class="summary-value" id="review-dno">—</div></div>
+          <div class="summary-item"><div class="summary-label">Installer</div><div class="summary-value" id="review-installer">—</div></div>
+          <div class="summary-item"><div class="summary-label">MCS Number</div><div class="summary-value" id="review-mcs">—</div></div>
+          <div class="summary-item"><div class="summary-label">Customer</div><div class="summary-value" id="review-customer">—</div></div>
+          <div class="summary-item"><div class="summary-label">Site Address</div><div class="summary-value" id="review-address">—</div></div>
+          <div class="summary-item"><div class="summary-label">System</div><div class="summary-value" id="review-system">—</div></div>
+          <div class="summary-item"><div class="summary-label">Inverter</div><div class="summary-value" id="review-inverter">—</div></div>
+        </div>
+      </div>
+      <div class="status-box">
+        <div class="status-title">📬 How Your Application Will Be Submitted</div>
+        <div class="status-text" id="submission-method">Select a DNO to see submission instructions.</div>
+        <div class="status-steps">
+          <div class="status-step done"></div><div class="status-step done"></div><div class="status-step done"></div><div class="status-step current"></div><div class="status-step"></div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-btns">
+      <button class="btn btn-secondary" onclick="prevStep()">← Documents</button>
+      <button class="btn btn-primary" onclick="submitApplication()" id="submit-btn">📬 Generate Application Package</button>
+    </div>
+    <div class="download-section" id="download-section">
+      <div class="download-title">📥 Your Application is Ready</div>
+      <div class="download-text">Your complete DNO application package has been generated and saved.</div>
+      <div class="download-btns">
+        <button class="btn btn-primary" onclick="downloadPDF()">📄 Download Application PDF</button>
+        <button class="btn btn-secondary" onclick="window.open('/admin','_blank')">📋 View All Applications</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Headroom — G99 Application Platform · Built for UK solar installers
+</div>
+
+<script>
+let currentStep = 1;
+let dnoData = null;
+let submittedId = null;
+
+// DNO Lookup
+const dnoDB = {
+  // UK Power Networks — LONDON
+  'E':'UK Power Networks (London)','EC':'UK Power Networks (London)','N':'UK Power Networks (London)',
+  'NW':'UK Power Networks (London)','SE':'UK Power Networks (London)','SW':'UK Power Networks (London)',
+  'W':'UK Power Networks (London)','WC':'UK Power Networks (London)','HA':'UK Power Networks (London)',
+  'UB':'UK Power Networks (London)','TW':'UK Power Networks (London)','IG':'UK Power Networks (London)',
+  'RM':'UK Power Networks (London)',
+  // UK Power Networks — SOUTH EAST
+  'KT':'UK Power Networks (South East)','CR':'UK Power Networks (South East)','SM':'UK Power Networks (South East)',
+  'BR':'UK Power Networks (South East)','DA':'UK Power Networks (South East)','TN':'UK Power Networks (South East)',
+  'ME':'UK Power Networks (South East)','CT':'UK Power Networks (South East)','RH':'UK Power Networks (South East)',
+  'BN':'UK Power Networks (South East)',
+  // UK Power Networks — EAST ENGLAND
+  'AL':'UK Power Networks (East England)','HP':'UK Power Networks (East England)','LU':'UK Power Networks (East England)',
+  'SG':'UK Power Networks (East England)','EN':'UK Power Networks (East England)','IG':'UK Power Networks (East England)',
+  'RM':'UK Power Networks (East England)','SS':'UK Power Networks (East England)','CM':'UK Power Networks (East England)',
+  'CO':'UK Power Networks (East England)','CB':'UK Power Networks (East England)','PE':'UK Power Networks (East England)',
+  'IP':'UK Power Networks (East England)','NR':'UK Power Networks (East England)','MK':'UK Power Networks (East England)',
+  // SSEN SOUTHERN
+  'SO':'SSEN Distribution Southern','PO':'SSEN Distribution Southern','RG':'SSEN Distribution Southern',
+  'GU':'SSEN Distribution Southern','RH':'SSEN Distribution Southern','BN':'SSEN Distribution Southern',
+  // SSEN NORTH (Scotland + Northern Scotland)
+  'AB':'SSEN Distribution North','DD':'SSEN Distribution North','IV':'SSEN Distribution North',
+  'KW':'SSEN Distribution North','PH':'SSEN Distribution North','ZE':'SSEN Distribution North',
+  'FK':'SSEN Distribution North','KY':'SSEN Distribution North','PA':'SSEN Distribution North',
+  'G':'SSEN Distribution North','EH':'SSEN Distribution North','ML':'SSEN Distribution North',
+  'TD':'SSEN Distribution North','DG':'SSEN Distribution North','KA':'SSEN Distribution North',
+  // SP Energy Networks (Manweb — Merseyside, N Wales, N West)
+  'L':'SP Energy Networks (Manweb)','CH':'SP Energy Networks (Manweb)','WA':'SP Energy Networks (Manweb)',
+  'CW':'SP Energy Networks (Manweb)','SK':'SP Energy Networks (Manweb)','M':'SP Energy Networks (Manweb)',
+  'PR':'SP Energy Networks (Manweb)','BB':'SP Energy Networks (Manweb)','BL':'SP Energy Networks (Manweb)',
+  'OL':'SP Energy Networks (Manweb)','WN':'SP Energy Networks (Manweb)','FY':'SP Energy Networks (Manweb)',
+  'LA':'SP Energy Networks (Manweb)','LL':'SP Energy Networks (Manweb)','SY':'SP Energy Networks (Manweb)',
+  // Northern Powergrid — YORKSHIRE
+  'S':'Northern Powergrid (Yorkshire)','LS':'Northern Powergrid (Yorkshire)','BD':'Northern Powergrid (Yorkshire)',
+  'HD':'Northern Powergrid (Yorkshire)','HG':'Northern Powergrid (Yorkshire)','HX':'Northern Powergrid (Yorkshire)',
+  'WF':'Northern Powergrid (Yorkshire)','YO':'Northern Powergrid (Yorkshire)','DN':'Northern Powergrid (Yorkshire)',
+  // Northern Powergrid — NORTH EAST
+  'NE':'Northern Powergrid (NE)','SR':'Northern Powergrid (NE)','DH':'Northern Powergrid (NE)',
+  'TS':'Northern Powergrid (NE)','DL':'Northern Powergrid (NE)','CA':'Northern Powergrid (NE)',
+  'LA':'Northern Powergrid (NE)','PR':'Northern Powergrid (NE)','BB':'Northern Powergrid (NE)',
+  'FY':'Northern Powergrid (NE)',
+  // WPD WEST MIDLANDS
+  'B':'WPD West Midlands','CV':'WPD West Midlands','DY':'WPD West Midlands','HR':'WPD West Midlands',
+  'ST':'WPD West Midlands','TF':'WPD West Midlands','WS':'WPD West Midlands','WV':'WPD West Midlands',
+  'WR':'WPD West Midlands','SY':'WPD West Midlands',
+  // WPD SOUTH WEST
+  'BA':'WPD South West','BS':'WPD South West','DT':'WPD South West','EX':'WPD South West',
+  'GL':'WPD South West','PL':'WPD South West','SN':'WPD South West','SP':'WPD South West',
+  'TA':'WPD South West','TQ':'WPD South West','TR':'WPD South West','BH':'WPD South West',
+  // WPD WALES
+  'CF':'WPD South Wales','LD':'WPD South Wales','NP':'WPD South Wales','SA':'WPD South Wales',
+  // WPD EAST MIDLANDS
+  'DE':'WPD East Midlands','LE':'WPD East Midlands','NG':'WPD East Midlands','LN':'WPD East Midlands',
+  'NN':'WPD East Midlands','PE':'WPD East Midlands','MK':'WPD East Midlands',
+  // Electricity North West
+  'BL':'Electricity North West','BB':'Electricity North West','PR':'Electricity North West',
+  'OL':'Electricity North West','WN':'Electricity North West','SK':'Electricity North West',
+  'WA':'Electricity North West','CW':'Electricity North West','FY':'Electricity North West',
+  'LA':'Electricity North West','CA':'Electricity North West','CH':'Electricity North West',
+  'M':'Electricity North West','L':'Electricity North West',
+};
+
+function lookupDNO() {
+  const pc = document.getElementById('postcode-input').value.toUpperCase().replace(/\s+/g,'');
+  const result = document.getElementById('lookup-result');
+  if (!pc || pc.length < 3) { result.className='lookup-result error'; result.style.display='block'; result.textContent='Enter a valid postcode'; return; }
+  let dno = null;
+  for (let k of Object.keys(dnoDB).sort((a,b)=>b.length-a.length)) {
+    if (pc.startsWith(k)) { dno = dnoDB[k]; break; }
+  }
+  if (dno) {
+    dnoData = dno;
+    result.className='lookup-result found'; result.style.display='block';
+    result.innerHTML = `<strong>DNO:</strong> ${dno}<br><span class="dno-badge">✓ Ready for application</span>`;
+    document.getElementById('review-dno').textContent = dno;
+    document.getElementById('submission-method').textContent = `Submit via email to your DNO: ${dno}`;
+  } else {
+    result.className='lookup-result error'; result.style.display='block'; result.textContent='DNO not found for this postcode — check and try again';
+  }
+}
+
+// Step navigation
+function goStep(n) {
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.step').forEach((s,i)=>{
+    s.classList.remove('active','completed');
+    if (i+1 < n) s.classList.add('completed');
+    if (i+1 === n) s.classList.add('active');
+  });
+  document.getElementById('section-'+n).classList.add('active');
+  currentStep = n;
+  if (n === 5) populateReview();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function nextStep() { if (currentStep < 5) goStep(currentStep + 1); }
+function prevStep() { if (currentStep > 1) goStep(currentStep - 1); }
+
+// Populate review
+function populateReview() {
+  document.getElementById('review-type').textContent = document.getElementById('app-type').value;
+  document.getElementById('review-installer').textContent = document.getElementById('installer-company').value || '—';
+  document.getElementById('review-mcs').textContent = document.getElementById('mcs-number').value || '—';
+  document.getElementById('review-customer').textContent = document.getElementById('customer-name').value || '—';
+  document.getElementById('review-address').textContent = document.getElementById('site-address').value || '—';
+  const sys = document.getElementById('ac-capacity').value;
+  document.getElementById('review-system').textContent = sys ? sys + ' kW' : '—';
+  const inv = document.getElementById('inv-manufacturer').value + ' ' + document.getElementById('inv-model').value;
+  document.getElementById('review-inverter').textContent = inv.trim() || '—';
+}
+
+// Submit
+function submitApplication() {
+  const btn = document.getElementById('submit-btn');
+  btn.textContent = 'Submitting...'; btn.disabled = true;
+
+  const payload = {
+    applicationType: document.getElementById('app-type').value,
+    installerCompany: document.getElementById('installer-company').value,
+    installerName: document.getElementById('installer-name').value,
+    installerEmail: document.getElementById('installer-email').value,
+    installerPhone: document.getElementById('installer-phone').value,
+    installerAddress: document.getElementById('installer-address').value,
+    installerMcs: document.getElementById('mcs-number').value,
+    installerNiceic: document.getElementById('niceic-number').value,
+    customerName: document.getElementById('customer-name').value,
+    customerEmail: document.getElementById('customer-email').value,
+    customerPhone: document.getElementById('customer-phone').value,
+    siteAddress: document.getElementById('site-address').value,
+    siteMpan: document.getElementById('mpan').value,
+    systemSizeKwp: parseFloat(document.getElementById('ac-capacity').value) || 0,
+    inverterManufacturer: document.getElementById('inv-manufacturer').value,
+    inverterModel: document.getElementById('inv-model').value,
+    inverterCount: parseInt(document.getElementById('inv-count').value) || 1,
+    acCapacityKw: parseFloat(document.getElementById('ac-capacity').value) || 0,
+    deviceType: document.getElementById('device-type').value,
+    exportLimitKw: 0,
+    reactivePower: document.getElementById('reactive-power').value,
+    typeTestRef: document.getElementById('type-test-ref').value,
+    dnoRegion: dnoData || 'Unknown',
+    dnoName: dnoData || 'Unknown',
+    submissionMethod: 'Email',
+    metadata: { source: 'headroom-g99', version: '1.1.0' }
+  };
+
+  fetch('/api/applications', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(r => r.json())
+  .then(data => {
+    if (data.success) {
+      submittedId = data.id;
+      btn.textContent = '✓ Submitted — Ref: ' + data.id.slice(0,8).toUpperCase();
+      btn.style.background = '#15803d';
+      document.getElementById('download-section').style.display = 'block';
+    } else {
+      btn.textContent = '❌ Failed — try again'; btn.disabled = false;
+    }
+  })
+  .catch(err => { console.error(err); btn.textContent = '❌ Error — try again'; btn.disabled = false; });
+}
+
+function downloadPDF() {
+  if (!submittedId) return;
+  window.open('/api/applications/' + submittedId + '/pdf', '_blank');
+}
+
+// Enter key on postcode
+document.getElementById('postcode-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') lookupDNO();
+});
+
+// ============================================
+// LOOKUPS
+// ============================================
+
+// 1. Postcode → Address (via postcodes.io)
+async function lookupAddress() {
+  const pc = document.getElementById('postcode-input').value.trim();
+  const status = document.getElementById('address-lookup-status');
+  if (!pc || pc.length < 5) return;
+  status.textContent = 'Looking up address...';
+  try {
+    const res = await fetch(`https://api.postcodes.io/postcodes/${encodeURIComponent(pc)}`);
+    const data = await res.json();
+    if (data.status === 200 && data.result) {
+      const r = data.result;
+      const addr = [r.building_name, r.sub_building_name, r.thoroughfare, r.post_town, r.postcode].filter(Boolean).join(', ');
+      document.getElementById('site-address').value = addr;
+      status.textContent = '✓ Address auto-filled';
+      status.style.color = '#16a34a';
+    } else {
+      status.textContent = 'Address not found — enter manually';
+      status.style.color = '#d97706';
+    }
+  } catch (err) {
+    status.textContent = 'Address lookup unavailable';
+    status.style.color = '#64748b';
+  }
+}
+
+// Trigger address lookup after DNO lookup
+document.getElementById('postcode-input').addEventListener('blur', lookupAddress);
+
+// 2. Inverter Manufacturer → Model
+const inverterModels = {
+  'SolarEdge': ['SE3680H', 'SE5000H', 'SE6000H', 'SE7600H', 'SE10000H', 'SE11400H', 'SE2200H', 'SE3000H'],
+  'Enphase': ['IQ7', 'IQ7+', 'IQ8', 'IQ8+', 'IQ8M', 'IQ Battery 3T', 'IQ Battery 10T'],
+  'Huawei': ['SUN2000-3KTL-L1', 'SUN2000-4KTL-L1', 'SUN2000-5KTL-L1', 'SUN2000-6KTL-L1', 'SUN2000-10KTL-M1', 'SUN2000-12KTL-M2'],
+  'SMA': ['Sunny Boy 3.0', 'Sunny Boy 3.6', 'Sunny Boy 4.0', 'Sunny Boy 5.0', 'Sunny Boy 6.0', 'Sunny Tripower 8.0', 'Sunny Tripower 10.0'],
+  'GoodWe': ['GW3000-XS', 'GW3600D-NS', 'GW5000D-NS', 'GW6000D-NS', 'GW8K-ET', 'GW10K-ET', 'GW15K-ET'],
+  'Growatt': ['MIN 3000TL-X', 'MIN 3600TL-X', 'MIN 4200TL-X', 'MIN 5000TL-X', 'MIN 6000TL-X', 'SPH 3000-6000TL BL-UP', 'MOD 3000-10000TL3-X'],
+  'Sungrow': ['SH3.0RS', 'SH3.6RS', 'SH5.0RS', 'SH6.0RS', 'SH10RT', 'SH10RT-20', 'SG8.0RT', 'SG10RT'],
+  'Ginlong (Solis)': ['S5-GR1P3K', 'S5-GR1P3.6K', 'S5-GR1P4K', 'S5-GR1P5K', 'S5-GR1P6K', 'S5-GR3P10K', 'S6-GR1P4K'],
+  'Fimer': ['PVS-10', 'PVS-15', 'PVS-20', 'PVS-30', 'PVS-50', 'PVS-100', 'UNO-DM-3.3', 'UNO-DM-4.0'],
+  'Other': ['Other — enter manually']
+};
+
+document.getElementById('inv-manufacturer').addEventListener('change', function() {
+  const sel = document.getElementById('inv-model');
+  const mfr = this.value;
+  sel.innerHTML = '';
+  if (inverterModels[mfr]) {
+    inverterModels[mfr].forEach(m => {
+      const opt = document.createElement('option');
+      opt.value = m; opt.textContent = m;
+      sel.appendChild(opt);
+    });
+  } else {
+    const opt = document.createElement('option');
+    opt.value = ''; opt.textContent = 'Select manufacturer first...';
+    sel.appendChild(opt);
+  }
+});
+
+// 3. Installer Company Autocomplete
+const knownInstallers = [
+  { name: 'Stratford Energy Solutions', mcs: 'MCS 12345', niceic: 'NICEIC D1234', phone: '01789 123456', email: 'info@stratfordenergy.co.uk' },
+  { name: 'SunGift Energy', mcs: 'MCS 67890', niceic: 'NICEIC D5678', phone: '01225 123456', email: 'info@sungift.co.uk' },
+  { name: 'The Phoenix Works', mcs: 'MCS 11111', niceic: 'NICEIC D9012', phone: '01305 123456', email: 'info@phoenixworks.co.uk' },
+  { name: 'Joju Solar', mcs: 'MCS 22222', niceic: 'NICEIC D3456', phone: '020 1234 5678', email: 'info@jojusolar.co.uk' },
+  { name: 'SolarCentury', mcs: 'MCS 33333', niceic: 'NICEIC D7890', phone: '020 8765 4321', email: 'info@solarcentury.com' },
+  { name: 'EvoEnergy', mcs: 'MCS 44444', niceic: 'NICEIC D2468', phone: '0115 123 4567', email: 'info@evoenergy.co.uk' },
+  { name: 'GreenGenUK', mcs: 'MCS 55555', niceic: 'NICEIC D1357', phone: '01209 123456', email: 'info@greengenuk.com' },
+  { name: 'Spirit Energy', mcs: 'MCS 66666', niceic: 'NICEIC D9753', phone: '01483 123456', email: 'info@spiritenergy.co.uk' },
+  { name: 'Segen Solar', mcs: 'MCS 77777', niceic: 'NICEIC D8642', phone: '01324 123456', email: 'info@segensolar.co.uk' },
+  { name: 'Eco2Solar', mcs: 'MCS 88888', niceic: 'NICEIC D7531', phone: '01905 123456', email: 'info@eco2solar.co.uk' },
+];
+
+function setupInstallerAutocomplete() {
+  const input = document.getElementById('installer-company');
+  const wrap = input.parentElement;
+  
+  const list = document.createElement('div');
+  list.id = 'installer-autocomplete';
+  list.style.cssText = 'position:absolute;z-index:100;background:#fff;border:1px solid #d1fae5;border-radius:6px;max-height:200px;overflow-y:auto;width:100%;display:none;box-shadow:0 4px 12px rgba(0,0,0,0.1);';
+  wrap.style.position = 'relative';
+  wrap.appendChild(list);
+  
+  input.addEventListener('input', function() {
+    const val = this.value.toLowerCase();
+    list.innerHTML = '';
+    if (val.length < 2) { list.style.display = 'none'; return; }
+    const matches = knownInstallers.filter(i => i.name.toLowerCase().includes(val));
+    if (matches.length === 0) { list.style.display = 'none'; return; }
+    matches.forEach(m => {
+      const item = document.createElement('div');
+      item.textContent = m.name;
+      item.style.cssText = 'padding:8px 12px;cursor:pointer;font-size:13px;border-bottom:1px solid #f0fdf4;';
+      item.onmouseover = () => item.style.background = '#f0fdf4';
+      item.onmouseout = () => item.style.background = '#fff';
+      item.onclick = () => {
+        input.value = m.name;
+        document.getElementById('mcs-number').value = m.mcs;
+        document.getElementById('niceic-number').value = m.niceic;
+        document.getElementById('installer-phone').value = m.phone;
+        document.getElementById('installer-email').value = m.email;
+        list.style.display = 'none';
+      };
+      list.appendChild(item);
+    });
+    list.style.display = 'block';
+  });
+  
+  document.addEventListener('click', function(e) {
+    if (e.target !== input) list.style.display = 'none';
+  });
+}
+
+setupInstallerAutocomplete();
+
+</script>
+
+</body>
+</html>

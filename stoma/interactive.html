@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stoma Alert — 6-Month Interactive Strategy</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --primary: #0D2137;
+  --accent: #7ABFA5;
+  --dark: #1B3A5F;
+  --light-bg: #f9fafb;
+  --border: #E5E7EB;
+  --text: #374151;
+  --gray: #6B7280;
+}
+
+html { scroll-behavior: smooth; }
+body { 
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Source Sans 3', sans-serif;
+  background: var(--light-bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* HEADER & NAV */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--primary);
+  border-bottom: 3px solid var(--accent);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  min-height: 60px;
+  gap: 32px;
+}
+
+.nav-brand {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+}
+
+.nav-dot {
+  width: 28px;
+  height: 28px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 14px;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  flex: 1;
+}
+
+.nav-tab {
+  padding: 0 14px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  color: rgba(255,255,255,0.6);
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  user-select: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.nav-tab:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+.nav-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* SEARCH BAR */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 0 12px;
+  min-width: 180px;
+}
+
+.search-input {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 12px;
+  padding: 8px 8px;
+  width: 100%;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+/* CONTENT */
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 32px;
+}
+
+.panel {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.panel.show {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-size: 32px;
+  color: var(--dark);
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: var(--gray);
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+h2 {
+  font-size: 20px;
+  color: var(--dark);
+  margin: 36px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #B8DDD2;
+}
+
+h3 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--dark);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 20px 0 12px;
+}
+
+/* STATS ROW */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 24px 0;
+}
+
+.stat {
+  padding: 20px 16px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.stat:last-child { border-right: none; }
+
+.stat:hover {
+  background: #fafbfc;
+  transform: translateY(-2px);
+}
+
+.stat-num {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.stat-label {
+  font-size: 10px;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 6px;
+}
+
+/* BOXES */
+.box {
+  padding: 16px 18px;
+  margin: 20px 0;
+  border-radius: 6px;
+  border-left: 4px solid;
+  font-size: 13px;
+  line-height: 1.65;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.box:hover { transform: translateX(2px); }
+
+.box-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.box-red { background: #FEF2F2; border-color: #DC2626; }
+.box-amber { background: #FEF3C7; border-color: #D97706; }
+.box-mint { background: #EAF6F2; border-color: var(--accent); }
+.box-navy { background: #EBF2FA; border-color: var(--dark); }
+
+/* GRID & CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+
+.card-title {
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.card-body { font-size: 13px; color: var(--gray); }
+
+/* LISTS */
+ul, ol {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+li {
+  margin: 6px 0;
+  font-size: 13px;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 14px;
+}
+
+li:before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* TABLES */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 12px;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+table th {
+  background: var(--dark);
+  color: #fff;
+  padding: 12px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+table tr:hover td { background: #f9fafb; }
+
+table tr:nth-child(even) td { background: #fafbfc; }
+
+/* TAGS */
+.tag {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  margin: 2px;
+}
+
+.tag-green { background: #ECFDF5; color: #059669; }
+.tag-amber { background: #FEF3C7; color: #D97706; }
+.tag-red { background: #FEF2F2; color: #DC2626; }
+
+/* EXPANDABLE SECTION */
+.expandable {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 16px 0;
+  background: #fff;
+}
+
+.expandable-header {
+  padding: 16px;
+  background: #f9fafb;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.expandable-header:hover {
+  background: #f0f1f2;
+}
+
+.expandable-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  color: var(--accent);
+}
+
+.expandable-header.expanded .expandable-icon {
+  transform: rotate(90deg);
+}
+
+.expandable-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 16px;
+}
+
+.expandable-header.expanded ~ .expandable-content {
+  max-height: 2000px;
+  padding: 16px;
+}
+
+/* FOOTER */
+footer {
+  background: var(--primary);
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 24px;
+  font-size: 11px;
+  margin-top: 48px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+  
+  .nav-tabs {
+    width: 100%;
+    gap: 0;
+  }
+  
+  .nav-tab {
+    padding: 0 10px;
+    font-size: 11px;
+  }
+  
+  .search-container {
+    margin-left: 0;
+    width: 100%;
+    min-width: unset;
+  }
+  
+  .content {
+    padding: 24px 16px;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  h1 { font-size: 24px; }
+  h2 { font-size: 16px; }
+  
+  table {
+    font-size: 11px;
+  }
+  
+  table td, table th {
+    padding: 8px;
+  }
+}
+
+/* HIGHLIGHT SEARCH RESULTS */
+.highlight {
+  background: #fef08a;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="nav">
+    <div class="nav-brand"><div class="nav-dot">S</div> Stoma Alert</div>
+    <div class="nav-tabs">
+      <div class="nav-tab active" onclick="switchTab('strategy', event)">📋 Strategy</div>
+      <div class="nav-tab" onclick="switchTab('audience', event)">🎯 Audience</div>
+      <div class="nav-tab" onclick="switchTab('platform', event)">📱 Platform</div>
+      <div class="nav-tab" onclick="switchTab('marketing', event)">📣 Marketing</div>
+      <div class="nav-tab" onclick="switchTab('partners', event)">🤝 Partners</div>
+      <div class="nav-tab" onclick="switchTab('bizmodel', event)">💷 Revenue</div>
+    </div>
+    <div class="search-container">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<!-- TAB 1: STRATEGY -->
+<div class="panel show" id="strategy">
+<h1>6-Month Business Strategy</h1>
+<p class="subtitle">Three phases: Fix the Foundation (Month 1–2), Build the Evidence (Month 3–4), Activate the Market (Month 5–6).</p>
+
+<div class="stat-row">
+  <div class="stat"><div class="stat-num">£5M</div><div class="stat-label">Target Exit</div></div>
+  <div class="stat"><div class="stat-num">12–18</div><div class="stat-label">Months</div></div>
+  <div class="stat"><div class="stat-num">£135–255K</div><div class="stat-label">Investment</div></div>
+  <div class="stat"><div class="stat-num">165K+</div><div class="stat-label">UK Patients</div></div>
+  <div class="stat"><div class="stat-num">12,500</div><div class="stat-label">Community</div></div>
+</div>
+
+<h2>Month 1–2: Fix the Foundation</h2>
+<div class="box box-red"><div class="box-title">🔴 Non-Negotiable</div>Everything else depends on this. Legal and technical blockers must clear before any commercial activity.</div>
+
+<div class="grid">
+  <div class="card">
+    <div class="card-title">Regulatory</div>
+    <ul>
+      <li>MHRA registration initiated</li>
+      <li>IP assignment signed (PL → UK)</li>
+      <li>ICO registration (data controller)</li>
+      <li>Clinical Safety Officer appointed</li>
+      <li>DCB0129 process started</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">Operational</div>
+    <ul>
+      <li>UK bank account open</li>
+      <li>Professional liability insurance</li>
+      <li>UK cloud migration plan</li>
+      <li>support@stomaalert.co.uk live</li>
+      <li>Accounting setup</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">Platform</div>
+    <ul>
+      <li>Replace phone SSO (email auth)</li>
+      <li>Demo environment live</li>
+      <li>UK localisation started</li>
+      <li>WCAG 2.1 AA audit scoped</li>
+      <li>Penetration test planned</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Month 3–4: Build the Evidence</h2>
+<div class="box box-amber"><div class="box-title">🟡 Commercial Conversation Starts Here</div>Real-world UK evidence transforms every conversation with manufacturers, NHS, charities, and acquirers.</div>
+
+<table>
+  <tr><th>Workstream</th><th>Action</th><th>Output</th></tr>
+  <tr><td><strong>Community Pilot</strong></td><td>Deploy to Facebook group (12,500 members)</td><td>200+ structured feedback</td></tr>
+  <tr><td><strong>Clinical Study</strong></td><td>Submit study protocol to ethics</td><td>Ethics approval secured</td></tr>
+  <tr><td><strong>Manufacturers</strong></td><td>Initial meetings: Coloplast, ConvaTec, Salts</td><td>NDA signed with ≥1</td></tr>
+  <tr><td><strong>NHS</strong></td><td>Kent & Medway ICB meeting</td><td>Pilot proposal invite</td></tr>
+  <tr><td><strong>Grants</strong></td><td>SBRI Phase 1 application</td><td>Award OR next round ready</td></tr>
+</table>
+
+<h2>Month 5–6: Activate the Market</h2>
+<div class="box box-mint" style="border-color: #059669; background: #ECFDF5;"><div class="box-title">🟢 Commercial Activation</div>Leverage evidence to land first commercial agreements and acquisition conversations.</div>
+
+<div class="grid">
+  <div class="card">
+    <div class="card-title">Manufacturer</div>
+    <ul>
+      <li>Coloplast or ConvaTec pilot signed</li>
+      <li>Product recommendation integration scoped</li>
+      <li>Data sharing agreement drafted</li>
+      <li>Revenue terms agreed</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">NHS</div>
+    <ul>
+      <li>Kent & Medway ICB pilot submitted</li>
+      <li>SBRI Phase 2 prepared</li>
+      <li>NIHR i4i PDA submitted</li>
+      <li>3 stoma nurse champions engaged</li>
+    </ul>
+  </div>
+  <div class="card">
+    <div class="card-title">Acquisition Prep</div>
+    <ul>
+      <li>1-page teaser circulated</li>
+      <li>Data room structure built</li>
+      <li>Health econ model validated</li>
+      <li>IP documentation complete</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Phase Gates at Month 6</h2>
+<table>
+  <tr><th>Milestone</th><th>Target</th><th>Why</th></tr>
+  <tr><td>MHRA registered</td><td>✓ Complete</td><td>Platform legally deployable in UK</td></tr>
+  <tr><td>IP assignment signed</td><td>✓ Complete</td><td>Can commercially represent platform</td></tr>
+  <tr><td>UK patients using</td><td>1,000+</td><td>Minimum evidence for manufacturer conversations</td></tr>
+  <tr><td>Manufacturer engagement</td><td>NDA + demo to ≥1</td><td>Commercial pipeline opened</td></tr>
+  <tr><td>NHS contact</td><td>Kent & Medway proposal submitted</td><td>NHS credibility for all conversations</td></tr>
+  <tr><td>Platform live UK</td><td>App Store + web, UK-hosted</td><td>Patients and nurses can access</td></tr>
+  <tr><td>Clinical champions</td><td>3 named stoma nurses using platform</td><td>Proof of clinical adoption</td></tr>
+</table>
+
+</div>
+
+<!-- TAB 2: AUDIENCE -->
+<div class="panel" id="audience">
+<h1>Commercial Target Audience</h1>
+<p class="subtitle">Three distinct segments. Each needs different value prop, entry route, revenue model, and timeline.</p>
+
+<h2>Audience 1: Stoma Bag Suppliers</h2>
+<div class="box box-amber"><div class="box-title">⚡ Fastest Route to Revenue · 6–9 Months</div>Coloplast, ConvaTec, Salts, Hollister. They spend millions acquiring patients. Stoma Alert threatens that. That threat is why they'll pay.</div>
+
+<h3>Why They Buy</h3>
+<ul>
+  <li><strong>Commercial Threat:</strong> Stoma Alert recommends competitor products if they don't engage. Patient switching risk.</li>
+  <li><strong>Data Value:</strong> Real-world patient complication data, product usage patterns worth millions to R&D.</li>
+  <li><strong>NHS Leverage:</strong> Independent clinical tool gets NHS adoption their branded apps cannot.</li>
+</ul>
+
+<h3>Revenue Models</h3>
+<ul>
+  <li><strong>Partnership Fee:</strong> £30–100K annual for preferred supplier status</li>
+  <li><strong>Data Licence:</strong> £20–50K annual for anonymised market intelligence</li>
+  <li><strong>Acquisition:</strong> £5M+ exit. Buys IP, ontology, patient relationships, UK deployment</li>
+</ul>
+
+<table>
+  <tr><th>Manufacturer</th><th>Score</th><th>Strategy</th><th>Timing</th></tr>
+  <tr><td><strong>Coloplast</strong></td><td><span class="tag tag-green">14/15</span></td><td>Active digital M&A, needs independent layer their app can't be</td><td>Now</td></tr>
+  <tr><td><strong>ConvaTec</strong></td><td><span class="tag tag-green">13/15</span></td><td>HALO is manufacturer-branded — limits NHS. Stoma Alert solves that</td><td>Now</td></tr>
+  <tr><td><strong>Salts Healthcare</strong></td><td><span class="tag tag-amber">11/15</span></td><td>UK HQ, no digital health strategy — risk of being left behind</td><td>Now</td></tr>
+  <tr><td><strong>Hollister</strong></td><td><span class="tag tag-amber">10/15</span></td><td>No clinical decision support — data asset angle strongest</td><td>Month 3</td></tr>
+</table>
+
+<h2>Audience 2: NHS / Integrated Care Boards</h2>
+<div class="box box-navy"><div class="box-title">🏥 Highest Credibility · Longest Timeline · 18–24 Months</div>NHS contracts create the credibility that unlocks manufacturer premium pricing and acquisition valuation.</div>
+
+<h3>Why They Buy</h3>
+<ul>
+  <li>£8,000 cost saving per prevented hospitalisation — direct budget impact</li>
+  <li>Reduces stoma nurse workload — NHS staffing pressure</li>
+  <li>Aligns with NHSE digital-first, remote monitoring priorities</li>
+  <li>165,000–205,000 UK patients = material population health impact</li>
+</ul>
+
+<h3>Entry Pathway</h3>
+<ol>
+  <li>SBRI Healthcare Phase 1 application (£100K, 6 months) — funded gateway</li>
+  <li>Kent & Medway ICB innovation meeting — proven digital adopter</li>
+  <li>ASCN UK demo — nurses decide what NHS adopts</li>
+  <li>SBRI Phase 2 or NIHR i4i PDA — funded NHS deployment</li>
+  <li>NHS pilot agreement — the proof point for manufacturer premium</li>
+</ol>
+
+<h2>Audience 3: Patients (Direct & Community)</h2>
+<div class="box box-mint"><div class="box-title">👥 Evidence Engine, Not Revenue Engine</div>Community first, subscription second. Every patient interaction generates data that makes every other commercial conversation more powerful.</div>
+
+<h3>Primary Patient Needs</h3>
+<ul>
+  <li><strong>Leak detection</strong> — higher priority than infection monitoring</li>
+  <li><strong>Social acceptance</strong> — psychological support post-surgery</li>
+  <li><strong>Community connection</strong> — peer support, not just clinical</li>
+  <li><strong>Expert access</strong> — rapid clinical response without travel</li>
+</ul>
+
+<h3>Acquisition Channels</h3>
+<ul>
+  <li>Facebook group (12,500 members) — pilot access via Clare Pascoe</li>
+  <li>Colostomy UK newsletter — warm relationship, high-intent audience</li>
+  <li>Ileostomy Association (IA) — 50-year nurse network</li>
+  <li>Hospital discharge packs — QR code, point of highest need</li>
+  <li>Charity support groups and local events</li>
+</ul>
+
+</div>
+
+<!-- TAB 3: PLATFORM -->
+<div class="panel" id="platform">
+<h1>Platform Go-to-Market</h1>
+<p class="subtitle">Three deployment surfaces: Apple App Store, Google Play Store, Web platform. All three live in UK, compliant, and findable by Month 4.</p>
+
+<div class="box box-amber"><div class="box-title">📊 Current State</div>Platform exists and functions but is not UK-ready on any surface. Patient app runs on Android/iOS but not in UK app stores. Web is hosted outside UK. Website is not UK-localised or NHS-credentialled.</div>
+
+<h2>Google Play (Android) — PRIMARY</h2>
+
+<div class="expandable">
+  <div class="expandable-header" onclick="toggleExpand(this)">
+    <span class="expandable-icon">›</span>
+    <span><strong>Why Android First</strong> (170 of 209 Polish users, 55+ demographics)</span>
+  </div>
+  <div class="expandable-content">
+    <ul>
+      <li>170 of 209 Polish test users were Android</li>
+      <li>UK NHS patients skew older demographic — Android market share higher in 55+</li>
+      <li>Google Play review faster for medical apps</li>
+      <li>Can update without full review cycle</li>
+      <li>Closed beta available — deploy to Facebook community pilot immediately</li>
+    </ul>
+  </div>
+</div>
+
+<table>
+  <tr><th>Phase</th><th>When</th><th>Users</th><th>Output</th></tr>
+  <tr><td><strong>Closed Beta</strong></td><td>Month 2</td><td>Facebook group (200 testers)</td><td>Structured feedback</td></tr>
+  <tr><td><strong>Open Beta</strong></td><td>Month 3</td><td>1,000 target</td><td>Patient usage data, reviews</td></tr>
+  <tr><td><strong>Full UK Release</strong></td><td>Month 4</td><td>Unlimited</td><td>MHRA registration complete</td></tr>
+</table>
+
+<h2>Apple App Store (iOS)</h2>
+
+<table>
+  <tr><th>Requirement</th><th>Status</th></tr>
+  <tr><td>UK App Store listing (separate from EU)</td><td>Setup Month 1</td></tr>
+  <tr><td>Medical device disclaimer</td><td>Required for iOS</td></tr>
+  <tr><td>MHRA registration number in listing</td><td>Month 2–3</td></tr>
+  <tr><td>UK privacy policy (ICO-registered)</td><td>Month 1</td></tr>
+  <tr><td>Remove phone SSO before submission</td><td>Month 1 critical</td></tr>
+  <tr><td>Accessibility audit (VoiceOver)</td><td>Month 2</td></tr>
+</table>
+
+<h2>Web Platform (stomaalert.co.uk)</h2>
+
+<div class="card">
+  <div class="card-title">Critical Changes</div>
+  <ul>
+    <li><strong>Domain:</strong> Migrate to stomaalert.co.uk (NHS credibility)</li>
+    <li><strong>Hosting:</strong> Azure UK South or AWS eu-west-2 (NHS data residency)</li>
+    <li><strong>SSL:</strong> Extended Validation certificate</li>
+    <li><strong>Accessibility:</strong> WCAG 2.1 AA mandatory for NHS-facing web</li>
+    <li><strong>NHS Login:</strong> Scope integration (clinician authentication)</li>
+    <li><strong>Patient Portal:</strong> Link-based access for community pilot</li>
+  </ul>
+</div>
+
+</div>
+
+<!-- TAB 4: MARKETING -->
+<div class="panel" id="marketing">
+<h1>Marketing Go-to-Market</h1>
+<p class="subtitle">Clinical marketing builds NHS/manufacturer conversation. Patient marketing builds community adoption and evidence.</p>
+
+<h2>Website Strategy</h2>
+<table>
+  <tr><th>Audience</th><th>Page</th><th>Core Message</th></tr>
+  <tr><td><strong>Patients</strong></td><td>For Patients</td><td>"Get expert stoma care from home. No waiting. No travel."</td></tr>
+  <tr><td><strong>Stoma Nurses</strong></td><td>For Clinicians</td><td>"Half the admin. Twice the clinical time." SUS 87.5 front and centre.</td></tr>
+  <tr><td><strong>NHS / ICBs</strong></td><td>For NHS</td><td>"£8,000 per prevented hospitalisation. 165,000 UK patients."</td></tr>
+  <tr><td><strong>Manufacturers</strong></td><td>For Partners</td><td>"Your products, recommended on clinical merit. Independent platform. NHS adoption."</td></tr>
+</table>
+
+<h2>Clinical Marketing Channels</h2>
+<table>
+  <tr><th>Channel</th><th>Audience</th><th>Action</th><th>Timeline</th></tr>
+  <tr><td>ASCN UK Conference</td><td>Stoma care nurses</td><td>Exhibitor stand or demo session</td><td>Next event</td></tr>
+  <tr><td>Peer-reviewed publication</td><td>Clinicians, NHS, acquirers</td><td>Submit Polish validation data</td><td>Month 3–6</td></tr>
+  <tr><td>LinkedIn (Clinical)</td><td>Stoma nurses, NHS leads</td><td>Kevin/Mark post weekly clinical insights</td><td>Start now</td></tr>
+  <tr><td>KOL endorsements</td><td>All audiences</td><td>3 named stoma nurses publicly endorsing</td><td>Month 3–4</td></tr>
+</table>
+
+<h2>Marketing Budget (6 Months)</h2>
+<table>
+  <tr><th>Item</th><th>Cost</th></tr>
+  <tr><td>Website UK relaunch (design + copy + SEO)</td><td>£3–6K</td></tr>
+  <tr><td>App Store listings + screenshots</td><td>£500–1,500</td></tr>
+  <tr><td>Patient testimonial video (1 × 60 sec)</td><td>£800–2K</td></tr>
+  <tr><td>ASCN UK conference presence</td><td>£1–3K</td></tr>
+  <tr><td>LinkedIn content (10 posts/month)</td><td>£500–1K/month</td></tr>
+  <tr><td>Printed materials (QR cards, discharge inserts)</td><td>£300–800</td></tr>
+  <tr><td>Peer review publication fee</td><td>£2–5K</td></tr>
+  <tr><td><strong>Total</strong></td><td><strong>£8–19K</strong></td></tr>
+</table>
+
+</div>
+
+<!-- TAB 5: PARTNERS -->
+<div class="panel" id="partners">
+<h1>Partner Strategy</h1>
+<p class="subtitle">Charity partners build credibility and community access. Commercial partners provide revenue. NHS provides validation premium.</p>
+
+<h2>Charity Partners — Credibility & Community Access</h2>
+<div class="box box-mint"><div class="box-title">🏆 Strategic Logic</div>A charity endorsement in UK healthcare is worth £100K+ in marketing budget. When Colostomy UK recommends Stoma Alert, adoption follows.</div>
+
+<div class="grid">
+  <div class="expandable">
+    <div class="expandable-header" onclick="toggleExpand(this)">
+      <span class="expandable-icon">›</span>
+      <span><strong>Colostomy UK</strong> — Warm relationship ready to activate</span>
+    </div>
+    <div class="expandable-content">
+      <ul>
+        <li><strong>Status:</strong> Libby Herbert (CEO) + Ian Daniels FRCS. January 2026 meeting documented.</li>
+        <li><strong>Ask:</strong> Feature Stoma Alert in newsletter. Co-design community pilot.</li>
+        <li><strong>What we offer:</strong> Free access for members, feedback loop, joint content creation.</li>
+        <li><strong>Timeline:</strong> Email ready to send Week 1.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="expandable">
+    <div class="expandable-header" onclick="toggleExpand(this)">
+      <span class="expandable-icon">›</span>
+      <span><strong>ASCN UK</strong> — The gatekeepers</span>
+    </div>
+    <div class="expandable-content">
+      <ul>
+        <li><strong>Status:</strong> Association of Stoma Care Nurses — they decide what gets recommended.</li>
+        <li><strong>Ask:</strong> Present at professional development. Get 3 members as champions.</li>
+        <li><strong>What we offer:</strong> Free clinical accounts, first-look at UK features, input into validation study.</li>
+        <li><strong>Timeline:</strong> First contact Month 1.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="expandable">
+    <div class="expandable-header" onclick="toggleExpand(this)">
+      <span class="expandable-icon">›</span>
+      <span><strong>Ileostomy Association (IA)</strong> — 50+ year network</span>
+    </div>
+    <div class="expandable-content">
+      <ul>
+        <li><strong>Status:</strong> Patient visiting programme, quarterly magazine, local groups UK & Ireland.</li>
+        <li><strong>Ask:</strong> Feature in magazine. Include in visiting programme.</li>
+        <li><strong>What we offer:</strong> Free platform access, co-branded patient content.</li>
+        <li><strong>Timeline:</strong> First contact Month 2.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<h2>Commercial Partners</h2>
+<table>
+  <tr><th>Partner Type</th><th>Who</th><th>Model</th><th>Revenue</th></tr>
+  <tr><td><strong>Stoma Bag Suppliers</strong></td><td>Coloplast, ConvaTec, Salts, Hollister</td><td>Data partnership + product integration</td><td>£30–100K/year + acquisition</td></tr>
+  <tr><td><strong>Home Delivery Pharmacies</strong></td><td>Fittleworth, Pelican, Medilink</td><td>Co-marketing + product recommendation revenue share</td><td>Patient acquisition + licensing</td></tr>
+  <tr><td><strong>Private Health Insurers</strong></td><td>AXA, Bupa, Aviva</td><td>Reimbursement model: insurer pays per-patient subscription as member benefit</td><td>B2B2C revenue at scale</td></tr>
+</table>
+
+</div>
+
+<!-- TAB 6: BIZMODEL -->
+<div class="panel" id="bizmodel">
+<h1>Business Model & Revenue</h1>
+<p class="subtitle">Three viable revenue models, each building on the previous. Near-term: manufacturer partnerships. Medium-term: NHS licensing. Long-term: data licensing and strategic exit.</p>
+
+<h2>Revenue by Customer Segment</h2>
+<table>
+  <tr><th>Customer</th><th>Pricing Model</th><th>Price Point</th></tr>
+  <tr><td><strong>Manufacturer</strong></td><td>Annual partnership fee + data licence</td><td>£30–100K/year</td></tr>
+  <tr><td><strong>NHS ICB/Trust</strong></td><td>Per-patient annual licence</td><td>£150–300/patient/year</td></tr>
+  <tr><td><strong>Private Hospital</strong></td><td>Per-department annual licence</td><td>£5–15K/year</td></tr>
+  <tr><td><strong>Patient (B2C)</strong></td><td>Freemium + paid subscription</td><td>Free / £4.99–9.99/month</td></tr>
+  <tr><td><strong>Stoma Stick Device</strong></td><td>One-off sale</td><td>£50–80 (consumer) / £25–40 (bulk)</td></tr>
+</table>
+
+<h2>Revenue Scenarios — 6 to 18 Months</h2>
+<div class="grid">
+  <div class="card" style="border-top: 3px solid #D97706;">
+    <div class="card-title" style="color: #D97706;">Conservative</div>
+    <p style="font-size: 12px; color: var(--gray); margin-bottom: 12px;">Manufacturer partnership only</p>
+    <ul>
+      <li>Mfr pilot fee (×1): £30–50K</li>
+      <li>Data partnership: £10–20K</li>
+      <li>Stoma Stick (500 units): £25–40K</li>
+      <li>SBRI grant: £100K</li>
+      <li>Patient subs (100): £5K</li>
+      <li style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;"><strong>Year 1 Total: £170–215K</strong></li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-top: 3px solid #1B3A5F;">
+    <div class="card-title" style="color: #1B3A5F;">Base Case</div>
+    <p style="font-size: 12px; color: var(--gray); margin-bottom: 12px;">Manufacturer + NHS pilot</p>
+    <ul>
+      <li>Mfr partnerships (×2): £80–120K</li>
+      <li>NHS ICB pilot: £50–80K</li>
+      <li>Data licensing (×2): £30–50K</li>
+      <li>SBRI Phase 1+2: £100–600K</li>
+      <li>Patient subs (500): £25K</li>
+      <li style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;"><strong>Year 1 Total: £285–875K</strong></li>
+    </ul>
+  </div>
+
+  <div class="card" style="border-top: 3px solid #059669;">
+    <div class="card-title" style="color: #059669;">Optimistic</div>
+    <p style="font-size: 12px; color: var(--gray); margin-bottom: 12px;">Full commercial + acquisition</p>
+    <ul>
+      <li>Mfr partnerships (×3+): £150–300K</li>
+      <li>NHS contracts (2 ICBs): £100–200K</li>
+      <li>Insurer pilot: £50–100K</li>
+      <li>Grants total: £250K–1M</li>
+      <li>Acquisition (Month 18): £5M</li>
+      <li style="border-top: 1px solid var(--border); padding-top: 8px; margin-top: 8px;"><strong>18-Month Value: £5.5–6.6M</strong></li>
+    </ul>
+  </div>
+</div>
+
+<h2>Why £5M Is the Target</h2>
+<p>A £5M acquisition is realistic for a medtech platform with CE marking, clinical validation, manufacturer-independent positioning, and demonstrated UK traction. Comparable exits have achieved similar valuations at pre-revenue stage with regulatory compliance and clinical evidence.</p>
+
+<table>
+  <tr><th>Valuation Driver</th><th>Current</th><th>Required (£5M)</th><th>Timeline</th></tr>
+  <tr><td>CE Mark + MHRA</td><td>CE ✅ MHRA ❌</td><td>Both complete</td><td>Month 1–3</td></tr>
+  <tr><td>Clinical validation</td><td>Polish only</td><td>UK patients + nurse endorsement</td><td>Month 3–6</td></tr>
+  <tr><td>UK contracts</td><td>None</td><td>1 mfr LOI + 1 NHS pilot</td><td>Month 5–9</td></tr>
+  <tr><td>IP clarity</td><td>Unconfirmed</td><td>Formal UK assignment signed</td><td>Month 1</td></tr>
+  <tr><td>Revenue evidence</td><td>None</td><td>£50–100K committed</td><td>Month 6–12</td></tr>
+  <tr><td>Data asset</td><td>Polish only</td><td>1,000+ UK consultations</td><td>Month 6–12</td></tr>
+</table>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+Stoma Alert — 6-Month Business Strategy | BridgePointai Confidential | April 2026<br>
+Kevin Doyle · Mark Evans-Smith · Virginia Filmer-Sankey
+</footer>
+
+<script>
+function switchTab(tabId, event) {
+  // Prevent default if clicked from nav
+  if (event) event.preventDefault();
+  
+  // Hide all panels
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('show'));
+  
+  // Remove active from all tabs
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  
+  // Show target panel
+  document.getElementById(tabId).classList.add('show');
+  
+  // Mark tab active
+  event.target.closest('.nav-tab').classList.add('active');
+  
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleExpand(element) {
+  element.classList.toggle('expanded');
+}
+
+// Search functionality
+document.getElementById('searchInput').addEventListener('keyup', function(e) {
+  const query = e.target.value.toLowerCase();
+  const panels = document.querySelectorAll('.panel');
+  
+  panels.forEach(panel => {
+    const text = panel.textContent.toLowerCase();
+    if (!query || text.includes(query)) {
+      panel.classList.add('show');
+    }
+  });
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+  const tabs = document.querySelectorAll('.nav-tab');
+  const activeIndex = Array.from(tabs).findIndex(t => t.classList.contains('active'));
+  
+  if (e.key === 'ArrowRight' && activeIndex < tabs.length - 1) {
+    tabs[activeIndex + 1].click();
+  } else if (e.key === 'ArrowLeft' && activeIndex > 0) {
+    tabs[activeIndex - 1].click();
+  }
+});
+</script>
+
+</body>
+</html>

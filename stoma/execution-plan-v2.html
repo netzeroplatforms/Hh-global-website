@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stoma Alert — Combined Execution Plan</title>
+<meta name="description" content="UK Business Build + 6-Month Acquisition Plan with ownership overlay: UK/AI Delivery Team + Poland Team.">
+<meta name="theme-color" content="#0D2137">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap">
+<style>
+:root{
+  --navy: #0D2137; --navy-2: #1B3A5F; --navy-3: #274C73;
+  --mint: #7ABFA5; --mint-2: #B8DDD2; --mint-soft: #E8F3EF;
+  --paper: #FFFFFF; --paper-alt: #F5F8FA; --rule: #E2E8F0;
+  --ink: #111827; --ink-2: #374151; --ink-muted: #64748B;
+  --green: #047857; --green-soft: #D1FAE5;
+  --amber: #B45309; --amber-soft: #FEF3C7;
+  --red: #B91C1C; --red-soft: #FEE2E2;
+  --delivery: #0D2137; --delivery-soft: #E2E8F0;
+  --poland: #2563EB; --poland-soft: #DBEAFE;
+  --display: "Fraunces", Georgia, serif;
+  --body: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --section-y: clamp(2rem, 4vw, 3.5rem);
+  --max: 1200px;
+  --radius: 10px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--body); font-size: 15px; line-height: 1.6;
+  color: var(--ink-2); background: var(--paper); -webkit-font-smoothing: antialiased;
+}
+
+/* ===================== BADGES ===================== */
+.badge {
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  padding: 0.2rem 0.5rem; border-radius: 999px;
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.03em;
+  text-transform: uppercase; white-space: nowrap;
+}
+.badge-must { background: var(--green-soft); color: var(--green); }
+.badge-nice { background: var(--amber-soft); color: var(--amber); }
+.badge-skip { background: var(--red-soft); color: var(--red); }
+.badge-phase { background: var(--navy); color: #fff; font-family: var(--mono); font-size: 10px; }
+.badge-delivery { background: var(--delivery-soft); color: var(--delivery); }
+.badge-poland { background: var(--poland-soft); color: var(--poland); }
+.badge-row { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.4rem; }
+
+/* ===================== NAV ===================== */
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.95); backdrop-filter: saturate(140%) blur(8px); border-bottom: 1px solid var(--rule); }
+.nav-row { max-width: var(--max); margin: 0 auto; display: flex; align-items: center; gap: 2rem; padding: 0.85rem var(--gutter); }
+.brand { display: inline-flex; align-items: center; gap: 0.6rem; }
+.brand-mark { width: 30px; height: 30px; background: var(--mint); color: var(--navy); border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 16px; }
+.brand-name { font-family: var(--display); font-weight: 600; font-size: 18px; color: var(--navy); }
+
+/* ===================== HERO ===================== */
+.hero { padding: clamp(2.5rem, 6vw, 4rem) var(--gutter); background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; top: -80px; right: -80px; width: 350px; height: 350px; border: 1px solid var(--mint); border-radius: 50%; opacity: 0.25; }
+.hero-inner { max-width: var(--max); margin: 0 auto; position: relative; }
+.eyebrow { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mint); margin-bottom: 0.75rem; display: block; }
+.hero h1 { font-family: var(--display); font-size: clamp(1.8rem, 4.5vw, 2.8rem); font-weight: 500; line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 0.75rem; color: #fff; }
+.hero h1 em { font-style: italic; color: var(--mint); }
+.hero-lede { font-size: clamp(0.95rem, 1.2vw, 1.1rem); color: var(--mint-2); max-width: 58ch; margin: 0 0 1.25rem; }
+
+/* ===================== LEGEND STRIP ===================== */
+.legend-strip { background: var(--paper-alt); border-bottom: 1px solid var(--rule); padding: 1.25rem var(--gutter); }
+.legend-inner { max-width: var(--max); margin: 0 auto; }
+.legend-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-muted); margin-bottom: 0.75rem; }
+.legend-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; }
+@media (max-width: 700px) { .legend-grid { grid-template-columns: 1fr; } }
+.legend-col h4 { font-size: 12px; font-weight: 600; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
+.legend-col p { font-size: 12.5px; color: var(--ink-muted); line-height: 1.5; margin: 0; }
+.dot-delivery { width: 8px; height: 8px; border-radius: 50%; background: var(--delivery); }
+.dot-poland { width: 8px; height: 8px; border-radius: 50%; background: var(--poland); }
+
+/* ===================== PHASE STRIP ===================== */
+.phase-strip { background: var(--paper); border-bottom: 1px solid var(--rule); padding: 1.25rem var(--gutter); overflow-x: auto; }
+.phase-strip-inner { max-width: var(--max); margin: 0 auto; display: flex; gap: 0.75rem; }
+.phase-card { min-width: 180px; flex: 1; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem; }
+.phase-card.active { border-color: var(--mint); box-shadow: 0 0 0 2px var(--mint-soft); }
+.phase-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.35rem; }
+.phase-title { font-family: var(--display); font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 0.25rem; }
+.phase-weeks { font-size: 11px; color: var(--ink-muted); }
+
+/* ===================== LAYOUT ===================== */
+.layout { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 240px 1fr; gap: 2.5rem; padding: var(--section-y) var(--gutter); }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+/* ===================== SIDEBAR ===================== */
+.sidebar { position: sticky; top: 75px; align-self: start; }
+@media (max-width: 900px) { .sidebar { display: none; } }
+.sidebar h4 { font-family: var(--body); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.75rem; }
+.toc { list-style: none; padding: 0; margin: 0; }
+.toc li { margin-bottom: 0.05rem; }
+.toc a { display: block; padding: 0.3rem 0.45rem; border-radius: 5px; font-size: 12px; color: var(--ink-2); transition: background .15s, color .15s; }
+.toc a:hover, .toc a.active { background: var(--mint-soft); color: var(--navy); }
+.toc .toc-h1 { font-weight: 600; }
+.toc .toc-h2 { padding-left: 0.85rem; font-size: 11.5px; }
+
+/* ===================== MAIN ===================== */
+.main { min-width: 0; }
+.section { margin-bottom: var(--section-y); }
+.section:last-child { margin-bottom: 0; }
+
+.sec-head { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--mint); flex-wrap: wrap; }
+.sec-num { font-family: var(--display); font-size: clamp(1.6rem, 2.8vw, 2rem); font-weight: 500; color: var(--mint); line-height: 1; min-width: 50px; }
+.sec-title { font-family: var(--display); font-size: clamp(1.2rem, 2vw, 1.55rem); font-weight: 500; color: var(--navy); letter-spacing: -0.015em; }
+.sec-badges { margin-left: auto; display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.sec-note { font-size: 13.5px; color: var(--ink-muted); font-style: italic; margin: -0.4rem 0 1rem 58px; max-width: 65ch; }
+
+/* ===================== CARDS ===================== */
+.card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+@media (max-width: 700px) { .card-grid { grid-template-columns: 1fr; } }
+
+.card {
+  background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: 1.1rem; transition: border-color .2s, box-shadow .2s;
+}
+.card:hover { border-color: var(--mint); box-shadow: 0 2px 10px rgba(13,33,55,0.05); }
+.card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.5rem; }
+.card-header-left { display: flex; align-items: center; gap: 0.4rem; min-width: 0; }
+.card-icon { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); flex-shrink: 0; margin-top: 0.4rem; }
+.card h4 { font-family: var(--body); font-size: 13.5px; font-weight: 600; color: var(--navy); margin: 0; line-height: 1.35; }
+.card ul { list-style: none; padding: 0; margin: 0; }
+.card li { position: relative; padding-left: 1rem; font-size: 12.5px; color: var(--ink-2); line-height: 1.5; margin-bottom: 0.2rem; }
+.card li::before { content: ""; position: absolute; left: 0; top: 0.45em; width: 7px; height: 2px; background: var(--mint); }
+.card .card-note { font-size: 11.5px; color: var(--ink-muted); font-style: italic; margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px solid var(--rule); }
+
+.card-must { border-left: 3px solid var(--green); }
+.card-nice { border-left: 3px solid var(--amber); }
+.card-skip { border-left: 3px solid var(--red); opacity: 0.82; }
+.card-skip .card h4, .card-skip .card li { color: var(--ink-muted); }
+
+.card-owner-delivery { border-top: 3px solid var(--delivery); }
+.card-owner-poland { border-top: 3px solid var(--poland); }
+
+/* ===================== NHS TARGETS IN-SECTION ===================== */
+.nhs-target-mini { background: var(--paper-alt); border: 1px solid var(--rule); border-radius: 8px; padding: 0.85rem 1rem; margin-bottom: 0.6rem; }
+.nhs-target-mini:last-child { margin-bottom: 0; }
+.nhs-target-mini-header { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.3rem; flex-wrap: wrap; }
+.nhs-target-mini-name { font-weight: 600; font-size: 13px; color: var(--navy); }
+.nhs-target-mini-type { font-size: 11px; color: var(--ink-muted); }
+.nhs-target-mini-contact { font-size: 12px; color: var(--ink-2); margin-bottom: 0.15rem; }
+.nhs-target-mini-contact strong { color: var(--navy); }
+.nhs-target-mini-angle { font-size: 11.5px; color: var(--ink-muted); font-style: italic; margin-top: 0.3rem; }
+
+/* ===================== SUMMARY BOX ===================== */
+.summary-box { background: var(--navy); color: #fff; border-radius: var(--radius); padding: 1.5rem; margin: 1.25rem 0; }
+.summary-box h3 { font-family: var(--display); font-size: 1.2rem; font-weight: 500; color: #fff; margin: 0 0 0.85rem; }
+.summary-box h3 em { color: var(--mint); font-style: italic; }
+.summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+@media (max-width: 700px) { .summary-grid { grid-template-columns: 1fr; } }
+.summary-col h4 { font-family: var(--body); font-size: 10.5px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mint); margin-bottom: 0.5rem; }
+.summary-col ul { list-style: none; padding: 0; margin: 0; }
+.summary-col li { font-size: 12px; color: rgba(255,255,255,0.85); line-height: 1.5; margin-bottom: 0.25rem; }
+.summary-col li::before { content: "✓"; color: var(--mint); margin-right: 0.3rem; }
+
+/* ===================== CHECKLIST ===================== */
+.checklist { background: var(--paper-alt); border-radius: var(--radius); padding: 1.25rem; border: 1px solid var(--rule); }
+.checklist h4 { font-family: var(--body); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 0.85rem; }
+.checklist ul { list-style: none; padding: 0; margin: 0; }
+.checklist li { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 13px; color: var(--ink-2); line-height: 1.5; margin-bottom: 0.4rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--rule); }
+.checklist li:last-child { border: 0; margin: 0; padding-bottom: 0; }
+.check-box { width: 15px; height: 15px; border: 2px solid var(--mint); border-radius: 3px; flex-shrink: 0; margin-top: 0.1rem; }
+
+/* ===================== CTA ===================== */
+.cta-band { background: var(--navy); color: #fff; padding: clamp(2rem, 4vw, 3rem) var(--gutter); text-align: center; }
+.cta-band h2 { font-family: var(--display); font-size: clamp(1.4rem, 2.8vw, 2rem); font-weight: 500; color: #fff; margin: 0 0 0.6rem; }
+.cta-band h2 em { color: var(--mint); font-style: italic; }
+.cta-band p { color: var(--mint-2); max-width: 55ch; margin: 0 auto; font-size: 0.95rem; }
+
+/* ===================== FOOTER ===================== */
+footer { background: #081522; color: rgba(255,255,255,0.55); padding: 1.5rem var(--gutter); font-size: 12px; }
+.foot-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+
+/* ===================== PRINT ===================== */
+@media print { .nav, .sidebar, .phase-strip, .legend-strip, .cta-band { display: none; } .layout { grid-template-columns: 1fr; padding: 1.5rem; } body { font-size: 10pt; } .section { page-break-inside: avoid; margin-bottom: 1.25rem; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-row">
+    <a class="brand" href="#top"><span class="brand-mark">S</span><span class="brand-name">Stoma Alert</span></a>
+    <span style="font-size:13px;color:var(--ink-muted);margin-left:auto;">Combined Execution Plan — Ownership Overlay</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <span class="eyebrow">Strategic Asset Sale Readiness</span>
+    <h1>Combined Execution Plan<br><em>Who Does What</em></h1>
+    <p class="hero-lede">
+      The full UK Business Build overlaid with the 6-month acquisition timeline and a clear ownership model:
+      <strong style="color:var(--mint-2);">UK/AI Delivery Team</strong> carries the load, while the
+      <strong style="color:var(--mint-2);">Poland Team</strong> provides specialist technical and clinical support.
+    </p>
+  </div>
+</section>
+
+<!-- LEGEND STRIP -->
+<div class="legend-strip">
+  <div class="legend-inner">
+    <div class="legend-title">Ownership Model</div>
+    <div class="legend-grid">
+      <div class="legend-col">
+        <h4><span class="dot-delivery"></span> UK/AI Delivery Team</h4>
+        <p><strong>Mark / BridgePoint + AI (Jedi)</strong> — Market entry, NHS relationships, legal structure, buyer outreach, regulatory pathway, research, analysis, documentation, drafting, competitive intelligence, data room organisation. The primary delivery engine.</p>
+      </div>
+      <div class="legend-col">
+        <h4><span class="dot-poland"></span> Poland Team</h4>
+        <p><strong>Joanna / Mik-Wojtczak / Development team</strong> — Platform development, technical fixes, clinical data, code quality, documentation provision. Specialist support. They built it — they maintain and validate it.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE STRIP -->
+<div class="phase-strip">
+  <div class="phase-strip-inner">
+    <div class="phase-card active">
+      <div class="phase-label">Phase 1</div>
+      <div class="phase-title">Control & Structure</div>
+      <div class="phase-weeks">Weeks 1–4</div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-label">Phase 2</div>
+      <div class="phase-title">Make It Credible</div>
+      <div class="phase-weeks">Weeks 3–10</div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-label">Phase 3</div>
+      <div class="phase-title">Prove It Works</div>
+      <div class="phase-weeks">Weeks 8–18</div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-label">Phase 4</div>
+      <div class="phase-title">Package for Sale</div>
+      <div class="phase-weeks">Weeks 16–24</div>
+    </div>
+    <div class="phase-card">
+      <div class="phase-label">Phase 5</div>
+      <div class="phase-title">Sell the Deal</div>
+      <div class="phase-weeks">Weeks 20–26</div>
+    </div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <h4>Contents</h4>
+  <ul class="toc">
+    <li><a href="#s1" class="toc-h1">1. UK Market Entry</a></li>
+    <li><a href="#s2" class="toc-h1">2. Platform Review</a></li>
+    <li><a href="#s3" class="toc-h1">3. Documentation</a></li>
+    <li><a href="#s4" class="toc-h1">4. Regulatory</a></li>
+    <li><a href="#s5" class="toc-h1">5. Cloud & Tech</a></li>
+    <li><a href="#s6" class="toc-h1">6. Governance</a></li>
+    <li><a href="#s7" class="toc-h1">7. UK Business Setup</a></li>
+    <li><a href="#s8" class="toc-h1">8. Partners & NHS Targets</a></li>
+    <li><a href="#s9" class="toc-h1">9. Support</a></li>
+    <li><a href="#s10" class="toc-h1">10. Marketing</a></li>
+    <li><a href="#s11" class="toc-h1">11. Financial</a></li>
+    <li><a href="#s12" class="toc-h1">12. Operations</a></li>
+    <li><a href="#checklist" class="toc-h1">Week 1 Checklist</a></li>
+  </ul>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+<!-- SUMMARY -->
+<div class="summary-box">
+  <h3>What You Actually Need to <em>Complete</em></h3>
+  <div class="summary-grid">
+    <div class="summary-col">
+      <h4>Must Have (For Sale)</h4>
+      <ul><li>Clean IP ownership</li><li>Working product</li><li>UK cloud hosting</li><li>Basic regulatory pathway</li><li>1–2 NHS pilots</li><li>Clinical feedback</li><li>Data room</li><li>Buyer narrative</li></ul>
+    </div>
+    <div class="summary-col">
+      <h4>Nice to Have</h4>
+      <ul><li>Full UKCA</li><li>Revenue traction</li><li>Large clinical team</li><li>Full NHS rollout</li></ul>
+    </div>
+    <div class="summary-col">
+      <h4>Target Buyers</h4>
+      <ul><li>Coloplast</li><li>Convatec</li><li>Hollister</li><li>Home-care providers</li><li>Digital health platforms</li></ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== 1 ===================== -->
+<section class="section" id="s1">
+  <div class="sec-head">
+    <div class="sec-num">01</div>
+    <div class="sec-title">UK Market Entry Strategy</div>
+    <div class="sec-badges"><span class="badge badge-phase">Phase 1–2</span></div>
+  </div>
+  <p class="sec-note">Reframe for speed: articulate the UK opportunity in a way that makes a buyer's M&A team take notice.</p>
+  <div class="card-grid">
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>1.1 Define UK Value Proposition</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>One-page strategic narrative for buyers</li><li>Independence from bag manufacturers = key differentiator</li><li>"Adds digital layer + recurring data + patient engagement"</li></ul>
+      <div class="card-note">AI drafts the narrative. UK team validates and approves.</div>
+    </div>
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>1.2 UK Healthcare Needs Analysis</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>165–205K patients, ~21K new/year</li><li>£8K cost per unscheduled admission</li><li>Quantify the NHS savings story</li></ul>
+      <div class="card-note">AI researches and quantifies. UK team validates with NHS contacts.</div>
+    </div>
+    <div class="card card-nice card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>1.3 Comparison vs Poland Market</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span><span class="badge badge-poland">Poland Input</span></div>
+      <ul><li>NHS vs private-pay models</li><li>Regulatory divergence post-Brexit</li></ul>
+      <div class="card-note">AI synthesises. Poland provides local context.</div>
+    </div>
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>1.4 Positioning</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>"New UK business using Polish-built platform"</li><li>Leverage CE/MDR credibility for UK MDR bridge</li><li>200+ patients, 5 hospitals = validation signal</li></ul>
+      <div class="card-note">UK team owns the strategic positioning. AI drafts supporting materials.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 2 ===================== -->
+<section class="section" id="s2">
+  <div class="sec-head">
+    <div class="sec-num">02</div>
+    <div class="sec-title">Review of Existing Platform</div>
+    <div class="sec-badges"><span class="badge badge-phase">Phase 2</span></div>
+  </div>
+  <p class="sec-note">DO NOT rebuild. Fix blockers, ensure stability, document the architecture. Poland owns the code — UK/AI verifies and documents.</p>
+  <div class="card-grid">
+    <div class="card card-must card-owner-poland">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>2.1 Technical Review</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-poland">Poland Lead</span><span class="badge badge-delivery">UK/AI Document</span></div>
+      <ul><li>Architecture audit (document, don't rebuild)</li><li>Code quality check (identify, don't fix all)</li><li>Security assessment (basic)</li><li>API structure review</li><li>Source code access LOCKED</li></ul>
+      <div class="card-note">Poland executes the audit. AI structures findings into buyer-facing docs.</div>
+    </div>
+    <div class="card card-must card-owner-poland">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>2.2 Product Review</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-poland">Poland Lead</span><span class="badge badge-delivery">UK/AI Verify</span></div>
+      <ul><li>Fix UX blockers and obvious bugs</li><li>Patient app: must work end-to-end</li><li>Clinician dashboard: must be demo-able</li><li>Accessibility: note gaps</li></ul>
+      <div class="card-note">Poland fixes. UK verifies with NHS user perspective. 2-week sprint max.</div>
+    </div>
+    <div class="card card-nice card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>2.3 UK Benchmarks</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>NHS-approved apps comparison</li><li>Competitor platform analysis</li><li>NICE standards mapping</li><li>DTAC framework gap analysis</li></ul>
+      <div class="card-note">AI researches all UK benchmarks and produces comparison matrix.</div>
+    </div>
+    <div class="card card-nice card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>2.4 Gap Analysis Report</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span><span class="badge badge-poland">Poland Input</span></div>
+      <ul><li>Prioritised remediation backlog</li><li>UK-specific feature requirements</li><li>Resource estimates</li></ul>
+      <div class="card-note">AI synthesises 2.1–2.3 into structured gap report. Poland validates technical items.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 3 ===================== -->
+<section class="section" id="s3">
+  <div class="sec-head">
+    <div class="sec-num">03</div>
+    <div class="sec-title">Data, Evidence & Documentation Recovery</div>
+    <div class="sec-badges"><span class="badge badge-phase">Phase 1–2</span></div>
+  </div>
+  <p class="sec-note">This is your data room foundation. Poland has the originals — UK/AI structures them for buyers.</p>
+  <div class="card-grid">
+    <div class="card card-must card-owner-poland">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>3.1 Technical Documentation</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-poland">Poland Lead</span><span class="badge badge-delivery">UK/AI Organise</span></div>
+      <ul><li>Source code repos (access verified)</li><li>Architecture diagrams</li><li>Testing reports</li></ul>
+      <div class="card-note">Poland provides access and raw docs. AI structures into data room format.</div>
+    </div>
+    <div class="card card-must card-owner-poland">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>3.2 Clinical Research Documentation</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-poland">Poland Lead</span><span class="badge badge-delivery">UK/AI Organise</span></div>
+      <ul><li>Clinical trial protocols and results</li><li>Published papers</li><li>Usability tests (SUS scores)</li><li>Validation studies</li></ul>
+      <div class="card-note">Poland provides raw research. AI creates summary docs and evidence index.</div>
+    </div>
+    <div class="card card-nice card-owner-poland">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>3.3 Business Materials</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-poland">Poland Lead</span><span class="badge badge-delivery">UK/AI Organise</span></div>
+      <ul><li>Polish marketing materials</li><li>Investor presentations</li><li>Regulatory filings</li></ul>
+      <div class="card-note">Poland provides. AI catalogues and translates where needed.</div>
+    </div>
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>3.4 Historical Platform Archive</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span><span class="badge badge-poland">Poland Input</span></div>
+      <ul><li>Centralised document repository</li><li>IP assignment records</li><li>Version control and audit trail</li></ul>
+      <div class="card-note">AI builds the data room structure. Poland populates with raw docs.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 4 ===================== -->
+<section class="section" id="s4">
+  <div class="sec-head">
+    <div class="sec-num">04</div>
+    <div class="sec-title">Combined Regulatory Roadmap</div>
+    <div class="sec-badges"><span class="badge badge-phase">Phase 2</span></div>
+  </div>
+  <p class="sec-note">You are NOT seeking full approval. You are proving "clear pathway." AI researches — UK consultants validate.</p>
+  <div class="card-grid">
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>4.1 UK Regulatory Pathway</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Device classification defined</li><li>UKCA pathway mapped (not completed)</li><li>DTAC gap analysis (lightweight)</li><li>DCB0129/0160 awareness</li><li>Clinical Safety Officer identified</li></ul>
+      <div class="card-note">AI researches and drafts pathway. UK regulatory consultant validates.</div>
+    </div>
+    <div class="card card-nice card-owner-poland">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>4.2 Poland/EU Documentation</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-poland">Poland Lead</span><span class="badge badge-delivery">UK/AI Compare</span></div>
+      <ul><li>CE/MDR alignment check</li><li>Notified body reports</li></ul>
+      <div class="card-note">Poland provides EU docs. AI cross-references with UK requirements.</div>
+    </div>
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>4.3 Unified Regulatory Evidence Pack</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span><span class="badge badge-poland">Poland Review</span></div>
+      <ul><li>Single source of truth</li><li>Cross-reference matrix (UK vs EU)</li><li>Gap closure plan with owners</li></ul>
+      <div class="card-note">AI builds the pack. UK team and regulatory consultant review.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 5 ===================== -->
+<section class="section" id="s5">
+  <div class="sec-head">
+    <div class="sec-num">05</div>
+    <div class="sec-title">Cloud Migration & Modernisation</div>
+    <div class="sec-badges"><span class="badge badge-phase">Phase 2</span></div>
+  </div>
+  <p class="sec-note">Minimum viable. "Enterprise-ready narrative" — not perfection. Poland executes — UK/AI documents.</p>
+  <div class="card-grid">
+    <div class="card card-must card-owner-poland">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>5.1 Cloud Strategy</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-poland">Poland Lead</span><span class="badge badge-delivery">UK/AI Document</span></div>
+      <ul><li>Host in UK/EU compliant cloud</li><li>Document provider choice</li><li>Basic scalability assessment</li></ul>
+      <div class="card-note">Poland executes migration. AI writes the technical overview for buyers.</div>
+    </div>
+    <div class="card card-nice card-owner-poland">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>5.2 Migration Planning</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-poland">Poland Lead</span></div>
+      <ul><li>Data migration strategy</li><li>Infrastructure as code</li><li>CI/CD pipeline design</li></ul>
+      <div class="card-note">Poland plans. Buyer will replatform anyway — don't over-invest.</div>
+    </div>
+    <div class="card card-must card-owner-poland">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>5.3 Service Level & Operations</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-poland">Poland Lead</span><span class="badge badge-delivery">UK/AI Document</span></div>
+      <ul><li>Basic logging and backups</li><li>Basic security</li><li>Incident response plan (lightweight)</li></ul>
+      <div class="card-note">Poland implements. AI documents for buyer confidence.</div>
+    </div>
+    <div class="card card-nice card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>5.4 Due Diligence Preparedness</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span><span class="badge badge-poland">Poland Input</span></div>
+      <ul><li>Technical documentation pack</li><li>Risk register</li><li>Compliance matrix</li></ul>
+      <div class="card-note">AI builds diligence docs using Poland's technical inputs.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 6 ===================== -->
+<section class="section" id="s6">
+  <div class="sec-head">
+    <div class="sec-num">06</div>
+    <div class="sec-title">Governance, Legal & Compliance</div>
+    <div class="sec-badges"><span class="badge badge-phase">Phase 1</span></div>
+  </div>
+  <p class="sec-note">This is WHERE DEALS DIE. Messy ownership = no sale. UK lawyers lead — AI drafts — Poland provides IP docs.</p>
+  <div class="card-grid">
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>6.1 Corporate Governance</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Board structure defined</li><li>Basic policies (risk, ethics, security)</li></ul>
+      <div class="card-note">AI drafts policy templates. UK team and lawyers approve.</div>
+    </div>
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>6.2 Legal Framework</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span><span class="badge badge-poland">Poland IP</span></div>
+      <ul><li><strong>IP assignment from Poland → UK entity</strong></li><li>Clean shareholding + cap table</li><li>Company incorporation (UK)</li><li>Shareholder agreements</li><li>Data processing agreements</li></ul>
+      <div class="card-note"><strong>CRITICAL PATH:</strong> UK lawyers drive. Poland provides IP docs. AI drafts agreements.</div>
+    </div>
+    <div class="card card-nice card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>6.3 Risk & Safety Governance</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Clinical governance framework</li><li>Data governance</li><li>Insurance (product liability, cyber)</li></ul>
+      <div class="card-note">AI drafts frameworks. UK team and advisors review.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 7 ===================== -->
+<section class="section" id="s7">
+  <div class="sec-head">
+    <div class="sec-num">07</div>
+    <div class="sec-title">UK Business Setup</div>
+    <div class="sec-badges"><span class="badge badge-phase">Phase 1</span></div>
+  </div>
+  <p class="sec-note">Minimum viable company shell. UK/AI executes and documents. Poland not needed here.</p>
+  <div class="card-grid">
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>7.1 Company Identity</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Registered office address</li><li>Trading address</li><li>Email domains</li><li>Basic branding assets</li></ul>
+      <div class="card-note">UK team sets up. AI researches options (office providers, domain availability).</div>
+    </div>
+    <div class="card card-nice card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>7.2 Financial Setup</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Bank account</li><li>Accountant</li><li>VAT registration</li></ul>
+      <div class="card-note">UK team executes. AI researches providers and requirements.</div>
+    </div>
+    <div class="card card-skip card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>7.3 IT & Operations</h4></div><span class="badge badge-skip">Defer</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Device management</li><li>Employee accounts</li><li>Secure file storage</li></ul>
+      <div class="card-note">AI drafts IT policy. Buyer will integrate into their systems.</div>
+    </div>
+    <div class="card card-skip card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>7.4 Policies & HR</h4></div><span class="badge badge-skip">Defer</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>HR manual</li><li>Health & safety</li><li>Recruitment plan</li></ul>
+      <div class="card-note">AI drafts templates. Not needed for asset sale.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 8 ===================== -->
+<section class="section" id="s8">
+  <div class="sec-head">
+    <div class="sec-num">08</div>
+    <div class="sec-title">Partners, Advisors & NHS Targets</div>
+    <div class="sec-badges"><span class="badge badge-phase">Phase 2–3</span></div>
+  </div>
+  <p class="sec-note">Advisors add credibility. Clinical champions add proof. NHS targets are your pipeline. UK/AI networks and researches — Poland provides clinical credibility.</p>
+  <div class="card-grid">
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>8.1 Clinical Advisors</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>2–5 stoma nurses engaged</li><li>1–2 NHS Trust contacts</li><li>Named clinical champions for pilots</li></ul>
+      <div class="card-note">UK team uses NHS network. AI researches contacts and drafts outreach.</div>
+    </div>
+    <div class="card card-nice card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>8.2 Technical Advisors</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Cloud architecture advisor</li><li>Cybersecurity advisor</li></ul>
+      <div class="card-note">AI researches and shortlists advisors. UK team engages.</div>
+    </div>
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>8.3 Regulatory Experts</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>UK MDR consultant (lightweight)</li><li>MHRA liaison support</li><li>Clinical Safety Officer identified</li></ul>
+      <div class="card-note">UK team engages. AI researches consultants and drafts briefs.</div>
+    </div>
+    <div class="card card-nice card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>8.4–8.5 Business & Commercial</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>NHS innovation hubs</li><li>Digital health accelerators</li><li>Healthcare strategy consultants</li></ul>
+      <div class="card-note">AI researches landscape. UK team makes warm introductions.</div>
+    </div>
+  </div>
+
+  <!-- NHS TARGETS SUBSECTION -->
+  <div style="margin-top:1.25rem;">
+    <div class="sec-head" style="border-bottom-color:var(--poland); margin-bottom:0.75rem;">
+      <div class="sec-num" style="color:var(--poland); font-size:1.3rem;">8.6</div>
+      <div class="sec-title" style="font-size:1.15rem;">10 NHS Target Contacts for Pilot Engagement</div>
+      <div class="sec-badges"><span class="badge badge-phase">Phase 2–3</span></div>
+    </div>
+    <p class="sec-note" style="margin-left:45px;">Priority NHS Trusts ranked by strategic value. Named contacts where found. Start with Tier 1.</p>
+
+    <div class="nhs-target-mini card-owner-delivery">
+      <div class="nhs-target-mini-header">
+        <span class="nhs-target-mini-name">1. UCLH — University College London Hospitals</span>
+        <span class="badge badge-must">Tier 1</span>
+        <span class="badge badge-delivery">UK/AI Lead</span>
+      </div>
+      <div class="nhs-target-mini-contact"><strong>Email:</strong> uclh.stomacare@nhs.net · <strong>Tel:</strong> 020 3447 9182 · <strong>Mobile:</strong> 07961 959505</div>
+      <div class="nhs-target-mini-angle">Direct stoma care inbox. Request lead nurse name. Frame as CE-marked platform seeking one UK teaching hospital partner.</div>
+    </div>
+
+    <div class="nhs-target-mini card-owner-delivery">
+      <div class="nhs-target-mini-header">
+        <span class="nhs-target-mini-name">2. MFT Altrincham — Manchester University NHS FT</span>
+        <span class="badge badge-must">Tier 1</span>
+        <span class="badge badge-delivery">UK/AI Lead</span>
+      </div>
+      <div class="nhs-target-mini-contact"><strong>Named Lead:</strong> Yvonne McGrath — Lead Stoma Care Specialist Nurse · <strong>Site:</strong> mft.nhs.uk/altrincham</div>
+      <div class="nhs-target-mini-angle">LinkedIn approach. Named lead = warm entry. Digital health ecosystem nearby (Health Innovation Manchester).</div>
+    </div>
+
+    <div class="nhs-target-mini card-owner-delivery">
+      <div class="nhs-target-mini-header">
+        <span class="nhs-target-mini-name">3. Royal Devon University Healthcare</span>
+        <span class="badge badge-must">Tier 1</span>
+        <span class="badge badge-delivery">UK/AI Lead</span>
+      </div>
+      <div class="nhs-target-mini-contact"><strong>Innovation:</strong> rduh.uoe.hrc@nhs.net · <strong>Stoma Care:</strong> 01392 402742 · <strong>CMO:</strong> Prof Adrian Harris</div>
+      <div class="nhs-target-mini-angle">Digital innovation leader. HSJ Digital Awards finalist. NIHR HealthTech Research Centre. Approach via research collaboration framing.</div>
+    </div>
+
+    <div class="nhs-target-mini card-owner-delivery">
+      <div class="nhs-target-mini-header">
+        <span class="nhs-target-mini-name">4. CUH — Cambridge University Hospitals</span>
+        <span class="badge badge-nice">Tier 2</span>
+        <span class="badge badge-delivery">UK/AI Lead</span>
+      </div>
+      <div class="nhs-target-mini-contact"><strong>Direct Line:</strong> 01223 217923 · <strong>Location:</strong> Addenbrooke's Treatment Centre</div>
+      <div class="nhs-target-mini-angle">Major teaching hospital. 24-hour voicemail. Ask for Lead Stoma Care Nurse by name.</div>
+    </div>
+
+    <div class="nhs-target-mini card-owner-delivery">
+      <div class="nhs-target-mini-header">
+        <span class="nhs-target-mini-name">5. NNUH — Norfolk & Norwich University Hospitals</span>
+        <span class="badge badge-nice">Tier 2</span>
+        <span class="badge badge-delivery">UK/AI Lead</span>
+      </div>
+      <div class="nhs-target-mini-contact"><strong>Named Lead:</strong> Nicola Picton — Lead CNS Stoma Care · <strong>Team:</strong> 2 specialists + 3 assistants</div>
+      <div class="nhs-target-mini-angle">LinkedIn to Nicola Picton. East of England = geographic spread. Part of Health Innovation East.</div>
+    </div>
+
+    <div class="nhs-target-mini card-owner-delivery">
+      <div class="nhs-target-mini-header">
+        <span class="nhs-target-mini-name">6. North Bristol NHS Trust (Southmead)</span>
+        <span class="badge badge-nice">Tier 2</span>
+        <span class="badge badge-delivery">UK/AI Lead</span>
+      </div>
+      <div class="nhs-target-mini-contact"><strong>Stoma Care Team:</strong> 0117 4140270 · <strong>Colorectal Nurses:</strong> 0117 4140514</div>
+      <div class="nhs-target-mini-angle">Call Stoma Care Team directly. Ask for lead nurse. Post-discharge monitoring = enhanced recovery alignment.</div>
+    </div>
+
+    <div class="nhs-target-mini card-owner-delivery">
+      <div class="nhs-target-mini-header">
+        <span class="nhs-target-mini-name">7. Hull University Teaching Hospitals</span>
+        <span class="badge badge-nice">Tier 2</span>
+        <span class="badge badge-delivery">UK/AI Lead</span>
+      </div>
+      <div class="nhs-target-mini-contact"><strong>Secretary:</strong> Carolyn · <strong>Department:</strong> Stoma Care</div>
+      <div class="nhs-target-mini-angle">Call and ask for Carolyn. Gatekeeper to lead nurse. Yorkshire & Humber AHSN connection.</div>
+    </div>
+
+    <div class="nhs-target-mini card-owner-delivery">
+      <div class="nhs-target-mini-header">
+        <span class="nhs-target-mini-name">8. Northumbria Healthcare NHS FT</span>
+        <span class="badge badge-nice">Tier 3</span>
+        <span class="badge badge-delivery">UK/AI Lead</span>
+      </div>
+      <div class="nhs-target-mini-contact"><strong>Team:</strong> 9 specialist stoma nurses · <strong>Sites:</strong> NTGH + NSECH + community</div>
+      <div class="nhs-target-mini-angle">Large team = multiple internal champions. Approach via Health Innovation North East and North Cumbria for warm intro.</div>
+    </div>
+
+    <div class="nhs-target-mini card-owner-delivery">
+      <div class="nhs-target-mini-header">
+        <span class="nhs-target-mini-name">9. Buckinghamshire Healthcare NHS Trust</span>
+        <span class="badge badge-nice">Tier 3</span>
+        <span class="badge badge-delivery">UK/AI Lead</span>
+      </div>
+      <div class="nhs-target-mini-contact"><strong>Team:</strong> 4 surgeons + 5 CNS/stoma nurses · <strong>Size:</strong> Mid-size = accessible</div>
+      <div class="nhs-target-mini-angle">Mid-size Trust = decision-makers more accessible. Phone switchboard for Colorectal Services manager.</div>
+    </div>
+
+    <div class="nhs-target-mini card-owner-delivery">
+      <div class="nhs-target-mini-header">
+        <span class="nhs-target-mini-name">10. ASCN UK — Association of Stoma Care Nurses</span>
+        <span class="badge badge-nice">Tier 3</span>
+        <span class="badge badge-delivery">UK/AI Lead</span>
+      </div>
+      <div class="nhs-target-mini-contact"><strong>Web:</strong> ascnuk.org · <strong>Conference:</strong> ASCNUK26, Birmingham, 20–22 Sept 2026 · <strong>Vice-Chair:</strong> Kevin Hayles</div>
+      <div class="nhs-target-mini-angle">THE gatekeeper body. Join as affiliate. Attend Sept conference. Present — don't sell. Build trust with the nurse community.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 9 ===================== -->
+<section class="section" id="s9">
+  <div class="sec-head">
+    <div class="sec-num">09</div>
+    <div class="sec-title">Customer Service & Support</div>
+    <div class="sec-badges"><span class="badge badge-phase">Phase 3–4</span></div>
+  </div>
+  <p class="sec-note">Lightweight support model for pilots. UK/AI designs — Poland builds tools if needed.</p>
+  <div class="card-grid">
+    <div class="card card-nice card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>9.1–9.2 Service Model & Infrastructure</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Tiered support model (lightweight)</li><li>Basic CRM for pilot tracking</li><li>Knowledge base for clinicians</li></ul>
+      <div class="card-note">AI designs support framework. UK team approves. Poland builds if needed.</div>
+    </div>
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>9.3 Clinical Support</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Escalation paths to stoma nurses</li><li>Clinical safety review process</li><li>Incident documentation</li></ul>
+      <div class="card-note">UK clinical advisors design. AI documents the processes.</div>
+    </div>
+    <div class="card card-skip card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>9.4 Customer Success</h4></div><span class="badge badge-skip">Defer</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Onboarding programme</li><li>Quarterly business reviews</li><li>NPS tracking</li></ul>
+      <div class="card-note">AI drafts framework. Post-acquisition work.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 10 ===================== -->
+<section class="section" id="s10">
+  <div class="sec-head">
+    <div class="sec-num">10</div>
+    <div class="sec-title">Marketing & Go-To-Market</div>
+    <div class="sec-badges"><span class="badge badge-phase">Phase 3–4</span></div>
+  </div>
+  <p class="sec-note">You are NOT building a sales machine. You are building a narrative. UK/AI writes and strategises — Poland provides proof points.</p>
+  <div class="card-grid">
+    <div class="card card-nice card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>10.1–10.2 Market & Channels</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Market segmentation (lightweight)</li><li>Channel mapping</li><li>3-slide GTM overview</li></ul>
+      <div class="card-note">AI researches and drafts. UK team validates with NHS insights.</div>
+    </div>
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>10.3 GTM Actions</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span><span class="badge badge-poland">Poland Proof</span></div>
+      <ul><li>Website rebuilt (UK-focused, clean)</li><li>Case studies from Polish deployment</li><li>Clinical endorsement letters</li><li>Conference attendance plan</li></ul>
+      <div class="card-note">UK team strategises. AI writes copy. Poland provides data and testimonials.</div>
+    </div>
+    <div class="card card-nice card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>10.4 UK Branding</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Brand refresh for UK</li><li>Key messaging framework</li></ul>
+      <div class="card-note">AI drafts messaging. UK team approves. Buyer will rebrand anyway.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 11 ===================== -->
+<section class="section" id="s11">
+  <div class="sec-head">
+    <div class="sec-num">11</div>
+    <div class="sec-title">Market & Financial Opportunity</div>
+    <div class="sec-badges"><span class="badge badge-phase">Phase 4</span></div>
+  </div>
+  <p class="sec-note">Articulate the opportunity in a way that makes a buyer's CFO nod. UK/AI models and writes — Poland provides data.</p>
+  <div class="card-grid">
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>11.1 Market Size</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>UK patient population: 165–205K</li><li>~21K new stomas/year</li><li>£8K cost per avoided admission</li><li>NHS opportunity quantified</li></ul>
+      <div class="card-note">AI builds market model. UK team validates with NHS contacts.</div>
+    </div>
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>11.2 Competitor Analysis</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Coloplast Heylo positioning</li><li>Salts, Hollister digital presence</li><li>Gap analysis: what they DON'T do</li></ul>
+      <div class="card-note">AI deep-researches competitors and produces gap analysis.</div>
+    </div>
+    <div class="card card-nice card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>11.3–11.4 Pricing & Forecasting</h4></div><span class="badge badge-nice">Nice</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Pricing model assumptions</li><li>3-year revenue forecast (high-level)</li><li>Patient acquisition projections</li></ul>
+      <div class="card-note">AI builds financial model. UK team validates assumptions.</div>
+    </div>
+    <div class="card card-must card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>11.5 Acquisition Pack</h4></div><span class="badge badge-must">Must</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span><span class="badge badge-poland">Poland Proof</span></div>
+      <ul><li>Executive summary (1 page)</li><li>Product + market overview</li><li>Why Coloplast/Convatec/Hollister NEED this</li><li>Regulatory pathway summary</li><li>Financial opportunity (top-down)</li></ul>
+      <div class="card-note">AI writes the entire acquisition pack. UK team approves narrative. Poland provides data.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 12 ===================== -->
+<section class="section" id="s12">
+  <div class="sec-head">
+    <div class="sec-num">12</div>
+    <div class="sec-title">Ongoing Operations</div>
+    <div class="sec-badges"><span class="badge badge-phase">Phase 5+</span></div>
+  </div>
+  <p class="sec-note">Post-acquisition work. UK/AI drafts the roadmap. Buyer executes.</p>
+  <div class="card-grid">
+    <div class="card card-skip card-owner-delivery">
+      <div class="card-header"><div class="card-header-left"><span class="card-icon"></span><h4>12.1–12.6 All Operations</h4></div><span class="badge badge-skip">Defer</span></div>
+      <div class="badge-row"><span class="badge badge-delivery">UK/AI Lead</span></div>
+      <ul><li>Product improvement roadmap</li><li>Clinical evidence updates</li><li>Regulatory maintenance</li><li>Customer service operations</li><li>Sales pipeline management</li><li>Annual strategic review</li></ul>
+      <div class="card-note">AI drafts the post-acquisition roadmap. This is what the buyer does — your job is to show them the vision.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CHECKLIST ===================== -->
+<section class="section" id="checklist">
+  <div class="sec-head">
+    <div class="sec-num">W1</div>
+    <div class="sec-title">Week 1 Checklist — Start NOW</div>
+    <div class="sec-badges"><span class="badge badge-phase">Phase 1</span></div>
+  </div>
+  <p class="sec-note">These 6 actions unlock everything else. Do not proceed to week 2 without them.</p>
+  <div class="checklist">
+    <ul>
+      <li><span class="check-box"></span> <strong>Lock IP from Poland</strong> — Poland provides docs. UK lawyers execute. AI drafts agreements. <span class="badge badge-delivery">UK/AI</span> <span class="badge badge-poland">Poland</span></li>
+      <li><span class="check-box"></span> <strong>Set up UK entity</strong> — UK team incorporates. AI researches providers. <span class="badge badge-delivery">UK/AI</span></li>
+      <li><span class="check-box"></span> <strong>Start data room</strong> — AI builds structure. Poland populates. UK manages access. <span class="badge badge-delivery">UK/AI</span> <span class="badge badge-poland">Poland</span></li>
+      <li><span class="check-box"></span> <strong>Begin platform audit</strong> — Poland executes. UK verifies. AI documents. <span class="badge badge-poland">Poland</span> <span class="badge badge-delivery">UK/AI</span></li>
+      <li><span class="check-box"></span> <strong>Identify 10 NHS contacts</strong> — UK team uses network. AI researches and drafts outreach. <span class="badge badge-delivery">UK/AI</span></li>
+      <li><span class="check-box"></span> <strong>Identify 5 potential buyers</strong> — AI researches landscape. UK team validates targets. <span class="badge badge-delivery">UK/AI</span></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+</div>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="hero-inner">
+    <h2>UK/AI <em>carries the load.</em> Poland <em>provides the platform.</em></h2>
+    <p>Every task has an owner. Every priority is clear. Execute the Must Haves. Defer the Nice-to-Haves. Skip the rest.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div><strong style="color:#fff;">Stoma Alert</strong> — Combined Execution Plan v2</div>
+    <div>IOW Internal — Stanley-Only · April 2026</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const sections = document.querySelectorAll('.section');
+  const tocLinks = document.querySelectorAll('.toc a');
+  function onScroll(){
+    let current = '';
+    sections.forEach(s => { const rect = s.getBoundingClientRect(); if (rect.top <= 140) current = s.id; });
+    tocLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+  }
+  window.addEventListener('scroll', onScroll); onScroll();
+})();
+</script>
+</body>
+</html>
