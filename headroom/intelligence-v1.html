@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headroom Intelligence — Pre-Investment Site Screening for Commercial Solar & BESS</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0a0f14;
+    --panel:#111820;
+    --panel-2:#161e28;
+    --border:#1f2a36;
+    --text:#e7eef5;
+    --muted:#8a98a6;
+    --accent:#c8ff5b;
+    --accent-dim:#9bcc46;
+    --green:#3dd07c;
+    --amber:#ffb84a;
+    --red:#ff6464;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',Roboto,sans-serif;
+    background:var(--bg);color:var(--text);min-height:100vh;
+    background-image:radial-gradient(circle at 80% -10%,rgba(200,255,91,.06),transparent 50%),radial-gradient(circle at 0% 110%,rgba(61,208,124,.05),transparent 50%);
+    line-height:1.55;-webkit-font-smoothing:antialiased
+  }
+  header{
+    padding:18px 32px;display:flex;align-items:center;justify-content:space-between;
+    border-bottom:1px solid var(--border);background:rgba(10,15,20,.75);backdrop-filter:blur(8px);
+    position:sticky;top:0;z-index:50
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em}
+  .brand-mark{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dim) 100%);display:flex;align-items:center;justify-content:center;color:#0a0f14;font-weight:900;font-size:14px}
+  .brand-name{font-size:18px}
+  .brand-name span{color:var(--accent)}
+  .badge{font-size:11px;padding:4px 10px;border-radius:999px;background:rgba(200,255,91,.12);color:var(--accent);border:1px solid rgba(200,255,91,.3);font-weight:600;letter-spacing:.04em}
+  .nav{display:flex;gap:24px;color:var(--muted);font-size:14px}
+  .nav a{color:inherit;text-decoration:none;transition:color .15s}
+  .nav a:hover{color:var(--text)}
+  .container{max-width:1180px;margin:0 auto;padding:48px 32px 64px}
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;margin-bottom:48px}
+  @media (max-width:900px){.hero{grid-template-columns:1fr;gap:32px}}
+  h1{font-size:48px;line-height:1.05;letter-spacing:-.02em;font-weight:800;margin-bottom:16px}
+  h1 .accent{color:var(--accent)}
+  .lead{color:var(--muted);font-size:18px;max-width:540px;margin-bottom:24px}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+  .pill{font-size:12px;padding:5px 11px;border-radius:999px;background:var(--panel);border:1px solid var(--border);color:var(--muted)}
+  .form-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+  .form-card h2{font-size:18px;margin-bottom:6px;font-weight:600}
+  .form-card .sub{color:var(--muted);font-size:13px;margin-bottom:20px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:500}
+  .field input,.field select{
+    width:100%;padding:13px 14px;background:#0d1319;border:1px solid var(--border);border-radius:10px;
+    color:var(--text);font-size:15px;font-family:inherit;transition:all .15s;outline:none
+  }
+  .field input:focus,.field select:focus{border-color:var(--accent);background:#0e151c}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .btn{
+    width:100%;padding:14px;background:var(--accent);color:#0a0f14;border:none;border-radius:10px;
+    font-size:15px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit
+  }
+  .btn:hover{background:var(--accent-dim);transform:translateY(-1px)}
+  .btn:active{transform:translateY(0)}
+  .btn[disabled]{opacity:.6;cursor:wait}
+
+  /* RESULTS PANEL */
+  #results{display:none;animation:slideUp .4s ease-out}
+  @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+  .results-title h2{font-size:24px;font-weight:700;letter-spacing:-.01em}
+  .results-title .meta{color:var(--muted);font-size:14px;margin-top:4px}
+  .verdict{padding:8px 16px;border-radius:999px;font-weight:700;font-size:13px;letter-spacing:.03em;display:inline-flex;align-items:center;gap:8px}
+  .verdict.proceed{background:rgba(61,208,124,.15);color:var(--green);border:1px solid rgba(61,208,124,.4)}
+  .verdict.caution{background:rgba(255,184,74,.15);color:var(--amber);border:1px solid rgba(255,184,74,.4)}
+  .verdict.reconsider{background:rgba(255,100,100,.15);color:var(--red);border:1px solid rgba(255,100,100,.4)}
+  .verdict-dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+
+  .metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+  @media (max-width:780px){.metric-grid{grid-template-columns:repeat(2,1fr)}}
+  .metric{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px;position:relative;overflow:hidden}
+  .metric.green{border-color:rgba(61,208,124,.35)}
+  .metric.amber{border-color:rgba(255,184,74,.35)}
+  .metric.red{border-color:rgba(255,100,100,.35)}
+  .metric .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:600}
+  .metric .value{font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+  .metric .value .unit{font-size:14px;color:var(--muted);font-weight:600;margin-left:4px}
+  .metric .desc{font-size:12px;color:var(--muted);margin-top:6px}
+  .metric.green .value{color:var(--green)}
+  .metric.amber .value{color:var(--amber)}
+  .metric.red .value{color:var(--red)}
+  .progress{width:100%;height:4px;background:var(--border);border-radius:2px;margin-top:10px;overflow:hidden}
+  .progress-bar{height:100%;border-radius:2px;transition:width .8s ease-out}
+  .progress-bar.green{background:var(--green)}
+  .progress-bar.amber{background:var(--amber)}
+  .progress-bar.red{background:var(--red)}
+
+  .detail-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:24px;margin-bottom:32px}
+  @media (max-width:900px){.detail-grid{grid-template-columns:1fr}}
+  .detail-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:24px}
+  .detail-card h3{font-size:15px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .detail-card h3 .icon{width:18px;height:18px;border-radius:5px;background:rgba(200,255,91,.15);display:inline-flex;align-items:center;justify-content:center;color:var(--accent);font-size:11px;font-weight:900}
+  .detail-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(31,42,54,.5);font-size:14px}
+  .detail-row:last-child{border-bottom:none}
+  .detail-row .k{color:var(--muted)}
+  .detail-row .v{color:var(--text);font-weight:500;text-align:right}
+  .narrative{font-size:14px;color:var(--text);line-height:1.65}
+  .narrative .highlight{color:var(--accent);font-weight:600}
+
+  .alternatives{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+  .alt-row{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:#0d1319;border:1px solid var(--border);border-radius:8px;font-size:13px;transition:all .15s;cursor:pointer}
+  .alt-row:hover{border-color:var(--accent);background:#0e151c}
+  .alt-row .pc{font-weight:600;font-family:'SF Mono',ui-monospace,monospace}
+  .alt-row .imp{color:var(--green);font-weight:600;font-size:12px}
+
+  .cta-band{margin-top:32px;background:linear-gradient(135deg,rgba(200,255,91,.08),rgba(61,208,124,.04));border:1px solid rgba(200,255,91,.25);border-radius:14px;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .cta-band .cta-text h3{font-size:18px;margin-bottom:6px;font-weight:700}
+  .cta-band .cta-text p{color:var(--muted);font-size:14px;max-width:560px}
+  .cta-band .cta-actions{display:flex;gap:10px}
+  .btn-secondary{padding:13px 22px;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit}
+  .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+  .btn-primary{padding:13px 22px;background:var(--accent);color:#0a0f14;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit}
+  .btn-primary:hover{background:var(--accent-dim)}
+
+  /* PRICING */
+  .pricing{margin-top:72px;padding-top:48px;border-top:1px solid var(--border)}
+  .pricing h2{font-size:32px;font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+  .pricing .sub{color:var(--muted);text-align:center;margin-bottom:36px;font-size:15px}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media (max-width:900px){.price-grid{grid-template-columns:1fr}}
+  .price-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px;display:flex;flex-direction:column}
+  .price-card.featured{border-color:var(--accent);background:linear-gradient(180deg,rgba(200,255,91,.04),var(--panel))}
+  .price-card .tier{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;font-weight:600}
+  .price-card .price{font-size:36px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+  .price-card .price .unit{font-size:14px;color:var(--muted);font-weight:500}
+  .price-card .desc{color:var(--muted);font-size:13px;margin-bottom:18px;min-height:32px}
+  .price-card ul{list-style:none;flex:1;margin-bottom:18px}
+  .price-card li{padding:6px 0;font-size:14px;color:var(--text);display:flex;align-items:flex-start;gap:8px}
+  .price-card li::before{content:"✓";color:var(--accent);font-weight:700;margin-top:1px}
+  .price-card .pill-feat{font-size:11px;padding:4px 9px;border-radius:999px;background:var(--accent);color:#0a0f14;font-weight:700;letter-spacing:.04em;display:inline-block;margin-bottom:12px}
+
+  footer{text-align:center;color:var(--muted);font-size:13px;padding:32px;border-top:1px solid var(--border);margin-top:64px}
+  footer a{color:var(--accent);text-decoration:none}
+
+  .demo-notice{background:rgba(255,184,74,.08);border:1px solid rgba(255,184,74,.25);border-radius:10px;padding:14px 18px;font-size:13px;color:var(--amber);margin-bottom:24px;display:flex;align-items:flex-start;gap:10px}
+  .demo-notice .icon{flex-shrink:0;width:18px;height:18px;border-radius:4px;background:rgba(255,184,74,.2);display:inline-flex;align-items:center;justify-content:center;font-weight:900;color:var(--amber);font-size:11px;margin-top:1px}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="brand-mark">H</div>
+    <div class="brand-name">Headroom<span>.</span></div>
+    <span class="badge">INTELLIGENCE</span>
+  </div>
+  <nav class="nav">
+    <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#">About</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <div class="hero">
+    <div>
+      <div class="pill-row">
+        <span class="pill">For commercial solar & BESS developers</span>
+        <span class="pill">50kW – 5MW</span>
+      </div>
+      <h1>Know if your site is <span class="accent">worth pursuing</span> — before you commit to the application.</h1>
+      <p class="lead">Most commercial solar projects die at the DNO, not at the planner. Headroom screens your site against real grid capacity, queue position and curtailment risk in under 60 seconds — so you can put capital where it actually clears.</p>
+      <div class="pill-row" style="margin-top:18px">
+        <span class="pill">⚡ ENA Connect Direct queue data</span>
+        <span class="pill">📍 DNO capacity heat maps</span>
+        <span class="pill">📉 Curtailment risk model</span>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h2>Screen a site</h2>
+      <p class="sub">Postcode + target capacity. We do the rest.</p>
+      <div class="field">
+        <label for="postcode">Site postcode</label>
+        <input type="text" id="postcode" placeholder="e.g. NR1 1AA" autocomplete="off">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="capacity">Target capacity (kW)</label>
+          <input type="number" id="capacity" placeholder="500" min="50" max="50000">
+        </div>
+        <div class="field">
+          <label for="asset">Asset type</label>
+          <select id="asset">
+            <option value="solar">Solar PV</option>
+            <option value="bess">BESS</option>
+            <option value="solar-bess">Solar + BESS</option>
+            <option value="wind">Wind</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn" id="run">Run headroom analysis →</button>
+    </div>
+  </div>
+
+  <div id="results">
+    <div class="demo-notice">
+      <div class="icon">!</div>
+      <div><strong>Demo mode.</strong> Results are generated from credible heuristics based on public DNO regions and known constraint patterns. The production product will pull live data from ENA Connect Direct, the Embedded Capacity Register, and DNO capacity registers. This v1 is for illustrating the value proposition only.</div>
+    </div>
+
+    <div class="results-header">
+      <div class="results-title">
+        <h2 id="r-title">Site analysis</h2>
+        <div class="meta" id="r-meta">DNO · Substation · ANM zone</div>
+      </div>
+      <div class="verdict" id="r-verdict"><span class="verdict-dot"></span> <span id="r-verdict-text">PROCEED</span></div>
+    </div>
+
+    <div class="metric-grid">
+      <div class="metric" id="m-headroom">
+        <div class="label">Export Headroom</div>
+        <div class="value"><span id="m-headroom-v">—</span><span class="unit"> kW</span></div>
+        <div class="desc" id="m-headroom-d">of available capacity</div>
+        <div class="progress"><div class="progress-bar" id="m-headroom-bar"></div></div>
+      </div>
+      <div class="metric" id="m-queue">
+        <div class="label">Queue Position</div>
+        <div class="value">#<span id="m-queue-v">—</span></div>
+        <div class="desc" id="m-queue-d">projects ahead at substation</div>
+      </div>
+      <div class="metric" id="m-curtail">
+        <div class="label">Curtailment Risk</div>
+        <div class="value" id="m-curtail-v">—</div>
+        <div class="desc" id="m-curtail-d">effective revenue impact</div>
+      </div>
+      <div class="metric" id="m-timeline">
+        <div class="label">Estimated Timeline</div>
+        <div class="value" id="m-timeline-v">—</div>
+        <div class="desc" id="m-timeline-d">to formal DNO approval</div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3><span class="icon">📍</span> Network context</h3>
+        <div class="detail-row"><div class="k">Distribution Network Operator</div><div class="v" id="d-dno">—</div></div>
+        <div class="detail-row"><div class="k">Region</div><div class="v" id="d-region">—</div></div>
+        <div class="detail-row"><div class="k">Likely primary substation</div><div class="v" id="d-substation">—</div></div>
+        <div class="detail-row"><div class="k">Active Network Mgmt zone</div><div class="v" id="d-anm">—</div></div>
+        <div class="detail-row"><div class="k">Reinforcement programme</div><div class="v" id="d-reinforce">—</div></div>
+        <div class="detail-row"><div class="k">Typical queue attrition</div><div class="v" id="d-attrition">—</div></div>
+
+        <h3 style="margin-top:24px"><span class="icon">📊</span> Why this verdict</h3>
+        <p class="narrative" id="d-narrative">—</p>
+      </div>
+
+      <div class="detail-card">
+        <h3><span class="icon">📌</span> Alternative nearby sites</h3>
+        <div class="alternatives" id="alt-list"></div>
+        <p style="color:var(--muted);font-size:12px;margin-top:14px">Within ~15 miles, ranked by effective headroom for your asset type.</p>
+      </div>
+    </div>
+
+    <div class="cta-band">
+      <div class="cta-text">
+        <h3>Site green-lit? <span style="color:var(--accent)">Take it to G99.</span></h3>
+        <p>Headroom packages your G98/G99/G100 application from the same site data — pre-filled, validated against this DNO's specific requirements, and submitted in under 36 hours.</p>
+      </div>
+      <div class="cta-actions">
+        <button class="btn-secondary" onclick="document.getElementById('postcode').focus();document.getElementById('postcode').scrollIntoView({behavior:'smooth'})">Screen another site</button>
+        <button class="btn-primary" onclick="alert('Coming in v2 — bundled with the screening.')">Start application →</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="pricing" id="pricing">
+    <h2>Productised, transparent pricing</h2>
+    <p class="sub">No hidden fees. Pay per site or move to a portfolio subscription.</p>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="tier">Single Site Screening</div>
+        <div class="price">£250<span class="unit"> + VAT</span></div>
+        <div class="desc">For developers evaluating one or two opportunities.</div>
+        <ul>
+          <li>Full headroom + queue analysis</li>
+          <li>Curtailment risk model</li>
+          <li>3 alternative-site suggestions</li>
+          <li>2-day turnaround</li>
+          <li>Bankable assumption register</li>
+        </ul>
+        <button class="btn-secondary">Get screening</button>
+      </div>
+      <div class="price-card featured">
+        <div class="pill-feat">MOST POPULAR</div>
+        <div class="tier">Screening + Application Bundle</div>
+        <div class="price">£395<span class="unit"> + VAT</span></div>
+        <div class="desc">Screen, then submit if site clears — pay once.</div>
+        <ul>
+          <li>Everything in Single Site</li>
+          <li>G99 application drafted & submitted</li>
+          <li>DNO liaison until approval</li>
+          <li>SLD + commissioning docs included</li>
+          <li>Status tracking via portal</li>
+        </ul>
+        <button class="btn-primary">Bundle it</button>
+      </div>
+      <div class="price-card">
+        <div class="tier">Portfolio Subscription</div>
+        <div class="price">From £495<span class="unit"> /mo</span></div>
+        <div class="desc">For developers running 10+ sites a year.</div>
+        <ul>
+          <li>Unlimited site screening</li>
+          <li>Portfolio dashboard (sites, not apps)</li>
+          <li>Comparative ranking & re-scoring</li>
+          <li>Dedicated account manager</li>
+          <li>API access & CSV bulk intake</li>
+          <li>20% discount on per-app fees</li>
+        </ul>
+        <button class="btn-secondary">Talk to us</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>Headroom Intelligence — <strong>v1 demo</strong> · Built by IOW for the Strategy Room · <a href="#">Back to NZP</a></p>
+  <p style="margin-top:8px;font-size:12px;opacity:.7">Results in this demo are generated from regional heuristics. Production version uses live DNO + ENA data.</p>
+</footer>
+
+<script>
+// ============================================================
+// DNO map (reused from headroom-demo/server.js)
+// ============================================================
+const DNO_MAP = {
+  'L':{r:'LPN',n:'UK Power Networks (London)'},'E':{r:'EE',n:'UK Power Networks (East England)'},
+  'EC':{r:'LPN',n:'UK Power Networks (London)'},'N':{r:'LPN',n:'UK Power Networks (London)'},
+  'NW':{r:'LPN',n:'UK Power Networks (London)'},'SE':{r:'SPN',n:'UK Power Networks (South East)'},
+  'PO':{r:'SSN',n:'SSEN Distribution Southern'},'SO':{r:'SSN',n:'SSEN Distribution Southern'},
+  'RG':{r:'SSN',n:'SSEN Distribution Southern'},'GU':{r:'SSN',n:'SSEN Distribution Southern'},
+  'BN':{r:'SSN',n:'SSEN Distribution Southern'},'RH':{r:'SSN',n:'SSEN Distribution Southern'},
+  'BH':{r:'SSN',n:'SSEN Distribution Southern'},'SP':{r:'SSN',n:'SSEN Distribution Southern'},
+  'CT':{r:'SPN',n:'UK Power Networks (South East)'},'ME':{r:'SPN',n:'UK Power Networks (South East)'},
+  'TN':{r:'SPN',n:'UK Power Networks (South East)'},'BR':{r:'SPN',n:'UK Power Networks (South East)'},
+  'DA':{r:'SPN',n:'UK Power Networks (South East)'},'CR':{r:'LPN',n:'UK Power Networks (London)'},
+  'SM':{r:'LPN',n:'UK Power Networks (London)'},'KT':{r:'SPN',n:'UK Power Networks (South East)'},
+  'SW':{r:'LPN',n:'UK Power Networks (London)'},'W':{r:'LPN',n:'UK Power Networks (London)'},
+  'WC':{r:'LPN',n:'UK Power Networks (London)'},
+  'B':{r:'WM',n:'NGED West Midlands'},'CV':{r:'WM',n:'NGED West Midlands'},
+  'DY':{r:'WM',n:'NGED West Midlands'},'WS':{r:'WM',n:'NGED West Midlands'},
+  'WV':{r:'WM',n:'NGED West Midlands'},'ST':{r:'WM',n:'NGED West Midlands'},
+  'WR':{r:'SW',n:'NGED South West'},'GL':{r:'SW',n:'NGED South West'},
+  'BS':{r:'SW',n:'NGED South West'},'BA':{r:'SW',n:'NGED South West'},
+  'TA':{r:'SW',n:'NGED South West'},'EX':{r:'SW',n:'NGED South West'},
+  'PL':{r:'SW',n:'NGED South West'},'TQ':{r:'SW',n:'NGED South West'},
+  'TR':{r:'SW',n:'NGED South West'},'DT':{r:'SW',n:'NGED South West'},
+  'NP':{r:'MAN',n:'SP Manweb (Wales)'},'CF':{r:'MAN',n:'SP Manweb (Wales)'},
+  'SA':{r:'MAN',n:'SP Manweb (Wales)'},'LD':{r:'MAN',n:'SP Manweb (Wales)'},
+  'SY':{r:'MAN',n:'SP Manweb (Wales)'},'LL':{r:'MAN',n:'SP Manweb (Wales)'},
+  'CH':{r:'MAN',n:'SP Manweb (Merseyside)'},'M':{r:'ENW',n:'Electricity North West'},
+  'WA':{r:'MAN',n:'SP Manweb (Merseyside)'},'CW':{r:'MAN',n:'SP Manweb (Merseyside)'},
+  'SK':{r:'ENW',n:'Electricity North West'},
+  'S':{r:'YOR',n:'Northern Powergrid (Yorkshire)'},'HD':{r:'YOR',n:'Northern Powergrid (Yorkshire)'},
+  'HX':{r:'YOR',n:'Northern Powergrid (Yorkshire)'},'BD':{r:'YOR',n:'Northern Powergrid (Yorkshire)'},
+  'HG':{r:'YOR',n:'Northern Powergrid (Yorkshire)'},'LS':{r:'YOR',n:'Northern Powergrid (Yorkshire)'},
+  'WF':{r:'YOR',n:'Northern Powergrid (Yorkshire)'},'YO':{r:'YOR',n:'Northern Powergrid (Yorkshire)'},
+  'DN':{r:'EMD',n:'NGED East Midlands'},'NG':{r:'EMD',n:'NGED East Midlands'},
+  'DE':{r:'EMD',n:'NGED East Midlands'},'LE':{r:'EMD',n:'NGED East Midlands'},
+  'LN':{r:'EMD',n:'NGED East Midlands'},'PE':{r:'EMD',n:'NGED East Midlands'},
+  'NN':{r:'EMD',n:'NGED East Midlands'},'MK':{r:'EMD',n:'NGED East Midlands'},
+  'LU':{r:'EMD',n:'NGED East Midlands'},'OX':{r:'EMD',n:'NGED East Midlands'},
+  'NR':{r:'EE',n:'UK Power Networks (East England)'},'IP':{r:'EE',n:'UK Power Networks (East England)'},
+  'CB':{r:'EE',n:'UK Power Networks (East England)'},'CM':{r:'EE',n:'UK Power Networks (East England)'},
+  'CO':{r:'EE',n:'UK Power Networks (East England)'},'SS':{r:'EE',n:'UK Power Networks (East England)'},
+  'HP':{r:'EE',n:'UK Power Networks (East England)'},'AL':{r:'EE',n:'UK Power Networks (East England)'},
+  'SG':{r:'EE',n:'UK Power Networks (East England)'},'EN':{r:'EE',n:'UK Power Networks (East England)'},
+  'NE':{r:'NPG',n:'Northern Powergrid (NE)'},'SR':{r:'NPG',n:'Northern Powergrid (NE)'},
+  'DH':{r:'NPG',n:'Northern Powergrid (NE)'},'TS':{r:'NPG',n:'Northern Powergrid (NE)'},
+  'DL':{r:'NPG',n:'Northern Powergrid (NE)'},
+  'CA':{r:'ENW',n:'Electricity North West'},'LA':{r:'ENW',n:'Electricity North West'},
+  'PR':{r:'ENW',n:'Electricity North West'},'FY':{r:'ENW',n:'Electricity North West'},
+  'BB':{r:'ENW',n:'Electricity North West'},'BL':{r:'ENW',n:'Electricity North West'},
+  'OL':{r:'ENW',n:'Electricity North West'},'WN':{r:'ENW',n:'Electricity North West'},
+  'EH':{r:'SPD',n:'SP Distribution (South Scotland)'},'G':{r:'SPD',n:'SP Distribution (South Scotland)'},
+  'ML':{r:'SPD',n:'SP Distribution (South Scotland)'},'PA':{r:'SPD',n:'SP Distribution (South Scotland)'},
+  'KA':{r:'SPD',n:'SP Distribution (South Scotland)'},'DG':{r:'SPD',n:'SP Distribution (South Scotland)'},
+  'TD':{r:'SPD',n:'SP Distribution (South Scotland)'},
+  'AB':{r:'SHN',n:'SSEN Distribution North Scotland'},'DD':{r:'SHN',n:'SSEN Distribution North Scotland'},
+  'IV':{r:'SHN',n:'SSEN Distribution North Scotland'},'KW':{r:'SHN',n:'SSEN Distribution North Scotland'},
+  'PH':{r:'SHN',n:'SSEN Distribution North Scotland'},'HS':{r:'SHN',n:'SSEN Distribution North Scotland'},
+  'ZE':{r:'SHN',n:'SSEN Distribution North Scotland'},'FK':{r:'SHN',n:'SSEN Distribution North Scotland'}
+};
+
+// Region-level constraint profiles. Numbers are illustrative anchors based on
+// well-documented public-domain constraint patterns (East England, SW England,
+// Wales = known curtailment hotspots; LPN/inner-city demand = least constrained).
+const REGION_PROFILE = {
+  'EE':  {label:'East England',     constraint:0.85, curtailMin:14, curtailMax:24, queueLen:[80,180], anmLikely:0.7,  reinforce:'Strategic reinforcement programme to 2029'},
+  'SW':  {label:'South West',       constraint:0.80, curtailMin:11, curtailMax:19, queueLen:[60,140], anmLikely:0.65, reinforce:'Constrained Managed Zone live'},
+  'MAN': {label:'Wales / Merseyside',constraint:0.65, curtailMin:8,  curtailMax:14, queueLen:[40,90],  anmLikely:0.55, reinforce:'Targeted reinforcement 2027–28'},
+  'SHN': {label:'North Scotland',   constraint:0.90, curtailMin:18, curtailMax:32, queueLen:[100,220],anmLikely:0.8,  reinforce:'Major HVDC reinforcement underway'},
+  'SPD': {label:'South Scotland',   constraint:0.70, curtailMin:9,  curtailMax:16, queueLen:[50,110], anmLikely:0.55, reinforce:'Wider Scotland reinforcement programme'},
+  'YOR': {label:'Yorkshire',        constraint:0.55, curtailMin:5,  curtailMax:11, queueLen:[30,70],  anmLikely:0.4,  reinforce:'No imminent reinforcement noted'},
+  'NPG': {label:'North East',       constraint:0.50, curtailMin:4,  curtailMax:9,  queueLen:[25,60],  anmLikely:0.35, reinforce:'No imminent reinforcement noted'},
+  'EMD': {label:'East Midlands',    constraint:0.65, curtailMin:7,  curtailMax:13, queueLen:[40,90],  anmLikely:0.5,  reinforce:'Reinforcement scoped 2028'},
+  'WM':  {label:'West Midlands',    constraint:0.55, curtailMin:5,  curtailMax:10, queueLen:[30,70],  anmLikely:0.4,  reinforce:'No imminent reinforcement noted'},
+  'ENW': {label:'North West',       constraint:0.55, curtailMin:5,  curtailMax:10, queueLen:[30,70],  anmLikely:0.4,  reinforce:'Reinforcement scoped 2028'},
+  'SSN': {label:'Southern England', constraint:0.65, curtailMin:7,  curtailMax:13, queueLen:[40,90],  anmLikely:0.5,  reinforce:'Reinforcement scoped 2027–28'},
+  'SPN': {label:'South East',       constraint:0.60, curtailMin:6,  curtailMax:12, queueLen:[35,80],  anmLikely:0.45, reinforce:'Reinforcement scoped 2028'},
+  'LPN': {label:'London',           constraint:0.35, curtailMin:2,  curtailMax:6,  queueLen:[15,40],  anmLikely:0.15, reinforce:'No solar/BESS reinforcement bottleneck'}
+};
+
+function lookupDno(pc){
+  const cleaned = pc.toUpperCase().replace(/\s+/g,'');
+  let prefix = cleaned.replace(/\d.*$/, '');
+  while (prefix.length>=1){
+    if (DNO_MAP[prefix]) return {prefix, ...DNO_MAP[prefix]};
+    prefix = prefix.slice(0,-1);
+  }
+  return null;
+}
+
+function rng(seed){ // deterministic-ish jitter per postcode so demo feels consistent
+  let s = 0;
+  for (let i=0;i<seed.length;i++) s = (s*31 + seed.charCodeAt(i)) >>> 0;
+  return ()=>{ s = (s*1664525 + 1013904223) >>> 0; return s/4294967296; };
+}
+function rand(r, min, max){ return min + r()*(max-min); }
+function randInt(r, min, max){ return Math.floor(rand(r, min, max+1)); }
+function pick(r, arr){ return arr[Math.floor(r()*arr.length)]; }
+
+function analyse(postcode, capacityKw, asset){
+  const dno = lookupDno(postcode);
+  if (!dno) return null;
+  const prof = REGION_PROFILE[dno.r] || REGION_PROFILE['EE'];
+  const r = rng(postcode + capacityKw + asset);
+
+  // Available headroom — scaled by region constraint and asset
+  const baseAvail = 5000 * (1 - prof.constraint);          // typical kW at primary
+  const noise = rand(r, 0.7, 1.4);
+  const assetMod = (asset==='bess')?1.15:(asset==='wind')?0.85:(asset==='solar-bess')?1.05:1.0;
+  const availableKw = Math.round(baseAvail * noise * assetMod / 5)*5;
+  const headroomRatio = Math.min(1, availableKw / capacityKw);
+  let headroomBand = headroomRatio>=1 ? 'green' : headroomRatio>=0.6 ? 'amber' : 'red';
+
+  // Queue position
+  const queueRaw = randInt(r, prof.queueLen[0], prof.queueLen[1]);
+  const sizeFactor = capacityKw>1000 ? 1.5 : capacityKw>250 ? 1.15 : 1.0;
+  const queuePos = Math.round(queueRaw * sizeFactor);
+  const queueBand = queuePos<40 ? 'green' : queuePos<90 ? 'amber' : 'red';
+
+  // Curtailment risk — headline vs effective
+  const headlinePct = rand(r, prof.curtailMin, prof.curtailMax);
+  const effectivePct = headlinePct * (asset==='bess' ? 0.45 : asset==='wind' ? 0.85 : 0.65);
+  const curtailBand = effectivePct<6 ? 'green' : effectivePct<13 ? 'amber' : 'red';
+
+  // Timeline
+  const baseWeeks = prof.constraint>0.75 ? randInt(r,32,56) : prof.constraint>0.55 ? randInt(r,16,28) : randInt(r,6,14);
+  const timelineLabel = baseWeeks>32 ? `${Math.round(baseWeeks/4.3)}+ mo` : `${baseWeeks} wk`;
+  const timelineBand = baseWeeks>32 ? 'red' : baseWeeks>16 ? 'amber' : 'green';
+
+  // ANM zone
+  const anmZone = r() < prof.anmLikely;
+
+  // Attrition
+  const attritionPct = randInt(r, 18, 38);
+
+  // Verdict — combine signals
+  const bands = [headroomBand, queueBand, curtailBand, timelineBand];
+  const reds = bands.filter(b=>b==='red').length;
+  const greens = bands.filter(b=>b==='green').length;
+  let verdict;
+  if (reds>=2) verdict = 'reconsider';
+  else if (greens>=3) verdict = 'proceed';
+  else verdict = 'caution';
+
+  // Narrative
+  const ds = [];
+  if (headroomBand==='green') ds.push(`there is <span class="highlight">sufficient export headroom</span> at the likely primary substation for your ${capacityKw}kW ask`);
+  else if (headroomBand==='amber') ds.push(`available headroom is <span class="highlight">below your requested capacity</span> — partial export or curtailment management likely needed`);
+  else ds.push(`headroom is <span class="highlight">severely constrained</span> — current request unlikely without major reinforcement contribution`);
+
+  if (curtailBand==='green') ds.push(`effective curtailment risk is low for ${asset.toUpperCase()} (~${Math.round(effectivePct)}% revenue impact)`);
+  else if (curtailBand==='amber') ds.push(`expect ~${Math.round(effectivePct)}% effective curtailment — model this into the IRR`);
+  else ds.push(`effective curtailment is high (~${Math.round(effectivePct)}%) — consider co-located BESS to time-shift export`);
+
+  if (queueBand==='red') ds.push(`queue is long (${queuePos} ahead); ${attritionPct}% historic attrition gives meaningful pull-up though`);
+  else if (queueBand==='amber') ds.push(`queue length is workable but watch for LIFO queue reform impact`);
+  else ds.push(`queue position is favourable — early-cleared opportunity`);
+
+  if (anmZone) ds.push(`<span class="highlight">site sits inside an Active Network Management zone</span> — export may be dynamically curtailed by the DNO`);
+  if (prof.reinforce && !prof.reinforce.includes('No imminent')) ds.push(`note: ${prof.reinforce.toLowerCase()}`);
+
+  return {
+    dno, prof, postcode: postcode.toUpperCase(),
+    capacityKw, asset,
+    headroom:{value:availableKw,band:headroomBand,ratio:headroomRatio,desc:`vs your ${capacityKw}kW ask`},
+    queue:{value:queuePos,band:queueBand,desc:`projects ahead at substation`},
+    curtail:{headline:headlinePct,effective:effectivePct,band:curtailBand,desc:`effective revenue impact`},
+    timeline:{label:timelineLabel,weeks:baseWeeks,band:timelineBand,desc:'to formal DNO approval'},
+    anmZone,
+    attritionPct,
+    verdict,
+    narrative: ds.join('; ').replace(/^./, m=>m.toUpperCase()) + '.',
+    alternatives: generateAlts(postcode, capacityKw, asset, r)
+  };
+}
+
+function generateAlts(originPostcode, capacityKw, asset, r){
+  // Nearby postcode prefixes — keep within same region for realism
+  const dno = lookupDno(originPostcode);
+  if (!dno) return [];
+  const sameRegion = Object.entries(DNO_MAP).filter(([k,v])=>v.r===dno.r && k!==dno.prefix).map(([k])=>k);
+  const out = [];
+  for (let i=0;i<3 && sameRegion.length>0;i++){
+    const idx = Math.floor(r()*sameRegion.length);
+    const pc = sameRegion.splice(idx,1)[0];
+    const headroomImprovement = randInt(r, 12, 48);
+    const queueDelta = randInt(r, -45, -8);
+    out.push({pc:`${pc}${randInt(r,1,9)} ${randInt(r,1,9)}${String.fromCharCode(65+randInt(r,0,25))}${String.fromCharCode(65+randInt(r,0,25))}`, improvement: `+${headroomImprovement}% headroom`, queue: `queue ${queueDelta}`});
+  }
+  return out;
+}
+
+// ============================================================
+// Render
+// ============================================================
+function renderResults(a){
+  const set = (id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v};
+
+  set('r-title', `${a.postcode} · ${a.capacityKw.toLocaleString()}kW ${a.asset.toUpperCase()}`);
+  set('r-meta', `${a.dno.n} · ${a.prof.label} · likely primary substation`);
+
+  const v = document.getElementById('r-verdict');
+  v.className = `verdict ${a.verdict}`;
+  set('r-verdict-text',
+    a.verdict==='proceed' ? 'PROCEED' :
+    a.verdict==='caution' ? 'PROCEED WITH CAUTION' : 'RECONSIDER SITE');
+
+  // Headroom metric
+  const hm = document.getElementById('m-headroom');
+  hm.className = `metric ${a.headroom.band}`;
+  set('m-headroom-v', a.headroom.value.toLocaleString());
+  set('m-headroom-d', `${Math.round(a.headroom.ratio*100)}% of your ${a.capacityKw.toLocaleString()}kW ask`);
+  const bar = document.getElementById('m-headroom-bar');
+  bar.className = `progress-bar ${a.headroom.band}`;
+  bar.style.width = `${Math.min(100, a.headroom.ratio*100)}%`;
+
+  // Queue
+  const qm = document.getElementById('m-queue');
+  qm.className = `metric ${a.queue.band}`;
+  set('m-queue-v', a.queue.value);
+  set('m-queue-d', `${a.attritionPct}% historic attrition`);
+
+  // Curtailment
+  const cm = document.getElementById('m-curtail');
+  cm.className = `metric ${a.curtail.band}`;
+  const curtailLabel = a.curtail.band==='green' ? 'LOW' : a.curtail.band==='amber' ? 'MEDIUM' : 'HIGH';
+  set('m-curtail-v', curtailLabel);
+  set('m-curtail-d', `~${Math.round(a.curtail.effective)}% effective (headline ${Math.round(a.curtail.headline)}%)`);
+
+  // Timeline
+  const tm = document.getElementById('m-timeline');
+  tm.className = `metric ${a.timeline.band}`;
+  set('m-timeline-v', a.timeline.label);
+  set('m-timeline-d', 'to formal DNO approval');
+
+  // Detail rows
+  set('d-dno', a.dno.n);
+  set('d-region', a.prof.label);
+  set('d-substation', `[Indicative — production uses ECR mapping]`);
+  set('d-anm', a.anmZone ? 'Inside ANM zone' : 'Outside ANM zone');
+  set('d-reinforce', a.prof.reinforce);
+  set('d-attrition', `~${a.attritionPct}% project drop-out`);
+  document.getElementById('d-narrative').innerHTML = a.narrative;
+
+  // Alternatives
+  const altList = document.getElementById('alt-list');
+  altList.innerHTML = a.alternatives.map(alt =>
+    `<div class="alt-row"><div class="pc">${alt.pc}</div><div class="imp">${alt.improvement} · ${alt.queue}</div></div>`
+  ).join('') || '<div class="alt-row" style="opacity:.5"><div class="pc">—</div><div class="imp">No alternatives identified</div></div>';
+
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+document.getElementById('run').addEventListener('click', ()=>{
+  const pc = document.getElementById('postcode').value.trim();
+  const cap = parseInt(document.getElementById('capacity').value, 10);
+  const asset = document.getElementById('asset').value;
+  if (!pc){ alert('Enter a postcode.'); return; }
+  if (!cap || cap<10){ alert('Enter a target capacity in kW (10+).'); return; }
+  const dno = lookupDno(pc);
+  if (!dno){ alert(`Couldn't match "${pc}" to a UK DNO region.  Try a full postcode like NR1 1AA or B1 1AA.`); return; }
+  const btn = document.getElementById('run');
+  btn.disabled = true;
+  btn.textContent = 'Analysing grid data…';
+  setTimeout(()=>{
+    const a = analyse(pc, cap, asset);
+    renderResults(a);
+    btn.disabled = false;
+    btn.textContent = 'Run headroom analysis →';
+  }, 800);
+});
+
+// Enter to submit
+['postcode','capacity'].forEach(id=>{
+  document.getElementById(id).addEventListener('keypress', e=>{
+    if (e.key==='Enter') document.getElementById('run').click();
+  });
+});
+
+// Pre-fill demo data on load for instant visual
+document.getElementById('postcode').value = 'NR1 1AA';
+document.getElementById('capacity').value = '500';
+</script>
+</body>
+</html>
