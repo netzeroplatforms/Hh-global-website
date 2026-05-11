@@ -139,22 +139,22 @@
   <div class="inputs-card">
     <div class="inputs-grid">
       <div class="field">
+        <label>Asset type</label>
+        <select id="assetType">
+          <option value="solar">Solar PV</option>
+          <option value="wind">Wind (onshore)</option>
+          <option value="hydro">Hydro (small)</option>
+          <option value="ad-chp">AD / CHP / Biomass</option>
+          <option value="bess">BESS</option>
+        </select>
+      </div>
+      <div class="field">
         <label>Site capacity (kW)</label>
         <input type="number" id="capacity" value="500" min="50" max="5000">
       </div>
       <div class="field">
         <label>Postcode</label>
         <input type="text" id="postcode" value="NR1 1AA">
-      </div>
-      <div class="field">
-        <label>Site type</label>
-        <select id="siteType">
-          <option value="warehouse">Warehouse / Logistics</option>
-          <option value="industrial">Industrial / Manufacturing</option>
-          <option value="office">Office / Mixed Use</option>
-          <option value="retail">Retail / Supermarket</option>
-          <option value="agri">Agricultural</option>
-        </select>
       </div>
       <div class="field">
         <label>Self-consumption %</label>
@@ -241,14 +241,16 @@ const RATES = {
   m2PerKw: 6
 };
 
-// Site type capex modifier (warehouse easier than retail / multi-tenant)
-const SITE_TYPE_MOD = {
-  warehouse: 0.95,   // simple, single-tenant, easy roof
-  industrial: 1.0,
-  office: 1.10,     // multi-tenant complications
-  retail: 1.05,
-  agri: 0.90        // greenfield, often simpler
+// Asset-specific profile: capex per kW, capacity factor (load factor), PPA appetite, lease applicability
+const ASSET_PROFILE = {
+  'solar':  { capexPerKw: 525,  yieldHrs: 950,  ppaOnsite:0.11, ppaSleeved:0.085, leaseApplies:true,  label:'Commercial solar PV' },
+  'wind':   { capexPerKw: 1300, yieldHrs: 2500, ppaOnsite:0.10, ppaSleeved:0.080, leaseApplies:false, label:'Onshore wind' },
+  'hydro':  { capexPerKw: 4500, yieldHrs: 4500, ppaOnsite:0.12, ppaSleeved:0.095, leaseApplies:false, label:'Small / run-of-river hydro' },
+  'ad-chp': { capexPerKw: 3500, yieldHrs: 7500, ppaOnsite:0.13, ppaSleeved:0.090, leaseApplies:false, label:'AD / CHP / Biomass' },
+  'bess':   { capexPerKw: 600,  yieldHrs: 1500, ppaOnsite:0.10, ppaSleeved:0.075, leaseApplies:false, label:'Standalone BESS (arbitrage)' }
 };
+// Site type capex modifier — only meaningful for solar (rooftop complexity); 1.0 for groundmount/other
+const SITE_TYPE_MOD = { warehouse:0.95, industrial:1.0, office:1.10, retail:1.05, agri:0.90 };
 
 // Connection cost rough estimate by capacity (£; uses Grid Check model output)
 function estConnection(capacityKw){
@@ -266,18 +268,24 @@ function npv(annualCashflow, years, discountRate){
   return v;
 }
 
-function calculate(capacityKw, postcode, siteType, selfConsPct){
-  const capexMod = SITE_TYPE_MOD[siteType] || 1.0;
-  const annualKwh = capacityKw * RATES.yieldMid;
+function calculate(capacityKw, postcode, assetType, selfConsPct){
+  const ap = ASSET_PROFILE[assetType] || ASSET_PROFILE.solar;
+  // For non-solar, site-type modifier is neutral
+  const capexMod = assetType === 'solar' ? (SITE_TYPE_MOD[document.getElementById('siteType')?.value] || 1.0) : 1.0;
+  const annualKwh = capacityKw * ap.yieldHrs;
   const selfConsKwh = annualKwh * (selfConsPct/100);
   const exportKwh = annualKwh - selfConsKwh;
   const connection = estConnection(capacityKw);
   const omAnnual = capacityKw * RATES.omPerKw + RATES.insuranceFixed;
+  // Override on-site PPA and sleeved rates per asset
+  const onsitePpa = ap.ppaOnsite;
+  const sleevedPpa = ap.ppaSleeved;
+  const capexPerKw = ap.capexPerKw;
 
   // ============================================================
   // OPTION 1: SELF-BUILD (CAPEX)
   // ============================================================
-  const sbCapex = Math.round((capacityKw * RATES.capexMid * capexMod + connection) / 1000) * 1000;
+  const sbCapex = Math.round((capacityKw * capexPerKw * capexMod + connection) / 1000) * 1000;
   const sbRevenue = selfConsKwh * RATES.importMid + exportKwh * RATES.exportMid;
   const sbNetAnnual = sbRevenue - omAnnual;
   const sbPayback = sbCapex / sbNetAnnual;
@@ -288,7 +296,7 @@ function calculate(capacityKw, postcode, siteType, selfConsPct){
   // OPTION 2: ON-SITE PPA (developer funds; site host buys at PPA rate, 15yr term then buyout option)
   // ============================================================
   const ppaTerm = 15;
-  const ppaSavingAnnual = selfConsKwh * (RATES.importMid - RATES.onsitePpaMid);
+  const ppaSavingAnnual = selfConsKwh * (RATES.importMid - onsitePpa);
   const ppaResidualYears = RATES.assetLife - ppaTerm;
   // After PPA term, host buys at fair value (~30% of original capex) and gets full LCOE benefit
   const ppaResidualCapex = sbCapex * 0.3;
@@ -304,7 +312,7 @@ function calculate(capacityKw, postcode, siteType, selfConsPct){
   // Assumes site annual usage equals annualKwh / selfCons (back-calc total demand from self-cons assumption)
   // Simpler: applies blended saving to the SOLAR-equivalent volume only for like-for-like comparison
   // ============================================================
-  const sleevedSavingAnnual = annualKwh * (RATES.importMid - RATES.sleevedPpaMid);
+  const sleevedSavingAnnual = annualKwh * (RATES.importMid - sleevedPpa);
   const sleevedNpv = Math.round(npv(sleevedSavingAnnual, RATES.assetLife, RATES.discountRate));
 
   // ============================================================
@@ -314,25 +322,28 @@ function calculate(capacityKw, postcode, siteType, selfConsPct){
   const leaseAnnual = roofM2 * RATES.leasePerM2Mid;
   const leaseNpv = Math.round(npv(leaseAnnual, RATES.assetLife, RATES.discountRate));
 
+  // Lease only applies to solar (roof-mounted). Other assets exclude lease from comparison.
+  const leaseApplicable = ap.leaseApplies;
+
   // Determine winner
-  const options = [
+  const optionsRanked = [
     { id:'self-build', npv:sbNpv },
     { id:'onsite-ppa', npv:ppaNpv },
     { id:'sleeved-ppa', npv:sleevedNpv },
-    { id:'lease', npv:leaseNpv }
+    ...(leaseApplicable ? [{ id:'lease', npv:leaseNpv }] : [])
   ];
-  options.sort((a,b) => b.npv - a.npv);
-  const winner = options[0];
-  const runnerUp = options[1];
+  optionsRanked.sort((a,b) => b.npv - a.npv);
+  const winner = optionsRanked[0];
+  const runnerUp = optionsRanked[1];
 
   return {
-    capacityKw, postcode, siteType, selfConsPct, annualKwh, selfConsKwh, exportKwh, connection, omAnnual,
+    capacityKw, postcode, assetType, assetLabel:ap.label, selfConsPct, annualKwh, selfConsKwh, exportKwh, connection, omAnnual, leaseApplicable,
     selfBuild:  { capex:sbCapex,           annualNet:Math.round(sbNetAnnual), payback:sbPayback,         npv:sbNpv,      effectiveRate:sbEffectiveRate, revenue:Math.round(sbRevenue) },
-    onsitePpa:  { capex:0,                 annualNet:Math.round(ppaSavingAnnual),payback:0,             npv:ppaNpv,    effectiveRate:RATES.onsitePpaMid, term:ppaTerm },
-    sleevedPpa: { capex:0,                 annualNet:Math.round(sleevedSavingAnnual),payback:0,        npv:sleevedNpv,effectiveRate:RATES.sleevedPpaMid },
+    onsitePpa:  { capex:0,                 annualNet:Math.round(ppaSavingAnnual),payback:0,             npv:ppaNpv,    effectiveRate:onsitePpa, term:ppaTerm },
+    sleevedPpa: { capex:0,                 annualNet:Math.round(sleevedSavingAnnual),payback:0,        npv:sleevedNpv,effectiveRate:sleevedPpa },
     lease:      { capex:0,                 annualNet:Math.round(leaseAnnual),  payback:0,               npv:leaseNpv,  effectiveRate:0, roofM2 },
     winner: winner.id,
-    runnerUp: runnerUp.id
+    runnerUp: runnerUp ? runnerUp.id : winner.id
   };
 }
 
@@ -417,12 +428,13 @@ function render(r){
 
   // Render compare meta
   document.getElementById('compare-meta').textContent =
-    `${r.capacityKw.toLocaleString()} kW commercial solar · ${r.postcode} · ${r.siteType} · ${r.selfConsPct}% self-consumption · ${Math.round(r.annualKwh).toLocaleString()} kWh/yr expected generation`;
+    `${r.capacityKw.toLocaleString()} kW ${r.assetLabel} · ${r.postcode} · ${r.selfConsPct}% self-consumption · ${Math.round(r.annualKwh).toLocaleString()} kWh/yr expected generation`;
 
-  // Render four cards (order: self-build, onsite, sleeved, lease)
+  // Render cards — exclude lease when not applicable (wind/hydro/AD/BESS)
+  const order = ['self-build','onsite-ppa','sleeved-ppa', ...(r.leaseApplicable ? ['lease'] : [])];
   const grid = document.getElementById('compare-grid');
-  grid.innerHTML = ['self-build','onsite-ppa','sleeved-ppa','lease']
-    .map(k => buildOptionCard(optionDefs[k], k, k === r.winner)).join('');
+  grid.style.gridTemplateColumns = order.length === 4 ? 'repeat(4,1fr)' : 'repeat(3,1fr)';
+  grid.innerHTML = order.map(k => buildOptionCard(optionDefs[k], k, k === r.winner)).join('');
 
   // Render assumptions table
   const tbody = document.querySelector('#assumptions-table tbody');
@@ -443,17 +455,17 @@ function render(r){
 document.getElementById('run').addEventListener('click', () => {
   const cap = parseInt(document.getElementById('capacity').value);
   const pc = document.getElementById('postcode').value.trim();
-  const st = document.getElementById('siteType').value;
+  const at = document.getElementById('assetType').value;
   const sc = parseInt(document.getElementById('selfCons').value);
   if (!cap || cap < 50) { alert('Enter capacity ≥ 50kW'); return; }
-  const r = calculate(cap, pc, st, sc);
+  const r = calculate(cap, pc, at, sc);
   render(r);
 });
 
 // Auto-run on load with defaults
 window.addEventListener('load', () => document.getElementById('run').click());
 
-['capacity','postcode','siteType','selfCons'].forEach(id =>
+['capacity','postcode','assetType','selfCons'].forEach(id =>
   document.getElementById(id).addEventListener('change', () => document.getElementById('run').click())
 );
 </script>

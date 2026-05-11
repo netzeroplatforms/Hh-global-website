@@ -235,7 +235,9 @@
             <option value="solar">Solar PV</option>
             <option value="bess">BESS</option>
             <option value="solar-bess">Solar + BESS</option>
-            <option value="wind">Wind</option>
+            <option value="wind">Wind (onshore)</option>
+            <option value="hydro">Hydro (small / run-of-river)</option>
+            <option value="ad-chp">AD / CHP / Biomass</option>
           </select>
         </div>
       </div>
@@ -539,7 +541,23 @@ const ECR_COMPARABLES = [
   // ENW
   {ref:'ENW-ENW-2025-0142', region:'ENW',area:'M44', capacityKw:500,  asset:'bess',      costK:64,  voltage:'HV-11kV', date:'Feb 2025'},
   {ref:'ENW-ENW-2025-0083', region:'ENW',area:'LA4', capacityKw:1000, asset:'solar',     costK:136, voltage:'HV-11kV', date:'Jan 2025'},
-  {ref:'ENW-ENW-2024-2210', region:'ENW',area:'BB12',capacityKw:300,  asset:'solar',     costK:41,  voltage:'HV-11kV', date:'Dec 2024'}
+  {ref:'ENW-ENW-2024-2210', region:'ENW',area:'BB12',capacityKw:300,  asset:'solar',     costK:41,  voltage:'HV-11kV', date:'Dec 2024'},
+  // Wind onshore — concentrated in SHN, SPD, MAN, SW where constraint is high
+  {ref:'SSEN-SHN-2025-0089',region:'SHN',area:'KW12',capacityKw:500,  asset:'wind',      costK:182, voltage:'HV-11kV', date:'Feb 2025'},
+  {ref:'SSEN-SHN-2025-0211',region:'SHN',area:'IV23',capacityKw:1500, asset:'wind',      costK:512, voltage:'EHV-33kV',date:'Mar 2025'},
+  {ref:'SPEN-SPD-2025-0166',region:'SPD',area:'DG11',capacityKw:1000, asset:'wind',      costK:312, voltage:'HV-11kV', date:'Feb 2025'},
+  {ref:'SPEN-MAN-2025-0177',region:'MAN',area:'LD3', capacityKw:750,  asset:'wind',      costK:208, voltage:'HV-11kV', date:'Jan 2025'},
+  {ref:'NGED-SW-2025-0244', region:'SW', area:'TR12',capacityKw:500,  asset:'wind',      costK:148, voltage:'HV-11kV', date:'Feb 2025'},
+  // Small hydro — typically rural areas, similar profile to solar in fee but firmer
+  {ref:'SSEN-SHN-2025-0044',region:'SHN',area:'PH18',capacityKw:250,  asset:'hydro',     costK:62,  voltage:'HV-11kV', date:'Jan 2025'},
+  {ref:'SPEN-MAN-2025-0098',region:'MAN',area:'LL40',capacityKw:500,  asset:'hydro',     costK:128, voltage:'HV-11kV', date:'Feb 2025'},
+  {ref:'NGED-SW-2025-0188', region:'SW', area:'EX22',capacityKw:150,  asset:'hydro',     costK:38,  voltage:'HV-11kV', date:'Feb 2025'},
+  // AD / CHP / Biomass — dispatchable, baseload, similar capex to solar+BESS combined
+  {ref:'NGED-EMD-2025-0233',region:'EMD',area:'LN9', capacityKw:1000, asset:'ad-chp',    costK:182, voltage:'HV-11kV', date:'Mar 2025'},
+  {ref:'NGED-SW-2025-0344', region:'SW', area:'TA20',capacityKw:500,  asset:'ad-chp',    costK:96,  voltage:'HV-11kV', date:'Feb 2025'},
+  {ref:'UKPN-EE-2025-0444', region:'EE', area:'NR15',capacityKw:1500, asset:'ad-chp',    costK:285, voltage:'HV-11kV', date:'Mar 2025'},
+  {ref:'NPG-YOR-2025-0188', region:'YOR',area:'YO25',capacityKw:750,  asset:'ad-chp',    costK:128, voltage:'HV-11kV', date:'Feb 2025'},
+  {ref:'NGED-WM-2025-0388', region:'WM', area:'SY12',capacityKw:500,  asset:'ad-chp',    costK:84,  voltage:'HV-11kV', date:'Mar 2025'}
 ];
 
 function estimateConnectionFee(capacityKw, regionConstraint, asset, dnoRegion, r){
@@ -554,13 +572,18 @@ function estimateConnectionFee(capacityKw, regionConstraint, asset, dnoRegion, r
   else if (capacityKw < 5000) baseRate = rand(r, 130, 260);
   else                        baseRate = rand(r, 180, 340);
 
-  // Asset adjuster — BESS has more electronics, slightly higher kit cost
-  const assetMod = asset==='bess' ? 1.10 : asset==='solar-bess' ? 1.18 : asset==='wind' ? 1.25 : 1.0;
-  const soleUse = Math.round(baseRate * capacityKw * assetMod);
+  // Asset adjuster — kit complexity drives sole-use cost above base £/kW
+  // BESS adds inverters + control. Wind heavier kit + foundation + maintenance access.
+  // Hydro civil works can vary widely. AD/CHP has generator + heat recovery + grid sync.
+  const ASSET_FEE_MOD = { solar:1.0, bess:1.10, 'solar-bess':1.18, wind:1.30, hydro:1.20, 'ad-chp':1.35 };
+  const feeAssetMod = ASSET_FEE_MOD[asset] ?? 1.0;
+  const soleUse = Math.round(baseRate * capacityKw * feeAssetMod);
 
-  // Reinforcement contribution — driven by region constraint
+  // Reinforcement contribution — driven by region constraint, modulated by asset profile.
   // post-Access SCR (Apr 2023) this is "shallowish" — typical 0.3-1.5x sole-use in constrained regions
-  const reinforceMult = regionConstraint * (asset==='bess' ? 0.6 : 1.0); // BESS has less reinforcement impact (time-shifts)
+  // BESS + AD/CHP can time-shift / dispatch → smaller reinforcement need. Wind = full peak hit.
+  const ASSET_REINF = { solar:1.0, bess:0.6, 'solar-bess':0.85, wind:1.10, hydro:0.85, 'ad-chp':0.55 };
+  const reinforceMult = regionConstraint * (ASSET_REINF[asset] ?? 1.0);
   const reinforceContrib = Math.round(soleUse * reinforceMult * rand(r, 0.6, 1.4));
 
   // Application fee — DNO charging statement bands
@@ -663,10 +686,13 @@ function analyse(postcode, capacityKw, asset, geo){
   const prof = REGION_PROFILE[dno.r] || REGION_PROFILE['EE'];
   const r = rng(postcode + capacityKw + asset);
 
-  // Available headroom — scaled by region constraint and asset
-  const baseAvail = 5000 * (1 - prof.constraint);          // typical kW at primary
+  // Available headroom — scaled by region constraint and asset profile
+  const baseAvail = 5000 * (1 - prof.constraint);
   const noise = rand(r, 0.7, 1.4);
-  const assetMod = (asset==='bess')?1.15:(asset==='wind')?0.85:(asset==='solar-bess')?1.05:1.0;
+  // BESS time-shifts → more capacity available. Wind = variable + heavier kit → less.
+  // Hydro = small, firm, easier to absorb. AD/CHP = dispatchable, baseload → easier still.
+  const ASSET_HEADROOM = { solar:1.0, bess:1.15, 'solar-bess':1.05, wind:0.80, hydro:0.95, 'ad-chp':1.00 };
+  const assetMod = ASSET_HEADROOM[asset] ?? 1.0;
   const availableKw = Math.round(baseAvail * noise * assetMod / 5)*5;
   const headroomRatio = Math.min(1, availableKw / capacityKw);
   let headroomBand = headroomRatio>=1 ? 'green' : headroomRatio>=0.6 ? 'amber' : 'red';
@@ -677,9 +703,13 @@ function analyse(postcode, capacityKw, asset, geo){
   const queuePos = Math.round(queueRaw * sizeFactor);
   const queueBand = queuePos<40 ? 'green' : queuePos<90 ? 'amber' : 'red';
 
-  // Curtailment risk — headline vs effective
+  // Curtailment risk — headline vs effective. Effectiveness multiplier varies by asset profile:
+  // BESS time-shifts (low effective). Solar is mid (peak-hour overlap with constraint).
+  // Wind is high (variable + concentrated in constrained regions). Hydro firm but seasonal.
+  // AD/CHP dispatchable → can ramp around curtailment → lowest effective impact.
   const headlinePct = rand(r, prof.curtailMin, prof.curtailMax);
-  const effectivePct = headlinePct * (asset==='bess' ? 0.45 : asset==='wind' ? 0.85 : 0.65);
+  const ASSET_CURTAIL = { solar:0.65, bess:0.45, 'solar-bess':0.55, wind:0.90, hydro:0.55, 'ad-chp':0.30 };
+  const effectivePct = headlinePct * (ASSET_CURTAIL[asset] ?? 0.65);
   const curtailBand = effectivePct<6 ? 'green' : effectivePct<13 ? 'amber' : 'red';
 
   // Timeline

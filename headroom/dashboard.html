@@ -82,6 +82,8 @@
   .asset-pill.bess{background:#dbeafe;color:#1e40af}
   .asset-pill.solar-bess{background:#e0e7ff;color:#3730a3}
   .asset-pill.wind{background:#cffafe;color:#155e75}
+  .asset-pill.hydro{background:#dbeafe;color:#1e3a8a}
+  .asset-pill.ad-chp{background:#fce7f3;color:#9d174d}
   .dno-cell{font-size:12px;color:var(--text)}
   .dno-cell .region{font-size:10px;color:var(--muted);margin-top:1px}
   .verdict{font-size:11px;padding:3px 9px;border-radius:999px;font-weight:700;letter-spacing:.04em;display:inline-flex;align-items:center;gap:5px}
@@ -237,7 +239,12 @@ const SITES = [
   {pc:'SO40 1AA',name:'Southampton Logistics',        asset:'solar-bess',kw:1000, dno:'SSEN Southern',     region:'SSN', verdict:'proceed',    feeLow:128, feeHigh:285, queue:75,  timeline:'16 wk', status:'approved',  age:'15 Mar'},
   {pc:'NE61 1AA',name:'Morpeth Industrial BESS',      asset:'bess',      kw:1500, dno:'Northern Powergrid',region:'NPG', verdict:'proceed',    feeLow:145, feeHigh:330, queue:62,  timeline:'12 wk', status:'submitted', age:'18 Apr'},
   {pc:'BS22 1AA',name:'Weston-super-Mare Roof',       asset:'solar',     kw:250,  dno:'NGED South West',   region:'SW',  verdict:'caution',    feeLow:41,  feeHigh:88,  queue:78,  timeline:'18 wk', status:'screening', age:'30 Apr'},
-  {pc:'DE74 1AA',name:'East Midlands Aerospace BESS', asset:'bess',      kw:2000, dno:'NGED East Midlands',region:'EMD', verdict:'proceed',    feeLow:235, feeHigh:548, queue:88,  timeline:'18 wk', status:'energised', age:'5 Feb'}
+  {pc:'DE74 1AA',name:'East Midlands Aerospace BESS', asset:'bess',      kw:2000, dno:'NGED East Midlands',region:'EMD', verdict:'proceed',    feeLow:235, feeHigh:548, queue:88,  timeline:'18 wk', status:'energised', age:'5 Feb'},
+  {pc:'KW12 6AA',name:'Caithness Onshore Wind',       asset:'wind',      kw:1500, dno:'SSEN North Scotland',region:'SHN',verdict:'reconsider', feeLow:485, feeHigh:920, queue:188, timeline:'14 mo', status:'screening', age:'29 Apr'},
+  {pc:'LD3 8AA', name:'Brecon Hill Wind',             asset:'wind',      kw:750,  dno:'SP Manweb',         region:'MAN', verdict:'caution',    feeLow:165, feeHigh:312, queue:92,  timeline:'22 wk', status:'submitted', age:'14 Apr'},
+  {pc:'PH18 5AA',name:'Tay Run-of-River Hydro',       asset:'hydro',     kw:250,  dno:'SSEN North Scotland',region:'SHN',verdict:'proceed',    feeLow:48,  feeHigh:108, queue:38,  timeline:'12 wk', status:'approved',  age:'7 Mar'},
+  {pc:'LN9 5AA', name:'Lincolnshire AD Plant',        asset:'ad-chp',    kw:1000, dno:'NGED East Midlands',region:'EMD', verdict:'proceed',    feeLow:138, feeHigh:285, queue:62,  timeline:'14 wk', status:'submitted', age:'20 Apr'},
+  {pc:'TA20 1AA',name:'Somerset Biomass CHP',         asset:'ad-chp',    kw:500,  dno:'NGED South West',   region:'SW',  verdict:'proceed',    feeLow:72,  feeHigh:148, queue:54,  timeline:'10 wk', status:'energised', age:'18 Feb'}
 ];
 
 const state = { status:'all', verdict:'all', search:'', selected:new Set(), sortBy:'age', sortDir:'desc' };
