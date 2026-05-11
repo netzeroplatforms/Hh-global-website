@@ -190,12 +190,12 @@
   <div class="brand">
     <div class="brand-mark">H</div>
     <div class="brand-name">Headroom<span>.</span></div>
-    <span class="badge">INTELLIGENCE</span>
   </div>
-  <nav class="nav">
-    <a href="#how">How it works</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#">About</a>
+  <nav class="nav" style="display:flex;gap:6px">
+    <a href="./intelligence-v1.html" style="padding:7px 14px;border-radius:8px;background:var(--accent-bg);color:var(--accent-dim);font-weight:600;text-decoration:none">Screen a site</a>
+    <a href="./dashboard.html" style="padding:7px 14px;border-radius:8px;color:var(--muted);text-decoration:none;font-weight:500">Portfolio</a>
+    <a href="./demo-preview.html" style="padding:7px 14px;border-radius:8px;color:var(--muted);text-decoration:none;font-weight:500">Applications</a>
+    <a href="./market-brief.html" style="padding:7px 14px;border-radius:8px;color:var(--muted);text-decoration:none;font-weight:500">Market brief</a>
   </nav>
 </header>
 
@@ -901,9 +901,13 @@ document.getElementById('run').addEventListener('click', async ()=>{
   });
 });
 
-// Pre-fill demo data on load for instant visual
-document.getElementById('postcode').value = 'NR1 1AA';
-document.getElementById('capacity').value = '500';
+// Pre-fill from URL param if present (from dashboard row click), otherwise default demo
+const urlParams = new URLSearchParams(window.location.search);
+document.getElementById('postcode').value = urlParams.get('postcode') || 'NR1 1AA';
+document.getElementById('capacity').value = urlParams.get('capacity') || '500';
+if (urlParams.get('postcode')) {
+  setTimeout(() => document.getElementById('run').click(), 200);
+}
 
 // Bridge: pass site data into the G99 form (current Headroom execution layer)
 document.getElementById('bridge-to-app').addEventListener('click', ()=>{

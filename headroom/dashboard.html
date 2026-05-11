@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headroom Intelligence — Portfolio Dashboard</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#fafbfc;--panel:#ffffff;--panel-2:#f1f5f9;--border:#e2e8f0;--text:#0f172a;--muted:#64748b;
+    --accent:#65a30d;--accent-dim:#4d7c0f;--accent-bg:#ecfccb;--green:#16a34a;--amber:#ea580c;--red:#dc2626;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',Roboto,sans-serif;
+    background:var(--bg);color:var(--text);min-height:100vh;line-height:1.55;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 80% -10%,rgba(101,163,13,.07),transparent 50%)
+  }
+  header.app{
+    padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;
+    border-bottom:1px solid var(--border);background:rgba(250,251,252,.92);backdrop-filter:blur(8px);
+    position:sticky;top:0;z-index:50
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em}
+  .brand-mark{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dim) 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:14px}
+  .brand-name{font-size:17px}
+  .brand-name span{color:var(--accent)}
+  .product-nav{display:flex;gap:6px}
+  .product-nav a{padding:7px 14px;color:var(--muted);text-decoration:none;font-size:14px;border-radius:8px;font-weight:500;transition:all .15s}
+  .product-nav a:hover{color:var(--text);background:var(--panel-2)}
+  .product-nav a.active{background:var(--accent-bg);color:var(--accent-dim);font-weight:600}
+  .user-chip{display:flex;align-items:center;gap:8px;padding:6px 12px;background:var(--panel);border:1px solid var(--border);border-radius:999px;font-size:13px;color:var(--text)}
+  .user-chip .avatar{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#0f172a,#475569);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+  .container{max-width:1280px;margin:0 auto;padding:28px 28px 48px}
+
+  /* PAGE HEADER */
+  .page-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+  h1{font-size:28px;line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:6px}
+  .page-head .sub{color:var(--muted);font-size:14px}
+  .btn{padding:10px 18px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .15s;font-family:inherit}
+  .btn:hover{background:var(--accent-dim);box-shadow:0 4px 12px rgba(101,163,13,.25)}
+  .btn-secondary{padding:9px 16px;background:#fff;color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .15s;font-family:inherit}
+  .btn-secondary:hover{border-color:var(--accent);color:var(--accent-dim)}
+
+  /* STAT TILES */
+  .stat-row{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:24px}
+  @media (max-width:1100px){.stat-row{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:680px){.stat-row{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px 16px;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+  .stat .num{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1}
+  .stat .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:6px;font-weight:600}
+  .stat .delta{font-size:11px;margin-top:4px;font-weight:600}
+  .stat .delta.up{color:var(--green)}
+  .stat .delta.down{color:var(--red)}
+  .stat .delta.flat{color:var(--muted)}
+
+  /* FILTERS */
+  .filter-bar{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+  .filter-group{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  .filter-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-right:4px}
+  .chip{padding:6px 12px;background:var(--panel);border:1px solid var(--border);border-radius:999px;font-size:12px;color:var(--text);cursor:pointer;transition:all .15s;font-weight:500}
+  .chip:hover{border-color:var(--accent)}
+  .chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .search{padding:8px 14px;background:var(--panel);border:1px solid var(--border);border-radius:8px;font-size:13px;width:240px;font-family:inherit;color:var(--text);outline:none}
+  .search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(101,163,13,.1)}
+
+  /* TABLE */
+  .table-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  thead{background:#f8fafc;border-bottom:1px solid var(--border)}
+  th{padding:12px 14px;text-align:left;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;cursor:pointer;user-select:none}
+  th .sort{opacity:.4;margin-left:4px;font-size:9px}
+  td{padding:13px 14px;border-top:1px solid var(--border);vertical-align:middle}
+  tbody tr{transition:background .12s}
+  tbody tr:hover{background:#fafbfc;cursor:pointer}
+  tbody tr.selected{background:#f7fee7}
+  .pc{font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:.01em}
+  .pc-name{font-size:11px;color:var(--muted);font-weight:500;margin-top:1px}
+  .cap{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .asset-pill{font-size:10px;padding:2px 7px;border-radius:999px;background:var(--panel-2);color:var(--text);font-weight:600;letter-spacing:.04em}
+  .asset-pill.solar{background:#fef3c7;color:#92400e}
+  .asset-pill.bess{background:#dbeafe;color:#1e40af}
+  .asset-pill.solar-bess{background:#e0e7ff;color:#3730a3}
+  .asset-pill.wind{background:#cffafe;color:#155e75}
+  .dno-cell{font-size:12px;color:var(--text)}
+  .dno-cell .region{font-size:10px;color:var(--muted);margin-top:1px}
+  .verdict{font-size:11px;padding:3px 9px;border-radius:999px;font-weight:700;letter-spacing:.04em;display:inline-flex;align-items:center;gap:5px}
+  .verdict.proceed{background:#dcfce7;color:#15803d}
+  .verdict.caution{background:#fed7aa;color:#9a3412}
+  .verdict.reconsider{background:#fecaca;color:#991b1b}
+  .verdict .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+  .fee{font-weight:700;color:var(--text);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .fee .range{font-size:10px;color:var(--muted);font-weight:500;margin-top:1px}
+  .queue{font-variant-numeric:tabular-nums;color:var(--text)}
+  .timeline{font-variant-numeric:tabular-nums;color:var(--text);white-space:nowrap}
+  .status{font-size:11px;padding:3px 9px;border-radius:999px;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+  .status.screening{background:#f1f5f9;color:#475569}
+  .status.submitted{background:#dbeafe;color:#1e40af}
+  .status.under-review{background:#fef3c7;color:#92400e}
+  .status.approved{background:#dcfce7;color:#15803d}
+  .status.energised{background:var(--accent-bg);color:var(--accent-dim)}
+  .age{color:var(--muted);font-size:12px;white-space:nowrap}
+  td.actions{text-align:right}
+  .icon-btn{width:28px;height:28px;border-radius:6px;background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:14px;transition:all .12s}
+  .icon-btn:hover{background:var(--panel-2);color:var(--text)}
+  input[type="checkbox"]{accent-color:var(--accent);width:15px;height:15px;cursor:pointer}
+
+  /* BOTTOM PANEL */
+  .selection-bar{position:sticky;bottom:20px;background:#0f172a;color:#fff;border-radius:12px;padding:14px 20px;display:none;justify-content:space-between;align-items:center;box-shadow:0 12px 40px rgba(15,23,42,.25);margin-top:18px}
+  .selection-bar.visible{display:flex}
+  .selection-bar .count{font-weight:600}
+  .selection-bar .actions{display:flex;gap:10px}
+  .selection-bar button{padding:8px 14px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;transition:all .15s}
+  .selection-bar button:hover{background:rgba(255,255,255,.18)}
+  .selection-bar button.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  .selection-bar button.primary:hover{background:var(--accent-dim)}
+
+  /* DEMO NOTICE */
+  .demo-notice{background:#f0f9ff;border:1px solid #7dd3fc;border-radius:8px;padding:10px 14px;font-size:12px;color:#075985;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .live-pulse{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(22,163,74,.5)}70%{box-shadow:0 0 0 8px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+</style>
+</head>
+<body>
+<header class="app">
+  <div class="brand">
+    <div class="brand-mark">H</div>
+    <div class="brand-name">Headroom<span>.</span></div>
+  </div>
+  <nav class="product-nav">
+    <a href="./intelligence-v1.html">Screen a site</a>
+    <a href="./dashboard.html" class="active">Portfolio</a>
+    <a href="./demo-preview.html">Applications</a>
+    <a href="./market-brief.html">Market brief</a>
+  </nav>
+  <div class="user-chip">
+    <div class="avatar">A</div>
+    <span>Atrato Capital · demo account</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="demo-notice"><span class="live-pulse"></span><strong>Demo workspace</strong> — populated with synthetic portfolio data illustrating how a real customer (e.g. Atrato, Foresight, Bluefield) would use Headroom. Production logs every screened site to your portfolio automatically.</div>
+
+  <div class="page-head">
+    <div>
+      <h1>Portfolio dashboard</h1>
+      <div class="sub">24 sites screened · 12 active in pipeline · ranked by viability</div>
+    </div>
+    <div style="display:flex;gap:10px">
+      <a class="btn-secondary" href="./market-brief.html">📊 Export portfolio</a>
+      <a class="btn" href="./intelligence-v1.html">+ Screen a new site</a>
+    </div>
+  </div>
+
+  <!-- STAT TILES -->
+  <div class="stat-row">
+    <div class="stat"><div class="num">24</div><div class="lbl">Sites screened</div><div class="delta up">▲ 6 last 30d</div></div>
+    <div class="stat"><div class="num">12</div><div class="lbl">Active pipeline</div><div class="delta flat">— unchanged</div></div>
+    <div class="stat"><div class="num">8</div><div class="lbl">Applications submitted</div><div class="delta up">▲ 3 last 30d</div></div>
+    <div class="stat"><div class="num">3</div><div class="lbl">Energised this year</div><div class="delta up">▲ 1 last 90d</div></div>
+    <div class="stat"><div class="num">£4.2M</div><div class="lbl">Connection £ analysed</div><div class="delta up">▲ £680k</div></div>
+    <div class="stat"><div class="num">142h</div><div class="lbl">Saved vs manual screen</div><div class="delta up">▲ 38h last 30d</div></div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filter-bar">
+    <div class="filter-group">
+      <span class="filter-label">Status</span>
+      <button class="chip active" data-filter="status" data-value="all">All</button>
+      <button class="chip" data-filter="status" data-value="screening">Screening</button>
+      <button class="chip" data-filter="status" data-value="submitted">Submitted</button>
+      <button class="chip" data-filter="status" data-value="approved">Approved</button>
+      <button class="chip" data-filter="status" data-value="energised">Energised</button>
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Verdict</span>
+      <button class="chip active" data-filter="verdict" data-value="all">All</button>
+      <button class="chip" data-filter="verdict" data-value="proceed">Proceed</button>
+      <button class="chip" data-filter="verdict" data-value="caution">Caution</button>
+      <button class="chip" data-filter="verdict" data-value="reconsider">Reconsider</button>
+    </div>
+    <input class="search" placeholder="Search postcode, DNO, asset…" id="search"/>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:30px"><input type="checkbox" id="select-all"/></th>
+          <th>Site</th>
+          <th>Asset · Capacity</th>
+          <th>DNO</th>
+          <th>Verdict</th>
+          <th style="text-align:right">Connection fee</th>
+          <th>Queue</th>
+          <th>Timeline</th>
+          <th>Status</th>
+          <th>Added</th>
+          <th style="width:50px"></th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <div class="selection-bar" id="selbar">
+    <div class="count"><span id="sel-count">0</span> sites selected</div>
+    <div class="actions">
+      <button>Compare side-by-side</button>
+      <button>Export CSV</button>
+      <button class="primary">Bulk submit applications</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ============================================================
+// Synthetic portfolio data — would be real customer data in production
+// ============================================================
+const SITES = [
+  {pc:'NR1 7AT', name:'Norwich Distribution Centre',  asset:'solar',     kw:500,  dno:'UKPN East England', region:'EE',  verdict:'proceed',    feeLow:54, feeHigh:128, queue:94,  timeline:'18 wk', status:'submitted', age:'12 Apr'},
+  {pc:'IP4 1AA', name:'Ipswich Logistics Park',       asset:'solar',     kw:750,  dno:'UKPN East England', region:'EE',  verdict:'caution',    feeLow:99,  feeHigh:198, queue:128, timeline:'32 wk', status:'screening', age:'28 Apr'},
+  {pc:'SW1A 1AA',name:'Westminster Office Roof',      asset:'bess',      kw:300,  dno:'UKPN London',       region:'LPN', verdict:'proceed',    feeLow:32,  feeHigh:76,  queue:22,  timeline:'8 wk',  status:'approved',  age:'10 Mar'},
+  {pc:'EX5 1AA', name:'Exeter Greenfield Solar',      asset:'solar',     kw:1000, dno:'NGED South West',   region:'SW',  verdict:'reconsider', feeLow:172, feeHigh:380, queue:142, timeline:'14 mo', status:'screening', age:'20 Apr'},
+  {pc:'CV35 1AA',name:'Warwick Industrial Estate',    asset:'solar-bess',kw:1000, dno:'NGED West Midlands',region:'WM',  verdict:'proceed',    feeLow:118, feeHigh:228, queue:65,  timeline:'14 wk', status:'energised', age:'8 Jan'},
+  {pc:'IV1 1AA', name:'Inverness BESS Site',          asset:'bess',      kw:2000, dno:'SSEN North Scotland',region:'SHN',verdict:'reconsider', feeLow:480, feeHigh:980, queue:218, timeline:'14 mo', status:'screening', age:'1 May'},
+  {pc:'LL55 1AA',name:'Caernarfon Solar Farm',        asset:'solar',     kw:500,  dno:'SP Manweb',         region:'MAN', verdict:'caution',    feeLow:62,  feeHigh:148, queue:82,  timeline:'22 wk', status:'submitted', age:'15 Apr'},
+  {pc:'YO41 1AA',name:'York Agri-Solar',              asset:'solar',     kw:500,  dno:'Northern Powergrid',region:'YOR', verdict:'proceed',    feeLow:44,  feeHigh:104, queue:48,  timeline:'10 wk', status:'approved',  age:'22 Mar'},
+  {pc:'TR8 1AA', name:'Cornwall Coastal Solar',       asset:'solar',     kw:750,  dno:'NGED South West',   region:'SW',  verdict:'caution',    feeLow:118, feeHigh:268, queue:118, timeline:'28 wk', status:'screening', age:'25 Apr'},
+  {pc:'M44 1AA', name:'Irlam Battery Park',           asset:'bess',      kw:1500, dno:'Electricity NW',    region:'ENW', verdict:'proceed',    feeLow:178, feeHigh:412, queue:58,  timeline:'12 wk', status:'submitted', age:'18 Apr'},
+  {pc:'CB3 1AA', name:'Cambridge Tech Park',          asset:'bess',      kw:1000, dno:'UKPN East England', region:'EE',  verdict:'caution',    feeLow:148, feeHigh:340, queue:138, timeline:'26 wk', status:'screening', age:'2 May'},
+  {pc:'SO40 1AA',name:'Southampton Logistics',        asset:'solar-bess',kw:1000, dno:'SSEN Southern',     region:'SSN', verdict:'proceed',    feeLow:128, feeHigh:285, queue:75,  timeline:'16 wk', status:'approved',  age:'15 Mar'},
+  {pc:'NE61 1AA',name:'Morpeth Industrial BESS',      asset:'bess',      kw:1500, dno:'Northern Powergrid',region:'NPG', verdict:'proceed',    feeLow:145, feeHigh:330, queue:62,  timeline:'12 wk', status:'submitted', age:'18 Apr'},
+  {pc:'BS22 1AA',name:'Weston-super-Mare Roof',       asset:'solar',     kw:250,  dno:'NGED South West',   region:'SW',  verdict:'caution',    feeLow:41,  feeHigh:88,  queue:78,  timeline:'18 wk', status:'screening', age:'30 Apr'},
+  {pc:'DE74 1AA',name:'East Midlands Aerospace BESS', asset:'bess',      kw:2000, dno:'NGED East Midlands',region:'EMD', verdict:'proceed',    feeLow:235, feeHigh:548, queue:88,  timeline:'18 wk', status:'energised', age:'5 Feb'}
+];
+
+const state = { status:'all', verdict:'all', search:'', selected:new Set(), sortBy:'age', sortDir:'desc' };
+
+function render(){
+  const tbody = document.getElementById('tbody');
+  const q = state.search.toLowerCase();
+  const filtered = SITES.filter(s =>
+    (state.status==='all' || s.status===state.status) &&
+    (state.verdict==='all' || s.verdict===state.verdict) &&
+    (!q || `${s.pc} ${s.name} ${s.dno} ${s.asset}`.toLowerCase().includes(q))
+  );
+  tbody.innerHTML = filtered.map((s,i) => {
+    const sel = state.selected.has(s.pc) ? 'selected' : '';
+    const checked = state.selected.has(s.pc) ? 'checked' : '';
+    return `<tr class="${sel}" data-pc="${s.pc}">
+      <td><input type="checkbox" class="row-check" data-pc="${s.pc}" ${checked}/></td>
+      <td><div class="pc">${s.pc}</div><div class="pc-name">${s.name}</div></td>
+      <td><span class="asset-pill ${s.asset}">${s.asset.toUpperCase()}</span> · <span class="cap">${s.kw.toLocaleString()} kW</span></td>
+      <td class="dno-cell">${s.dno}<div class="region">${s.region}</div></td>
+      <td><span class="verdict ${s.verdict}"><span class="dot"></span>${s.verdict.toUpperCase()}</span></td>
+      <td style="text-align:right"><div class="fee">£${s.feeLow}k – £${s.feeHigh}k</div><div class="range">±35% ECR-modelled</div></td>
+      <td class="queue">#${s.queue}</td>
+      <td class="timeline">${s.timeline}</td>
+      <td><span class="status ${s.status}">${s.status.replace('-',' ')}</span></td>
+      <td class="age">${s.age}</td>
+      <td class="actions"><button class="icon-btn" title="Actions">⋯</button></td>
+    </tr>`;
+  }).join('') || `<tr><td colspan="11" style="text-align:center;color:var(--muted);padding:40px">No sites match these filters.</td></tr>`;
+  updateSelectionBar();
+  bindRowEvents();
+}
+
+function bindRowEvents(){
+  document.querySelectorAll('.row-check').forEach(cb => {
+    cb.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const pc = e.target.dataset.pc;
+      if (e.target.checked) state.selected.add(pc); else state.selected.delete(pc);
+      render();
+    });
+  });
+  document.querySelectorAll('tbody tr').forEach(tr => {
+    tr.addEventListener('click', () => {
+      const pc = tr.dataset.pc;
+      if (!pc) return;
+      const enc = encodeURIComponent(pc);
+      window.location.href = `./intelligence-v1.html?postcode=${enc}`;
+    });
+  });
+}
+
+function updateSelectionBar(){
+  const bar = document.getElementById('selbar');
+  const c = state.selected.size;
+  document.getElementById('sel-count').textContent = c;
+  bar.classList.toggle('visible', c > 0);
+}
+
+// Filter chip bindings
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    const filter = chip.dataset.filter;
+    const value = chip.dataset.value;
+    state[filter] = value;
+    document.querySelectorAll(`.chip[data-filter="${filter}"]`).forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    render();
+  });
+});
+document.getElementById('search').addEventListener('input', e => { state.search = e.target.value; render(); });
+document.getElementById('select-all').addEventListener('change', e => {
+  if (e.target.checked) SITES.forEach(s => state.selected.add(s.pc)); else state.selected.clear();
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
