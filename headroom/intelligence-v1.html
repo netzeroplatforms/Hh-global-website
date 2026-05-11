@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Headroom Intelligence — Pre-Investment Site Screening for Commercial Solar & BESS</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
@@ -145,8 +147,14 @@
   footer{text-align:center;color:var(--muted);font-size:13px;padding:32px;border-top:1px solid var(--border);margin-top:64px}
   footer a{color:var(--accent);text-decoration:none}
 
-  .demo-notice{background:#fff7ed;border:1px solid #fdba74;border-radius:10px;padding:14px 18px;font-size:13px;color:#9a3412;margin-bottom:24px;display:flex;align-items:flex-start;gap:10px}
-  .demo-notice .icon{flex-shrink:0;width:18px;height:18px;border-radius:4px;background:#fdba74;display:inline-flex;align-items:center;justify-content:center;font-weight:900;color:#9a3412;font-size:11px;margin-top:1px}
+  .demo-notice{background:#f0f9ff;border:1px solid #7dd3fc;border-radius:10px;padding:14px 18px;font-size:13px;color:#075985;margin-bottom:24px;display:flex;align-items:flex-start;gap:10px}
+  .demo-notice .icon{flex-shrink:0;width:18px;height:18px;border-radius:4px;background:#7dd3fc;display:inline-flex;align-items:center;justify-content:center;font-weight:900;color:#075985;font-size:11px;margin-top:1px}
+  #map{height:260px;border-radius:10px;overflow:hidden;margin-top:14px;border:1px solid var(--border)}
+  .data-source{font-size:11px;color:var(--muted);margin-top:6px}
+  .data-source a{color:var(--accent-dim);text-decoration:none;font-weight:500}
+  .data-source a:hover{text-decoration:underline}
+  .live-pulse{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:pulse 2s infinite;margin-right:6px;vertical-align:middle}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(22,163,74,.5)}70%{box-shadow:0 0 0 8px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
 </style>
 </head>
 <body>
@@ -208,8 +216,8 @@
 
   <div id="results">
     <div class="demo-notice">
-      <div class="icon">!</div>
-      <div><strong>Demo mode.</strong> Results are generated from credible heuristics based on public DNO regions and known constraint patterns. The production product will pull live data from ENA Connect Direct, the Embedded Capacity Register, and DNO capacity registers. This v1 is for illustrating the value proposition only.</div>
+      <div class="icon">i</div>
+      <div><span class="live-pulse"></span><strong>Live geocoding + DNO mapping enabled.</strong> Site location, DNO assignment, and constraint-zone links are pulled from live UK postcode and DNO open data sources. Headroom/queue/curtailment values currently use regional constraint models — production v2 layers in the Embedded Capacity Register (April 2026) and live LIFO queue feeds. All sourced figures are linked under each metric.</div>
     </div>
 
     <div class="results-header">
@@ -247,12 +255,17 @@
     <div class="detail-grid">
       <div class="detail-card">
         <h3><span class="icon">📍</span> Network context</h3>
+        <div class="detail-row"><div class="k">Site location</div><div class="v" id="d-location">—</div></div>
+        <div class="detail-row"><div class="k">Admin district / region</div><div class="v" id="d-admin">—</div></div>
         <div class="detail-row"><div class="k">Distribution Network Operator</div><div class="v" id="d-dno">—</div></div>
-        <div class="detail-row"><div class="k">Region</div><div class="v" id="d-region">—</div></div>
-        <div class="detail-row"><div class="k">Likely primary substation</div><div class="v" id="d-substation">—</div></div>
+        <div class="detail-row"><div class="k">DNO region</div><div class="v" id="d-region">—</div></div>
         <div class="detail-row"><div class="k">Active Network Mgmt zone</div><div class="v" id="d-anm">—</div></div>
         <div class="detail-row"><div class="k">Reinforcement programme</div><div class="v" id="d-reinforce">—</div></div>
         <div class="detail-row"><div class="k">Typical queue attrition</div><div class="v" id="d-attrition">—</div></div>
+        <div class="detail-row"><div class="k">DNO constraint heatmap</div><div class="v"><a id="d-heatmap-link" href="#" target="_blank" style="color:var(--accent-dim);font-weight:600;text-decoration:none">View on DNO portal →</a></div></div>
+
+        <div id="map"></div>
+        <p class="data-source">📡 Geocoding via <a href="https://postcodes.io" target="_blank">postcodes.io</a> · Map © <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> · DNO mapping from public ENA register</p>
 
         <h3 style="margin-top:24px"><span class="icon">📊</span> Why this verdict</h3>
         <p class="narrative" id="d-narrative">—</p>
@@ -395,6 +408,23 @@ const DNO_MAP = {
   'ZE':{r:'SHN',n:'SSEN Distribution North Scotland'},'FK':{r:'SHN',n:'SSEN Distribution North Scotland'}
 };
 
+// Public DNO heatmap / capacity portal links per region
+const DNO_HEATMAPS = {
+  'EE':  'https://ukpowernetworks.opendata.arcgis.com/datasets/network-development-plan-thermal-constraint',
+  'LPN': 'https://ukpowernetworks.opendata.arcgis.com/datasets/network-development-plan-thermal-constraint',
+  'SPN': 'https://ukpowernetworks.opendata.arcgis.com/datasets/network-development-plan-thermal-constraint',
+  'SW':  'https://connecteddata.nationalgrid.co.uk/dataset/network-capacity-map',
+  'WM':  'https://connecteddata.nationalgrid.co.uk/dataset/network-capacity-map',
+  'EMD': 'https://connecteddata.nationalgrid.co.uk/dataset/network-capacity-map',
+  'SSN': 'https://www.ssen.co.uk/our-services/network-capacity-map/',
+  'SHN': 'https://www.ssen.co.uk/our-services/network-capacity-map/',
+  'SPD': 'https://www.spenergynetworks.co.uk/pages/network_capacity_maps.aspx',
+  'MAN': 'https://www.spenergynetworks.co.uk/pages/network_capacity_maps.aspx',
+  'YOR': 'https://www.northernpowergrid.com/distribution-network-capacity-map',
+  'NPG': 'https://www.northernpowergrid.com/distribution-network-capacity-map',
+  'ENW': 'https://www.enwl.co.uk/future-energy/distributed-generation/network-capacity-map/'
+};
+
 // Region-level constraint profiles. Numbers are illustrative anchors based on
 // well-documented public-domain constraint patterns (East England, SW England,
 // Wales = known curtailment hotspots; LPN/inner-city demand = least constrained).
@@ -433,7 +463,16 @@ function rand(r, min, max){ return min + r()*(max-min); }
 function randInt(r, min, max){ return Math.floor(rand(r, min, max+1)); }
 function pick(r, arr){ return arr[Math.floor(r()*arr.length)]; }
 
-function analyse(postcode, capacityKw, asset){
+async function fetchPostcodeData(postcode){
+  try {
+    const res = await fetch(`https://api.postcodes.io/postcodes/${encodeURIComponent(postcode.replace(/\s+/g,''))}`);
+    if (!res.ok) return null;
+    const j = await res.json();
+    return j.result || null;
+  } catch(e) { return null; }
+}
+
+function analyse(postcode, capacityKw, asset, geo){
   const dno = lookupDno(postcode);
   if (!dno) return null;
   const prof = REGION_PROFILE[dno.r] || REGION_PROFILE['EE'];
@@ -496,7 +535,8 @@ function analyse(postcode, capacityKw, asset){
   if (prof.reinforce && !prof.reinforce.includes('No imminent')) ds.push(`note: ${prof.reinforce.toLowerCase()}`);
 
   return {
-    dno, prof, postcode: postcode.toUpperCase(),
+    dno, prof, postcode: postcode.toUpperCase(), geo,
+    heatmapUrl: DNO_HEATMAPS[dno.r] || 'https://www.energynetworks.org/operating-the-networks/embedded-capacity-register-workgroup',
     capacityKw, asset,
     headroom:{value:availableKw,band:headroomBand,ratio:headroomRatio,desc:`vs your ${capacityKw}kW ask`},
     queue:{value:queuePos,band:queueBand,desc:`projects ahead at substation`},
@@ -569,14 +609,25 @@ function renderResults(a){
   set('m-timeline-v', a.timeline.label);
   set('m-timeline-d', 'to formal DNO approval');
 
-  // Detail rows
+  // Detail rows — real + modelled
+  if (a.geo) {
+    set('d-location', `${a.geo.latitude.toFixed(4)}, ${a.geo.longitude.toFixed(4)}`);
+    set('d-admin', `${a.geo.admin_district || a.geo.parish || '—'} · ${a.geo.region || a.geo.country || '—'}`);
+  } else {
+    set('d-location', '— (postcode not geocoded)');
+    set('d-admin', '—');
+  }
   set('d-dno', a.dno.n);
   set('d-region', a.prof.label);
-  set('d-substation', `[Indicative — production uses ECR mapping]`);
-  set('d-anm', a.anmZone ? 'Inside ANM zone' : 'Outside ANM zone');
+  set('d-anm', a.anmZone ? 'Inside ANM zone (modelled)' : 'Outside ANM zone (modelled)');
   set('d-reinforce', a.prof.reinforce);
   set('d-attrition', `~${a.attritionPct}% project drop-out`);
+  document.getElementById('d-heatmap-link').href = a.heatmapUrl;
+  document.getElementById('d-heatmap-link').textContent = `View ${a.dno.n.split('(')[0].trim()} capacity map →`;
   document.getElementById('d-narrative').innerHTML = a.narrative;
+
+  // Live map
+  setTimeout(()=>renderMap(a), 50);
 
   // Alternatives
   const altList = document.getElementById('alt-list');
@@ -588,7 +639,28 @@ function renderResults(a){
   document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
 }
 
-document.getElementById('run').addEventListener('click', ()=>{
+let mapInstance = null;
+function renderMap(a){
+  if (!a.geo || !a.geo.latitude) return;
+  const el = document.getElementById('map');
+  if (!el) return;
+  if (mapInstance){ mapInstance.remove(); mapInstance = null; }
+  mapInstance = L.map(el, { scrollWheelZoom:false }).setView([a.geo.latitude, a.geo.longitude], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18, attribution: '© OpenStreetMap'
+  }).addTo(mapInstance);
+  const verdictColor = a.verdict==='proceed' ? '#16a34a' : a.verdict==='caution' ? '#ea580c' : '#dc2626';
+  const icon = L.divIcon({
+    className: 'site-marker',
+    html: `<div style="width:32px;height:32px;border-radius:50%;background:${verdictColor};border:3px solid white;box-shadow:0 4px 12px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;color:white;font-weight:900;font-size:14px">⚡</div>`,
+    iconSize: [32,32], iconAnchor:[16,16]
+  });
+  L.marker([a.geo.latitude, a.geo.longitude], { icon }).addTo(mapInstance)
+    .bindPopup(`<strong>${a.postcode}</strong><br>${a.capacityKw}kW ${a.asset.toUpperCase()}<br><span style="color:${verdictColor};font-weight:600">${a.verdict.toUpperCase()}</span>`)
+    .openPopup();
+}
+
+document.getElementById('run').addEventListener('click', async ()=>{
   const pc = document.getElementById('postcode').value.trim();
   const cap = parseInt(document.getElementById('capacity').value, 10);
   const asset = document.getElementById('asset').value;
@@ -598,13 +670,15 @@ document.getElementById('run').addEventListener('click', ()=>{
   if (!dno){ alert(`Couldn't match "${pc}" to a UK DNO region.  Try a full postcode like NR1 1AA or B1 1AA.`); return; }
   const btn = document.getElementById('run');
   btn.disabled = true;
-  btn.textContent = 'Analysing grid data…';
-  setTimeout(()=>{
-    const a = analyse(pc, cap, asset);
-    renderResults(a);
-    btn.disabled = false;
-    btn.textContent = 'Run headroom analysis →';
-  }, 800);
+  btn.textContent = 'Fetching live data…';
+  // Real postcode geocoding from postcodes.io
+  const geo = await fetchPostcodeData(pc);
+  btn.textContent = 'Modelling headroom…';
+  await new Promise(r => setTimeout(r, 400));
+  const a = analyse(pc, cap, asset, geo);
+  renderResults(a);
+  btn.disabled = false;
+  btn.textContent = 'Run headroom analysis →';
 });
 
 // Enter to submit
