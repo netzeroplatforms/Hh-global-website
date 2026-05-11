@@ -7,51 +7,51 @@
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --bg:#0a0f14;--panel:#111820;--border:#1f2a36;--text:#e7eef5;--muted:#8a98a6;
-    --accent:#c8ff5b;--accent-dim:#9bcc46;--green:#3dd07c;--amber:#ffb84a;--red:#ff6464;
+    --bg:#fafbfc;--panel:#ffffff;--panel-2:#f1f5f9;--border:#e2e8f0;--text:#0f172a;--muted:#64748b;
+    --accent:#65a30d;--accent-dim:#4d7c0f;--accent-bg:#ecfccb;--green:#16a34a;--amber:#ea580c;--red:#dc2626;
   }
   body{
     font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
     background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;
-    background-image:radial-gradient(circle at 80% -10%,rgba(200,255,91,.06),transparent 50%),radial-gradient(circle at 0% 110%,rgba(61,208,124,.05),transparent 50%);
+    background-image:radial-gradient(circle at 80% -10%,rgba(101,163,13,.07),transparent 50%),radial-gradient(circle at 0% 110%,rgba(22,163,74,.05),transparent 50%);
   }
   .container{max-width:980px;margin:0 auto;padding:48px 32px 64px}
   header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-  .brand-mark{width:32px;height:32px;border-radius:7px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dim) 100%);display:flex;align-items:center;justify-content:center;color:#0a0f14;font-weight:900;font-size:16px}
+  .brand-mark{width:32px;height:32px;border-radius:7px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dim) 100%);display:flex;align-items:center;justify-content:center;color:#ffffff;font-weight:900;font-size:16px}
   .brand-name{font-size:22px;font-weight:700;letter-spacing:-.01em}
   .brand-name span{color:var(--accent)}
-  .badge{font-size:11px;padding:4px 10px;border-radius:999px;background:rgba(200,255,91,.12);color:var(--accent);border:1px solid rgba(200,255,91,.3);font-weight:600;letter-spacing:.04em;margin-left:8px}
+  .badge{font-size:11px;padding:4px 10px;border-radius:999px;background:var(--accent-bg);color:var(--accent-dim);border:1px solid rgba(101,163,13,.3);font-weight:600;letter-spacing:.04em;margin-left:8px}
   h1{font-size:38px;line-height:1.1;letter-spacing:-.02em;font-weight:800;margin:24px 0 12px}
   h1 .accent{color:var(--accent)}
   .lead{color:var(--muted);font-size:17px;max-width:680px;margin-bottom:36px}
   h2{font-size:22px;font-weight:700;margin:40px 0 14px;letter-spacing:-.01em}
-  h2 .num{color:var(--accent);font-weight:900;margin-right:8px}
+  h2 .num{color:var(--accent-dim);font-weight:900;margin-right:8px}
   p{margin-bottom:14px;color:var(--text)}
   p.muted{color:var(--muted)}
   ul{margin:8px 0 16px 20px;color:var(--text)}
   li{padding:3px 0}
   .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:8px}
   @media (max-width:760px){.card-grid{grid-template-columns:1fr}}
-  .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:24px;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:all .15s}
-  .card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 18px 40px rgba(0,0,0,.4)}
-  .card .label{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;font-weight:700}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:24px;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:all .15s;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+  .card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 12px 32px rgba(15,23,42,.08)}
+  .card .label{font-size:11px;color:var(--accent-dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;font-weight:700}
   .card .title{font-size:20px;font-weight:700;margin-bottom:8px}
   .card .desc{color:var(--muted);font-size:14px;flex:1;margin-bottom:14px}
-  .card .cta{color:var(--accent);font-weight:600;font-size:14px}
-  .quote{border-left:3px solid var(--accent);padding:6px 0 6px 18px;color:var(--text);font-size:16px;font-style:italic;margin:18px 0;background:rgba(200,255,91,.04)}
+  .card .cta{color:var(--accent-dim);font-weight:600;font-size:14px}
+  .quote{border-left:3px solid var(--accent);padding:14px 18px;color:var(--text);font-size:16px;font-style:italic;margin:18px 0;background:#f7fee7;border-radius:0 8px 8px 0}
   table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:14px}
   th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
   th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
-  td .pill{font-size:11px;padding:3px 8px;border-radius:999px;background:rgba(200,255,91,.12);color:var(--accent);font-weight:600}
-  td.green .pill{background:rgba(61,208,124,.15);color:var(--green)}
-  td.amber .pill{background:rgba(255,184,74,.15);color:var(--amber)}
-  td.red .pill{background:rgba(255,100,100,.15);color:var(--red)}
-  .resources{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px;margin-top:20px}
+  td .pill{font-size:11px;padding:3px 8px;border-radius:999px;background:var(--accent-bg);color:var(--accent-dim);font-weight:600}
+  td.green .pill{background:#dcfce7;color:#15803d}
+  td.amber .pill{background:#fed7aa;color:#9a3412}
+  td.red .pill{background:#fecaca;color:#991b1b}
+  .resources{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px;margin-top:20px;box-shadow:0 1px 3px rgba(15,23,42,.04)}
   .resources h3{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
-  .resources a{display:block;padding:8px 0;color:var(--text);text-decoration:none;border-bottom:1px solid rgba(31,42,54,.5);font-size:14px}
+  .resources a{display:block;padding:8px 0;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border);font-size:14px}
   .resources a:last-child{border-bottom:none}
-  .resources a:hover{color:var(--accent)}
-  .resources a .arrow{color:var(--accent);float:right}
+  .resources a:hover{color:var(--accent-dim)}
+  .resources a .arrow{color:var(--accent-dim);float:right}
   footer{margin-top:60px;padding-top:28px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
 </style>
 </head>
