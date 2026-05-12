@@ -8,6 +8,23 @@
 
   const PAGE_TITLE = document.title.replace(/\s*—\s*HH Global.*$/i, '').trim() || 'this page';
 
+  // ─── PAGE REGISTRY ──────────────────────────────────────────
+  // Every reviewable page in the /review/ preview, ordered so
+  // reviewers can walk the site systematically. Counts reflect
+  // the substantive Sam-feedback changes per page.
+  const PAGES = [
+    { file: 'index.html',            label: 'Home',                     changes: 2, note: 'Hero reframe (DRAFT)' },
+    { file: 'innovation-ip.html',    label: 'Innovation & IP',          changes: 3, note: 'Section reframed' },
+    { file: 'company.html',          label: 'Company',                  changes: 1, note: 'Mark added to leadership' },
+    { file: 'cases-forensics.html',  label: 'Cases: Forensics',         changes: 3, note: '3 case-study status TBC' },
+    { file: 'cases-diagnostics.html',label: 'Cases: Diagnostics',       changes: 2, note: '2 case-study status TBC' },
+    { file: 'cases-veterinary.html', label: 'Cases: Veterinary',        changes: 4, note: '4 case-study status TBC' },
+    { file: 'forensic-services.html',label: 'Scientific Evidence',      changes: 0, note: 'Page-title only (nav renamed)' },
+  ];
+
+  const currentFile = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  const totalChanges = PAGES.reduce((s, p) => s + p.changes, 0);
+
   // ─── BANNER ─────────────────────────────────────────────────
   const banner = document.createElement('div');
   banner.className = 'rv-banner';
@@ -15,15 +32,33 @@
     <div class="rv-banner-left">
       <span class="rv-banner-tag">Review Mode</span>
       <span class="rv-banner-text">
-        Changes from <strong>Sam's feedback (12 May)</strong> are highlighted in amber.
-        Hover any highlighted element for context.
+        Changes from <strong>Sam's feedback (12 May)</strong> — hover any amber element for context.
       </span>
     </div>
     <div class="rv-banner-right">
-      <button class="rv-banner-btn" data-rv-jump="next">Next change →</button>
+      <button class="rv-banner-btn" data-rv-jump="next">Next on page →</button>
     </div>
   `;
   document.body.insertBefore(banner, document.body.firstChild);
+
+  // ─── PAGE STRIP (cross-page navigation) ─────────────────────
+  const strip = document.createElement('div');
+  strip.className = 'rv-pagestrip';
+  strip.innerHTML = `
+    <div class="rv-pagestrip-label">Walk the review:</div>
+    <div class="rv-pagestrip-pages">
+      ${PAGES.map((p, i) => {
+        const isCurrent = p.file.toLowerCase() === currentFile;
+        return `<a class="rv-pageitem ${isCurrent ? 'rv-current' : ''}" href="${p.file}" title="${p.note}">
+          <span class="rv-pagestep">${i + 1}</span>
+          <span class="rv-pagename">${p.label}</span>
+          <span class="rv-pagecount">${p.changes}</span>
+        </a>`;
+      }).join('')}
+    </div>
+    <div class="rv-pagestrip-total">${totalChanges} changes total</div>
+  `;
+  banner.insertAdjacentElement('afterend', strip);
 
   // ─── COLLECT CHANGES ────────────────────────────────────────
   const changes = Array.from(document.querySelectorAll('.rv-change, .rv-change-block'));
