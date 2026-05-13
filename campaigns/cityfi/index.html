@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CityFi — Campaign Hub | BridgePoint AI</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0c0e12;
+      --surface: rgba(255,255,255,0.04);
+      --surface2: rgba(255,255,255,0.07);
+      --border:  rgba(255,255,255,0.08);
+      --text:    #eef2f7;
+      --muted:   #8b9cb8;
+      --dim:     #b8c4d4;
+      --gold:    #f59e0b;
+      --gold2:   #fbbf24;
+      --green:   #10b981;
+      --blue:    #3b82f6;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      padding: 48px 24px;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 32px;
+      margin-bottom: 40px;
+    }
+
+    .label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Section headers */
+    .sec-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .sec-title .num {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* Persona index */
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .persona-chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .persona-chip .pname {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .persona-chip .pdesc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 26px 30px;
+      margin-bottom: 22px;
+    }
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    .card-head .left .ptag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .card-head .left h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .card-head .left .meta {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .status {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .status.sent    { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3);  color: var(--green); }
+    .status.ready   { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3);  color: var(--gold); }
+    .status.draft   { background: rgba(139,156,184,0.1); border: 1px solid rgba(139,156,184,0.25); color: var(--muted); }
+    .status.replied { background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3);  color: var(--blue); }
+
+    .message-box {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px 24px;
+      font-size: 14px;
+      color: var(--dim);
+      white-space: pre-wrap;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.75;
+    }
+    .message-box .subj {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .char-count {
+      text-align: right;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 8px;
+      font-variant-numeric: tabular-nums;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .note strong { color: var(--dim); }
+
+    /* Activity log */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    td { color: var(--dim); }
+
+    /* Asset links */
+    .asset-list { list-style: none; }
+    .asset-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .asset-list li:last-child { border-bottom: none; }
+    .asset-list a { color: var(--gold); text-decoration: none; font-size: 13px; }
+    .asset-list a:hover { text-decoration: underline; }
+    .asset-list .adesc { font-size: 12px; color: var(--muted); }
+
+    footer {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* TOC */
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 32px;
+    }
+    .toc .toc-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .toc a {
+      color: var(--dim);
+      text-decoration: none;
+      font-size: 13px;
+      display: inline-block;
+      margin-right: 18px;
+      margin-bottom: 6px;
+    }
+    .toc a:hover { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="label">BridgePoint AI · Campaign Hub</div>
+    <h1>CityFi</h1>
+    <div class="subtitle">Smart streetlight retrofit · LuxMetrix · LinkedIn, email and warm-intro outreach</div>
+  </header>
+
+  <div class="toc">
+    <div class="toc-title">Sections</div>
+    <a href="#proposition">1. Proposition</a>
+    <a href="#personas">2. Personas</a>
+    <a href="#connection">3. LinkedIn Connection Requests</a>
+    <a href="#followup">4. LinkedIn Follow-Up Messages</a>
+    <a href="#posts">5. LinkedIn Posts</a>
+    <a href="#emails">6. Cold Emails</a>
+    <a href="#warm">7. Warm Intros / WhatsApp</a>
+    <a href="#assets">8. Companion Assets</a>
+    <a href="#log">9. Activity Log</a>
+  </div>
+
+  <!-- 1. PROPOSITION -->
+  <div class="sec-title" id="proposition"><span class="num">01</span> Proposition</div>
+  <div class="card">
+    <div class="message-box" style="border-left-color: var(--gold);">CityFi (LuxMetrix) is a 17-sensor retrofit unit that fits into the NEMA and Zhaga sockets already on every streetlight. No replacement of the column, no new cable runs, no civils. Activates the lighting network as a city-scale environmental and operational sensing grid. Patent pending. Data sold as a service.
+
+Owners of streetlight infrastructure (PFI operators, local authority highways teams) unlock a recurring data revenue stream from an asset they already paid for. Buyers of the data (smart city teams, air quality compliance leads) get persistent, high-resolution coverage without standing up new infrastructure.</div>
+    <div class="note">
+      <strong>Anchor stats:</strong> 17 sensors per unit · 6+ environmental sensor types · NEMA + Zhaga standard sockets · retrofit (no new infrastructure) · patent pending · data-as-a-service revenue model.
+    </div>
+  </div>
+
+  <!-- 2. PERSONAS -->
+  <div class="sec-title" id="personas"><span class="num">02</span> Personas</div>
+  <div class="persona-grid">
+    <div class="persona-chip">
+      <div class="pname">P1 · PFI Streetlight Contractor</div>
+      <div class="pdesc">Operates councils' lighting estates under long-term PFI/PPP contracts. Owns relationship with assets. Targets: Amey, Engie, Equans, Volker Highways, Skanska, Bouygues E&amp;S.</div>
+    </div>
+    <div class="persona-chip">
+      <div class="pname">P2 · Local Authority Highways Director</div>
+      <div class="pdesc">Owns and operates lighting estate directly (non-PFI councils). Pressure on smart city outcomes without capex. Targets: Heads of Highways at Tier-1 unitaries and combined authorities.</div>
+    </div>
+    <div class="persona-chip">
+      <div class="pname">P3 · Smart City Programme Lead</div>
+      <div class="pdesc">Buys the data layer for air quality, footfall, traffic, climate compliance. Targets: Digital / Smart City directors at Manchester, Birmingham, Bristol, Leeds, Glasgow, GMCA, WMCA.</div>
+    </div>
+  </div>
+
+  <!-- 3. LINKEDIN CONNECTION REQUESTS -->
+  <div class="sec-title" id="connection"><span class="num">03</span> LinkedIn Connection Requests <span style="font-size:10px;color:var(--muted);margin-left:8px;">(200 char limit)</span></div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="left">
+        <div class="ptag">P1 · PFI Streetlight Contractor · Instance 1</div>
+        <h2>Peter Anderson, Amey</h2>
+        <div class="meta">Reference template — proven sent</div>
+      </div>
+      <span class="status sent">Sent</span>
+    </div>
+    <div class="message-box">Peter — Mark Evans-Smith, BridgePoint AI. Backed CityFi — 17-sensor streetlight retrofit, patent pending. Amey's PFI portfolio makes you the right first conversation. Worth 20 mins?</div>
+    <div class="char-count">185 / 200 characters</div>
+    <div class="note"><strong>Why it works:</strong> Names the company, the asset, the IP signal, and the specific relevance to Amey's PFI book — all in one breath. Ends with a concrete ask.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="left">
+        <div class="ptag">P1 · PFI Streetlight Contractor · Template</div>
+        <h2>Generic PFI Operator</h2>
+        <div class="meta">Personalise [Name] and [Operator]; swap PFI reference to match their book</div>
+      </div>
+      <span class="status ready">Ready</span>
+    </div>
+    <div class="message-box">[Name] — Mark Evans-Smith, BridgePoint AI. Backed CityFi — 17-sensor streetlight retrofit, patent pending. [Operator]'s lighting book makes you the right first conversation. Worth 20 mins?</div>
+    <div class="char-count">~190 / 200 characters</div>
+    <div class="note"><strong>Adapt:</strong> If contact runs highways more broadly than just lighting, swap "lighting book" for "highways portfolio." Always end on the 20-minute ask.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="left">
+        <div class="ptag">P2 · LA Highways Director · Template</div>
+        <h2>Local Authority Highways Director</h2>
+        <div class="meta">Personalise [Name] and [Council]</div>
+      </div>
+      <span class="status ready">Ready</span>
+    </div>
+    <div class="message-box">[Name] — Mark Evans-Smith, BridgePoint AI. Backed CityFi — 17-sensor retrofit that turns [Council]'s existing streetlights into an air quality and traffic sensing network. No new infrastructure. 20 mins?</div>
+    <div class="char-count">~198 / 200 characters</div>
+    <div class="note"><strong>Why it works for LAs:</strong> "No new infrastructure" is the magic phrase — every council director is allergic to capex. The two outcomes (air quality + traffic) hit different reporting lines simultaneously.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="left">
+        <div class="ptag">P3 · Smart City Lead · Template</div>
+        <h2>Smart City / Digital Director</h2>
+        <div class="meta">Personalise [Name] and [City]</div>
+      </div>
+      <span class="status ready">Ready</span>
+    </div>
+    <div class="message-box">[Name] — Mark Evans-Smith, BridgePoint AI. CityFi (BridgePoint portfolio) gives [City] real-time environmental and footfall data from the streetlights already in the ground. Patent pending. 20 mins to show you?</div>
+    <div class="char-count">~199 / 200 characters</div>
+    <div class="note"><strong>Why it works:</strong> Smart city leads care about data, not hardware. Lead with what they get (real-time data), not what we sell (a sensor unit).</div>
+  </div>
+
+  <!-- 4. LINKEDIN FOLLOW-UP -->
+  <div class="sec-title" id="followup"><span class="num">04</span> LinkedIn Follow-Up Messages <span style="font-size:10px;color:var(--muted);margin-left:8px;">(sent post-acceptance)</span></div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="left">
+        <div class="ptag">P1 · PFI Operator · Instance 1</div>
+        <h2>Peter Anderson, Amey</h2>
+        <div class="meta">Reference template — ready to send</div>
+      </div>
+      <span class="status ready">Ready</span>
+    </div>
+    <div class="message-box">Peter,
+
+Thanks for coming back. Appreciate it.
+
+CityFi retrofits existing streetlights with a 17-sensor unit — air quality, noise, footfall, traffic, weather, and more — no new infrastructure, no civil works. Patent pending. Data sold as a service.
+
+For Amey, the angle is straightforward: your PFI contracts already own the assets. CityFi turns passive infrastructure into a recurring data revenue stream — and positions you ahead of the smart city mandates coming through UK procurement.
+
+Happy to do 20 minutes this week or next — a quick screen share shows the unit and the data dashboard better than words.
+
+What works for you?
+
+Mark Evans-Smith
+BridgePoint AI</div>
+    <div class="note"><strong>Framing:</strong> Leads with the value prop for Amey specifically (PFI assets = unlocked revenue), not a generic CityFi pitch. Ends with a low-friction close.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="left">
+        <div class="ptag">P2 · LA Highways Director · Template</div>
+        <h2>Local Authority — Post-Acceptance Follow-Up</h2>
+        <div class="meta">Personalise [Name] and [Council]</div>
+      </div>
+      <span class="status ready">Ready</span>
+    </div>
+    <div class="message-box">[Name],
+
+Thanks for connecting.
+
+A quick frame on CityFi for [Council]:
+
+LuxMetrix is a 17-sensor unit that drops into the NEMA or Zhaga socket already on your streetlights. No new columns, no civils, no new cable. It activates the lighting estate as a real-time environmental and operational network — air quality, traffic, footfall, noise, microclimate.
+
+Three things it does for a council:
+— Air quality compliance evidence that meets the new statutory reporting obligations
+— Live traffic and footfall data feeding into network management and planning
+— A data layer for the smart city programme that doesn't need a separate capital case
+
+Data sold as a service. Patent pending. We pilot on a single ward before any commitment.
+
+Happy to do 20 minutes — a screen share shows the unit and the live data dashboard better than words. What works for you?
+
+Mark Evans-Smith
+BridgePoint AI</div>
+    <div class="note"><strong>Why it works:</strong> Three council-specific outcomes (compliance / network management / smart city) hit three different decision-makers inside the authority — gives the recipient ammunition to brief peers.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="left">
+        <div class="ptag">P3 · Smart City Lead · Template</div>
+        <h2>Smart City Director — Post-Acceptance Follow-Up</h2>
+        <div class="meta">Personalise [Name] and [City]</div>
+      </div>
+      <span class="status ready">Ready</span>
+    </div>
+    <div class="message-box">[Name],
+
+Thanks for connecting.
+
+CityFi is a BridgePoint portfolio company solving what I think is the most under-rated smart city problem: you can't run a city-scale programme on a handful of fixed sensor stations.
+
+LuxMetrix is a 17-sensor retrofit unit that fits into the NEMA / Zhaga socket on existing streetlights. No new infrastructure. Patent pending. Data sold as a service.
+
+For [City] specifically, the unlock is density. Hundreds or thousands of sensing points across the city, not six. Air quality, footfall, traffic, microclimate, noise — all live, all geotagged, all queryable.
+
+We can run a single-ward pilot to prove the data quality before any wider commitment. Happy to do 20 minutes to show you the dashboard.
+
+What works for you?
+
+Mark Evans-Smith
+BridgePoint AI</div>
+    <div class="note"><strong>Why it works:</strong> Frames the existing fixed-station model as the problem (it is — DEFRA reference stations are sparse). CityFi becomes the density unlock, not just another sensor.</div>
+  </div>
+
+  <!-- 5. LINKEDIN POSTS -->
+  <div class="sec-title" id="posts"><span class="num">05</span> LinkedIn Posts <span style="font-size:10px;color:var(--muted);margin-left:8px;">(for inbound / visibility)</span></div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="left">
+        <div class="ptag">Post · Thought leadership</div>
+        <h2>"Every City Already Has a Sensor Network"</h2>
+        <div class="meta">Mark Evans-Smith authored — repost-friendly</div>
+      </div>
+      <span class="status draft">Draft</span>
+    </div>
+    <div class="message-box">Every city already has a sensor network. It's just not switched on.
+
+Around 7 million streetlights across the UK. Most installed in the last 15 years. Almost all of them sit on NEMA or Zhaga sockets — the standard sockets designed, originally, for smart lighting controls.
+
+Those same sockets accept a 17-sensor environmental unit.
+
+No new columns. No civils. No new cable. Drop it in, plug it in, the streetlight starts measuring air quality, footfall, traffic, noise, weather, microclimate. The data is sold as a service.
+
+The economics are obvious. The asset is paid for. The socket is already there. The only thing missing is the data layer.
+
+CityFi (BridgePoint AI portfolio) turns lighting infrastructure into a recurring revenue line for whoever owns it — PFI operators, local authorities, combined authorities — and gives smart city teams the density of data they've been quietly waiting for.
+
+Patent pending. Quietly piloting. Happy to talk to anyone running a lighting estate or buying environmental data.
+
+#smartcities #infrastructure #airquality #urbantech</div>
+    <div class="note"><strong>Use:</strong> Mark posts as authored content. Targets PFI operators and smart city leads. Soft CTA at the end — "happy to talk" — invites inbound rather than chasing.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="left">
+        <div class="ptag">Post · Data-driven hook</div>
+        <h2>"The Air Quality Data Problem (and Why It's a Streetlight Problem)"</h2>
+        <div class="meta">Mark Evans-Smith authored</div>
+      </div>
+      <span class="status draft">Draft</span>
+    </div>
+    <div class="message-box">There are roughly 300 DEFRA reference air quality stations covering the whole of the UK.
+
+There are roughly 7 million streetlights.
+
+The mismatch tells you everything about why air quality data is so frustrating for the people who actually need it — local authorities under Environment Act obligations, planning teams running impact assessments, schools and hospitals trying to evidence exposure.
+
+Reference-grade is expensive and sparse. Indicative-grade is cheap but inconsistent.
+
+CityFi's bet (and ours at BridgePoint): the right unit of measurement is the streetlight. Not because it's clever — because it's already there. A 17-sensor unit that fits into the NEMA/Zhaga socket every modern streetlight has. Retrofit, not replace. Data as a service.
+
+The interesting question isn't "can it be done." It's "who owns the resulting data revenue stream when it is?"
+
+If you're running a lighting estate, that's a question worth having a view on.
+
+#smartcities #airquality #data #infrastructure</div>
+    <div class="note"><strong>Use:</strong> Targets the "who owns the data" question — provocative, draws responses from PFI operators specifically (they have the strongest claim on the data revenue).</div>
+  </div>
+
+  <!-- 6. COLD EMAILS -->
+  <div class="sec-title" id="emails"><span class="num">06</span> Cold Emails</div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="left">
+        <div class="ptag">P1 · PFI Streetlight Contractor</div>
+        <h2>Cold Email — PFI Operator</h2>
+        <div class="meta">When LinkedIn doesn't land or for known email contacts</div>
+      </div>
+      <span class="status ready">Ready</span>
+    </div>
+    <div class="message-box"><span class="subj">Subject: A recurring revenue line your PFI contracts already entitle you to</span>Hi [Name],
+
+Short one — and I think it sits cleanly inside what [Operator] already owns.
+
+I've been working with CityFi (BridgePoint AI portfolio) on something that turns existing streetlights into a city-scale sensing network. The product is LuxMetrix — a 17-sensor unit that fits into the NEMA or Zhaga socket on the column. No new infrastructure. No civil works. Patent pending.
+
+For PFI operators specifically, the angle is this: your contracts already own the assets. CityFi activates them as a recurring data revenue line — air quality, footfall, traffic, noise, weather — sold as a service to local authorities, planning teams, environmental consultancies, and smart city programmes. You own the relationship with the council; CityFi handles the data layer.
+
+It also positions [Operator] ahead of where UK procurement is heading — every smart city framework released in the last 18 months has wanted persistent environmental data, and almost none of it specifies how to get it. Owning the answer matters.
+
+Happy to do 20 minutes with our team to walk through the unit, the dashboard, and the commercial structure.
+
+What works for you next week?
+
+Mark Evans-Smith
+BridgePoint AI</div>
+    <div class="note"><strong>Adapt:</strong> If contact is a Commercial Director rather than Operations, lead harder on the revenue line and the procurement positioning. If Operations, lead harder on the retrofit simplicity.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="left">
+        <div class="ptag">P2 · LA Highways Director</div>
+        <h2>Cold Email — Local Authority Highways</h2>
+        <div class="meta">Personalise [Name] and [Council]</div>
+      </div>
+      <span class="status ready">Ready</span>
+    </div>
+    <div class="message-box"><span class="subj">Subject: Activating [Council]'s streetlight network as a sensing layer — no capex</span>Hi [Name],
+
+Brief one — and relevant if you're under pressure to evidence air quality compliance or stand up smart city capability without new capital.
+
+CityFi (BridgePoint portfolio) makes a 17-sensor retrofit unit called LuxMetrix. It drops into the NEMA or Zhaga socket already on your streetlights. No new columns, no civils, no new cable runs. It turns the lighting estate into a real-time environmental and operational network — air quality, traffic, footfall, noise, microclimate.
+
+For [Council], the practical outcomes are:
+
+— Statutory air quality reporting evidence built on persistent, geo-tagged data
+— Traffic and footfall feeds into network management and planning
+— A defensible smart city data layer without a separate capital case
+— Patent-pending technology, deployable on existing infrastructure, sold as a service
+
+We can pilot on a single ward before any wider commitment, so the council carries no risk on proving the data quality.
+
+Worth 20 minutes to walk through the unit and the dashboard?
+
+Mark Evans-Smith
+BridgePoint AI</div>
+    <div class="note"><strong>Adapt:</strong> For combined authorities (GMCA, WMCA, etc.), lead with the cross-borough data layer — that's the proposition that beats individual-council procurement.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="left">
+        <div class="ptag">P3 · Smart City Programme Lead</div>
+        <h2>Cold Email — Smart City / Digital Director</h2>
+        <div class="meta">Personalise [Name] and [City]</div>
+      </div>
+      <span class="status ready">Ready</span>
+    </div>
+    <div class="message-box"><span class="subj">Subject: The density problem in smart city data — and a way around it</span>Hi [Name],
+
+Short one — and I think it's directly relevant to where [City]'s smart city programme is going.
+
+Most smart city data programmes hit the same wall: a handful of fixed sensor stations covering a city of hundreds of thousands of people. The data is real but the resolution doesn't support the use cases your team is being asked to deliver — ward-level air quality, footfall on retail high streets, traffic at the junction rather than the corridor.
+
+CityFi solves this with density. LuxMetrix is a 17-sensor unit that retrofits into the NEMA or Zhaga socket on existing streetlights — no new infrastructure, no civils. The lighting estate becomes a sensing grid. Hundreds or thousands of measurement points, not six.
+
+It's a BridgePoint AI portfolio company. Patent pending. Sold as data-as-a-service.
+
+For [City] the path is straightforward: a single-ward pilot to prove the data resolution and the analytics layer, then a route to wider deployment via your existing lighting framework. No new capital case.
+
+Worth 20 minutes — happy to walk you through the dashboard.
+
+Mark Evans-Smith
+BridgePoint AI</div>
+    <div class="note"><strong>Adapt:</strong> For cities with a strong climate / net-zero narrative, foreground the persistent microclimate and air quality angle. For cities with a high-street regeneration agenda, lead with footfall.</div>
+  </div>
+
+  <!-- 7. WARM INTROS -->
+  <div class="sec-title" id="warm"><span class="num">07</span> Warm Intros / WhatsApp Drafts</div>
+  <div class="card">
+    <div class="card-head">
+      <div class="left">
+        <div class="ptag">Personal contacts</div>
+        <h2>Warm-Intro Template</h2>
+        <div class="meta">For contacts Mark knows directly</div>
+      </div>
+      <span class="status draft">Draft</span>
+    </div>
+    <div class="message-box">[Name] — random one but you'll see it immediately.
+
+Backing a company called CityFi at BridgePoint. They make a 17-sensor unit that fits into the standard socket already on every streetlight — NEMA or Zhaga, so it works on basically anything installed in the last 15 years. No new columns, no civils. The lighting estate becomes a city-scale environmental and traffic sensing layer overnight.
+
+Patent pending. Data sold as a service. The angle for whoever owns the lighting (PFI operators or councils) is a recurring revenue line on assets they already paid for.
+
+Thought of you because [reason — their patch, their portfolio, their role]. Worth a 20-minute intro call?
+
+Mark</div>
+    <div class="note"><strong>Adapt:</strong> The "[reason]" line is the whole game. If you can't say in one phrase why you thought of them, don't send it. Better to wait and personalise properly.</div>
+  </div>
+
+  <!-- 8. ASSETS -->
+  <div class="sec-title" id="assets"><span class="num">08</span> Companion Assets</div>
+  <div class="card">
+    <ul class="asset-list">
+      <li>
+        <div>
+          <a href="../../amey-peter-anderson-outreach.html">amey-peter-anderson-outreach.html</a>
+          <div class="adesc">Original Peter Anderson sequence (the reference proof point)</div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <a href="../../cityfi-telensa-intro.html">cityfi-telensa-intro.html</a>
+          <div class="adesc">CityFi / Telensa intro context piece</div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <a href="../../bridgepoint-portfolio.html#cityfi">bridgepoint-portfolio.html#cityfi</a>
+          <div class="adesc">CityFi positioning inside the BridgePoint portfolio doc</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 9. ACTIVITY LOG -->
+  <div class="sec-title" id="log"><span class="num">09</span> Activity Log</div>
+  <div class="card" style="padding:0; overflow:hidden;">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Contact</th>
+          <th>Organisation</th>
+          <th>Channel</th>
+          <th>Stage</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2026-05</td>
+          <td>Peter Anderson</td>
+          <td>Amey</td>
+          <td>LinkedIn</td>
+          <td>Connection request</td>
+          <td><span class="status sent">Sent</span></td>
+        </tr>
+        <tr>
+          <td>—</td>
+          <td>Peter Anderson</td>
+          <td>Amey</td>
+          <td>LinkedIn</td>
+          <td>Follow-up message</td>
+          <td><span class="status ready">Ready</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <span>BridgePoint AI · CityFi Campaign Hub · /campaigns/cityfi/</span>
+    <span>Last updated 2026-05-13</span>
+  </footer>
+
+</body>
+</html>
