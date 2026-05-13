@@ -13,14 +13,14 @@
   // reviewers can walk the site systematically. Counts reflect
   // the substantive Sam-feedback changes per page.
   const PAGES = [
-    { file: 'index.html',            label: 'Home',                     changes: 2, note: 'Hero reframe (DRAFT)' },
-    { file: 'innovation-ip.html',    label: 'Innovation & IP',          changes: 3, note: 'Section reframed' },
-    { file: 'company.html',          label: 'Company',                  changes: 1, note: 'Mark added to leadership' },
+    { file: 'index.html',            label: 'Home',                     changes: 5, note: 'Hero, accolades, 2 pillar titles, pathway entity rename' },
+    { file: 'innovation-ip.html',    label: 'Innovation & IP',          changes: 4, note: 'Section reframed + illustrative-only disclaimer' },
+    { file: 'company.html',          label: 'Company',                  changes: 1, note: 'Mark added to leadership + photo bg note' },
     { file: 'cases-forensics.html',  label: 'Cases: Forensics',         changes: 3, note: '3 case-study status TBC' },
     { file: 'cases-diagnostics.html',label: 'Cases: Diagnostics',       changes: 2, note: '2 case-study status TBC' },
     { file: 'cases-veterinary.html', label: 'Cases: Veterinary',        changes: 4, note: '4 case-study status TBC' },
-    { file: 'forensic-services.html',label: 'Scientific Evidence',      changes: 0, note: 'Page-title only (nav renamed) · CPD add proposed in Round 2' },
-    { file: 'sam-feedback-v2.html',  label: '★ Round 2 Addendum',       changes: 10, note: 'Philippe & Sam feedback — 13 May' },
+    { file: 'forensic-services.html',label: 'Scientific Evidence',      changes: 2, note: 'IA decision + CPD service card added' },
+    { file: 'philippe.html',         label: 'Philippe — Expert Witness',changes: 1, note: 'Title → Expert Witness Team Lead' },
   ];
 
   const currentFile = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
@@ -33,7 +33,7 @@
     <div class="rv-banner-left">
       <span class="rv-banner-tag">Review Mode</span>
       <span class="rv-banner-text">
-        Round 1: <strong>Sam (12 May)</strong> — amber inline marks · Round 2: <strong>Philippe &amp; Sam (13 May)</strong> — <a href="sam-feedback-v2.html" style="color:#FFF3D6;text-decoration:underline;">see addendum →</a>
+        All proposed changes — Sam (12 May) + Philippe &amp; Sam (13 May). Hover any amber element for context.
       </span>
     </div>
     <div class="rv-banner-right">
