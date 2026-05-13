@@ -19,7 +19,8 @@
     { file: 'cases-forensics.html',  label: 'Cases: Forensics',         changes: 3, note: '3 case-study status TBC' },
     { file: 'cases-diagnostics.html',label: 'Cases: Diagnostics',       changes: 2, note: '2 case-study status TBC' },
     { file: 'cases-veterinary.html', label: 'Cases: Veterinary',        changes: 4, note: '4 case-study status TBC' },
-    { file: 'forensic-services.html',label: 'Scientific Evidence',      changes: 0, note: 'Page-title only (nav renamed)' },
+    { file: 'forensic-services.html',label: 'Scientific Evidence',      changes: 0, note: 'Page-title only (nav renamed) · CPD add proposed in Round 2' },
+    { file: 'sam-feedback-v2.html',  label: '★ Round 2 Addendum',       changes: 10, note: 'Philippe & Sam feedback — 13 May' },
   ];
 
   const currentFile = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
@@ -32,7 +33,7 @@
     <div class="rv-banner-left">
       <span class="rv-banner-tag">Review Mode</span>
       <span class="rv-banner-text">
-        Changes from <strong>Sam's feedback (12 May)</strong> — hover any amber element for context.
+        Round 1: <strong>Sam (12 May)</strong> — amber inline marks · Round 2: <strong>Philippe &amp; Sam (13 May)</strong> — <a href="sam-feedback-v2.html" style="color:#FFF3D6;text-decoration:underline;">see addendum →</a>
       </span>
     </div>
     <div class="rv-banner-right">
