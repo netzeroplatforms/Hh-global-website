@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Companies & Contacts — Mark's Engagement Map</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0c0e12;
+      --surface: rgba(255,255,255,0.04);
+      --surface2: rgba(255,255,255,0.07);
+      --border:  rgba(255,255,255,0.08);
+      --text:    #eef2f7;
+      --muted:   #8b9cb8;
+      --dim:     #b8c4d4;
+      --gold:    #f59e0b;
+      --green:   #10b981;
+      --blue:    #3b82f6;
+      --grey:    #64748b;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      padding: 48px 24px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 28px;
+      margin-bottom: 36px;
+    }
+
+    .label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .subtitle { color: var(--muted); font-size: 13px; }
+
+    .sec-title {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+      margin: 42px 0 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .sec-title .num { color: var(--gold); }
+    .sec-note { color: var(--muted); font-size: 13px; margin-bottom: 18px; }
+
+    .company {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 26px;
+      margin-bottom: 16px;
+    }
+    .company h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .company .lead {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0;
+    }
+    .contact-list li {
+      padding: 9px 0;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: minmax(160px, 1.2fr) minmax(120px, 1fr) 2fr;
+      gap: 12px;
+      font-size: 13px;
+    }
+    .contact-list li:first-child { border-top: none; padding-top: 4px; }
+    .contact-list .cname { font-weight: 600; color: var(--text); }
+    .contact-list .crole { color: var(--dim); font-size: 12px; }
+    .contact-list .cnotes { color: var(--muted); font-size: 12px; }
+
+    .status {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 3px 9px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .status.active  { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3);  color: var(--green); }
+    .status.warm    { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3);  color: var(--gold); }
+    .status.paused  { background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3);  color: var(--blue); }
+    .status.cold    { background: rgba(139,156,184,0.12); border: 1px solid rgba(139,156,184,0.25); color: var(--muted); }
+    .status.live    { background: rgba(16,185,129,0.18); border: 1px solid rgba(16,185,129,0.4);  color: var(--green); }
+    .status.hub     { background: rgba(245,158,11,0.18); border: 1px solid rgba(245,158,11,0.4);  color: var(--gold); }
+
+    /* Summary cards */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .summary-card .val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .summary-card .lab {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @media (max-width: 720px) {
+      .contact-list li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="label">BridgePoint AI · Engagement Map</div>
+    <h1>Companies &amp; Contacts</h1>
+    <div class="subtitle">Mark Evans-Smith · live engagements, warm pipeline, and named contacts across the network · last updated 2026-05-13</div>
+  </header>
+
+  <div class="summary-grid">
+    <div class="summary-card"><div class="val">4</div><div class="lab">Campaign Hubs</div></div>
+    <div class="summary-card"><div class="val">11</div><div class="lab">Active Engagements</div></div>
+    <div class="summary-card"><div class="val">9</div><div class="lab">Warm Pipeline</div></div>
+    <div class="summary-card"><div class="val">30+</div><div class="lab">Named Contacts</div></div>
+  </div>
+
+  <!-- SECTION 1: CAMPAIGN HUB COMPANIES -->
+  <div class="sec-title"><span class="num">01</span> Campaign Hub Companies</div>
+  <div class="sec-note">The four companies with dedicated outreach hubs under <code>/campaigns/</code>. Mark = interim BD Director (BridgePoint AI) across all four.</div>
+
+  <div class="company">
+    <h3>CityFi <span class="status hub">Hub Live</span> <span class="status active">Active</span></h3>
+    <div class="lead">Smart streetlight retrofit (LuxMetrix). 17-sensor unit fitting NEMA + Zhaga sockets. BridgePoint AI portfolio. Patent pending. Data-as-a-service.</div>
+    <ul class="contact-list">
+      <li><span class="cname">Hayden Barton</span><span class="crole">CEO &amp; Inventor</span><span class="cnotes">29, ex-Pepsi. Hub points all "20 min intro" closes to him.</span></li>
+      <li><span class="cname">Peter Anderson</span><span class="crole">Amey · Target</span><span class="cnotes">LinkedIn connection sent · follow-up ready. P1 PFI operator instance.</span></li>
+      <li><span class="cname">Furkan (TBC)</span><span class="crole">CEO, Connexion (Hull)</span><span class="cnotes">LoRaWAN partner; existing streetlight maintenance contracts &amp; council relationships.</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>HH Global Holdings <span class="status hub">Hub Pending</span> <span class="status active">Active</span></h3>
+    <div class="lead">Forensic science CRO. Group spans diagnostics, evidence services, lab build (LabArchitect), animal &amp; human health. Mark = interim BD.</div>
+    <ul class="contact-list">
+      <li><span class="cname">Sam White</span><span class="crole">CEO · Dr Samuel J. White</span><span class="cnotes">Honorary Associate Professor, Nottingham. Court-recognised expert witness. Genetix exit play in motion (see project memory).</span></li>
+      <li><span class="cname">Tracy Holbrook</span><span class="crole">Director of Operations</span><span class="cnotes">QMS / ISO 17025 / lab accreditation lead. On the 2026-05-13 call with Sam.</span></li>
+      <li><span class="cname">Philippe Wilson</span><span class="crole">Professor</span><span class="cnotes">Forbes 30u30, UK Govt Committee on Toxicity adviser, RSC Joseph Black Medal. Credential anchor for outreach.</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>NZP — Net Zero Platforms <span class="status hub">Hub Pending</span> <span class="status active">Active</span></h3>
+    <div class="lead">Waste-to-value platform (software + UHTMG plasma gasification hardware). US Patent 10,435,295. Backed by SMS / Tenova / GE Vernova / Air Products / BP / Marathon / AON.</div>
+    <ul class="contact-list">
+      <li><span class="cname">Jonathan</span><span class="crole">CEO</span><span class="cnotes">Surname TBC.</span></li>
+      <li><span class="cname">Kevin Doyle</span><span class="crole">Co-founder / Pario Ventures</span><span class="cnotes">Also runs Cavendish Biotech, AITL, TrueLens. CityFi patent holder.</span></li>
+      <li><span class="cname">Richard Molsbee</span><span class="crole">NZP</span><span class="cnotes">In Kevin's "inner circle" list — relationship role TBC.</span></li>
+      <li><span class="cname">President of Nigeria</span><span class="crole">Government target</span><span class="cnotes">Meeting opened 2026-03-19; waste-to-value POC.</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>Byzgen <span class="status hub">Hub Pending</span> <span class="status warm">Warm</span></h3>
+    <div class="lead">Fourth campaign hub. LinkedIn-post material already drafted (<code>byzgen-linkedin-posts.html</code> in iow-notes).</div>
+    <ul class="contact-list">
+      <li><span class="cname">Marcus</span><span class="crole">CEO</span><span class="cnotes">Surname TBC.</span></li>
+    </ul>
+  </div>
+
+  <!-- SECTION 2: HH GROUP CLIENTS & ADJACENCIES -->
+  <div class="sec-title"><span class="num">02</span> HH Group — Clients, Adjacencies &amp; Pipeline</div>
+  <div class="sec-note">Live HH retainers, paused engagements to reactivate, and the active warm pipeline that informs the HH campaign hub.</div>
+
+  <div class="company">
+    <h3>Genetix Labs (Liverpool) <span class="status active">Active — exit play</span></h3>
+    <div class="lead">Owner of Opal Forensics. Sam White's consulting client — £15k/month, 3 days/week, 6-month renewal April 2026. Sam diluted from 17% → ~3% equity.</div>
+    <ul class="contact-list">
+      <li><span class="cname">(Genetix board)</span><span class="crole">Counterparty</span><span class="cnotes">Names TBC. Reconciliation conversation pending re Jan→May 2026 over-delivered days.</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>Opal Forensics Limited <span class="status live">Live retainer</span></h3>
+    <div class="lead">Formerly FungID Ltd (rebrand). Companies House 16813615, incorporated 27 Oct 2025, Bromley. Live HH client — £15k–18k/month running to ~Nov 2026.</div>
+    <ul class="contact-list">
+      <li><span class="cname">(Opal team)</span><span class="crole">Operating company</span><span class="cnotes">Forensic mycology / mould evidence. Awaab's Law beachhead. Operating structure TBC pending Sam confirmation.</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>Cavendish Biotechnology Limited <span class="status active">Active — 12mo in</span></h3>
+    <div class="lead">Run by Kevin Doyle. Distressed acquisition of a goat-serum-based therapeutic (systemic sclerosis; potential Alzheimer's adjacency). HH delivering 3-WP pre-clinical programme.</div>
+    <ul class="contact-list">
+      <li><span class="cname">Kevin Doyle</span><span class="crole">Principal</span><span class="cnotes">Next-phase conversation needed before month 12 (Priority 4 in BD plan).</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>ALS Global <span class="status paused">Paused — reactivate</span></h3>
+    <div class="lead">Diagnostics R&amp;D partnership, £300k+ project. Paused. Sam to make warm academic re-introduction (Priority 3 in BD plan).</div>
+    <ul class="contact-list">
+      <li><span class="cname">Hosway</span><span class="crole">ALS contact</span><span class="cnotes">First name only captured. Sam holds the relationship.</span></li>
+      <li><span class="cname">Eurofins</span><span class="crole">Backup target</span><span class="cnotes">Primary alternative if ALS does not reactivate.</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>HM3 Legal <span class="status warm">Warm</span></h3>
+    <div class="lead">Awaab's Law claims pipeline play. Legal + tech/data partner structure under exploration. BridgePoint AI as compliance/data layer alongside HM3's legal practice.</div>
+    <ul class="contact-list">
+      <li><span class="cname">Lindsey Kidd</span><span class="crole">Managing Partner</span><span class="cnotes">Personal contact of Mark's. Warm WhatsApp draft prepared (<code>lindsey-draft.html</code>). Template for all warm law-firm outreach.</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>Antony Hodari Solicitors <span class="status warm">Warm — inbound</span></h3>
+    <div class="lead">Manchester housing-disrepair firm. Approached Sam directly re speaking engagement + commercial relationship. Central to Sam Genetix exit / NewCo play (2026-05-13).</div>
+    <ul class="contact-list">
+      <li><span class="cname">(Hodari contact)</span><span class="crole">Inbound</span><span class="cnotes">Name TBC — Sam holds the relationship. Mark to call this week per drafted advice to Sam.</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>Hysteron <span class="status warm">Warm — discovery</span></h3>
+    <div class="lead">Menopause blood test development. Currently using a commercial lab — seeking more advanced R&amp;D partner. HH multiplex LFT platform directly applicable.</div>
+    <ul class="contact-list">
+      <li><span class="cname">(Hysteron contact)</span><span class="crole">Discovery</span><span class="cnotes">£100k–£300k R&amp;D contract + potential licensing.</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>Our Future Health (former-CEO) <span class="status warm">Warm</span></h3>
+    <div class="lead">Andrew Roddam, ex-CEO of UK's largest health research programme (5m participants), now available. Strategic collaboration potential — biomarker validation at scale.</div>
+    <ul class="contact-list">
+      <li><span class="cname">Andrew Roddam</span><span class="crole">Former CEO, OFH</span><span class="cnotes">Frame as strategic collaboration, not client engagement.</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>UAE — Camel Genomics <span class="status warm">Warm — scoping</span></h3>
+    <div class="lead">Camel racing/breeding/health is multi-billion AED industry. Camelid biomarker panels + potential UAE lab. JV or licence structure under discussion.</div>
+    <ul class="contact-list">
+      <li><span class="cname">(UAE contacts)</span><span class="crole">Network</span><span class="cnotes">Names TBC. Confirm whether government or family-office backed.</span></li>
+      <li><span class="cname">Maximilian Vinlauf</span><span class="crole">German FO — Al Maktoum link</span><span class="cnotes">Active — Monday follow-up flagged in HH plan.</span></li>
+    </ul>
+  </div>
+
+  <!-- SECTION 3: BRIDGEPOINT AI PORTFOLIO & OPERATING NETWORK -->
+  <div class="sec-title"><span class="num">03</span> BridgePoint AI — Portfolio &amp; Inner Circle</div>
+  <div class="sec-note">Companies and people inside the BridgePoint AI operating network beyond the four campaign hubs.</div>
+
+  <div class="company">
+    <h3>BridgePoint AI</h3>
+    <div class="lead">Mark's employer. Holds positions across CityFi, NZP, Byzgen, TrueLens, AITL and others. Mark is interim BD Director across HH and the portfolio.</div>
+    <ul class="contact-list">
+      <li><span class="cname">JSB (Jan Stanley Brown)</span><span class="crole">Principal</span><span class="cnotes">Directs the strategy room. Operates from Isle of Wight.</span></li>
+      <li><span class="cname">Kevin Doyle</span><span class="crole">Serial entrepreneur · Pario Ventures</span><span class="cnotes">NZP gasification IP, AITL, CityFi patent, TrueLens, Cavendish Biotech, 30yr O&amp;G. UK + US (Houston) network.</span></li>
+      <li><span class="cname">Mark Bew</span><span class="crole">Augmented dentistry / IDEF0</span><span class="cnotes">Process architecture work; ThakaaMed partnership thread.</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>TrueLens <span class="status active">Portfolio</span></h3>
+    <div class="lead">BridgePoint portfolio company. Likely AI/vision-related (referenced in Kevin LinkedIn / dental-AI thread).</div>
+    <ul class="contact-list"><li><span class="cname">(Lead TBC)</span><span class="crole">Portfolio</span><span class="cnotes">Detail to confirm.</span></li></ul>
+  </div>
+
+  <div class="company">
+    <h3>AI Integration Technologies Ltd (AITL) <span class="status active">Portfolio</span></h3>
+    <div class="lead">Kevin Doyle entity. Proposed as the hub structure in the augmented-dentistry deal architecture with Mark Bew + ThakaaMed.</div>
+    <ul class="contact-list"><li><span class="cname">Kevin Doyle</span><span class="crole">Principal</span><span class="cnotes">See Pario Ventures.</span></li></ul>
+  </div>
+
+  <div class="company">
+    <h3>Vercity <span class="status warm">Warm</span></h3>
+    <ul class="contact-list">
+      <li><span class="cname">Paul Francis</span><span class="crole">Vercity</span><span class="cnotes">In Kevin's "inner circle" / first-5 LinkedIn-connections list.</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>Adaro Group <span class="status warm">Warm</span></h3>
+    <ul class="contact-list">
+      <li><span class="cname">Virginia Filmer-Sankey</span><span class="crole">Financial Director</span><span class="cnotes">Provided the 2026-04-24 HH website audit document.</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>OptimaBI <span class="status warm">Warm</span></h3>
+    <div class="lead">Construction-industry access partner — regulatory &amp; compliance angle. BridgePoint AI as the AI layer on top of OptimaBI's sector reach.</div>
+    <ul class="contact-list"><li><span class="cname">(Contact TBC)</span><span class="crole">Initial discussions</span><span class="cnotes">Building Safety Act, fire safety, planning reform.</span></li></ul>
+  </div>
+
+  <!-- SECTION 4: DENTAL / SAUDI THREAD -->
+  <div class="sec-title"><span class="num">04</span> Augmented Dentistry · Saudi Thread</div>
+  <div class="sec-note">Parallel BridgePoint thread — Mark Bew's process architecture, ThakaaMed's production platform, AITL as the proposed structuring hub.</div>
+
+  <div class="company">
+    <h3>ThakaaMed <span class="status active">In production</span></h3>
+    <div class="lead">Saudi platform. Dental IQ Clinic OS — FHIR R4 compliant, SFDA pathway active, 11 modules + 8 AI agents. In production at Saudi hospitals. Covers ~85% of Mark Bew's IDEF0 spec.</div>
+    <ul class="contact-list">
+      <li><span class="cname">Dr Alwaleed Al-Badr</span><span class="crole">ThakaaMed team / Dental IQ</span><span class="cnotes">Author of the Dental IQ Clinic OS document.</span></li>
+    </ul>
+  </div>
+
+  <div class="company">
+    <h3>US Market Entry (Houston) <span class="status warm">Warm</span></h3>
+    <ul class="contact-list">
+      <li><span class="cname">Jaz Bir (TBC)</span><span class="crole">Houston-based front man</span><span class="cnotes">Spelling unconfirmed (Jaz Bir / Jazz Beer / Jas Bir). Network contact of Kevin Doyle. Potential US GTM lead — dental AI / TrueLens.</span></li>
+    </ul>
+  </div>
+
+  <!-- SECTION 5: KNOWN INSTITUTIONAL ANCHORS -->
+  <div class="sec-title"><span class="num">05</span> Institutional Anchors (mentioned, not contacts)</div>
+  <div class="sec-note">Organisations referenced in HH or BridgePoint collateral as historic partners or credibility anchors. Logos/partner strip implied but not currently mapped to named contacts.</div>
+
+  <div class="company">
+    <ul class="contact-list">
+      <li><span class="cname">AstraZeneca</span><span class="crole">HH partner ref</span><span class="cnotes">In HH body copy — no contact mapped.</span></li>
+      <li><span class="cname">NHS</span><span class="crole">HH partner ref</span><span class="cnotes">Multiple Trust mentions; named contact TBC.</span></li>
+      <li><span class="cname">DEFRA</span><span class="crole">HH partner ref</span><span class="cnotes">Air quality / environmental sampling context.</span></li>
+      <li><span class="cname">University of Bern</span><span class="crole">HH partner ref</span><span class="cnotes">Academic collaboration.</span></li>
+      <li><span class="cname">SMS Group · Tenova · GE Vernova · Siemens</span><span class="crole">NZP equipment</span><span class="cnotes">Named on netzeroplatforms.com.</span></li>
+      <li><span class="cname">Air Products · Air Liquide</span><span class="crole">NZP gas handling</span><span class="cnotes">Named partners.</span></li>
+      <li><span class="cname">BP · Marathon Petroleum · Tenaska Biofuels · Mansfield Oil · Ecoenergy</span><span class="crole">NZP offtake</span><span class="cnotes">Named partners.</span></li>
+      <li><span class="cname">AON</span><span class="crole">NZP insurance</span><span class="cnotes">Named partner.</span></li>
+    </ul>
+  </div>
+
+  <!-- SECTION 6: NEXT MAINTENANCE TASKS -->
+  <div class="sec-title"><span class="num">06</span> Maintenance Notes</div>
+  <div class="company">
+    <ul class="contact-list">
+      <li><span class="cname">Confirm surnames</span><span class="crole">Hayden Barton (confirmed), Marcus, Jonathan, Furkan, Hosway, Jaz Bir</span><span class="cnotes">When convenient — needed for LinkedIn tagging.</span></li>
+      <li><span class="cname">Add contact names</span><span class="crole">Hodari / Hysteron / UAE / OptimaBI / Genetix board</span><span class="cnotes">Once introductions or meetings happen.</span></li>
+      <li><span class="cname">Confirm operating structure</span><span class="crole">Opal Forensics</span><span class="cnotes">Pending Sam clarification — determines whether Opal-led or clean successor for the NewCo play.</span></li>
+      <li><span class="cname">HH Hub build</span><span class="crole">Next campaign hub to stand up</span><span class="cnotes">Most templates to migrate (8 in bd-strategy-report Section 7).</span></li>
+    </ul>
+  </div>
+
+  <footer>
+    <span>BridgePoint AI · Engagement Map · /campaigns/contacts.html</span>
+    <span>Last updated 2026-05-13 · Mark Evans-Smith</span>
+  </footer>
+
+</body>
+</html>
