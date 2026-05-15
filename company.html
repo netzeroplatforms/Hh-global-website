@@ -97,6 +97,7 @@
  color: rgba(255,255,255,0.72); text-decoration: none;
  font-size: 13px; font-weight: 500; letter-spacing: 0.3px;
  transition: color 0.2s;
+ white-space: nowrap;
  }
  .nav-links a:hover { color: var(--gold); }
  .nav-cta {
@@ -107,6 +108,7 @@
  font-size: 13px; font-weight: 600;
  text-decoration: none;
  transition: all 0.2s;
+ white-space: nowrap;
  }
  .nav-cta:hover { background: var(--gold-light); }
  .nav-toggle {
@@ -1109,7 +1111,7 @@
  .cred-inner { grid-template-columns: repeat(3, 1fr); }
  .cred-item:nth-child(3) { border-right: none; }
  }
- @media (max-width: 768px) {
+ @media (max-width: 1100px) {
  .nav-toggle { display: flex; }
  .nav-links {
  display: none;
@@ -1122,6 +1124,8 @@
  .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); }
  .nav-links a { display: block; padding: 12px 0; }
  .nav-cta { display: none; }
+ }
+ @media (max-width: 768px) {
  .contact-form-row { grid-template-columns: 1fr !important; }
  .about-grid, .team-grid, .ip-grid { grid-template-columns: 1fr; }
  .cases-grid, .pillars-grid, .markets-grid { grid-template-columns: 1fr; }
