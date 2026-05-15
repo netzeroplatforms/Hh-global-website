@@ -619,34 +619,34 @@
  </div>
  </div>
  <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:40px;">
- <form id="hh-contact-form" style="display:flex;flex-direction:column;gap:18px;">
+ <form id="hh-contact-form" action="https://formspree.io/f/maqvgkga" method="POST" style="display:flex;flex-direction:column;gap:18px;">
  <div class="contact-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
  <div>
  <label style="display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Full Name *</label>
- <input type="text" id="hh-name" required placeholder=""
+ <input type="text" id="hh-name" name="name" required placeholder=""
  style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;">
  </div>
  <div>
  <label style="display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Company / Organisation *</label>
- <input type="text" id="hh-company" required placeholder=""
+ <input type="text" id="hh-company" name="company" required placeholder=""
  style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;">
  </div>
  </div>
  <div class="contact-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
  <div>
  <label style="display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Email Address *</label>
- <input type="email" id="hh-email" required placeholder=""
+ <input type="email" id="hh-email" name="email" required placeholder=""
  style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;">
  </div>
  <div>
  <label style="display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Phone Number</label>
- <input type="tel" id="hh-phone" placeholder=""
+ <input type="tel" id="hh-phone" name="phone" placeholder=""
  style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;box-sizing:border-box;">
  </div>
  </div>
  <div>
  <label style="display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Type of Enquiry *</label>
- <select id="hh-theme" required
+ <select id="hh-theme" name="theme" required
  style="width:100%;padding:12px 14px;background:rgba(11,31,63,0.9);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;appearance:none;cursor:pointer;box-sizing:border-box;">
  <option value="" disabled selected style="color:rgba(255,255,255,0.4);">Select a type…</option>
  <option value="Expert Witness / Court Report">Expert Witness / Court Report</option>
@@ -661,10 +661,14 @@
  </div>
  <div>
  <label style="display:block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Tell Us About Your Case</label>
- <textarea id="hh-message" rows="3" placeholder=""
+ <textarea id="hh-message" name="message" rows="3" placeholder=""
  style="width:100%;padding:12px 14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;resize:vertical;box-sizing:border-box;"></textarea>
  </div>
- <button type="submit"
+  <!-- Hidden helpers: subject line + source page + honeypot anti-spam -->
+ <input type="hidden" name="_subject" id="hh-subject" value="HH Global Holdings Website Enquiry">
+ <input type="hidden" name="source_page" value="forensic-services.html">
+ <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
+ <button type="submit" id="hh-submit-btn"
  style="padding:15px 32px;background:var(--gold);color:var(--navy);border:none;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;">
  Send Enquiry →
  </button>
@@ -680,6 +684,8 @@
  #hh-contact-form textarea:focus { border-color: var(--gold) !important; background: rgba(255,255,255,0.1) !important; }
  #hh-contact-form input::placeholder,
  #hh-contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+ #hh-contact-form select option { color: #0b1f3f; background: #ffffff; }
+ #hh-contact-form select option:disabled { color: rgba(11,31,63,0.4); }
  #hh-contact-form button:hover { background: var(--gold-light); transform: translateY(-1px); }
  @media (max-width: 768px) {
  .contact-form-row { grid-template-columns: 1fr !important; }
@@ -687,26 +693,52 @@
  }
 </style>
 <script>
- document.getElementById('hh-contact-form').addEventListener('submit', function(e) {
- e.preventDefault();
- var name = document.getElementById('hh-name').value.trim();
- var company = document.getElementById('hh-company').value.trim();
- var email = document.getElementById('hh-email').value.trim();
- var phone = document.getElementById('hh-phone').value.trim();
- var theme = document.getElementById('hh-theme').value;
- var message = document.getElementById('hh-message').value.trim();
- var subject = 'HH Global Holdings Forensic Enquiry, ' + theme + ' (' + company + ')';
- var body = 'Name: ' + name
- + '\nCompany: ' + company
- + '\nEmail: ' + email
- + (phone ? '\nPhone: ' + phone : '')
- + '\nEnquiry Type: ' + theme
- + (message ? '\n\nCase overview:\n' + message : '');
+ (function () {
+ var form = document.getElementById('hh-contact-form');
+ if (!form) return;
  var msg = document.getElementById('hh-form-msg');
+ var btn = document.getElementById('hh-submit-btn');
+ var subjectField = document.getElementById('hh-subject');
+
+ form.addEventListener('submit', function (e) {
+ e.preventDefault();
+
+ var theme = document.getElementById('hh-theme').value;
+ var company = document.getElementById('hh-company').value.trim();
+ subjectField.value = 'HH Global Holdings Enquiry — ' + theme + ' (' + company + ')';
+
+ btn.disabled = true;
+ btn.textContent = 'Sending…';
  msg.style.display = 'block';
- msg.textContent = 'Opening your email client…';
- window.location.href = 'mailto:info@hhglobalholdings.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+ msg.style.color = 'rgba(255,255,255,0.7)';
+ msg.textContent = 'Sending your enquiry…';
+
+ fetch(form.action, {
+ method: 'POST',
+ body: new FormData(form),
+ headers: { 'Accept': 'application/json' }
+ }).then(function (response) {
+ if (response.ok) {
+ form.reset();
+ msg.style.color = 'var(--gold)';
+ msg.innerHTML = '<strong>Thank you.</strong> Your enquiry has been received — we will be in touch within 24 hours.';
+ btn.textContent = 'Sent ✓';
+ } else {
+ response.json().then(function (data) {
+ msg.style.color = '#ff9b9b';
+ msg.textContent = (data && data.errors && data.errors.map(function (er) { return er.message; }).join(', ')) || 'Sorry — something went wrong. Please email info@hhglobalholdings.com directly.';
+ btn.disabled = false;
+ btn.textContent = 'Send Enquiry →';
  });
+ }
+ }).catch(function () {
+ msg.style.color = '#ff9b9b';
+ msg.textContent = 'Network error. Please email info@hhglobalholdings.com directly.';
+ btn.disabled = false;
+ btn.textContent = 'Send Enquiry →';
+ });
+ });
+ })();
 </script>
 
 <!-- FOOTER -->
