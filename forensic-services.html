@@ -693,6 +693,33 @@
  .contact-form-row { grid-template-columns: 1fr !important; }
  #contact > .container > div { grid-template-columns: 1fr !important; }
  }
+
+/* ─ MOBILE-RESPONSIVE OVERRIDES (injected) ─
+   These rules win against inline grid-template-columns / flex layouts
+   so multi-column sections collapse cleanly on phone-sized viewports. */
+@media (max-width: 768px) {
+ [style*="grid-template-columns:repeat"],
+ [style*="grid-template-columns: repeat"],
+ [style*="grid-template-columns:1fr 1fr"],
+ [style*="grid-template-columns: 1fr 1fr"],
+ [style*="grid-template-columns:1fr 2fr"],
+ [style*="grid-template-columns:2fr 1fr"],
+ [style*="grid-template-columns:1.2fr"],
+ [style*="grid-template-columns: 1.2fr"] {
+ grid-template-columns: 1fr !important;
+ gap: 18px !important;
+ }
+ .pipeline-flow { flex-direction: column !important; gap: 20px !important; align-items: stretch !important; }
+ .pipeline-flow::before { display: none !important; }
+ .pipeline-card, .pipeline-step { width: 100% !important; }
+ /* Prevent any horizontal overflow */
+ body, html { overflow-x: hidden !important; }
+ img, .pillar-card, .pipeline-card { max-width: 100% !important; }
+}
+@media (max-width: 480px) {
+ .hero h1 { font-size: 28px !important; line-height: 1.15 !important; }
+ .section-heading { font-size: 26px !important; line-height: 1.2 !important; }
+}
 </style>
 <script>
  (function () {
