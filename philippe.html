@@ -1601,6 +1601,9 @@
  /* Prevent any horizontal overflow */
  body, html { overflow-x: hidden !important; }
  img, .pillar-card, .pipeline-card { max-width: 100% !important; }
+ /* Mobile: replace decorative star bullets with proper bullets on bio pages */
+ .cred-label::before { content: '•' !important; font-size: 16px; vertical-align: middle; margin-right: 8px !important; }
+ .science-item::before { content: '•' !important; font-size: 16px; }
 }
 @media (max-width: 480px) {
  .hero h1 { font-size: 28px !important; line-height: 1.15 !important; }
