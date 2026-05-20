@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scientific Advisory & Diagnostic Sciences | HH Global Holdings</title>
+  <title>Scientific Practice | HH Global Holdings</title>
   <meta name="description" content="HH Global Holdings' scientific practice: laboratory architecture, diagnostic & evidence sciences, regulatory and method science to ISO 17025 and ISO 15189, and scientific leadership for investors and founders.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -335,6 +335,139 @@
     }
     .principle p { font-size: 13px; line-height: 1.5; color: var(--text-light); margin: 0; }
 
+    /* CUSTOMISATION BAND */
+    .custom-band {
+      background: var(--navy);
+      padding: 48px 0;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .custom-band p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 38px);
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.2;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .custom-band p em { color: var(--gold); font-style: italic; }
+
+    /* PERSONAS */
+    .personas-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 48px;
+    }
+    .persona-card {
+      display: block;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 26px 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s;
+      border-top: 3px solid var(--gold);
+    }
+    .persona-card:hover {
+      box-shadow: 0 8px 30px rgba(11,31,63,0.06);
+      transform: translateY(-2px);
+    }
+    .persona-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .persona-card h4 {
+      color: var(--navy);
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+    .persona-card p {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-mid);
+      margin-bottom: 14px;
+    }
+    .persona-link {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+    .persona-card:hover .persona-link { color: var(--gold); }
+
+    /* COMPARE BLOCK */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 1fr;
+      gap: 18px;
+      margin-top: 48px;
+      align-items: stretch;
+    }
+    .compare-col {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 24px;
+      transition: all 0.25s;
+    }
+    .compare-col h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+      color: var(--text-mid);
+      font-size: 18px;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    .compare-line {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-col ul { list-style: none; padding: 0; margin: 0; }
+    .compare-col li {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-mid);
+      padding: 5px 0 5px 18px;
+      position: relative;
+    }
+    .compare-col li::before {
+      content: '·';
+      color: var(--text-light);
+      position: absolute;
+      left: 4px;
+      font-weight: 700;
+      font-size: 18px;
+      top: 2px;
+    }
+    .compare-feature {
+      background: var(--cream);
+      border: 1px solid var(--gold);
+      border-top: 3px solid var(--gold);
+      box-shadow: 0 8px 30px rgba(201,170,125,0.10);
+    }
+    .compare-feature h4 { color: var(--navy); font-size: 22px; }
+    .compare-feature .compare-line { color: var(--gold); }
+    .compare-feature li { color: var(--text); font-weight: 500; }
+    .compare-feature li::before { content: '✓'; color: var(--gold); font-size: 13px; top: 5px; }
+
     /* CTA */
     .cta {
       background: var(--navy);
@@ -385,14 +518,18 @@
       .sectors-grid { grid-template-columns: repeat(2, 1fr); }
       .scientist { grid-template-columns: 1fr; gap: 28px; }
       .principles-grid { grid-template-columns: repeat(2, 1fr); }
+      .personas-grid { grid-template-columns: repeat(2, 1fr); }
+      .compare-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 520px) {
       .sectors-grid { grid-template-columns: 1fr; }
       .principles-grid { grid-template-columns: 1fr; }
+      .personas-grid { grid-template-columns: 1fr; }
       .hero { padding: 100px 0 56px; min-height: auto; }
       h1 { font-size: 30px; }
       .section { padding: 56px 0; }
       .pub-callout { padding: 22px; }
+      .custom-band { padding: 36px 0; }
     }
   </style>
 </head>
@@ -409,7 +546,7 @@
       <li><a href="../index.html">Home</a></li>
       <li><a href="../labarchitect.html">LabArchitect™</a></li>
       <li><a href="../innovation-ip.html">Innovation &amp; IP</a></li>
-      <li><a href="scientific-advisory.html">Science</a></li>
+      <li><a href="scientific-practice.html">Scientific Practice</a></li>
       <li><a href="../company.html">Company Profile</a></li>
       <li><a href="../company.html#articles">Publications</a></li>
     </ul>
@@ -445,12 +582,55 @@
   <p>Compliance by Design <span>·</span> Method-Validated <span>·</span> Independent <span>·</span> Audit-Ready</p>
 </div>
 
+<!-- CUSTOMISATION BAND -->
+<div class="custom-band">
+  <div class="container">
+    <p>Where the off-the-shelf assay <em>does not exist.</em></p>
+  </div>
+</div>
+
 <!-- APPROACH -->
 <section class="section">
   <div class="container">
     <div class="section-tag">How We Work</div>
     <h2 class="section-heading">Science Built to <em>Survive Scrutiny.</em></h2>
     <p class="section-lead">A diagnostic, a method, a study, or a platform is only as valuable as the methodology behind it. Our practice is structured to deliver findings that are reproducible by an independent laboratory, defensible to a regulator, and intelligible to a non-specialist board or investment committee. Where claims are made, they are sourced. Where uncertainty exists, it is quantified, not hidden.</p>
+  </div>
+</section>
+
+<!-- WHO WE SERVE (PERSONAS) -->
+<section class="section" style="padding-top: 24px;">
+  <div class="container">
+    <div class="section-tag">Who We Serve</div>
+    <h2 class="section-heading">Four Audiences. <em>One Practice.</em></h2>
+    <p class="section-lead">Our practice is shaped by four buyer cohorts, each engaging us at a different inflection point in their programme, raise, build, or oversight cycle.</p>
+
+    <div class="personas-grid">
+      <a href="#pillars" class="persona-card">
+        <div class="persona-num">01</div>
+        <h4>For Founders</h4>
+        <p>Scientific platform under build. Fractional CSO mandate or investor-grade scientific narrative required for raise, partnership, or board reporting.</p>
+        <div class="persona-link">Scientific Leadership →</div>
+      </a>
+      <a href="#pillars" class="persona-card">
+        <div class="persona-num">02</div>
+        <h4>For Pharma &amp; CRO</h4>
+        <p>Method validation, technical-file authoring, regulator-facing submissions, or scientific oversight on a sponsor–CRO partnership.</p>
+        <div class="persona-link">Regulatory &amp; Method Science →</div>
+      </a>
+      <a href="#pillars" class="persona-card">
+        <div class="persona-num">03</div>
+        <h4>For Regulated Labs</h4>
+        <p>Greenfield ISO 17025 / 15189 build, accreditation programme, or upgrade of an existing laboratory to an audit-ready operating model.</p>
+        <div class="persona-link">Laboratory Architecture →</div>
+      </a>
+      <a href="#pillars" class="persona-card">
+        <div class="persona-num">04</div>
+        <h4>For Investors &amp; Boards</h4>
+        <p>Scientific due diligence on a target, second opinion on a portfolio company, or fractional CSO oversight across a hold period.</p>
+        <div class="persona-link">Scientific Due Diligence →</div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -569,6 +749,51 @@
       <div class="sector-card">
         <h4>Government &amp; Public Bodies</h4>
         <p>Evidence synthesis, systematic review, and methodological appraisal supporting policy, procurement, and advisory-committee decisions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE COMPARE -->
+<section class="section" style="padding-top: 24px;">
+  <div class="container">
+    <div class="section-tag">How We Compare</div>
+    <h2 class="section-heading">Niche Specialist <em>with Infrastructure.</em></h2>
+    <p class="section-lead">Buyers of regulated science typically face a binary: an industrial CRO with scale but limited customisation, or a solo academic with depth but no operating infrastructure. Our practice is built to occupy the gap between them.</p>
+
+    <div class="compare-grid">
+      <div class="compare-col">
+        <h4>Industrial CRO</h4>
+        <p class="compare-line">Scale &amp; capacity</p>
+        <ul>
+          <li>High throughput</li>
+          <li>Standardised workflows</li>
+          <li>Limited customisation</li>
+          <li>Programme-level engagement</li>
+          <li>Generalist account team</li>
+        </ul>
+      </div>
+      <div class="compare-col compare-feature">
+        <h4>HH Global Holdings</h4>
+        <p class="compare-line">Specialist depth with infrastructure</p>
+        <ul>
+          <li>Custom assay &amp; method design</li>
+          <li>ISO 17025 / 15189 operating model</li>
+          <li>Peer-reviewed scientific lead</li>
+          <li>End-to-end accountability</li>
+          <li>Practice continuity across engagements</li>
+        </ul>
+      </div>
+      <div class="compare-col">
+        <h4>Solo Scientist</h4>
+        <p class="compare-line">Depth without delivery</p>
+        <ul>
+          <li>Deep specialist knowledge</li>
+          <li>Personal credibility</li>
+          <li>No accredited infrastructure</li>
+          <li>Project-by-project, no continuity</li>
+          <li>Limited bandwidth</li>
+        </ul>
       </div>
     </div>
   </div>
