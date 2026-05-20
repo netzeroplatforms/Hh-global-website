@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientific Advisory & Diagnostic Sciences | HH Global Holdings</title>
+  <meta name="description" content="HH Global Holdings' scientific practice: laboratory architecture, diagnostic sciences, regulatory and method science, and scientific leadership for investors and founders.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1F3F;
+      --navy-mid: #152D55;
+      --navy-light: #1E3A6E;
+      --gold: #C9AA7D;
+      --gold-light: #D8BF94;
+      --gold-dim: rgba(201,170,125,0.12);
+      --cream: #FAF8F5;
+      --cream-dark: #F0EDE7;
+      --text: #1A1A2E;
+      --text-mid: #4A5568;
+      --text-light: #718096;
+      --border: #E2DDD5;
+      --white: #FFFFFF;
+      --max: 1200px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--text);
+      line-height: 1.5;
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 500; line-height: 1.2; }
+    h1 { font-size: clamp(28px, 3.6vw, 44px); }
+    h2 { font-size: clamp(22px, 2.6vw, 32px); }
+    h3 { font-size: clamp(17px, 1.9vw, 22px); }
+    h4 { font-size: 18px; font-weight: 600; font-family: 'Inter', sans-serif; }
+    p { font-size: 16px; line-height: 1.55; color: var(--text-mid); }
+    .body-lg { font-size: 18px; line-height: 1.55; color: var(--text-mid); }
+    .body-sm { font-size: 14px; color: var(--text-light); }
+
+    .section-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .section-heading { margin-bottom: 18px; color: var(--navy); }
+    .section-heading em { color: var(--gold); font-style: italic; }
+    .section-lead { font-size: 16px; line-height: 1.55; color: var(--text-mid); max-width: 720px; }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+    .section { padding: 80px 0; }
+    .section-alt { background: #F0EDE9; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 0; }
+    .section-dark { background: var(--navy); }
+    .text-center { text-align: center; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(11,31,63,0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      width: 100%;
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      height: 68px; padding: 0 32px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 500;
+      color: var(--white); text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.72); text-decoration: none;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.3px;
+      transition: color 0.2s; white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      padding: 10px 24px;
+      background: var(--gold); color: var(--navy);
+      border-radius: 5px; font-size: 13px; font-weight: 600;
+      text-decoration: none; transition: all 0.2s; white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+    .nav-toggle {
+      display: none; flex-direction: column; justify-content: space-between;
+      width: 24px; height: 18px;
+      background: none; border: none; cursor: pointer; padding: 0;
+    }
+    .nav-toggle span {
+      display: block; width: 100%; height: 2px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 2px; transition: all 0.3s;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 78vh;
+      background: var(--navy);
+      display: grid; align-content: center;
+      position: relative; overflow: visible;
+      padding: 120px 0 80px;
+    }
+    .hero > .container { width: 100%; }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 70% 40%, rgba(201,170,125,0.07) 0%, transparent 70%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 760px; }
+    .hero .section-tag { margin-bottom: 16px; }
+    .hero h1 { color: var(--white); margin-bottom: 24px; }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero p {
+      color: rgba(255,255,255,0.72);
+      font-size: 18px; line-height: 1.55;
+      margin-bottom: 36px; max-width: 660px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 14px 30px;
+      border-radius: 5px;
+      font-size: 13px; font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.25s;
+    }
+    .btn-gold { background: var(--gold); color: var(--navy); font-weight: 700; }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-outline { border: 1px solid rgba(255,255,255,0.25); color: var(--white); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* DIFFERENTIATOR STRIP */
+    .differentiator-strip { background: var(--gold); padding: 18px 0; text-align: center; }
+    .differentiator-strip p {
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--navy); margin: 0;
+    }
+    .differentiator-strip span { opacity: 0.45; margin: 0 14px; }
+
+    /* PILLARS */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px; margin-top: 48px;
+    }
+    .pillar-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px;
+      transition: all 0.25s;
+      position: relative;
+      border-top: 3px solid var(--gold);
+    }
+    .pillar-card:hover { box-shadow: 0 8px 30px rgba(11,31,63,0.06); transform: translateY(-2px); }
+    .pillar-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px; font-weight: 600;
+      color: var(--gold); line-height: 1;
+      margin-bottom: 12px;
+    }
+    .pillar-card h3 { color: var(--navy); margin-bottom: 12px; font-size: 22px; }
+    .pillar-card p { font-size: 15px; line-height: 1.55; color: var(--text-mid); margin-bottom: 14px; }
+    .pillar-card ul {
+      list-style: none; padding: 0; margin: 0;
+      border-top: 1px solid var(--border); padding-top: 14px;
+    }
+    .pillar-card li {
+      font-size: 13px; color: var(--text-light);
+      padding: 4px 0; padding-left: 18px;
+      position: relative; line-height: 1.45;
+    }
+    .pillar-card li::before {
+      content: '•'; color: var(--gold);
+      position: absolute; left: 0; font-weight: 700;
+    }
+
+    /* SECTORS */
+    .sectors-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 18px; margin-top: 48px;
+    }
+    .sector-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      transition: all 0.25s;
+    }
+    .sector-card:hover { border-color: var(--gold); }
+    .sector-card h4 {
+      color: var(--navy);
+      font-family: 'Playfair Display', serif;
+      font-weight: 500; font-size: 18px;
+      margin-bottom: 8px; line-height: 1.2;
+    }
+    .sector-card p { font-size: 13px; line-height: 1.5; color: var(--text-light); }
+
+    /* SCIENTIST PROFILE */
+    .scientist {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 48px;
+      align-items: start;
+      margin-top: 36px;
+    }
+    .scientist-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px;
+      border-top: 3px solid var(--gold);
+    }
+    .scientist-card .role {
+      font-size: 12px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold);
+      font-weight: 700; margin-bottom: 10px;
+    }
+    .scientist-card h3 {
+      color: var(--navy); margin-bottom: 6px;
+      font-size: 26px;
+    }
+    .scientist-card .title-line {
+      font-size: 14px; color: var(--text-mid);
+      margin-bottom: 18px; line-height: 1.45;
+    }
+    .scientist-card .meta {
+      border-top: 1px solid var(--border);
+      padding-top: 16px; margin-top: 16px;
+      font-size: 13px; color: var(--text-light); line-height: 1.6;
+    }
+    .scientist-card .meta strong { color: var(--navy-mid); }
+
+    .scientist-body h4 { font-family: 'Playfair Display', serif; font-weight: 500; color: var(--navy); margin-bottom: 10px; margin-top: 20px; font-size: 20px; }
+    .scientist-body h4:first-child { margin-top: 0; }
+    .scientist-body p { font-size: 15px; line-height: 1.6; margin-bottom: 12px; }
+    .scientist-body ul { list-style: none; padding: 0; margin: 8px 0 16px; }
+    .scientist-body li {
+      font-size: 14px; line-height: 1.5;
+      padding: 4px 0 4px 18px; color: var(--text-mid);
+      position: relative;
+    }
+    .scientist-body li::before {
+      content: '—'; color: var(--gold);
+      position: absolute; left: 0;
+    }
+
+    /* PRINCIPLES */
+    .principles-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 22px; margin-top: 40px;
+    }
+    .principle {
+      padding: 22px; background: var(--white);
+      border-radius: 8px; border-left: 3px solid var(--gold);
+    }
+    .principle h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500; font-size: 17px;
+      color: var(--navy); margin-bottom: 8px;
+    }
+    .principle p { font-size: 13px; line-height: 1.5; color: var(--text-light); margin: 0; }
+
+    /* CTA */
+    .cta {
+      background: var(--navy);
+      padding: 72px 0;
+      text-align: center;
+      color: var(--white);
+    }
+    .cta h2 { color: var(--white); margin-bottom: 16px; }
+    .cta h2 em { color: var(--gold); font-style: italic; }
+    .cta p {
+      color: rgba(255,255,255,0.7);
+      max-width: 620px; margin: 0 auto 32px;
+      font-size: 16px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #060f22;
+      color: #aab4c7;
+      padding: 36px 0 24px;
+      font-size: 13px;
+    }
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto; padding: 0 32px;
+      display: flex; justify-content: space-between;
+      align-items: flex-start; flex-wrap: wrap; gap: 24px;
+    }
+    .footer-inner a { color: var(--gold); text-decoration: none; }
+    .footer-inner div { line-height: 1.7; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none; position: absolute; top: 68px; left: 0; right: 0;
+        background: rgba(11,31,63,0.98);
+        flex-direction: column; padding: 16px 20px 20px; gap: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); list-style: none; }
+      .nav-links a { display: block; padding: 12px 0; }
+      .nav-cta { display: none; }
+    }
+    @media (max-width: 880px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+      .scientist { grid-template-columns: 1fr; gap: 28px; }
+      .principles-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .sectors-grid { grid-template-columns: 1fr; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .hero { padding: 100px 0 56px; min-height: auto; }
+      h1 { font-size: 30px; }
+      .section { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">HH Global <span>Holdings</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../company.html">Company</a></li>
+      <li><a href="../company.html#articles">Publications</a></li>
+      <li><a href="../labarchitect.html">LabArchitect™</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="section-tag">Scientific Practice</div>
+      <h1>Defensible Science.<br><em>Independent of Outcome.</em></h1>
+      <p>HH Global Holdings operates a scientific practice grounded in peer-reviewed research, ISO 17025-grade method design, and a discipline of intellectual independence. Our work supports investors, founders, regulated laboratories, and operators in sectors where the integrity of a scientific finding directly determines commercial or clinical outcome.</p>
+      <div class="hero-btns">
+        <a href="#pillars" class="btn btn-gold">Our Four Areas</a>
+        <a href="#scientist" class="btn btn-outline">Lead Scientific Adviser</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATOR STRIP -->
+<div class="differentiator-strip">
+  <p>Peer-Reviewed <span>·</span> Method-Validated <span>·</span> Independent <span>·</span> Audit-Ready</p>
+</div>
+
+<!-- APPROACH -->
+<section class="section">
+  <div class="container">
+    <div class="section-tag">How We Work</div>
+    <h2 class="section-heading">Science Built to <em>Survive Scrutiny.</em></h2>
+    <p class="section-lead">A diagnostic, a method, a study or a platform is only as valuable as the methodology behind it. Our practice is structured to deliver findings that are reproducible by an independent laboratory, defensible to a regulator, and intelligible to a non-specialist board or investment committee. Where claims are made, they are sourced. Where uncertainty exists, it is quantified, not hidden.</p>
+  </div>
+</section>
+
+<!-- FOUR PILLARS -->
+<section class="section-alt" id="pillars">
+  <div class="container">
+    <div class="section-tag">Four Areas of Practice</div>
+    <h2 class="section-heading">Where We Engage.</h2>
+    <p class="section-lead">Each area sits independently. Many engagements draw on two or three together, particularly where a new platform requires lab build, method validation, regulatory positioning, and an investor-grade scientific narrative in the same window.</p>
+
+    <div class="pillars-grid">
+
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <h3>Laboratory Architecture</h3>
+        <p>Design, equip, validate, and accredit regulated laboratories. ISO 17025 and ISO 15189 architecture built in from inception, not retrofitted. Delivered through our LabArchitect™ eight-module system.</p>
+        <ul>
+          <li>Greenfield laboratory deployments</li>
+          <li>Existing-lab accreditation programmes</li>
+          <li>LIMS architecture & data integrity</li>
+          <li>Quality manual & SOP libraries</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <h3>Diagnostic Sciences</h3>
+        <p>Molecular and genomic diagnostic development, panel design, and platform validation in non-clinical and clinical settings. Nanopore, qPCR, and targeted-sequencing workflows with documented limits of detection and orthogonal verification.</p>
+        <ul>
+          <li>Oncology & hereditary disease panels</li>
+          <li>Veterinary pathogen & genetics</li>
+          <li>Wound & women's health diagnostics</li>
+          <li>Food & water microbiology</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <h3>Regulatory & Method Science</h3>
+        <p>Method validation, GLP/GCP advisory, technical files, and regulator-facing documentation for sponsors, CROs, and platform companies. We translate scientific findings into the evidentiary form regulators and standards bodies require.</p>
+        <ul>
+          <li>Method validation (precision, accuracy, LoD, LoQ)</li>
+          <li>Standards alignment (ISO, MHRA, EMA, FDA)</li>
+          <li>Technical-file authoring & review</li>
+          <li>CRO partnership scientific oversight</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-num">04</div>
+        <h3>Scientific Leadership & Advisory</h3>
+        <p>Fractional Chief Scientific Officer engagements, scientific due diligence for VC and PE, IP strategy and freedom-to-operate review, and board-level scientific narrative for founders raising or scaling regulated platforms.</p>
+        <ul>
+          <li>Fractional CSO mandates</li>
+          <li>Scientific due diligence (buy- and sell-side)</li>
+          <li>IP architecture & FTO opinions</li>
+          <li>Investor-grade scientific narrative</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="section">
+  <div class="container">
+    <div class="section-tag">Sectors We Serve</div>
+    <h2 class="section-heading">Where Our Work Lands.</h2>
+    <p class="section-lead">Our practice is sector-independent in method, sector-specific in delivery. We engage where the integrity of a scientific finding directly determines a commercial, clinical, or regulatory outcome.</p>
+
+    <div class="sectors-grid">
+      <div class="sector-card">
+        <h4>Oncology & Molecular Pathology</h4>
+        <p>Panel design, assay validation, and lab-of-record architecture for oncology diagnostic platforms and biomarker programmes.</p>
+      </div>
+      <div class="sector-card">
+        <h4>Pharmaceutical & CRO</h4>
+        <p>Method validation, GLP advisory, technical-file authoring, and scientific oversight for sponsor–CRO partnerships in preclinical and translational research.</p>
+      </div>
+      <div class="sector-card">
+        <h4>Veterinary Diagnostics</h4>
+        <p>Companion animal molecular diagnostics, equine genetics, and livestock pathogen panel development to ISO 17025 standards.</p>
+      </div>
+      <div class="sector-card">
+        <h4>Food & Water Microbiology</h4>
+        <p>Sampling-to-result method development for food safety, beverage quality assurance, and water-quality microbiome characterisation.</p>
+      </div>
+      <div class="sector-card">
+        <h4>Wound & Women's Health</h4>
+        <p>Diagnostic development for wound healing, stoma management, and women's health applications where digital and molecular evidence converge.</p>
+      </div>
+      <div class="sector-card">
+        <h4>Environmental & Agri-Environmental</h4>
+        <p>Environmental DNA, soil microbiome, and agricultural pathogen monitoring programmes for landowners, growers, and environmental consultancies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCIENTIST PROFILE -->
+<section class="section-alt" id="scientist">
+  <div class="container">
+    <div class="section-tag">Lead Scientific Adviser</div>
+    <h2 class="section-heading">Dr Samuel White, <em>PhD.</em></h2>
+    <p class="section-lead">Our scientific practice is led by Dr Samuel White, whose published research, academic post, and platform-building experience anchor the methodological discipline behind every engagement.</p>
+
+    <div class="scientist">
+
+      <div class="scientist-card">
+        <div class="role">Scientific Lead</div>
+        <h3>Dr Samuel White</h3>
+        <p class="title-line">PhD · Senior Lecturer, York St John University · Peer-reviewed research author · Diagnostic-platform architect</p>
+        <div class="meta">
+          <strong>ORCID:</strong> Public research profile (link via Publications)<br>
+          <strong>The Conversation:</strong> Contributing author profile<br>
+          <strong>Field:</strong> Molecular microbiology, diagnostic method development, ISO 17025 laboratory architecture<br>
+          <strong>Engagement:</strong> Scientific Lead, HH Global Holdings
+        </div>
+      </div>
+
+      <div class="scientist-body">
+        <h4>Background</h4>
+        <p>Doctoral training in molecular microbiology with a research career spanning environmental microbiology, sequencing-based diagnostic development, and the translation of laboratory science into accredited, regulated, audit-ready operations. Currently holds a senior academic post at York St John University and contributes to the public scientific record through peer-reviewed journals and The Conversation.</p>
+
+        <h4>Practice Focus</h4>
+        <ul>
+          <li>Method design and validation for sequencing-based and qPCR diagnostic workflows</li>
+          <li>Laboratory architecture from greenfield to ISO 17025 accreditation</li>
+          <li>Scientific due diligence for diagnostic and life-science platforms</li>
+          <li>Fractional Chief Scientific Officer mandates with founders and investors</li>
+        </ul>
+
+        <h4>Publication Record</h4>
+        <p>Peer-reviewed publications across molecular microbiology and diagnostic method development. Full bibliography available via ORCID; selected articles featured on the HH Global Holdings Publications page.</p>
+
+        <h4>How To Engage</h4>
+        <p>Sam is engaged through HH Global Holdings on advisory, fractional, and project mandates within the four areas of practice above. Engagements are scoped, contracted, and delivered through HH Global Holdings as the single accountable party.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="section">
+  <div class="container">
+    <div class="section-tag">How We Hold The Line</div>
+    <h2 class="section-heading">Four Principles, <em>Non-Negotiable.</em></h2>
+    <p class="section-lead">These principles are how we keep the practice durable across regulatory regimes, sectors, and commercial pressures.</p>
+
+    <div class="principles-grid">
+      <div class="principle">
+        <h4>Independence</h4>
+        <p>Our scientific conclusions are independent of the commercial interest of any single counterparty. Where conflicts exist, they are declared.</p>
+      </div>
+      <div class="principle">
+        <h4>Defensibility</h4>
+        <p>Every finding is built on a method that is documented, traceable, and reproducible by an independent laboratory.</p>
+      </div>
+      <div class="principle">
+        <h4>Peer Review</h4>
+        <p>The science behind our practice is published in the peer-reviewed literature where the field permits, and externally reviewed where it does not.</p>
+      </div>
+      <div class="principle">
+        <h4>Regulator Alignment</h4>
+        <p>Methods, records, and reports are written in the form regulators and standards bodies expect, from inception, not retrofitted.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="container">
+    <h2>Discuss A <em>Scientific Engagement.</em></h2>
+    <p>Whether you are building a regulated laboratory, validating a diagnostic, raising on a science-led thesis, or scoping a CRO partnership, we are happy to take an exploratory call.</p>
+    <a href="mailto:info@hhglobalholdings.com" class="btn btn-gold">info@hhglobalholdings.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong style="color:var(--gold); font-family:'Playfair Display', serif; font-size:16px;">HH Global Holdings Ltd</strong><br>
+      73 Cornhill, London, EC3V 3QQ<br>
+      Company No. 16865238
+    </div>
+    <div>
+      <a href="../index.html">Home</a> &middot;
+      <a href="../company.html">Company</a> &middot;
+      <a href="../labarchitect.html">LabArchitect™</a> &middot;
+      <a href="../company.html#articles">Publications</a>
+    </div>
+    <div>© 2026 HH Global Holdings Ltd. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const t = document.getElementById('navToggle');
+  const l = document.getElementById('navLinks');
+  if (t && l) t.addEventListener('click', () => l.classList.toggle('open'));
+</script>
+</body>
+</html>
