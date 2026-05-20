@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scientific Advisory & Diagnostic Sciences | HH Global Holdings</title>
-  <meta name="description" content="HH Global Holdings' scientific practice: laboratory architecture, diagnostic sciences, regulatory and method science, and scientific leadership for investors and founders.">
+  <meta name="description" content="HH Global Holdings' scientific practice: laboratory architecture, diagnostic & evidence sciences, regulatory and method science to ISO 17025, 15189, 9001 and 13485, and scientific leadership for investors and founders.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
@@ -110,7 +110,7 @@
 
     /* HERO */
     .hero {
-      min-height: 78vh;
+      min-height: 76vh;
       background: var(--navy);
       display: grid; align-content: center;
       position: relative; overflow: visible;
@@ -145,6 +145,37 @@
     .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
     .btn-outline { border: 1px solid rgba(255,255,255,0.25); color: var(--white); }
     .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* CRED BAR */
+    .cred-bar {
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .cred-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+    }
+    .cred-item {
+      text-align: center;
+      padding: 22px 10px;
+      border-right: 1px solid var(--border);
+    }
+    .cred-item:last-child { border-right: none; }
+    .cred-label {
+      font-size: 11px; font-weight: 700;
+      color: var(--navy-mid);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .cred-label::before {
+      content: '★';
+      color: var(--gold);
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
 
     /* DIFFERENTIATOR STRIP */
     .differentiator-strip { background: var(--gold); padding: 18px 0; text-align: center; }
@@ -192,6 +223,30 @@
       content: '•'; color: var(--gold);
       position: absolute; left: 0; font-weight: 700;
     }
+
+    /* PUBLICATION CALLOUT */
+    .pub-callout {
+      background: var(--white);
+      border-left: 4px solid var(--gold);
+      padding: 28px 32px;
+      margin-top: 40px;
+      border-radius: 0 6px 6px 0;
+      box-shadow: 0 4px 18px rgba(11,31,63,0.05);
+    }
+    .pub-tag {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .pub-callout p.cite {
+      font-size: 15px; line-height: 1.55;
+      color: var(--text); margin-bottom: 6px;
+    }
+    .pub-callout p.cite em { color: var(--navy-mid); }
+    .pub-callout p.doi {
+      font-size: 13px; color: var(--text-light); margin: 6px 0 0;
+    }
+    .pub-callout p.doi a { color: var(--navy-mid); text-decoration: none; border-bottom: 1px solid var(--gold); }
 
     /* SECTORS */
     .sectors-grid {
@@ -323,6 +378,11 @@
       .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.06); list-style: none; }
       .nav-links a { display: block; padding: 12px 0; }
       .nav-cta { display: none; }
+      .cred-inner { grid-template-columns: repeat(3, 1fr); }
+      .cred-item:nth-child(3) { border-right: none; }
+      .cred-item:nth-child(4), .cred-item:nth-child(5), .cred-item:nth-child(6) {
+        border-top: 1px solid var(--border);
+      }
     }
     @media (max-width: 880px) {
       .pillars-grid { grid-template-columns: 1fr; }
@@ -330,12 +390,19 @@
       .scientist { grid-template-columns: 1fr; gap: 28px; }
       .principles-grid { grid-template-columns: repeat(2, 1fr); }
     }
+    @media (max-width: 640px) {
+      .cred-inner { grid-template-columns: repeat(2, 1fr); }
+      .cred-item { border-right: 1px solid var(--border); }
+      .cred-item:nth-child(2n) { border-right: none; }
+      .cred-item:nth-child(n+3) { border-top: 1px solid var(--border); }
+    }
     @media (max-width: 520px) {
       .sectors-grid { grid-template-columns: 1fr; }
       .principles-grid { grid-template-columns: 1fr; }
       .hero { padding: 100px 0 56px; min-height: auto; }
       h1 { font-size: 30px; }
       .section { padding: 56px 0; }
+      .pub-callout { padding: 22px; }
     }
   </style>
 </head>
@@ -350,12 +417,13 @@
     </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="../index.html">Home</a></li>
-      <li><a href="../company.html">Company</a></li>
-      <li><a href="../company.html#articles">Publications</a></li>
       <li><a href="../labarchitect.html">LabArchitect™</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="../innovation-ip.html">Innovation &amp; IP</a></li>
+      <li><a href="scientific-advisory.html">Science</a></li>
+      <li><a href="../company.html">Company Profile</a></li>
+      <li><a href="../company.html#articles">Publications</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Get in Touch</a>
+    <a href="../company.html#contact" class="nav-cta">Get in Touch</a>
   </div>
 </nav>
 
@@ -365,18 +433,30 @@
     <div class="hero-content">
       <div class="section-tag">Scientific Practice</div>
       <h1>Defensible Science.<br><em>Independent of Outcome.</em></h1>
-      <p>HH Global Holdings operates a scientific practice grounded in peer-reviewed research, ISO 17025-grade method design, and a discipline of intellectual independence. Our work supports investors, founders, regulated laboratories, and operators in sectors where the integrity of a scientific finding directly determines commercial or clinical outcome.</p>
+      <p>HH Global Holdings operates a scientific practice grounded in peer-reviewed research, accredited laboratory architecture, and a discipline of intellectual independence. Our work supports investors, founders, regulated laboratories, and operators in sectors where the integrity of a scientific finding directly determines commercial, clinical, or regulatory outcome.</p>
       <div class="hero-btns">
-        <a href="#pillars" class="btn btn-gold">Our Four Areas</a>
+        <a href="#pillars" class="btn btn-gold">Our Five Areas</a>
         <a href="#scientist" class="btn btn-outline">Lead Scientific Adviser</a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CRED BAR -->
+<div class="cred-bar">
+  <div class="cred-inner">
+    <div class="cred-item"><div class="cred-label">ISO 17025</div></div>
+    <div class="cred-item"><div class="cred-label">ISO 15189</div></div>
+    <div class="cred-item"><div class="cred-label">ISO 9001</div></div>
+    <div class="cred-item"><div class="cred-label">ISO 13485</div></div>
+    <div class="cred-item"><div class="cred-label">UKAS Pathway</div></div>
+    <div class="cred-item"><div class="cred-label">Peer-Reviewed</div></div>
+  </div>
+</div>
+
 <!-- DIFFERENTIATOR STRIP -->
 <div class="differentiator-strip">
-  <p>Peer-Reviewed <span>·</span> Method-Validated <span>·</span> Independent <span>·</span> Audit-Ready</p>
+  <p>Compliance by Design <span>·</span> Method-Validated <span>·</span> Independent <span>·</span> Audit-Ready</p>
 </div>
 
 <!-- APPROACH -->
@@ -384,67 +464,90 @@
   <div class="container">
     <div class="section-tag">How We Work</div>
     <h2 class="section-heading">Science Built to <em>Survive Scrutiny.</em></h2>
-    <p class="section-lead">A diagnostic, a method, a study or a platform is only as valuable as the methodology behind it. Our practice is structured to deliver findings that are reproducible by an independent laboratory, defensible to a regulator, and intelligible to a non-specialist board or investment committee. Where claims are made, they are sourced. Where uncertainty exists, it is quantified, not hidden.</p>
+    <p class="section-lead">A diagnostic, a method, a study, or a platform is only as valuable as the methodology behind it. Our practice is structured to deliver findings that are reproducible by an independent laboratory, defensible to a regulator, and intelligible to a non-specialist board or investment committee. Where claims are made, they are sourced. Where uncertainty exists, it is quantified, not hidden.</p>
   </div>
 </section>
 
-<!-- FOUR PILLARS -->
+<!-- FIVE PILLARS -->
 <section class="section-alt" id="pillars">
   <div class="container">
-    <div class="section-tag">Four Areas of Practice</div>
+    <div class="section-tag">Five Areas of Practice</div>
     <h2 class="section-heading">Where We Engage.</h2>
-    <p class="section-lead">Each area sits independently. Many engagements draw on two or three together, particularly where a new platform requires lab build, method validation, regulatory positioning, and an investor-grade scientific narrative in the same window.</p>
+    <p class="section-lead">Each area sits independently. Many engagements draw on two or three together, particularly where a new platform requires lab build, method validation, regulatory positioning, and an investor-grade scientific narrative in the same window. Regulatory and ISO delivery is executed through our subsidiary <a href="../company.html#subsidiaries" style="color:var(--navy-mid); border-bottom:1px solid var(--gold); text-decoration:none;">HH Insight Ltd</a>.</p>
 
     <div class="pillars-grid">
 
       <div class="pillar-card">
         <div class="pillar-num">01</div>
         <h3>Laboratory Architecture</h3>
-        <p>Design, equip, validate, and accredit regulated laboratories. ISO 17025 and ISO 15189 architecture built in from inception, not retrofitted. Delivered through our LabArchitect™ eight-module system.</p>
+        <p>Design, equip, validate, and accredit regulated laboratories. ISO 17025, ISO 15189, ISO 9001, and ISO 13485 architecture built in from inception, not retrofitted. Delivered through our LabArchitect™ eight-module system.</p>
         <ul>
           <li>Greenfield laboratory deployments</li>
           <li>Existing-lab accreditation programmes</li>
-          <li>LIMS architecture & data integrity</li>
-          <li>Quality manual & SOP libraries</li>
+          <li>LIMS architecture &amp; 21 CFR Part 11-aligned data integrity</li>
+          <li>Quality manual &amp; SOP libraries</li>
+          <li>UKAS submission packs &amp; mock audits</li>
         </ul>
       </div>
 
       <div class="pillar-card">
         <div class="pillar-num">02</div>
-        <h3>Diagnostic Sciences</h3>
-        <p>Molecular and genomic diagnostic development, panel design, and platform validation in non-clinical and clinical settings. Nanopore, qPCR, and targeted-sequencing workflows with documented limits of detection and orthogonal verification.</p>
+        <h3>Diagnostic &amp; Evidence Sciences</h3>
+        <p>Molecular and genomic diagnostic development, panel design, and platform validation in non-clinical and clinical settings. Long-read Nanopore, qPCR, and targeted-sequencing workflows complemented by systematic review and meta-analysis at the top of the evidence pyramid.</p>
         <ul>
-          <li>Oncology & hereditary disease panels</li>
-          <li>Veterinary pathogen & genetics</li>
-          <li>Wound & women's health diagnostics</li>
-          <li>Food & water microbiology</li>
+          <li>Genomics, proteomics, metabolomics, immunology &amp; analytical testing</li>
+          <li>Oncology, hereditary disease &amp; infectious disease panels</li>
+          <li>Veterinary pathogen &amp; livestock genetics</li>
+          <li>Wound, women's health &amp; food/water microbiology</li>
+          <li>Systematic reviews, meta-analyses &amp; evidence synthesis</li>
         </ul>
       </div>
 
       <div class="pillar-card">
         <div class="pillar-num">03</div>
-        <h3>Regulatory & Method Science</h3>
-        <p>Method validation, GLP/GCP advisory, technical files, and regulator-facing documentation for sponsors, CROs, and platform companies. We translate scientific findings into the evidentiary form regulators and standards bodies require.</p>
+        <h3>Regulatory &amp; Method Science</h3>
+        <p>Method validation, ISO framework implementation, technical files, and regulator-facing documentation for sponsors, CROs, and platform companies. We translate scientific findings into the evidentiary form regulators and standards bodies require.</p>
         <ul>
-          <li>Method validation (precision, accuracy, LoD, LoQ)</li>
-          <li>Standards alignment (ISO, MHRA, EMA, FDA)</li>
-          <li>Technical-file authoring & review</li>
-          <li>CRO partnership scientific oversight</li>
+          <li>ISO 17025, 15189, 9001, 13485 implementation &amp; QMS</li>
+          <li>UKAS readiness assessments &amp; mock audits</li>
+          <li>CE / UKCA marking &amp; technical-file authoring</li>
+          <li>MHRA, EMA &amp; FDA regulatory submissions</li>
+          <li>21 CFR Part 11 data-integrity controls</li>
+          <li>CQC-ready documentation for hospital diagnostic labs</li>
         </ul>
       </div>
 
       <div class="pillar-card">
         <div class="pillar-num">04</div>
-        <h3>Scientific Leadership & Advisory</h3>
+        <h3>Scientific Leadership &amp; Advisory</h3>
         <p>Fractional Chief Scientific Officer engagements, scientific due diligence for VC and PE, IP strategy and freedom-to-operate review, and board-level scientific narrative for founders raising or scaling regulated platforms.</p>
         <ul>
           <li>Fractional CSO mandates</li>
           <li>Scientific due diligence (buy- and sell-side)</li>
-          <li>IP architecture & FTO opinions</li>
-          <li>Investor-grade scientific narrative</li>
+          <li>IP architecture &amp; FTO opinions</li>
+          <li>Investor-grade scientific narrative &amp; board reporting</li>
         </ul>
       </div>
 
+      <div class="pillar-card" style="grid-column: 1 / -1;">
+        <div class="pillar-num">05</div>
+        <h3>Evidence Services for Government &amp; Public Bodies</h3>
+        <p>Systematic reviews, rapid evidence assessments, and methodological appraisal commissioned by government departments, advisory committees, and public-sector procurement teams who require a defensible, peer-reviewable evidence base behind a policy or commissioning decision.</p>
+        <ul>
+          <li>Systematic reviews &amp; meta-analyses to PRISMA standard</li>
+          <li>Rapid evidence assessments for advisory committees</li>
+          <li>Methodological critique &amp; sensitivity analysis</li>
+          <li>Public health policy evidence synthesis</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- PUBLICATION CALLOUT -->
+    <div class="pub-callout">
+      <div class="pub-tag">Selected Peer-Reviewed Publication</div>
+      <p class="cite"><strong>Wilson PB, White SJ et al.</strong> "Genomic characterisation of bioaerosols within livestock facilities." <em>Science of The Total Environment</em>, Vol. 918, March 2024.</p>
+      <p class="doi">DOI: <a href="https://doi.org/10.1016/j.scitotenv.2024.170722" target="_blank" rel="noopener">10.1016/j.scitotenv.2024.170722</a> &nbsp;·&nbsp; FEI-funded study &nbsp;·&nbsp; Long-read Nanopore sequencing identified as the unmet methodological standard across 29 eligible studies for bioaerosol characterisation.</p>
     </div>
   </div>
 </section>
@@ -458,28 +561,28 @@
 
     <div class="sectors-grid">
       <div class="sector-card">
-        <h4>Oncology & Molecular Pathology</h4>
+        <h4>Oncology &amp; Molecular Pathology</h4>
         <p>Panel design, assay validation, and lab-of-record architecture for oncology diagnostic platforms and biomarker programmes.</p>
       </div>
       <div class="sector-card">
-        <h4>Pharmaceutical & CRO</h4>
+        <h4>Pharmaceutical &amp; CRO</h4>
         <p>Method validation, GLP advisory, technical-file authoring, and scientific oversight for sponsor–CRO partnerships in preclinical and translational research.</p>
       </div>
       <div class="sector-card">
-        <h4>Veterinary Diagnostics</h4>
-        <p>Companion animal molecular diagnostics, equine genetics, and livestock pathogen panel development to ISO 17025 standards.</p>
+        <h4>Veterinary &amp; Livestock</h4>
+        <p>Companion animal molecular diagnostics, equine genetics, livestock pathogen panels, and bioaerosol characterisation programmes to ISO 17025 standards.</p>
       </div>
       <div class="sector-card">
-        <h4>Food & Water Microbiology</h4>
+        <h4>Food &amp; Water Microbiology</h4>
         <p>Sampling-to-result method development for food safety, beverage quality assurance, and water-quality microbiome characterisation.</p>
       </div>
       <div class="sector-card">
-        <h4>Wound & Women's Health</h4>
+        <h4>Wound &amp; Women's Health</h4>
         <p>Diagnostic development for wound healing, stoma management, and women's health applications where digital and molecular evidence converge.</p>
       </div>
       <div class="sector-card">
-        <h4>Environmental & Agri-Environmental</h4>
-        <p>Environmental DNA, soil microbiome, and agricultural pathogen monitoring programmes for landowners, growers, and environmental consultancies.</p>
+        <h4>Government &amp; Public Bodies</h4>
+        <p>Evidence synthesis, systematic review, and methodological appraisal supporting policy, procurement, and advisory-committee decisions.</p>
       </div>
     </div>
   </div>
@@ -501,7 +604,7 @@
         <div class="meta">
           <strong>ORCID:</strong> Public research profile (link via Publications)<br>
           <strong>The Conversation:</strong> Contributing author profile<br>
-          <strong>Field:</strong> Molecular microbiology, diagnostic method development, ISO 17025 laboratory architecture<br>
+          <strong>Field:</strong> Molecular microbiology, diagnostic method development, ISO 17025 / 15189 laboratory architecture<br>
           <strong>Engagement:</strong> Scientific Lead, HH Global Holdings
         </div>
       </div>
@@ -512,17 +615,18 @@
 
         <h4>Practice Focus</h4>
         <ul>
-          <li>Method design and validation for sequencing-based and qPCR diagnostic workflows</li>
-          <li>Laboratory architecture from greenfield to ISO 17025 accreditation</li>
+          <li>Method design and validation for sequencing-based, qPCR, and analytical workflows</li>
+          <li>Laboratory architecture from greenfield to ISO 17025 / 15189 / 9001 / 13485 accreditation</li>
+          <li>Evidence synthesis, systematic review, and methodological appraisal</li>
           <li>Scientific due diligence for diagnostic and life-science platforms</li>
           <li>Fractional Chief Scientific Officer mandates with founders and investors</li>
         </ul>
 
         <h4>Publication Record</h4>
-        <p>Peer-reviewed publications across molecular microbiology and diagnostic method development. Full bibliography available via ORCID; selected articles featured on the HH Global Holdings Publications page.</p>
+        <p>Peer-reviewed publications across molecular microbiology, diagnostic method development, and bioaerosol genomics, including the FEI-funded <em>Science of The Total Environment</em> paper cited above. Full bibliography available via ORCID; selected articles featured on the HH Global Holdings Publications page.</p>
 
         <h4>How To Engage</h4>
-        <p>Sam is engaged through HH Global Holdings on advisory, fractional, and project mandates within the four areas of practice above. Engagements are scoped, contracted, and delivered through HH Global Holdings as the single accountable party.</p>
+        <p>Sam is engaged through HH Global Holdings on advisory, fractional, and project mandates within the five areas of practice above. Engagements are scoped, contracted, and delivered through HH Global Holdings as the single accountable party.</p>
       </div>
 
     </div>
@@ -551,7 +655,7 @@
       </div>
       <div class="principle">
         <h4>Regulator Alignment</h4>
-        <p>Methods, records, and reports are written in the form regulators and standards bodies expect, from inception, not retrofitted.</p>
+        <p>Methods, records, and reports are written in the form UKAS, MHRA, EMA, FDA and standards bodies expect, from inception, not retrofitted.</p>
       </div>
     </div>
   </div>
@@ -561,8 +665,8 @@
 <section class="cta" id="contact">
   <div class="container">
     <h2>Discuss A <em>Scientific Engagement.</em></h2>
-    <p>Whether you are building a regulated laboratory, validating a diagnostic, raising on a science-led thesis, or scoping a CRO partnership, we are happy to take an exploratory call.</p>
-    <a href="mailto:info@hhglobalholdings.com" class="btn btn-gold">info@hhglobalholdings.com</a>
+    <p>Whether you are building a regulated laboratory, validating a diagnostic, raising on a science-led thesis, commissioning an evidence review, or scoping a CRO partnership, we are happy to take an exploratory call.</p>
+    <a href="../company.html#contact" class="btn btn-gold">Open the Contact Form</a>
   </div>
 </section>
 
@@ -578,6 +682,7 @@
       <a href="../index.html">Home</a> &middot;
       <a href="../company.html">Company</a> &middot;
       <a href="../labarchitect.html">LabArchitect™</a> &middot;
+      <a href="../innovation-ip.html">Innovation &amp; IP</a> &middot;
       <a href="../company.html#articles">Publications</a>
     </div>
     <div>© 2026 HH Global Holdings Ltd. All rights reserved.</div>
