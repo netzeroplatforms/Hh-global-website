@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>HH Global · Phase 1 Prospecting Campaign · 90 Days</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; }
+
+:root {
+  --navy: #0B1F3F;
+  --navy-2: #152D55;
+  --gold: #C5A25B;
+  --gold-soft: rgba(197,162,91,0.12);
+  --paper: #FFFFFF;
+  --cream: #FAF8F5;
+  --rule: #E2DDD5;
+  --ink: #1A1A2E;
+  --ink-2: #374151;
+  --ink-muted: #6B7280;
+  --green: #2F7D4F;
+  --green-bg: #EEF5EF;
+  --amber: #C9842F;
+  --amber-bg: #FBF1E6;
+  --blue: #1565C0;
+  --blue-bg: #E3F2FD;
+  --red: #B23A3A;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 1040px;
+  margin: 2rem auto;
+  background: var(--paper);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+}
+
+.header {
+  background: var(--navy);
+  padding: 3rem 3rem 2.4rem;
+  position: relative;
+  overflow: hidden;
+}
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 280px;
+  height: 280px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  opacity: 0.15;
+}
+.header-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 0.9rem;
+}
+.header h1 em { font-style: italic; color: var(--gold); }
+.header-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.72);
+  max-width: 70ch;
+  line-height: 1.65;
+}
+
+.meta-bar {
+  background: var(--navy-2);
+  padding: 0.9rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 11px;
+  color: rgba(255,255,255,0.85);
+}
+.meta-bar strong {
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-size: 10px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.content { padding: 2.4rem 3rem 1rem; }
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 2.4rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 50px;
+  height: 2px;
+  background: var(--gold);
+}
+h2 .section-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+h3 { font-size: 1.05rem; font-weight: 600; color: var(--navy); margin: 1.4rem 0 0.6rem; }
+h4 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin: 1rem 0 0.4rem; }
+
+p { margin-bottom: 0.9rem; }
+ul, ol { margin: 0.6rem 0 1rem 1.3rem; }
+li { margin-bottom: 0.4rem; }
+
+.lede {
+  font-size: 15px;
+  color: var(--ink);
+  border-left: 3px solid var(--gold);
+  padding: 0.2rem 0 0.2rem 1.2rem;
+  margin: 1rem 0 1.5rem;
+  font-style: italic;
+}
+
+/* KPI */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin: 1.2rem 0 1.5rem;
+}
+.kpi {
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--gold);
+  padding: 1rem 1.1rem;
+  border-radius: 4px;
+}
+.kpi-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 0.4rem;
+}
+.kpi-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.kpi-foot {
+  font-size: 11px;
+  color: var(--ink-muted);
+  margin-top: 0.2rem;
+}
+
+/* Tier headers */
+.tier-h {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.4rem;
+  margin: 2.2rem 0 1rem;
+  border-radius: 4px;
+}
+.tier-h.t1 { background: var(--green-bg); border-left: 5px solid var(--green); }
+.tier-h.t2 { background: var(--amber-bg); border-left: 5px solid var(--amber); }
+.tier-h.t3 { background: var(--blue-bg); border-left: 5px solid var(--blue); }
+.tier-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.t1 .tier-label { color: var(--green); }
+.t2 .tier-label { color: var(--amber); }
+.t3 .tier-label { color: var(--blue); }
+.tier-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.t1 .tier-tag { background: var(--green); }
+.t2 .tier-tag { background: var(--amber); }
+.t3 .tier-tag { background: var(--blue); }
+.tier-desc { font-size: 13px; color: var(--ink-2); }
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.8rem 0 1.4rem;
+  font-size: 12.5px;
+}
+th, td {
+  text-align: left;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+th {
+  background: var(--navy);
+  color: #fff;
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+tbody tr:hover { background: var(--gold-soft); }
+
+/* Channel cards */
+.ch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0 1.5rem;
+}
+.ch {
+  background: #fff;
+  border: 1px solid var(--rule);
+  padding: 1.2rem 1.4rem;
+  border-radius: 4px;
+}
+.ch-h {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.ch-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+.ch-t {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.ch dl { margin-top: 0.6rem; }
+.ch dt {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.2rem;
+}
+.ch dd {
+  font-size: 13px;
+  color: var(--ink-2);
+  margin: 0 0 0.6rem 0;
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.tag-gold { background: var(--gold); color: var(--navy); }
+.tag-green { background: var(--green); color: #fff; }
+.tag-amber { background: var(--amber); color: #fff; }
+.tag-blue { background: var(--blue); color: #fff; }
+.tag-muted { background: var(--rule); color: var(--ink-2); }
+
+/* Template blocks */
+.template {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--gold);
+  border-radius: 4px;
+  margin: 0.9rem 0 1.4rem;
+  page-break-inside: avoid;
+}
+.template-head {
+  background: var(--cream);
+  padding: 0.7rem 1.1rem;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.template-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.5px;
+}
+.template-meta {
+  font-size: 10px;
+  color: var(--ink-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.template-body {
+  padding: 1.1rem 1.3rem;
+  font-family: 'JetBrains Mono', 'Inter', monospace;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--ink);
+  white-space: pre-wrap;
+}
+.template-foot {
+  background: var(--gold-soft);
+  padding: 0.6rem 1.1rem;
+  border-top: 1px solid var(--rule);
+  font-size: 11px;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+/* Calendar */
+.cal-week {
+  background: #fff;
+  border: 1px solid var(--rule);
+  padding: 1rem 1.2rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+}
+.cal-week-h {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin-bottom: 0.4rem;
+  border-bottom: 1px dashed var(--rule);
+  padding-bottom: 0.4rem;
+}
+.cal-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+.cal-theme {
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 13px;
+}
+.cal-week ul { margin: 0.3rem 0 0 1.1rem; font-size: 12.5px; }
+.cal-week li { margin-bottom: 0.25rem; }
+
+/* Phase block */
+.phase {
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--gold);
+  padding: 1.2rem 1.4rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+.phase-h {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+/* Recommendation */
+.recommendation {
+  background: var(--navy);
+  color: #fff;
+  padding: 2rem 2.4rem 2.2rem;
+  margin: 2.4rem -3rem 0;
+  position: relative;
+}
+.recommendation::before {
+  content: "DAY 1 — TOMORROW (20 MAY 2026)";
+  position: absolute;
+  top: -10px;
+  left: 3rem;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  padding: 4px 14px;
+}
+.recommendation h2 {
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  margin-top: 0.5rem;
+}
+.recommendation h2::before { background: var(--gold); }
+.recommendation p { color: rgba(255,255,255,0.85); }
+.recommendation strong { color: #fff; }
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+.action-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 1rem 1.1rem;
+  border-radius: 4px;
+}
+.action-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+.action-text {
+  margin-top: 0.4rem;
+  font-size: 13px;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.5;
+}
+
+.footer {
+  background: var(--cream);
+  padding: 1.5rem 3rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-brand { font-family: 'Playfair Display', serif; color: var(--navy); font-size: 1rem; font-weight: 600; }
+.footer-brand em { font-style: italic; color: var(--gold); }
+.footer-meta { font-size: 11px; color: var(--ink-muted); }
+
+@media (max-width: 820px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .ch-grid { grid-template-columns: 1fr; }
+  .action-grid { grid-template-columns: 1fr; }
+  .content, .header, .meta-bar, .footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .recommendation { margin-left: -1.5rem; margin-right: -1.5rem; padding: 1.5rem; }
+  .header h1 { font-size: 1.7rem; }
+}
+
+@media print {
+  body { background: #fff; }
+  .page { box-shadow: none; margin: 0; max-width: 100%; }
+  .template, .ch, .cal-week, .phase, .recommendation { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="header">
+    <span class="header-tag">HH Global · Phase 1 GTM · 90-Day Sprint</span>
+    <h1>Phase 1 <em>Prospecting Campaign</em></h1>
+    <p class="header-sub">
+      The first 90 days of structured outbound. Three target tiers, four channels, twelve content pillars, and an entire copy bank ready to execute. Goal: 30 qualified meetings · 12 written proposals · 4 first-revenue closes by end of Q1.
+    </p>
+  </div>
+
+  <div class="meta-bar">
+    <div><strong>Phase</strong>1 of 3 · 90 Days</div>
+    <div><strong>Start</strong>20 May 2026</div>
+    <div><strong>End</strong>18 August 2026</div>
+    <div><strong>Owner</strong>Mark Evans-Smith</div>
+    <div><strong>Co-lead</strong>Sam White (founder voice)</div>
+    <div><strong>Version</strong>v1.1 · 19 May 2026</div>
+  </div>
+
+  <div class="content">
+
+    <p class="lede">A sales engine is just three things in motion: a target list of named buyers, a content engine that warms them, and a contact cadence that converts. Phase 1 builds all three — inside the contractual envelope set by Business Plan v1.2 §10.</p>
+
+    <div class="phase" style="border-top-color: var(--red); background: #FBEAEA;">
+      <div class="phase-h" style="color: var(--red);">v1.1 update · operating constraints (BP v1.2 §10)</div>
+      <ul style="margin:0.4rem 0 0.2rem 1.2rem;font-size:13px;line-height:1.55;">
+        <li>Andrew Roddam call (12 May 2026) — focus, sequence, repeat. Multiplex IP is cleanest pathway; CRO sub-niche needs whiteboard time; Awaab's Law is run-rate <em>subject to consent</em>.</li>
+        <li><b>Awaab's-Law / mould-ID outbound is HELD</b> until either (a) cl. 6.1(b) written consent from Fungid, or (b) post 27 May 2026 plus cl. 6.2 customer-exclusion management. Schedule 1 reading confirms expert-witness work is <em>inside</em> the Business of the Client, not adjacent to it.</li>
+        <li>Clean-room rules (BP §10.6) apply to all content and outreach: no naming of Fungid / Genetix / Praxis or specific cases; independent provenance for every methodology claim.</li>
+        <li>cl. 3.1(j) pre-litigation diary: every Awaab's-Law / mould-ID opportunity Sam becomes aware of during the engagement must be offered to Fungid first and the offer logged.</li>
+        <li>Conflicts log mandatory pre-DM, pre-email, pre-meeting — checked against Fungid / Praxis / Genetix client lists and the "became aware of" universe of cl. 6.2.</li>
+      </ul>
+    </div>
+
+    <!-- 1. CAMPAIGN GOAL -->
+    <h2><span class="section-num">Section 01</span>Campaign Objective &amp; KPIs</h2>
+
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-label">Prospects in list</div><div class="kpi-value">120</div><div class="kpi-foot">40 / tier × 3 tiers</div></div>
+      <div class="kpi"><div class="kpi-label">Qualified meetings</div><div class="kpi-value">30</div><div class="kpi-foot">25% touch → meeting</div></div>
+      <div class="kpi"><div class="kpi-label">Proposals issued</div><div class="kpi-value">12</div><div class="kpi-foot">40% meeting → proposal</div></div>
+      <div class="kpi"><div class="kpi-label">Phase 1 closes</div><div class="kpi-value">4</div><div class="kpi-foot">33% proposal → close</div></div>
+    </div>
+
+    <h3>Funnel logic</h3>
+    <table>
+      <thead><tr><th>Stage</th><th>Volume</th><th>Channel</th><th>Conversion</th></tr></thead>
+      <tbody>
+        <tr><td>Targeted prospects</td><td>120 named buyers</td><td>LinkedIn warm-up + email</td><td>—</td></tr>
+        <tr><td>1st-touch sent</td><td>120</td><td>Mix per tier</td><td>—</td></tr>
+        <tr><td>Replies / engagement</td><td>~48 (40%)</td><td>LinkedIn DM + email reply</td><td>40%</td></tr>
+        <tr><td>Discovery calls</td><td>30</td><td>15-min Zoom</td><td>25% of total list</td></tr>
+        <tr><td>Scoped proposals</td><td>12</td><td>HH SoW</td><td>40% of calls</td></tr>
+        <tr><td><strong>Phase 1 closes</strong></td><td><strong>4</strong></td><td>—</td><td><strong>33% of proposals</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Revenue target by close mix</h3>
+    <ul>
+      <li><strong>2× Expert Witness frameworks</strong> @ £5K/mo retainer + case backlog = <strong>£10K MRR + £40K case work</strong></li>
+      <li><strong>1× R&amp;D retainer or lab partner</strong> (Hysteron-like) @ £15K/mo = <strong>£15K MRR</strong></li>
+      <li><strong>1× LabArchitect™ deployment</strong> @ £100–150K project = <strong>£125K project</strong></li>
+      <li><strong>Phase 1 revenue secured: ~£175K + £25K MRR run-rate added</strong></li>
+    </ul>
+
+    <!-- 2. TARGET TIERS -->
+    <h2><span class="section-num">Section 02</span>Target Tiers · 120 Named Buyers</h2>
+
+    <p>Three concentric circles. Tier 1 = fastest path to revenue, warmest signal. Tier 2 = strategic value, longer cycle. Tier 3 = ecosystem build, brand &amp; optionality.</p>
+
+    <!-- TIER 1 -->
+    <div class="tier-h t1">
+      <div class="tier-label">Tier 1</div>
+      <span class="tier-tag">Speed-to-Revenue</span>
+      <div class="tier-desc">Diagnostic partner reactivations · warm R&amp;D inbound. <strong>Awaab's Law segments moved to consent-gated sub-tier below.</strong> Now 25 prospects · 10 meetings · 4 proposals · 1–2 closes target.</div>
+    </div>
+
+    <table>
+      <thead><tr><th>Segment</th><th>Named targets / source</th><th>Owner</th><th>Hook</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Criminal defence &amp; family law firms</strong><br><span class="tag tag-gold">Legal Futures audience</span></td>
+          <td>Legal Futures attendee list (78% LinkedIn uplift signal) · top 20 firms 20+ fee-earners in Manchester, Birmingham, London</td>
+          <td>Sam (warmth) + Mark</td>
+          <td>Forensic drug testing expert witness · per-instruction model</td>
+        </tr>
+        <tr>
+          <td><strong>Diagnostic partner reactivation</strong><br><span class="tag tag-muted">ALS demoted</span></td>
+          <td>Invitek Diagnostics (Berlin) · Tim Lumb (new role TBC). <em>ALS Portugal (Dr Hosway) demoted pending conflicts-log check vs. Fungid / Praxis / Genetix client universe.</em></td>
+          <td>Sam direct</td>
+          <td>Re-open £300K+ multiplex track · ISO 17025/15189 capability gap fill</td>
+        </tr>
+        <tr>
+          <td><strong>Hysteron expansion</strong></td>
+          <td>Verity Fotheringham — already in discovery</td>
+          <td>Sam direct</td>
+          <td>Pilot — insulin/HOMA-IR expansion panel</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- TIER 1c · CONSENT-GATED -->
+    <div class="tier-h" style="background:#FBEAEA;border-left:5px solid var(--red);">
+      <div class="tier-label" style="color:var(--red);">Tier 1c</div>
+      <span class="tier-tag" style="background:var(--red);">Consent-gated</span>
+      <div class="tier-desc"><strong>HELD</strong> pending cl. 6.1(b) written consent from Fungid <em>or</em> post 27 May 2026 + cl. 6.2 customer-exclusion management. Build the list, hold the outreach. Re-promotes into Tier 1 the day consent lands.</div>
+    </div>
+
+    <table>
+      <thead><tr><th>Segment</th><th>Named targets / source</th><th>Owner</th><th>Hook (when unlocked)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Housing-disrepair solicitors</strong><br><span class="tag" style="background:var(--red);color:#fff;">Gated · cl. 6.1(b)</span></td>
+          <td>Antony Hodari Solicitors · Stephensons · JMW · SLS Solicitors · Glaisyers · Express Solicitors · top 20 Legal 500 housing firms. <em>Build target list now; do not contact until consent received or post 27 May 2026 with cl. 6.2 exclusion list in hand.</em></td>
+          <td>Mark + HM3 referral</td>
+          <td>Forensic mycology partner · CPR-35 expert witness · framework rate</td>
+        </tr>
+        <tr>
+          <td><strong>Registered Social Landlords (2,000+ units)</strong><br><span class="tag" style="background:var(--red);color:#fff;">Gated · cl. 6.1(b)</span></td>
+          <td>Heads of Asset Management at Sanctuary, Clarion, Places for People, Riverside, Peabody, Bromford, plus Midlands &amp; NW priority RSLs. <em>Same gate. Build, hold.</em></td>
+          <td>Mark</td>
+          <td>Awaab's Law compliance · accredited testing partner</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- TIER 2 -->
+    <div class="tier-h t2">
+      <div class="tier-label">Tier 2</div>
+      <span class="tier-tag">Strategic Value</span>
+      <div class="tier-desc">Multiplex IP routes · UK lab build · biotech/pharma cross-sell · advisor-introduced. 40 prospects · 10 meetings · 4 proposals · 1 close target.</div>
+    </div>
+
+    <table>
+      <thead><tr><th>Segment</th><th>Named targets / source</th><th>Owner</th><th>Hook</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Multiplex IP partners</strong></td>
+          <td>Abingdon Health · SCIENION AG · Axxin Pty Ltd · Future Diagnostics (NL)</td>
+          <td>Sam + Mark</td>
+          <td>UK strip co-development · manufacturing pathway</td>
+        </tr>
+        <tr>
+          <td><strong>Pre-clinical CRO clients</strong></td>
+          <td>UK biotech 600 SMEs · BIA member list · Mass Spec at AstraZeneca (Philippe network) · 10 named small-molecule co's</td>
+          <td>Sam</td>
+          <td>Full-pathway CRO without Big-CRO overhead · companion diagnostic cross-sell</td>
+        </tr>
+        <tr>
+          <td><strong>Lab build buyers (LabArchitect™)</strong></td>
+          <td>NHS Trust pathology directors · Russell Group lab managers · 3 early-stage dx CDMOs · 2 overseas health ministries (UAE, Saudi via Katherine)</td>
+          <td>Mark</td>
+          <td>ISO 17025/15189 turn-key · 8-module deployment</td>
+        </tr>
+        <tr>
+          <td><strong>Charles River microbial wedge</strong><br><span class="tag tag-muted">Gated · CRO sub-niche</span></td>
+          <td>CRL Microbial Solutions / contamination control · director-level intro via Andrew Roddam. <em>Gated until HH commits to a single CRO sub-niche (custom SNP panels / NMR metabolite / bespoke microarray) and writes the one-page proposition.</em> Andrew's "what would you pitch?" test must be passable first.</td>
+          <td>Sam · Andrew</td>
+          <td>Specialist supplier alongside the big CRO · partner not competitor (once sub-niche defined)</td>
+        </tr>
+        <tr>
+          <td><strong>Insurance / loss adjusters</strong><br><span class="tag" style="background:var(--red);color:#fff;">Gated · cl. 6.1(b)</span></td>
+          <td>Top 10 UK home insurers · Aspen, Allianz, Aviva property claims teams · loss adjuster networks (Crawford, Sedgwick). <em>Moved to consent-gated: damp/mould reports for insurers are the same Business of the Client as housing-disrepair work. Build list, hold contact.</em></td>
+          <td>Mark</td>
+          <td>Independent forensic reports on damp/mould subsidence claims (when unlocked)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- TIER 3 -->
+    <div class="tier-h t3">
+      <div class="tier-label">Tier 3</div>
+      <span class="tier-tag">Ecosystem &amp; Optionality</span>
+      <div class="tier-desc">FO/PE · veterinary · agri-health · health ministries · long-cycle big-IP. 40 prospects · 5 meetings · 2 proposals · 1 close target.</div>
+    </div>
+
+    <table>
+      <thead><tr><th>Segment</th><th>Named targets / source</th><th>Owner</th><th>Hook</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Family Office &amp; PE health</strong></td>
+          <td>Al Maktoum FO (camel) · UAE FO via Katherine · PE health funds (Hg, Phoenix Equity Partners, Inflexion) · 10 named via Katherine</td>
+          <td>Sam · Katherine</td>
+          <td>Specialist science capability · IP optionality · UAE/US access</td>
+        </tr>
+        <tr>
+          <td><strong>Veterinary &amp; equine</strong></td>
+          <td>Royal Veterinary College · Animal Health Trust · 5 UK equine clinics · Camel Science programme via Al Maktoum</td>
+          <td>Sam (Philippe network)</td>
+          <td>One Health multiplex platform · allergen panels in horses</td>
+        </tr>
+        <tr>
+          <td><strong>Agri-health &amp; environmental</strong></td>
+          <td>Innovate UK · UK Defra contacts · OptimaBI construction footprint · environmental consultancies (Ricardo, AECOM)</td>
+          <td>Mark</td>
+          <td>One Health forensic capability · regulatory compliance</td>
+        </tr>
+        <tr>
+          <td><strong>QuidelOrtho / Randox (gated)</strong></td>
+          <td>Monitor patent filings; approach <strong>after</strong> HH FTO review</td>
+          <td>Sam + IP counsel</td>
+          <td>Licence / acquisition target (gated, not Phase 1 outbound)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 3. CHANNELS -->
+    <h2><span class="section-num">Section 03</span>Channel Architecture</h2>
+
+    <p>Four channels, layered. The same prospect should see HH from at least two angles before we ask for a meeting — that is what converts cold to warm.</p>
+
+    <div class="phase" style="border-top-color: var(--red); background: #FBEAEA; margin-bottom: 1rem;">
+      <div class="phase-h" style="color: var(--red);">Mandatory pre-touch step · conflicts-log check (BP §10.10 rule 4)</div>
+      <p style="margin:0.2rem 0;font-size:13px;">Before every DM, email send, comment engagement or discovery booking: cross-check the named prospect against the live conflicts log (Fungid / Praxis / Genetix client universe + cl. 6.2 "became aware of" list). Logged in the tracker spreadsheet · field <code style="background:rgba(0,0,0,0.06);padding:1px 5px;border-radius:2px;">Conflicts checked (Y/N · date)</code>. Any hit pauses the contact and escalates to Sam + Mark before any further move.</p>
+    </div>
+
+    <div class="ch-grid">
+
+      <div class="ch">
+        <div class="ch-h">
+          <div class="ch-num">01</div>
+          <div class="ch-t">LinkedIn — Company page</div>
+        </div>
+        <dl>
+          <dt>Cadence</dt>
+          <dd>3 posts / week (Mon · Wed · Fri 09:00 BST)</dd>
+          <dt>Content mix</dt>
+          <dd>40% sector insight · 30% case &amp; capability · 20% thought leadership · 10% milestone &amp; people</dd>
+          <dt>Phase 1 KPI</dt>
+          <dd>+1,000 page followers · +50% page views vs. baseline · 20+ inbound DMs</dd>
+        </dl>
+      </div>
+
+      <div class="ch">
+        <div class="ch-h">
+          <div class="ch-num">02</div>
+          <div class="ch-t">LinkedIn — Sam White personal</div>
+        </div>
+        <dl>
+          <dt>Cadence</dt>
+          <dd>2 founder-voice posts / week (Tue · Thu) + 5 commented engagements / week</dd>
+          <dt>Content mix</dt>
+          <dd>POV on Awaab's Law science · multiplex IP · diagnostic innovation · One Health · expert witness work</dd>
+          <dt>Phase 1 KPI</dt>
+          <dd>+500 followers · 3 inbound enquiries / week · 1 podcast or media booking / month</dd>
+        </dl>
+      </div>
+
+      <div class="ch">
+        <div class="ch-h">
+          <div class="ch-num">03</div>
+          <div class="ch-t">Direct email outreach</div>
+        </div>
+        <dl>
+          <dt>Cadence</dt>
+          <dd>30 prospects / week · 3-step sequence (initial · value · breakup)</dd>
+          <dt>Sender</dt>
+          <dd>Mark from BridgePoint AI (cleanest deliverability) · Sam direct for warm targets only</dd>
+          <dt>Phase 1 KPI</dt>
+          <dd>20% reply rate (industry benchmark 8–12%) · 12% meeting-booked rate</dd>
+        </dl>
+      </div>
+
+      <div class="ch">
+        <div class="ch-h">
+          <div class="ch-num">04</div>
+          <div class="ch-t">Events &amp; speaking</div>
+        </div>
+        <dl>
+          <dt>Targets</dt>
+          <dd>Legal Futures · BIA · One Nucleus · Awaab's Law housing summits · Cambridge biotech meet-ups</dd>
+          <dt>Format</dt>
+          <dd>Sam on panel / keynote 1× /month · HH attends 1× /month</dd>
+          <dt>Phase 1 KPI</dt>
+          <dd>2 speaking slots booked · 1 sponsored slot · 30 named contacts captured</dd>
+        </dl>
+      </div>
+
+    </div>
+
+    <!-- 4. CONTENT PILLARS -->
+    <h2><span class="section-num">Section 04</span>Content Pillars · 6 Buckets, 18 Themes</h2>
+
+    <p style="font-size:13px;color:var(--ink-muted);">v1.1: Pillars 5 and 6 added off the back of the Andrew Roddam call (12 May 2026). Pillar 5 names what Sam already does that big CROs cannot. Pillar 6 names the archetype that proves it works.</p>
+
+    <table>
+      <thead><tr><th>Pillar</th><th>Themes</th><th>Conversion target</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1 · Awaab's Law &amp; Forensic Mycology</strong><br><span class="tag" style="background:var(--red);color:#fff;">Thought-leadership only while gated</span></td><td>Compliance burden on RSLs · case-grade mycology · CPR-35 standards · "what your tenant lawyer is going to ask" — published as <em>industry analysis</em>, not service pitch, until cl. 6.1(b) consent in place. Clean-room: no naming of Fungid / Genetix / Praxis or specific cases.</td><td>Audience build only · no DM ask</td></tr>
+        <tr><td><strong>2 · One Health · Multiplex Diagnostics</strong></td><td>20-protein POC strip · the technology gap no incumbent fills · veterinary→human translation · companion dx for drug development</td><td>Pharma/biotech · IP partners · CDMOs</td></tr>
+        <tr><td><strong>3 · ISO 17025/15189 · LabArchitect™</strong></td><td>The accreditation cliff · 8-module deployment · what universities/hospitals get wrong · turn-key vs. retrofit</td><td>NHS · universities · early-stage labs</td></tr>
+        <tr><td><strong>4 · CRO Pathway · One Roof</strong></td><td>Big-CRO overhead vs. integrated UK pathway · drug discovery to Phase 1 case studies · biomarker to assay translation</td><td>UK biotech · drug discovery SMEs</td></tr>
+        <tr><td><strong>5 · Customisation as differentiator</strong><br><span class="tag tag-gold">Andrew's headline</span></td><td>Custom SNP panels vs. off-the-shelf · tailored microarray vs. commodity sequencing · bespoke validation · named scientist on every report · why mid-market pricing is a deliberate choice not a compromise</td><td>CROs (CRL, Thermo, Eurofins) · biotech founders · advisory introductions</td></tr>
+        <tr><td><strong>6 · Specialist sub-niche · NMR-lab archetype</strong></td><td>The London specialist-NMR labs as real-world archetype · one capability done at single-sample scale · commercially viable <em>because</em> big CROs cannot economically serve that scale · "we are the X equivalent of those labs" template (X = HH's chosen CRO sub-niche)</td><td>CRO partnership conversations · positioning vs. commoditised competitors</td></tr>
+      </tbody>
+    </table>
+
+    <!-- 5. CONTENT CALENDAR -->
+    <h2><span class="section-num">Section 05</span>12-Week Content Calendar</h2>
+
+    <p style="font-size:13px;color:var(--ink-muted);">v1.1: general thought-leadership content remains, <strong>subject to BP §10.6 clean-room rules</strong> (no naming Fungid / Genetix / Praxis or specific cases; independent provenance for every methodology claim). Weeks 2 and 5 — the Awaab's-Law-heavy weeks — are reframed from <em>outbound engagement</em> to <em>content publish + warm engage</em>: post the thought-leadership, like and comment on housing-sector posts, build audience. <strong>No direct DM ask, no email outreach to housing/RSL buyers, until cl. 6.1(b) consent in place.</strong></p>
+
+    <div class="cal-week">
+      <div class="cal-week-h"><span class="cal-num">WK 01</span><span class="cal-theme">Launch · "Why HH, Why Now"</span><span class="tag tag-gold">Foundation</span></div>
+      <ul>
+        <li><strong>Mon (Co):</strong> "HH Global Holdings — full-pipeline One Health CRO. Three subsidiaries. Eight sectors. Here's what that means in practice." (positioning post)</li>
+        <li><strong>Wed (Co):</strong> Three subsidiaries explainer carousel</li>
+        <li><strong>Fri (Co):</strong> Team — Philippe, Sam, Tracy bios + credentials</li>
+        <li><strong>Tue (Sam):</strong> "Awaab's Law made forensic mycology a court discipline overnight — here's what no one's telling housing landlords yet"</li>
+        <li><strong>Thu (Sam):</strong> Sam at Legal Futures replay clip + insight</li>
+      </ul>
+    </div>
+
+    <div class="cal-week">
+      <div class="cal-week-h"><span class="cal-num">WK 02</span><span class="cal-theme">Awaab's Law deep-dive · <em>publish + warm engage only</em></span><span class="tag" style="background:var(--red);color:#fff;">Gated</span></div>
+      <ul>
+        <li><strong>Mon (Co):</strong> "What CPR-35 expects from a damp/mould expert report — an industry checklist" (thought leadership, no service offer, no firm names)</li>
+        <li><strong>Wed (Co):</strong> Anonymised methodology piece — what good mycology evidence looks like in a contested context (no case names, no client names)</li>
+        <li><strong>Fri (Co):</strong> Awaab's Law timeline + RSL compliance gap analysis — industry analysis only</li>
+        <li><strong>Tue (Sam):</strong> Founder POV — "Why most damp/mould reports won't survive cross-examination" (industry observation, not service pitch)</li>
+        <li><strong>Thu (Sam):</strong> <em>Warm engage only</em> — like and comment on 5 housing solicitors' posts. <strong>No DMs. No discovery booking ask.</strong> Audience build only.</li>
+      </ul>
+    </div>
+
+    <div class="cal-week">
+      <div class="cal-week-h"><span class="cal-num">WK 03</span><span class="cal-theme">Multiplex diagnostics window</span><span class="tag tag-amber">Tier 2</span></div>
+      <ul>
+        <li><strong>Mon (Co):</strong> "Why 20-protein point-of-care has been the holy grail of diagnostics for a decade — and why HH is now the closest in the UK"</li>
+        <li><strong>Wed (Co):</strong> Visual — multiplex strip vs. analyser-based testing cost comparison</li>
+        <li><strong>Fri (Co):</strong> One Health framing — same technology, four markets</li>
+        <li><strong>Tue (Sam):</strong> "Behind the patent: what 20 proteins on a strip actually unlocks"</li>
+        <li><strong>Thu (Sam):</strong> Engage Abingdon, SCIENION, Future Diagnostics posts</li>
+      </ul>
+    </div>
+
+    <div class="cal-week">
+      <div class="cal-week-h"><span class="cal-num">WK 04</span><span class="cal-theme">LabArchitect™ push</span><span class="tag tag-amber">Tier 2</span></div>
+      <ul>
+        <li><strong>Mon (Co):</strong> "The ISO 17025/15189 accreditation cliff — most UK labs underestimate the timeline by 18 months"</li>
+        <li><strong>Wed (Co):</strong> LabArchitect™ 8-module walkthrough carousel</li>
+        <li><strong>Fri (Co):</strong> Customer scenario — early-stage dx company spinning up</li>
+        <li><strong>Tue (Sam):</strong> POV — "Most lab builds fail compliance because module 1 was wrong"</li>
+        <li><strong>Thu (Sam):</strong> Engage NHS pathology directors + university lab managers</li>
+      </ul>
+    </div>
+
+    <div class="cal-week">
+      <div class="cal-week-h"><span class="cal-num">WK 05</span><span class="cal-theme">Expert witness · <em>publish + warm engage only</em> for housing; criminal defence open</span><span class="tag" style="background:var(--red);color:#fff;">Partly gated</span></div>
+      <ul>
+        <li><strong>Mon (Co):</strong> "When does a housing dispute need a forensic scientist vs. a building surveyor?" (industry framing, no service ask while gated)</li>
+        <li><strong>Wed (Co):</strong> Sam's expert witness credentials carousel — court-recognised expert credentials, no Fungid / Genetix / Praxis reference</li>
+        <li><strong>Fri (Co):</strong> Framework rate model explainer for law firms — <em>scoped to criminal defence and family law only while housing is gated</em></li>
+        <li><strong>Tue (Sam):</strong> "Reading 20 mould reports — here's the one paragraph that wins or loses the case" (industry observation, generic, no case identifiers)</li>
+        <li><strong>Thu (Sam):</strong> <em>Engage</em> 5 family law / criminal defence partners (open). <em>Warm-engage only</em> 5 housing solicitors — like / comment, no DM ask.</li>
+      </ul>
+    </div>
+
+    <div class="cal-week">
+      <div class="cal-week-h"><span class="cal-num">WK 06</span><span class="cal-theme">Drug discovery CRO</span><span class="tag tag-amber">Tier 2</span></div>
+      <ul>
+        <li><strong>Mon (Co):</strong> "The full UK CRO pathway under one roof — what that means for UK biotech founders"</li>
+        <li><strong>Wed (Co):</strong> Case study — preclinical → Phase 1 readiness journey</li>
+        <li><strong>Fri (Co):</strong> Companion diagnostics cross-sell explainer</li>
+        <li><strong>Tue (Sam):</strong> "Why your preclinical CRO should also be your companion dx partner"</li>
+        <li><strong>Thu (Sam):</strong> Engage BIA member founders</li>
+      </ul>
+    </div>
+
+    <div class="cal-week">
+      <div class="cal-week-h"><span class="cal-num">WK 07</span><span class="cal-theme">Women's health · Hysteron-style</span><span class="tag tag-green">Tier 1</span></div>
+      <ul>
+        <li><strong>Mon (Co):</strong> "What 5 blood panels miss — and what the next 5 unlock"</li>
+        <li><strong>Wed (Co):</strong> Insulin/HOMA-IR, oestrone, homocysteine, ApoB, bone turnover — primer</li>
+        <li><strong>Fri (Co):</strong> The estrobolome — where gut microbiome meets women's health</li>
+        <li><strong>Tue (Sam):</strong> Hysteron-shaped POV (anonymised pilot) — joint case study tease</li>
+        <li><strong>Thu (Sam):</strong> Engage women's health diagnostics founders + investors</li>
+      </ul>
+    </div>
+
+    <div class="cal-week">
+      <div class="cal-week-h"><span class="cal-num">WK 08</span><span class="cal-theme">One Health across vectors</span><span class="tag tag-blue">Tier 3</span></div>
+      <ul>
+        <li><strong>Mon (Co):</strong> Same multiplex platform, four buyers — animation</li>
+        <li><strong>Wed (Co):</strong> Equine allergens → human autoimmune translation thread</li>
+        <li><strong>Fri (Co):</strong> Camel Science / Al Maktoum framing (no name) — high-performance physiology</li>
+        <li><strong>Tue (Sam):</strong> "Why the UK still treats human, animal and environmental health as three problems"</li>
+        <li><strong>Thu (Sam):</strong> Engage RVC + Animal Health Trust + Innovate UK</li>
+      </ul>
+    </div>
+
+    <div class="cal-week">
+      <div class="cal-week-h"><span class="cal-num">WK 09</span><span class="cal-theme">Insurance &amp; loss adjusters</span><span class="tag tag-amber">Tier 2</span></div>
+      <ul>
+        <li><strong>Mon (Co):</strong> "Where forensic science fills the insurer's evidence gap"</li>
+        <li><strong>Wed (Co):</strong> Subsidence + damp case patterns — insurer POV</li>
+        <li><strong>Fri (Co):</strong> Independent report vs. surveyor report — when each is required</li>
+        <li><strong>Tue (Sam):</strong> POV — independence is a commercial moat</li>
+        <li><strong>Thu (Sam):</strong> Engage Crawford / Sedgwick loss adjuster networks</li>
+      </ul>
+    </div>
+
+    <div class="cal-week">
+      <div class="cal-week-h"><span class="cal-num">WK 10</span><span class="cal-theme">Family Office / PE health</span><span class="tag tag-blue">Tier 3</span></div>
+      <ul>
+        <li><strong>Mon (Co):</strong> "Where Family Offices are placing science capital in 2026"</li>
+        <li><strong>Wed (Co):</strong> Specialist CRO as IP-light, capital-efficient investment</li>
+        <li><strong>Fri (Co):</strong> UAE health innovation thread</li>
+        <li><strong>Tue (Sam):</strong> POV — Katherine-introduced thread, UAE/US pathway</li>
+        <li><strong>Thu (Sam):</strong> Engage PE health partners + FO principals</li>
+      </ul>
+    </div>
+
+    <div class="cal-week">
+      <div class="cal-week-h"><span class="cal-num">WK 11</span><span class="cal-theme">Build credibility · publications &amp; press</span><span class="tag tag-gold">Brand</span></div>
+      <ul>
+        <li><strong>Mon (Co):</strong> Philippe's recent peer-reviewed work highlight</li>
+        <li><strong>Wed (Co):</strong> Sam's Times / Telegraph / BBC science communicator clips</li>
+        <li><strong>Fri (Co):</strong> 1,566+ citations · government advisory + clinical trials</li>
+        <li><strong>Tue (Sam):</strong> Podcast appearance or press quote</li>
+        <li><strong>Thu (Sam):</strong> Engage scientific community + journalists</li>
+      </ul>
+    </div>
+
+    <div class="cal-week">
+      <div class="cal-week-h"><span class="cal-num">WK 12</span><span class="cal-theme">Phase 1 close + Phase 2 tease</span><span class="tag tag-gold">Milestone</span></div>
+      <ul>
+        <li><strong>Mon (Co):</strong> Phase 1 milestones — first frameworks live, IP pilot in flight</li>
+        <li><strong>Wed (Co):</strong> "What we built in 90 days" recap (without metric specifics)</li>
+        <li><strong>Fri (Co):</strong> Phase 2 vision — new sector verticals, expanded team</li>
+        <li><strong>Tue (Sam):</strong> Founder retrospective + what's next</li>
+        <li><strong>Thu (Sam):</strong> Re-engage anyone who lapsed in WK 4–10</li>
+      </ul>
+    </div>
+
+    <!-- 6. LINKEDIN TEMPLATES -->
+    <h2><span class="section-num">Section 06</span>LinkedIn Post Bank · 8 Ready-to-Publish</h2>
+
+    <p>House voice: confident, specific, evidence-led. No hashtag soup, no emojis. Numbers and named technical concepts earn engagement from the buyers we want.</p>
+
+    <p style="font-size:13px;color:var(--red);"><strong>v1.1 note:</strong> Posts 1 and 4 rewritten — same audience, same authority, but framed as industry thought-leadership not service pitch while Awaab's-Law segments are consent-gated. No "DM us", no "comment to receive", no implicit service ask. Posts 6–8 are new — Pillar 5 customisation content, drawn from Andrew Roddam's call insight.</p>
+
+    <div class="template">
+      <div class="template-head">
+        <span class="template-title">Post 1 · Awaab's Law / Forensic Mycology · v1.1 thought-leadership rewrite</span>
+        <span class="template-meta">CO PAGE · WK 02 MON · GATED</span>
+      </div>
+      <div class="template-body">Awaab's Law has imported the standards of court-grade science into a market that, until recently, was operating on building-surveyor norms.
+
+That is the structural change worth naming.
+
+CPR Part 35 expects an expert report to:
+— state the question asked
+— state the methodology used
+— state the limits of confidence
+— state the alternative explanations considered
+
+A report missing any of those four is not a CPR-35 report. It is a surveyor opinion with the wrong label on it. In a contested instruction under Awaab's Law, the difference matters.
+
+This is a market-wide observation, not a sales pitch. The housing-disrepair sector needs to absorb that the evidential bar has moved — supplier choice should follow that, not lead it.
+
+— HH Global Holdings · Industry observation</div>
+      <div class="template-foot">v1.1: no DM ask, no comment-to-receive, no service offer · audience build only while consent-gated · removed checklist CTA · clean-room compliant</div>
+    </div>
+
+    <div class="template">
+      <div class="template-head">
+        <span class="template-title">Post 2 · Multiplex IP window</span>
+        <span class="template-meta">CO PAGE · WK 03 MON</span>
+      </div>
+      <div class="template-body">For a decade, true multiplex point-of-care has been diagnostics' holy grail.
+
+The bottleneck is structural. To read 20 proteins from a single drop of blood at the point of care, you need:
+— segmented strip architecture (not standard membrane)
+— class-optimised microarray spotting
+— readout that doesn't require a £40K analyser
+
+The companies with the analyser-based platforms have not solved the cost problem. The companies with low-cost strips have not solved the multiplexing problem.
+
+We have a UK patent pending on the segmented multiplex lateral flow architecture. 20 to 60 proteins per strip. Three drops of blood.
+
+Market research confirms no dominant commercial product exists at this specification.
+
+If you are a CDMO, an analyser maker, or a clinical assay developer — we are talking to a small number of partners now. DM directly.
+
+— HH Global Holdings · Research &amp; Innovation</div>
+      <div class="template-foot">Designed to reach: Abingdon, Randox, QuidelOrtho, SCIENION, Future Diagnostics</div>
+    </div>
+
+    <div class="template">
+      <div class="template-head">
+        <span class="template-title">Post 3 · LabArchitect™</span>
+        <span class="template-meta">CO PAGE · WK 04 MON</span>
+      </div>
+      <div class="template-body">A UK research-grade lab will spend 18 months and £350K getting to ISO 17025/15189 accreditation it should have reached in 9 months for £180K.
+
+The reason is module sequencing.
+
+Most labs build the wet lab first and the quality management system after. ISO assessors then find documentation lagging behind capability — which is the most expensive thing to fix retrospectively.
+
+LabArchitect™ is the inverse. Eight modules, designed to be accreditation-aligned from module one. We have built it because we deploy our own labs this way.
+
+If you are spinning up a diagnostics, forensic, or research lab in 2026, we are happy to walk you through the 8-module stack — no charge for the first conversation.
+
+73 Cornhill, London. Or virtual.
+
+— HH Global Holdings · Insight</div>
+      <div class="template-foot">Designed to reach: NHS pathology directors · university lab managers · dx CDMO founders</div>
+    </div>
+
+    <div class="template">
+      <div class="template-head">
+        <span class="template-title">Post 4 · Sam founder voice — Awaab's Law · v1.1 thought-leadership rewrite</span>
+        <span class="template-meta">SAM PERSONAL · WK 02 TUE · GATED</span>
+      </div>
+      <div class="template-body">Across many damp and mould reports I have reviewed as an expert witness, the single most common failure is not in the testing. It is in one paragraph — the "alternative explanations" section.
+
+A judge does not need to be convinced that mould was present. They need to be convinced that the expert considered, and properly excluded, every other plausible cause of the tenant's harm — and that the methodology was capable of doing so.
+
+If the report does not contain that paragraph, the case is wobbly. If it contains the paragraph but the methodology was not built to do that work, the case collapses on cross.
+
+That is the gap Awaab's Law has exposed at sector scale. It is a methodology gap, not a testing gap, and it is going to take this sector several years to close.
+
+This is the discipline that matters now. Worth saying publicly.
+
+— Sam</div>
+      <div class="template-foot">v1.1: founder POV retained · removed "happy to share / Just DM" CTA · industry-grade observation · clean-room compliant (no client / case identifiers)</div>
+    </div>
+
+    <div class="template">
+      <div class="template-head">
+        <span class="template-title">Post 5 · One Health · cross-vector translation</span>
+        <span class="template-meta">CO PAGE · WK 08 MON</span>
+      </div>
+      <div class="template-body">The same multiplex microarray technology that identifies allergens in horses detects pathogens in livestock, screens drug targets in humans, and tests soil microbiomes in agriculture.
+
+One scientific investment. Multiplied commercial value across every domain we operate in.
+
+This is what "One Health" actually means as a commercial strategy — not a research label.
+
+Most CROs sit inside one vector. Eurofins owns food testing. Charles River owns endotoxin and bacterial ID. SGS owns environmental.
+
+HH was built across vectors deliberately. Because the biology is shared. Because the buyers we serve — pharma, biotech, public health, family offices, government — increasingly want a partner who can translate across them.
+
+If your organisation is buying scientific services across two or more of those vectors, you are paying for context twice. We would be happy to map a unified pathway.
+
+— HH Global Holdings</div>
+      <div class="template-foot">Positioning · differentiates from named competitors · attracts cross-buy customers</div>
+    </div>
+
+    <div class="template">
+      <div class="template-head">
+        <span class="template-title">Post 6 · Customisation as differentiator · NEW (v1.1)</span>
+        <span class="template-meta">CO PAGE · WK 06 WED · PILLAR 5</span>
+      </div>
+      <div class="template-body">SNP profiling is a commodity off-the-shelf.
+
+That sentence — heard from a senior CRO operator this week — was a useful reminder of what most of the diagnostics market actually buys at scale. Standard panels. Validated. Bulk-priced. Run at volume.
+
+That is not what we do.
+
+We build custom panels. Tailored to a specific question, a specific cohort, a specific drug or therapeutic context. A named scientist designs the assay. A named scientist signs the report.
+
+Commodity SNP work has a place. So does commodity sequencing, commodity microarray, commodity multiplex. The market for those is enormous and well-served.
+
+What is less well-served is the layer beneath: the customer who needs a custom-validated panel because the standard one does not ask their question. That is the work HH is built for.
+
+— HH Global Holdings · Research &amp; Innovation</div>
+      <div class="template-foot">v1.1: Pillar 5 customisation post · pulls from Andrew Roddam call · "named scientist on the report" is the differentiator</div>
+    </div>
+
+    <div class="template">
+      <div class="template-head">
+        <span class="template-title">Post 7 · The specialist lab archetype · NEW (v1.1)</span>
+        <span class="template-meta">CO PAGE · WK 08 WED · PILLAR 6</span>
+      </div>
+      <div class="template-body">There is a model of scientific business that does not get talked about enough.
+
+Walk through specialist diagnostic and research labs in London and you will find operations doing one thing — single-sample NMR for a particular metabolic pathway, or a single specialised analyte. That is their entire offer.
+
+They sit alongside the big CROs, not against them. The big CROs cannot economically serve single-sample, single-question work — their cost base is built for scale. The specialist labs cannot serve volume. Two models, complementary, both viable.
+
+The version of HH worth building is closer to that archetype than to a generalist CRO. One capability, done at single-sample depth, priced and structured to make commercial sense at that scale.
+
+The discipline is to pick the capability. And then to repeat.
+
+— HH Global Holdings · Strategy</div>
+      <div class="template-foot">v1.1: Pillar 6 NMR-lab archetype reference content · Andrew's "focus, sequence, repeat" thesis · positions HH for CRO partnership conversations once sub-niche is chosen</div>
+    </div>
+
+    <div class="template">
+      <div class="template-head">
+        <span class="template-title">Post 8 · Sam founder voice — customisation · NEW (v1.1)</span>
+        <span class="template-meta">SAM PERSONAL · WK 06 TUE · PILLAR 5</span>
+      </div>
+      <div class="template-body">A CRO partner asked me this week: "Why would I send work to you when I can run a standard SNP panel at scale in-house?"
+
+The honest answer is — you wouldn't. Not for the standard panel.
+
+You would send the case where the standard panel does not ask the right question. The biomarker that is not on the off-the-shelf list. The cohort where allele frequencies sit outside the populations the commercial assay was validated against. The drug development context where you need a panel built for <em>this</em> compound, not the next-best fit.
+
+That is bespoke work. It needs a scientist to design it, validate it, sign it off. It does not scale the way a commodity panel scales — and that is the point.
+
+The CROs that do best in the next five years will route the standard work in-house and partner out the specialist work. We are positioning to be the partner of choice for that second category.
+
+— Sam</div>
+      <div class="template-foot">v1.1: founder voice on customisation · uses Andrew's "why are you different?" framing · designed to reach CRL / Thermo / Eurofins operator audience</div>
+    </div>
+
+    <!-- 7. EMAIL TEMPLATES -->
+    <h2><span class="section-num">Section 07</span>Email Sequences · 4 Sectors × 3-Step</h2>
+
+    <p>Each sector gets a 3-step sequence over 14 days: <strong>(1) hook + insight</strong> · <strong>(2) value drop + question</strong> · <strong>(3) breakup + permission</strong>. Sender: Mark from BridgePoint AI. Sam direct only for warm targets.</p>
+
+    <div class="phase" style="border-top-color: var(--red); background: #FBEAEA;">
+      <div class="phase-h" style="color: var(--red);">v1.1 sequence-state</div>
+      <ul style="margin:0.4rem 0 0.2rem 1.2rem;font-size:13px;line-height:1.55;">
+        <li><strong>Sector A (Housing-Disrepair Solicitor):</strong> <span style="color:var(--red);font-weight:600;">HELD</span> · pending cl. 6.1(b) consent or post 27 May 2026 + cl. 6.2 management. Build target list; do not send. Templates retained below — A1/A2/A3 unchanged but locked.</li>
+        <li><strong>Sector B (RSL Asset Management):</strong> <span style="color:var(--red);font-weight:600;">HELD</span> · same gate. Template B1 unchanged but locked.</li>
+        <li><strong>Sector C (Multiplex IP):</strong> <span style="color:var(--green);font-weight:600;">ACTIVATE</span> · cleanest pathway per Andrew Roddam call. Founder-direct from Sam. Five named first targets (Abingdon Health · SCIENION · Future Diagnostics · Axxin · Invitek). Three-step sequence runs as designed. <strong>Subject to FTO opinion against Randox 204 patents before any Randox / QuidelOrtho approach</strong> (BP §11 risk register).</li>
+        <li><strong>Sector D (LabArchitect™ · NHS pathology / university labs):</strong> <span style="color:var(--green);font-weight:600;">ACTIVE</span> · runs as designed.</li>
+      </ul>
+    </div>
+
+    <h3>Sector A · Housing-Disrepair Solicitor <span class="tag" style="background:var(--red);color:#fff;">HELD</span></h3>
+
+    <div class="template">
+      <div class="template-head">
+        <span class="template-title">A1 · Hook · day 0</span>
+        <span class="template-meta">SUBJECT: Awaab's Law · CPR-35 expert reports</span>
+      </div>
+      <div class="template-body">{First name},
+
+I lead BD for HH Global Holdings — a UK forensic-and-research group whose CEO, Dr Samuel White, is a court-recognised expert witness in environmental health and forensic mycology.
+
+I wrote because Awaab's Law has materially changed what counts as a defensible mould or damp report. Most reports prepared on a building-surveyor model are not built to survive CPR-35 cross-examination.
+
+We have just published a 7-point CPR-35 alignment checklist that several of our partner firms are using before instructing on these claims. Would you like me to send it?
+
+If your firm handles 50+ housing-disrepair instructions a year, there is also a sensible conversation about a framework rate for expert reports — happy to walk you through that separately.
+
+Best,
+Mark Evans-Smith
+BD Director (interim) · HH Global Holdings · 73 Cornhill, London EC3V 3QQ
+hhglobalholdings.com</div>
+      <div class="template-foot">Open rate target 55% · Reply 20%+ for "send the checklist"</div>
+    </div>
+
+    <div class="template">
+      <div class="template-head">
+        <span class="template-title">A2 · Value drop · day +5</span>
+        <span class="template-meta">SUBJECT: re: Awaab's Law · CPR-35 expert reports</span>
+      </div>
+      <div class="template-body">{First name},
+
+Following on — here is the 7-point CPR-35 alignment checklist attached.
+
+The reason this matters commercially: the firms doing volume work on damp/mould claims tend to use one of two ad hoc supplier patterns — a single local surveyor (cheap, risky on cross), or a chain of switching experts (consistent quality, inconsistent rates).
+
+We are offering a third route: <strong>fixed framework rate, CPR-35-aligned reports, 10-day turnaround, expert witness retained.</strong>
+
+The framework rate is £5,000 / month including up to 6 reports — incremental at £450 / report. For a firm doing 100+ claims a year that is meaningfully below ad hoc rates and protects the case file.
+
+Would 15 minutes next week work to walk through the framework against your case mix? Tuesday 11:00 or Thursday 14:00?
+
+Best,
+Mark</div>
+      <div class="template-foot">Concrete pricing · clear ask · two times offered (avoid back-and-forth)</div>
+    </div>
+
+    <div class="template">
+      <div class="template-head">
+        <span class="template-title">A3 · Breakup · day +14</span>
+        <span class="template-meta">SUBJECT: re: Awaab's Law · CPR-35 expert reports</span>
+      </div>
+      <div class="template-body">{First name},
+
+I do not want to keep landing in your inbox if the timing is wrong.
+
+Three things, then I will leave you alone:
+
+1. The CPR-35 checklist is yours to keep — share with whichever fee-earner handles disrepair instructions.
+2. If a future case comes up where a credentialled forensic mycology expert is required at short notice, send it our way — direct line below.
+3. If now is the wrong moment but the autumn might be right, just reply with "autumn" and I will follow up in September.
+
+Either way — best of luck with the season.
+
+Mark<br>
++44 [number] · mark@hhglobalholdings.com</div>
+      <div class="template-foot">Permission-based breakup · keeps door open · "autumn" reply is gold</div>
+    </div>
+
+    <h3>Sector B · Registered Social Landlord (Asset Management) <span class="tag" style="background:var(--red);color:#fff;">HELD</span></h3>
+
+    <div class="template">
+      <div class="template-head">
+        <span class="template-title">B1 · Hook · day 0</span>
+        <span class="template-meta">SUBJECT: Damp / mould evidence under Awaab's Law</span>
+      </div>
+      <div class="template-body">{First name},
+
+I lead BD for HH Global Holdings, a UK forensic and One Health CRO with deep specialism in forensic mycology.
+
+The reason I wrote: under Awaab's Law your team will, for the first time, be expected to produce <strong>scientific evidence</strong> — not surveyor evidence — for category 1 damp / mould cases within a strict statutory window. Most RSLs we have spoken to have not yet contracted an accredited testing partner for this.
+
+We work with three RSLs on framework terms. The model is:
+— 48-hour mobilisation for case-tier instructions
+— ISO 17025-aligned testing methodology
+— Court-grade reports if the case escalates to a disrepair claim
+— Fixed monthly retainer with capped per-property pricing
+
+Worth a 15-minute call to see if the model maps to {RSL name}'s portfolio? I can share a 1-pager first if easier.
+
+Best,
+Mark Evans-Smith · BD Director (interim), HH Global Holdings</div>
+      <div class="template-foot">Compliance frame · concrete model · low-friction ask</div>
+    </div>
+
+    <h3>Sector C · Diagnostic Partner (Multiplex IP) <span class="tag tag-green">PRIORITY · ACTIVATE</span></h3>
+
+    <div class="template">
+      <div class="template-head">
+        <span class="template-title">C1 · Hook · day 0 · sender: Sam direct</span>
+        <span class="template-meta">SUBJECT: Multiplex lateral flow · UK patent pending · 20–60 proteins / strip</span>
+      </div>
+      <div class="template-body">{First name},
+
+Dr Sam White here — CEO, HH Global Holdings. Honorary Associate Professor, University of Nottingham.
+
+Short note. We are at a stage where we have filed UK on a segmented multiplex lateral flow architecture — 20 to 60 proteins on a single strip, three drops of blood, microarray-spotted, class-optimised. Market research confirms no dominant commercial product exists at this spec.
+
+Companion microneedle ISF platform — PatchDX — in the same family.
+
+We are scoping a small number of partner conversations on:
+— UK strip co-development &amp; manufacture
+— Licensing / option agreements
+— Reader / instrumentation integration
+
+I saw {their product / their recent activity / their LinkedIn} and thought {Abingdon Health / SCIENION / Future Diagnostics} would be one of the very natural first conversations.
+
+Would a 30-minute call in the next two weeks make sense?
+
+Best,
+Sam<br>
+Dr Samuel J. White · CEO, HH Global Holdings
+samuel.white@hhglobalholdings.com</div>
+      <div class="template-foot">Founder-direct · technical credibility upfront · named comparator inserts</div>
+    </div>
+
+    <h3>Sector D · NHS Pathology / University Lab Manager (LabArchitect™) <span class="tag tag-green">ACTIVE</span></h3>
+
+    <div class="template">
+      <div class="template-head">
+        <span class="template-title">D1 · Hook · day 0</span>
+        <span class="template-meta">SUBJECT: ISO 17025/15189 — 8-module turn-key lab deployment</span>
+      </div>
+      <div class="template-body">{First name},
+
+I lead BD for HH Global Holdings — we run a productised lab deployment service called LabArchitect™. Eight modules, ISO 17025 / 15189 aligned from module one.
+
+We built it because every lab we deployed for clients ran the wet-lab build ahead of the QMS. ISO assessors then found documentation lagging capability — the most expensive part to fix in arrears.
+
+LabArchitect™ inverts that sequence. We have used it on three deployments to date. Two reached accreditation in 9 months. The cost envelope is typically £150–250K depending on scale, and a fixed-price model means the budget holder knows what they are signing.
+
+If {organisation} is planning a new analytical capability — diagnostics, forensic, research — in 2026/27, worth a 20-minute conversation? I can share the module map and reference deployments.
+
+Best,
+Mark Evans-Smith
+BD Director (interim) · HH Global Holdings · hhglobalholdings.com</div>
+      <div class="template-foot">Pain point first · evidence next · fixed price · low-friction ask</div>
+    </div>
+
+    <!-- 8. CADENCE & GOVERNANCE -->
+    <h2><span class="section-num">Section 08</span>Weekly Cadence &amp; Governance</h2>
+
+    <div class="phase">
+      <div class="phase-h">Weekly rhythm</div>
+      <table>
+        <thead><tr><th>Day</th><th>Activity</th><th>Owner</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Mon 09:00</strong></td><td>Co page post · 30 prospect emails sent · BD week planning call (15 min)</td><td>Mark</td></tr>
+          <tr><td><strong>Tue 09:00</strong></td><td>Sam founder post · 5 commented engagements</td><td>Sam</td></tr>
+          <tr><td><strong>Wed 09:00</strong></td><td>Co page post · sequence step 2 sends · LinkedIn DM replies</td><td>Mark</td></tr>
+          <tr><td><strong>Thu 09:00</strong></td><td>Sam founder post · 5 commented engagements · 2 discovery calls</td><td>Sam</td></tr>
+          <tr><td><strong>Fri 09:00</strong></td><td>Co page post · pipeline review · proposal-stage advance · weekly snapshot to Sam, Tracy, Mark</td><td>Mark</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="phase">
+      <div class="phase-h">Tracking spreadsheet — minimum fields</div>
+      <ul>
+        <li><strong>Prospect</strong>, <strong>Tier</strong> (1/2/3), <strong>Segment</strong>, <strong>Source</strong>, <strong>Owner</strong></li>
+        <li><strong>Stage</strong>: Cold → Engaged → Discovery → Proposal → Closed (W/L)</li>
+        <li><strong>Last touch</strong> · <strong>Next touch</strong> · <strong>Channel</strong></li>
+        <li><strong>Hook used</strong> (template ID) · <strong>Response</strong></li>
+        <li><strong>Proposal value</strong> · <strong>Expected close</strong></li>
+      </ul>
+      <p>One row per prospect. Live Google Sheet shared Sam · Mark · Tracy.</p>
+    </div>
+
+    <div class="phase">
+      <div class="phase-h">Weekly snapshot report (Fridays)</div>
+      <ol>
+        <li>This week's outbound (count + tier mix)</li>
+        <li>This week's replies (count + named warm)</li>
+        <li>Meetings booked / completed (count + outcomes)</li>
+        <li>Pipeline by stage (table)</li>
+        <li>Top 3 risks / blockers</li>
+        <li>Top 3 moves for next week</li>
+        <li><strong>v1.1:</strong> Conflicts-log additions this week (named) · cl. 3.1(j) pre-litigation diary entries (count) · legal-check status (Y/N for the week)</li>
+      </ol>
+    </div>
+
+    <div class="phase" style="border-top-color: var(--red); background: #FBEAEA;">
+      <div class="phase-h" style="color: var(--red);">v1.1 · Standing legal rules (BP v1.2 §10.10) — baked into BD cadence</div>
+      <ol style="margin:0.4rem 0 0.4rem 1.2rem;font-size:13px;line-height:1.6;">
+        <li><strong>Pre-touch conflicts-log check.</strong> Every prospect, every contact, every channel. Logged in tracker. (BP §10.10 rule 4)</li>
+        <li><strong>cl. 3.1(j) pre-litigation diary.</strong> Every Awaab's-Law / mould-ID opportunity Sam becomes aware of during the engagement is logged contemporaneously, offered to Fungid first, and the offer / response recorded. Until 26–27 May 2026. (BP §10.10 rule 5)</li>
+        <li><strong>Weekly legal-check on Fridays.</strong> Mark + Sam, 10 min. Anything new this week against §10.4 pathways, §10.6 clean-room, §10.9 due-diligence? Anything to escalate to qualified UK solicitor? Recorded in the weekly snapshot.</li>
+        <li><strong>No Praxis Doc 1 signature without Doc 2 in the same signed pack.</strong> Ever. (BP §10.10 rule 2)</li>
+        <li><strong>Clean-room compliance.</strong> No naming of Fungid / Genetix / Praxis or specific cases in any outbound material. Independent provenance for every methodology claim. (BP §10.6)</li>
+        <li><strong>Subsidiary routing.</strong> Awaab's Law / mould expert-witness instructions through HH Data &amp; Evidence Services; FungID-adjacent through HH Enterprise Group. (BP §10.10 rule 3, Path 1)</li>
+        <li><strong>No Multiplex IP approach to Randox / QuidelOrtho</strong> until FTO opinion is complete. (BP §11 risk register)</li>
+      </ol>
+    </div>
+
+    <!-- 9. RESOURCING -->
+    <h2><span class="section-num">Section 09</span>What We Need · From Sam &amp; Tracy</h2>
+
+    <table>
+      <thead><tr><th>Need</th><th>Why</th><th>Owner · Due</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Legal Futures attendee list</strong></td><td>Convert 78% LinkedIn uplift into named Tier 1 prospects</td><td>Sam · Wk 1</td></tr>
+        <tr><td><strong>Sam's bandwidth — 2 hrs / week LinkedIn</strong></td><td>Founder posts + commented engagements drive 60%+ of warm replies</td><td>Sam · Wk 1 ongoing</td></tr>
+        <tr><td><strong>Genetix conflict map sign-off</strong></td><td>Unlocks expert witness route — Tier 1 segment unblocked</td><td>Tracy + Sam · Wk 2</td></tr>
+        <tr><td><strong>Multiplex FTO opinion vs. Randox</strong></td><td>Unlocks Multiplex IP outbound to Abingdon · Randox · QuidelOrtho</td><td>Sam / IP counsel · Wk 4</td></tr>
+        <tr><td><strong>CPR-35 alignment checklist (1-pager)</strong></td><td>Lead magnet for Sector A · drives email sequence step 2 conversion</td><td>Sam (drafts) · Mark (designs) · Wk 1</td></tr>
+        <tr><td><strong>PE-health &amp; FO sector one-pagers</strong></td><td>Tier 3 outbound needs collateral</td><td>Mark + Tracy · Wk 3</td></tr>
+        <tr><td><strong>Andrew Roddam — three named CRL targets</strong></td><td>Unlocks Charles River wedge intro</td><td>Mark (from Tue 12 May call) · Wk 1</td></tr>
+        <tr><td><strong>Katherine Ireland written advisory remit</strong></td><td>Unlocks Tier 3 FO/UAE/PE/US outbound</td><td>Sam + Mark · Wk 2</td></tr>
+        <tr><td><strong>HH email accounts on hhglobalholdings.com domain</strong></td><td>Deliverability + brand consistency</td><td>Mark · Wk 1</td></tr>
+        <tr><td><strong>Calendly / booking link for discovery calls</strong></td><td>Removes scheduling friction in email step 2</td><td>Mark · Wk 1</td></tr>
+        <tr style="background: rgba(178,58,58,0.05);"><td colspan="3" style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);padding-top:0.7rem;">v1.1 additions — unlocks the gated pathways</td></tr>
+        <tr><td><strong>Written non-renewal confirmation from Barnaby</strong><br><span class="tag" style="background:var(--red);color:#fff;">Blocker</span></td><td>Confirms Genetix consultancy ends 26–27 May 2026; opens cl. 6.2 12-month window to manage; unlocks the post-term path on Awaab's Law segments</td><td>Sam · Wk 1</td></tr>
+        <tr><td><strong>cl. 6.1(b) consent decision from Fungid</strong><br><span class="tag" style="background:var(--red);color:#fff;">Blocker</span></td><td>The single decision that unlocks Tier 1c (Housing-disrepair solicitors · RSLs · Insurance/loss adjusters). Approach Fungid now as renewal-negotiation lever; the 8-day countdown favours timing-rational disclosure (per BP §10.4)</td><td>Sam + Mark · Wk 1</td></tr>
+        <tr><td><strong>Praxis Doc 1 + Doc 2 signed pack</strong></td><td>Doc 1 cannot be signed without Doc 2 in the same pack (BP §10.10 rule 2); continues HH Data &amp; Evidence's Praxis sub-contract route where Genetix is named end client</td><td>Sam · Wk 2</td></tr>
+        <tr><td><strong>Praxis PII certificate of currency</strong></td><td>Insurer name, limit per claim, aggregate limit, expiry, claims history. Required against the Praxis–Genetix proximity risk (BP §10.8)</td><td>Daren Sims / Sam · Wk 2</td></tr>
+        <tr><td><strong>Multiplex IP sub-business plan</strong></td><td>Sequencing decision needs a standalone plan — IP scope, FTO opinion, partner shortlist, capital ask, milestones. Activates Sector C outbound at scale and frames Randox / QuidelOrtho FTO work</td><td>Sam + Mark · Wk 4</td></tr>
+        <tr><td><strong>CRO sub-niche choice + one-page proposition</strong><br><span class="tag tag-gold">Andrew's homework</span></td><td>Single capability — custom SNP panels / NMR metabolite / bespoke microarray. Margin model. "Why are you different?" answer that passes Andrew's bar. Unlocks Charles River wedge (Tier 2) and Pillars 5/6 outbound</td><td>Mark + Sam · Wk 4</td></tr>
+      </tbody>
+    </table>
+
+    <!-- DAY 1 -->
+    <div class="recommendation">
+      <h2>Three Moves · Tomorrow</h2>
+      <p>If we do nothing else by Wednesday evening, we do these three things — and the campaign is live.</p>
+      <div class="action-grid">
+        <div class="action-card">
+          <div class="action-num">01</div>
+          <div class="action-text"><strong>Stand up the tracker</strong>. Google Sheet shared Sam · Mark · Tracy. Conflicts-log column live from row 1. Pre-populate: 20 Sector C/D active prospects (multiplex IP + lab buyers) <em>and</em> the 30 housing-disrepair / RSL prospects in a separate "held — list build only" tab.</div>
+        </div>
+        <div class="action-card">
+          <div class="action-num">02</div>
+          <div class="action-text"><strong>Ship Posts 1 (rewritten), 4 (rewritten), 6 + 7 + 8</strong>. Thought-leadership posts 1 and 4 go live by Tuesday 09:00 BST — clean-room compliant. New customisation posts 6/7/8 sequenced into weeks 6 and 8. <strong>No DM ask.</strong></div>
+        </div>
+        <div class="action-card">
+          <div class="action-num">03</div>
+          <div class="action-text"><strong>Activate Sector C — Multiplex IP</strong>. Send 5 founder-direct emails from Sam (template C1) to Abingdon · SCIENION · Future Diagnostics · Axxin · Invitek. Conflicts-log check before each send. <strong>Sector A is HELD until Fungid cl. 6.1(b) decision lands.</strong></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">HH Global · <em>Phase 1 Prospecting</em></div>
+    <div class="footer-meta">Internal · Working document · Phase 1 starts 20 May 2026 · v1.1 (19 May 2026) — Andrew Roddam call + BP v1.2 §10 constraints integrated</div>
+  </div>
+
+</div>
+</body>
+</html>
