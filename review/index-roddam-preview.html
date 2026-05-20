@@ -1362,8 +1362,115 @@
  @media (max-width: 880px) {
    .compare-grid { grid-template-columns: 1fr; }
  }
+
+ /* RODDAM PREVIEW REVIEW MARKERS */
+ .roddam-banner {
+   position: fixed;
+   top: 0; left: 0; right: 0;
+   z-index: 10000;
+   background: linear-gradient(90deg, #0B1F3F 0%, #152D55 100%);
+   color: #fff;
+   font-family: 'Inter', sans-serif;
+   font-size: 13px;
+   padding: 12px 24px;
+   border-bottom: 3px solid #C5A25B;
+   box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+   display: flex;
+   align-items: center;
+   gap: 18px;
+   flex-wrap: wrap;
+ }
+ .roddam-banner-tag {
+   background: #C5A25B;
+   color: #0B1F3F;
+   font-weight: 700;
+   font-size: 11px;
+   letter-spacing: 1.5px;
+   text-transform: uppercase;
+   padding: 5px 10px;
+   border-radius: 2px;
+ }
+ .roddam-banner strong { color: #C5A25B; font-weight: 700; }
+ .roddam-banner a {
+   color: #fff;
+   text-decoration: none;
+   border: 1px solid rgba(255,255,255,0.30);
+   background: rgba(255,255,255,0.06);
+   padding: 5px 11px;
+   border-radius: 3px;
+   font-size: 11px;
+   font-weight: 600;
+   letter-spacing: 0.5px;
+   transition: all 0.2s;
+ }
+ .roddam-banner a:hover {
+   background: #C5A25B;
+   color: #0B1F3F;
+   border-color: #C5A25B;
+ }
+ body { padding-top: 56px !important; }
+
+ .roddam-highlight {
+   position: relative;
+   outline: 3px dashed #C5A25B;
+   outline-offset: 6px;
+   background: rgba(229, 184, 96, 0.04);
+ }
+ .roddam-badge {
+   position: absolute;
+   top: -18px;
+   left: 14px;
+   background: #C5A25B;
+   color: #0B1F3F;
+   font-family: 'Inter', sans-serif;
+   font-size: 11px;
+   font-weight: 700;
+   letter-spacing: 1.5px;
+   text-transform: uppercase;
+   padding: 5px 12px;
+   border-radius: 3px;
+   box-shadow: 0 2px 8px rgba(11,31,63,0.25);
+   z-index: 5;
+ }
+ .roddam-badge.new { background: #2F7D4F; color: #fff; }
+ .roddam-section-badge {
+   display: inline-block;
+   margin-bottom: 14px;
+   background: #2F7D4F;
+   color: #fff;
+   font-family: 'Inter', sans-serif;
+   font-size: 11px;
+   font-weight: 700;
+   letter-spacing: 1.5px;
+   text-transform: uppercase;
+   padding: 6px 14px;
+   border-radius: 3px;
+ }
+ .roddam-card-badge {
+   position: absolute;
+   top: 12px;
+   right: 12px;
+   background: #C5A25B;
+   color: #0B1F3F;
+   font-family: 'Inter', sans-serif;
+   font-size: 10px;
+   font-weight: 700;
+   letter-spacing: 1.2px;
+   text-transform: uppercase;
+   padding: 3px 8px;
+   border-radius: 2px;
+   z-index: 5;
+ }
 </style>
 <body>
+
+<!-- RODDAM PREVIEW BANNER -->
+<div class="roddam-banner">
+  <span class="roddam-banner-tag">Roddam Preview</span>
+  <span><strong>5 changes</strong> on this page · hover dashed boxes for context · gold = refreshed, green = new</span>
+  <a href="#clients">1 · Who We Serve (refreshed)</a>
+  <a href="#roddam-compare">2 · How We Compare (new)</a>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -1433,14 +1540,15 @@
 <!-- CREDIBILITY BAR -->
 
 <!-- WHO WE SERVE -->
-<section class="section" id="clients">
+<section class="section" id="clients" style="outline: 3px dashed #C5A25B; outline-offset: -3px;">
  <div class="container">
+ <div class="roddam-section-badge" style="background:#C5A25B;color:#0B1F3F;">Refreshed Section · Roddam #02</div>
  <div class="section-tag">Who We Serve</div>
  <h2 class="section-heading">Do You Recognise<br><em>Yourself Here?</em></h2>
  <p class="section-lead">Our clients come to us at the moment their science needs to become real, validated, compliant, and capable of withstanding regulatory or legal scrutiny. If one of these situations sounds familiar, we should talk.</p>
  <div class="pillars-grid" style="grid-template-columns:repeat(4,1fr);">
 
- <div class="pillar-card fade-in" style="padding:28px;border-top:3px solid var(--gold);">
+ <div class="pillar-card fade-in" style="padding:28px;border-top:3px solid var(--gold);position:relative;"><span class="roddam-card-badge">Refreshed</span>
  <div class="persona-num-home">01</div>
  <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Embedded Scientific Capability</div>
  <h4>Early-Stage Companies</h4>
@@ -1449,7 +1557,7 @@
  <a href="scientific-practice.html" class="who-card-link">Scientific Practice →</a>
  </div>
 
- <div class="pillar-card fade-in" style="padding:28px;border-top:3px solid var(--gold);">
+ <div class="pillar-card fade-in" style="padding:28px;border-top:3px solid var(--gold);position:relative;"><span class="roddam-card-badge">Refreshed</span>
  <div class="persona-num-home">02</div>
  <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Lab Build &amp; Accreditation</div>
  <h4>Organisations Building or Upgrading Labs</h4>
@@ -1458,7 +1566,7 @@
  <a href="labarchitect.html" class="who-card-link">Explore LabArchitect™ →</a>
  </div>
 
- <div class="pillar-card fade-in" style="padding:28px;border-top:3px solid var(--gold);">
+ <div class="pillar-card fade-in" style="padding:28px;border-top:3px solid var(--gold);position:relative;"><span class="roddam-card-badge">Refreshed</span>
  <div class="persona-num-home">03</div>
  <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Diagnostic Development</div>
  <h4>Pharma, Biotech &amp; Agri-Health Companies</h4>
@@ -1467,7 +1575,7 @@
  <a href="scientific-practice.html#pillars" class="who-card-link">Diagnostic &amp; Evidence Sciences →</a>
  </div>
 
- <div class="pillar-card fade-in" style="padding:28px;border-top:3px solid var(--gold);">
+ <div class="pillar-card fade-in" style="padding:28px;border-top:3px solid var(--gold);position:relative;"><span class="roddam-card-badge">Refreshed</span>
  <div class="persona-num-home">04</div>
  <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">UK Market Entry Support</div>
  <h4>International Organisations &amp; Investors</h4>
@@ -1481,8 +1589,9 @@
 </section>
 
 <!-- HOW WE COMPARE (Roddam #04) -->
-<section class="section-alt">
+<section class="section-alt" id="roddam-compare" style="outline: 3px dashed #2F7D4F; outline-offset: -3px;">
  <div class="container">
+   <div class="roddam-section-badge">New Section · Roddam #04</div>
    <div class="section-tag">How We Compare</div>
    <h2 class="section-heading">Niche Specialist <em>with Infrastructure.</em></h2>
    <p class="section-lead">Buyers of regulated science typically face a binary: an industrial CRO with scale but limited customisation, or a solo academic with depth but no operating infrastructure. Our practice is built to occupy the gap between them.</p>
