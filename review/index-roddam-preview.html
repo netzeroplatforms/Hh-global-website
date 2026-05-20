@@ -1408,7 +1408,59 @@
    color: #0B1F3F;
    border-color: #C5A25B;
  }
- body { padding-top: 56px !important; }
+ .roddam-tabs { display: inline-flex; gap: 6px; }
+ .roddam-tab {
+   background: rgba(255,255,255,0.06) !important;
+   border: 1px solid rgba(255,255,255,0.20) !important;
+   color: rgba(255,255,255,0.85) !important;
+   padding: 5px 11px 5px 6px !important;
+   border-radius: 3px !important;
+   font-size: 11px !important;
+   font-weight: 600 !important;
+   letter-spacing: 0.4px !important;
+   text-decoration: none !important;
+   display: inline-flex !important;
+   align-items: center !important;
+   gap: 6px !important;
+   transition: all 0.2s !important;
+ }
+ .roddam-tab:hover {
+   background: rgba(255,255,255,0.14) !important;
+   color: #fff !important;
+   border-color: rgba(255,255,255,0.35) !important;
+ }
+ .roddam-tab-current {
+   background: #C5A25B !important;
+   color: #0B1F3F !important;
+   border-color: #C5A25B !important;
+ }
+ .roddam-tab-current:hover {
+   background: #D4B575 !important;
+   color: #0B1F3F !important;
+   border-color: #D4B575 !important;
+ }
+ .roddam-tab-num {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   width: 18px; height: 18px;
+   border-radius: 50%;
+   background: rgba(255,255,255,0.18);
+   color: #fff;
+   font-size: 10px;
+   font-weight: 700;
+ }
+ .roddam-tab-current .roddam-tab-num {
+   background: rgba(11,31,63,0.20);
+   color: #0B1F3F;
+ }
+ .roddam-banner-divider {
+   width: 1px;
+   height: 22px;
+   background: rgba(255,255,255,0.18);
+ }
+ nav { top: 46px !important; }
+ body { padding-top: 46px !important; }
 
  .roddam-highlight {
    position: relative;
@@ -1533,9 +1585,18 @@
 <!-- RODDAM PREVIEW BANNER -->
 <div class="roddam-banner">
   <span class="roddam-banner-tag">Roddam Preview</span>
-  <span><strong>5 changes</strong> on this page · hover dashed boxes for context · gold = refreshed, green = new</span>
-  <a href="#clients">1 · Who We Serve (refreshed)</a>
-  <a href="#roddam-compare">2 · How We Compare (new)</a>
+  <div class="roddam-tabs">
+    <a class="roddam-tab roddam-tab-current" href="index-roddam-preview.html">
+      <span class="roddam-tab-num">1</span>Home
+    </a>
+    <a class="roddam-tab" href="scientific-practice.html">
+      <span class="roddam-tab-num">2</span>Scientific Practice
+    </a>
+  </div>
+  <span class="roddam-banner-divider"></span>
+  <span><strong>5 changes</strong> on this page &middot; gold = refreshed &middot; green = new</span>
+  <a href="#clients">Who We Serve ↓</a>
+  <a href="#roddam-compare">How We Compare ↓</a>
 </div>
 
 <!-- NAV -->

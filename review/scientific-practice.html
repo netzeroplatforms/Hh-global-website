@@ -499,6 +499,87 @@
     .footer-inner a { color: var(--gold); text-decoration: none; }
     .footer-inner div { line-height: 1.7; }
 
+    /* RODDAM PREVIEW REVIEW MARKERS */
+    .roddam-banner {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 10000;
+      background: linear-gradient(90deg, #0B1F3F 0%, #152D55 100%);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      padding: 8px 24px;
+      border-bottom: 3px solid #C5A25B;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .roddam-banner-tag {
+      background: #C5A25B;
+      color: #0B1F3F;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 2px;
+    }
+    .roddam-banner strong { color: #C5A25B; font-weight: 700; }
+    .roddam-tabs { display: inline-flex; gap: 6px; }
+    .roddam-tab {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.20);
+      color: rgba(255,255,255,0.85);
+      padding: 5px 11px 5px 6px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .roddam-tab:hover {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      border-color: rgba(255,255,255,0.35);
+    }
+    .roddam-tab-current {
+      background: #C5A25B;
+      color: #0B1F3F;
+      border-color: #C5A25B;
+    }
+    .roddam-tab-current:hover {
+      background: #D4B575;
+      color: #0B1F3F;
+      border-color: #D4B575;
+    }
+    .roddam-tab-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .roddam-tab-current .roddam-tab-num {
+      background: rgba(11,31,63,0.20);
+      color: #0B1F3F;
+    }
+    .roddam-banner-divider {
+      width: 1px; height: 22px;
+      background: rgba(255,255,255,0.18);
+    }
+    nav { top: 46px !important; }
+    body { padding-top: 46px !important; }
+
     /* RESPONSIVE */
     @media (max-width: 1100px) {
       .nav-toggle { display: flex; }
@@ -534,6 +615,21 @@
   </style>
 </head>
 <body>
+
+<!-- RODDAM PREVIEW BANNER -->
+<div class="roddam-banner">
+  <span class="roddam-banner-tag">Roddam Preview</span>
+  <div class="roddam-tabs">
+    <a class="roddam-tab" href="index-roddam-preview.html">
+      <span class="roddam-tab-num">1</span>Home
+    </a>
+    <a class="roddam-tab roddam-tab-current" href="scientific-practice.html">
+      <span class="roddam-tab-num">2</span>Scientific Practice
+    </a>
+  </div>
+  <span class="roddam-banner-divider"></span>
+  <span><strong>Entirely new page</strong> &middot; replaces the former forensic-services holding page</span>
+</div>
 
 <!-- NAV -->
 <nav>
