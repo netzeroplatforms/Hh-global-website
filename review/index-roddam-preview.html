@@ -1461,6 +1461,72 @@
    border-radius: 2px;
    z-index: 5;
  }
+ .roddam-card-changes {
+   background: rgba(229, 184, 96, 0.12);
+   border: 1px dashed #C5A25B;
+   padding: 10px 14px;
+   margin: 0 0 18px;
+   border-radius: 3px;
+   font-family: 'Inter', sans-serif;
+   font-size: 11px;
+   line-height: 1.5;
+   color: #8A6D2C;
+ }
+ .roddam-card-changes-title {
+   font-weight: 700;
+   letter-spacing: 1px;
+   text-transform: uppercase;
+   font-size: 10px;
+   margin-bottom: 4px;
+   color: #8A6D2C;
+ }
+ .roddam-card-changes ul { list-style: none; margin: 0; padding: 0; }
+ .roddam-card-changes li {
+   padding: 2px 0 2px 14px;
+   position: relative;
+   font-style: italic;
+ }
+ .roddam-card-changes li::before {
+   content: '+';
+   color: #C5A25B;
+   position: absolute;
+   left: 0;
+   font-weight: 700;
+   font-style: normal;
+ }
+ .roddam-section-changes {
+   background: rgba(47, 125, 79, 0.10);
+   border: 1px dashed #2F7D4F;
+   padding: 14px 18px;
+   margin-bottom: 24px;
+   border-radius: 3px;
+   font-family: 'Inter', sans-serif;
+   font-size: 12px;
+   line-height: 1.55;
+   color: #1F5E3A;
+ }
+ .roddam-section-changes-title {
+   font-weight: 700;
+   letter-spacing: 1.2px;
+   text-transform: uppercase;
+   font-size: 10px;
+   margin-bottom: 6px;
+   color: #2F7D4F;
+ }
+ .roddam-section-changes ul { list-style: none; margin: 0; padding: 0; }
+ .roddam-section-changes li {
+   padding: 3px 0 3px 16px;
+   position: relative;
+   font-style: italic;
+ }
+ .roddam-section-changes li::before {
+   content: '✓';
+   color: #2F7D4F;
+   position: absolute;
+   left: 0;
+   font-weight: 700;
+   font-style: normal;
+ }
 </style>
 <body>
 
@@ -1550,6 +1616,14 @@
 
  <div class="pillar-card fade-in" style="padding:28px;border-top:3px solid var(--gold);position:relative;"><span class="roddam-card-badge">Refreshed</span>
  <div class="persona-num-home">01</div>
+ <div class="roddam-card-changes">
+   <div class="roddam-card-changes-title">What changed on this card</div>
+   <ul>
+     <li>Added &ldquo;01&rdquo; Playfair Display number badge</li>
+     <li>Added 3px gold top-border (was: no top-border)</li>
+     <li>Footer link changed from <em>&ldquo;Get in Touch&rdquo;</em> &rarr; <em>&ldquo;Scientific Practice&rdquo;</em> (deep-links into the new Scientific Practice page)</li>
+   </ul>
+ </div>
  <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Embedded Scientific Capability</div>
  <h4>Early-Stage Companies</h4>
  <p>You have the science but not the credentialled team to validate or advance it. You need real scientists, not a consultancy. Whether it is systematic reviews, technical advisory, or R&amp;D without the overhead of an in-house lab, we become your scientific function.</p>
@@ -1559,6 +1633,14 @@
 
  <div class="pillar-card fade-in" style="padding:28px;border-top:3px solid var(--gold);position:relative;"><span class="roddam-card-badge">Refreshed</span>
  <div class="persona-num-home">02</div>
+ <div class="roddam-card-changes">
+   <div class="roddam-card-changes-title">What changed on this card</div>
+   <ul>
+     <li>Added &ldquo;02&rdquo; Playfair Display number badge</li>
+     <li>Added 3px gold top-border (was: no top-border)</li>
+     <li>Footer link unchanged (still &rarr; <em>Explore LabArchitect&trade;</em>) but restyled with consistent dashed-rule treatment</li>
+   </ul>
+ </div>
  <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Lab Build &amp; Accreditation</div>
  <h4>Organisations Building or Upgrading Labs</h4>
  <p>We design laboratories around what the client needs to achieve, regulatory compliance is structural, not an afterthought. Labs built to ISO 17025/15189 from the ground up, not retrofitted after the fact. From equipment specification and Standard Operating Procedure (SOP) development to UK Accreditation Service (UKAS) audit preparation, we have built accredited labs from empty rooms, designed for compliance from day one.</p>
@@ -1568,6 +1650,14 @@
 
  <div class="pillar-card fade-in" style="padding:28px;border-top:3px solid var(--gold);position:relative;"><span class="roddam-card-badge">Refreshed</span>
  <div class="persona-num-home">03</div>
+ <div class="roddam-card-changes">
+   <div class="roddam-card-changes-title">What changed on this card</div>
+   <ul>
+     <li>Added &ldquo;03&rdquo; Playfair Display number badge</li>
+     <li>Added 3px gold top-border (was: no top-border)</li>
+     <li>Added a footer deep-link &rarr; <em>Diagnostic &amp; Evidence Sciences</em> (this card previously had <strong>no link at all</strong>)</li>
+   </ul>
+ </div>
  <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Diagnostic Development</div>
  <h4>Pharma, Biotech &amp; Agri-Health Companies</h4>
  <p>You have a diagnostic concept, an assay, a lateral flow test, a genomic panel, or an environmental sensor, and you need validation, clinical or field evidence, and a regulatory pathway to certification for the UK and European markets (UKCA and CE marks) or beyond. From women's health and menopause biomarkers to camelid genomics and population-scale research programmes, we take diagnostics from concept to compliant submission across human, animal, and environmental applications.</p>
@@ -1577,6 +1667,14 @@
 
  <div class="pillar-card fade-in" style="padding:28px;border-top:3px solid var(--gold);position:relative;"><span class="roddam-card-badge">Refreshed</span>
  <div class="persona-num-home">04</div>
+ <div class="roddam-card-changes">
+   <div class="roddam-card-changes-title">What changed on this card</div>
+   <ul>
+     <li>Added &ldquo;04&rdquo; Playfair Display number badge</li>
+     <li>Added 3px gold top-border (was: no top-border)</li>
+     <li>Added a footer deep-link &rarr; <em>Get in Touch</em> (this card previously had <strong>no link at all</strong>)</li>
+   </ul>
+ </div>
  <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">UK Market Entry Support</div>
  <h4>International Organisations &amp; Investors</h4>
  <p>You are entering a new market, the UK, UAE, Europe, or beyond, and you need local scientific credibility, regulatory alignment, and laboratory capability to make it work. Whether you are a government agency, family office, or investment vehicle establishing diagnostic infrastructure, or an international programme requiring species-specific genomics capability, equine, camelid, or otherwise, we provide the scientific and operational infrastructure your expansion requires.</p>
@@ -1592,6 +1690,16 @@
 <section class="section-alt" id="roddam-compare" style="outline: 3px dashed #2F7D4F; outline-offset: -3px;">
  <div class="container">
    <div class="roddam-section-badge">New Section · Roddam #04</div>
+   <div class="roddam-section-changes">
+     <div class="roddam-section-changes-title">What's in this new section</div>
+     <ul>
+       <li>Three-column generic comparison: <strong>Industrial CRO</strong> &middot; <strong>HH Global Holdings</strong> (gold-highlighted) &middot; <strong>Solo Scientist</strong></li>
+       <li>HH column carries five gold-checkmark bullets covering custom assay design, ISO operating model, peer-reviewed scientific lead, end-to-end accountability, and practice continuity</li>
+       <li>No naming of any specific competitor or partner (Roddam confidentiality filter holds: no Eurofins, Charles River, Genetix, Fungid, or Praxis references)</li>
+       <li>Headline framing: <em>&ldquo;Niche Specialist with Infrastructure&rdquo;</em> &mdash; Roddam&rsquo;s central commercial argument</li>
+       <li>Sits between Who We Serve and Our Edge to give the home page a clean buyer &rarr; outward-differentiation &rarr; inward-differentiation arc</li>
+     </ul>
+   </div>
    <div class="section-tag">How We Compare</div>
    <h2 class="section-heading">Niche Specialist <em>with Infrastructure.</em></h2>
    <p class="section-lead">Buyers of regulated science typically face a binary: an industrial CRO with scale but limited customisation, or a solo academic with depth but no operating infrastructure. Our practice is built to occupy the gap between them.</p>
