@@ -61,7 +61,14 @@
 
     .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
     .section { padding: 80px 0; }
-    .section-alt { background: #F0EDE9; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 0; }
+    .section-alt {
+      background:
+        linear-gradient(rgba(250,248,245,0.70), rgba(250,248,245,0.70)),
+        url('neuro-bg.jpg') center/cover no-repeat;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 0;
+    }
     .section-dark { background: var(--navy); }
     .text-center { text-align: center; }
 
@@ -112,9 +119,11 @@
     /* HERO */
     .hero {
       min-height: 76vh;
-      background: var(--navy);
+      background:
+        linear-gradient(160deg, rgba(11,31,63,0.55) 0%, rgba(21,45,85,0.55) 40%, rgba(30,58,110,0.55) 100%),
+        url('hero-bg-cells.jpg') center/cover no-repeat;
       display: grid; align-content: center;
-      position: relative; overflow: visible;
+      position: relative; overflow: hidden;
       padding: 120px 0 80px;
     }
     .hero > .container { width: 100%; }
@@ -338,7 +347,9 @@
 
     /* CUSTOMISATION BAND */
     .custom-band {
-      background: var(--navy);
+      background:
+        linear-gradient(rgba(11,31,63,0.78), rgba(11,31,63,0.78)),
+        url('hero-bg-cells.jpg') center/cover no-repeat;
       padding: 48px 0;
       text-align: center;
       border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -471,10 +482,13 @@
 
     /* CTA */
     .cta {
-      background: var(--navy);
+      background:
+        linear-gradient(160deg, rgba(11,31,63,0.78) 0%, rgba(21,45,85,0.78) 50%, rgba(30,58,110,0.78) 100%),
+        url('hero-bg-cells.jpg') center/cover no-repeat;
       padding: 72px 0;
       text-align: center;
       color: var(--white);
+      position: relative;
     }
     .cta h2 { color: var(--white); margin-bottom: 16px; }
     .cta h2 em { color: var(--gold); font-style: italic; }
