@@ -32,18 +32,18 @@
     body {
       font-family: 'Inter', -apple-system, sans-serif;
       color: var(--text);
-      line-height: 1.5;
+      line-height: 1.45;
       background: var(--white);
       -webkit-font-smoothing: antialiased;
     }
 
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 500; line-height: 1.2; }
-    h1 { font-size: clamp(28px, 3.6vw, 44px); }
-    h2 { font-size: clamp(22px, 2.6vw, 32px); }
-    h3 { font-size: clamp(17px, 1.9vw, 22px); }
+    h1 { font-size: clamp(26px, 3.5vw, 44px); }
+    h2 { font-size: clamp(18px, 2.6vw, 32px); }
+    h3 { font-size: clamp(16px, 1.8vw, 21px); }
     h4 { font-size: 18px; font-weight: 600; font-family: 'Inter', sans-serif; }
-    p { font-size: 16px; line-height: 1.55; color: var(--text-mid); }
-    .body-lg { font-size: 18px; line-height: 1.55; color: var(--text-mid); }
+    p { font-size: 15px; line-height: 1.4; color: var(--text-mid); }
+    .body-lg { font-size: 16px; color: var(--text-mid); }
     .body-sm { font-size: 14px; color: var(--text-light); }
 
     .section-tag {
@@ -55,9 +55,10 @@
       color: var(--gold);
       margin-bottom: 12px;
     }
-    .section-heading { margin-bottom: 18px; color: var(--navy); }
+    .section-heading { margin-bottom: 16px; color: var(--navy); }
     .section-heading em { color: var(--gold); font-style: italic; }
-    .section-lead { font-size: 16px; line-height: 1.55; color: var(--text-mid); max-width: 720px; }
+    h2 em { font-size: 0.82em; }
+    .section-lead { font-size: 16px; line-height: 1.2; color: var(--text-mid); max-width: 680px; }
 
     .container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
     .section { padding: 80px 0; }
@@ -132,9 +133,10 @@
     .hero h1 { color: var(--white); margin-bottom: 24px; }
     .hero h1 em { color: var(--gold); font-style: italic; }
     .hero p {
-      color: rgba(255,255,255,0.72);
-      font-size: 18px; line-height: 1.55;
-      margin-bottom: 36px; max-width: 660px;
+      color: rgba(255,255,255,0.68);
+      font-size: 15px; line-height: 1.45;
+      margin-bottom: 40px; max-width: 580px;
+      text-align: left;
     }
     .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
     .btn {
