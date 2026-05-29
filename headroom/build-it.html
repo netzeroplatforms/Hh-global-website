@@ -52,8 +52,8 @@
   .compare-head h2{font-size:20px;font-weight:700;letter-spacing:-.01em}
   .compare-head .meta{color:var(--muted);font-size:13px;margin-top:4px}
   .compare-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
-  @media (max-width:1100px){.compare-grid{grid-template-columns:repeat(2,1fr)}}
-  @media (max-width:680px){.compare-grid{grid-template-columns:1fr}}
+  @media (max-width:1100px){.compare-grid{grid-template-columns:repeat(2,1fr)!important}}
+  @media (max-width:680px){.compare-grid{grid-template-columns:1fr!important}}
   .option{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;display:flex;flex-direction:column;position:relative;box-shadow:0 1px 3px rgba(15,23,42,.04);transition:all .15s}
   .option.winner{border-color:var(--accent);background:linear-gradient(180deg,#f7fee7,#ffffff);box-shadow:0 12px 32px rgba(101,163,13,.12)}
   .option .ribbon{position:absolute;top:-9px;right:18px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:.06em}

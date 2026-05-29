@@ -54,6 +54,9 @@
   td.green .pill{background:#dcfce7;color:#15803d}
   td.amber .pill{background:#fed7aa;color:#9a3412}
   td.red .pill{background:#fecaca;color:#991b1b}
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:2px 0}
+  .table-wrap table{margin:0}
+  @media (max-width:760px){.table-wrap{border:1px solid var(--border);border-radius:10px}.table-wrap table{min-width:600px}}
 
   /* Quote */
   .quote{border-left:3px solid var(--accent);padding:14px 18px;color:var(--text);font-size:15px;margin:0;background:#f7fee7;border-radius:0 10px 10px 0;line-height:1.5}
@@ -109,14 +112,14 @@
 
   <section class="section">
     <div class="section-head"><span class="num">1</span><h2>The competitive board, in one table</h2></div>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Lane</th><th>Buyer</th><th>Sold</th><th>Price</th><th>Player</th></tr></thead>
       <tbody>
         <tr><td>Decision intelligence (utility scale)</td><td>Capital allocators</td><td>Numbers for a credit memo</td><td>£850 – £15k / engagement</td><td class="amber"><span class="pill">Quantail owns</span></td></tr>
         <tr><td><strong>Commercial-scale decision intelligence</strong></td><td><strong>50kW–5MW developers / EPCs</strong></td><td><strong>"Will this site clear?"</strong></td><td><strong>£150 – £500 / site</strong></td><td class="green"><span class="pill">EMPTY — OUR LANE</span></td></tr>
         <tr><td>Application execution</td><td>Installers (residential / small commercial)</td><td>"Submit my G99"</td><td>£50 – £125 / app</td><td class="red"><span class="pill">DNO Renewables owns</span></td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p class="muted">DNO Renewables: 12-month head start, free portal, SolarEdge PDF ingest, productised pricing, enterprise API channel forming. Trying to outrun them at the bottom is a slow loss. The empty middle is our lane to claim.</p>
   </section>
 
@@ -165,7 +168,7 @@
 
   <section class="section">
     <div class="section-head"><span class="num">4</span><h2>The 90-day path</h2></div>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Sprint</th><th>What we do</th><th>What we prove</th></tr></thead>
       <tbody>
         <tr><td><strong>Today (call)</strong></td><td>Show v1 demo. Agree go / no-go on 4-week proof.</td><td>Strategic alignment.</td></tr>
@@ -173,7 +176,7 @@
         <tr><td><strong>Month 2</strong></td><td>Ship MVP for chosen DNO regions. Anchor blog post — own the vocabulary. Bring in 1–2 design-partner EPCs.</td><td>Product clears at $-stake usage.</td></tr>
         <tr><td><strong>Month 3</strong></td><td>Layer G99 submission back in with SolarEdge / Easy-PV / OpenSolar PDF ingest. Three-tier pricing live. 10 paying developers, £5–10k MRR baseline.</td><td>Unit economics + retention.</td></tr>
       </tbody>
-    </table>
+    </table></div>
   </section>
 
   <section class="section">
@@ -187,14 +190,14 @@
 
   <section class="section">
     <div class="section-head"><span class="num">6</span><h2>Why we win</h2></div>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Mode</th><th>How Headroom wins</th></tr></thead>
       <tbody>
         <tr><td><strong>Ethos</strong> <em>(credibility)</em></td><td>Own the vocabulary for the middle market: "effective vs headline curtailment", "queue attrition", "site headroom", "ANM-zone discount". Bankable assumption registers.</td></tr>
         <tr><td><strong>Pathos</strong> <em>(emotion)</em></td><td>Sell relief from wasted capital and dead sites. Quantail's case studies show £400k abortive cost / 18-month delay avoided — same fear, smaller-scale buyer.</td></tr>
         <tr><td><strong>Logos</strong> <em>(logic)</em></td><td>Transparent math the developer can put in their model. Headline % vs effective %, queue × attrition, headroom kW vs ask kW. Auditable.</td></tr>
       </tbody>
-    </table>
+    </table></div>
   </section>
 
   <section class="section resources">

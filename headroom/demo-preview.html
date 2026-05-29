@@ -55,6 +55,12 @@ header.app{padding:14px 28px;display:flex;align-items:center;justify-content:spa
 .step.completed{color:var(--accent-dim)}
 .step-num{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:var(--panel-2);color:var(--muted);border-radius:50%;font-size:10px;font-weight:700;margin-right:4px}
 .step.active .step-num,.step.completed .step-num{background:var(--accent);color:#fff}
+@media(max-width:600px){
+  .steps{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .step{flex:0 0 auto}
+  .lookup-row{flex-wrap:wrap}
+  .lookup-btn{width:100%}
+}
 
 /* Cards */
 .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(15,23,42,.04)}

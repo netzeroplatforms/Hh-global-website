@@ -51,6 +51,9 @@
   td.num{font-weight:700;color:var(--accent-dim);font-variant-numeric:tabular-nums;white-space:nowrap}
   tbody tr.highlight{background:rgba(101,163,13,.05)}
   tbody tr.highlight strong{color:var(--accent-dim)}
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:4px 0}
+  .table-wrap table{margin:0}
+  @media (max-width:760px){.table-wrap{border:1px solid var(--border);border-radius:10px}.table-wrap table{min-width:600px}}
 
   /* Pills */
   .pill{font-size:11px;padding:3px 9px;border-radius:999px;background:var(--accent-bg);color:var(--accent-dim);font-weight:600;display:inline-block;line-height:1.4}
@@ -109,14 +112,14 @@
 
   <section class="section">
     <div class="section-head"><span class="num">1</span><h2>The competitive board</h2></div>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Lane</th><th>Buyer</th><th>What's sold</th><th>Price</th><th>Player</th></tr></thead>
       <tbody>
         <tr><td>Decision intelligence — utility scale</td><td>Capital allocators</td><td>Numbers for a credit memo</td><td class="num">£850 – £15k</td><td><span class="pill amber">Quantail owns</span></td></tr>
         <tr class="highlight"><td><strong>Commercial-scale decision intelligence</strong></td><td><strong>50kW–5MW developers + IPPs</strong></td><td><strong>"Will this site clear, and at what £?"</strong></td><td class="num"><strong>£150 – £500 / site</strong></td><td><span class="pill empty">EMPTY — OUR LANE</span></td></tr>
         <tr><td>Application execution</td><td>Installers (residential)</td><td>"Submit my G99"</td><td class="num">£50 – £125 / app</td><td><span class="pill red">DNO Renewables owns</span></td></tr>
       </tbody>
-    </table>
+    </table></div>
   </section>
 
   <section class="section">
@@ -138,7 +141,7 @@
 
   <section class="section">
     <div class="section-head"><span class="num">3</span><h2>Behavioural segmentation — do they want our tool?</h2></div>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Group</th><th>Description</th><th>UK count</th><th>WTP</th><th>How we serve them</th></tr></thead>
       <tbody>
         <tr class="highlight"><td><strong>A — High-intent</strong></td><td>Volume commercial developers + EPCs, 10+ G99/yr</td><td class="num">~150-300</td><td><span class="pill green">£250-495/site<br>£495+/mo sub</span></td><td><strong>Primary target — direct sales</strong></td></tr>
@@ -146,20 +149,20 @@
         <tr><td>C — Not our customer</td><td>Domestic-focused, occasional small commercial, micro-installers.</td><td class="num">~500-1,000</td><td><span class="pill red">Won't pay our prices</span></td><td>Ignore — DNO Renewables' territory</td></tr>
         <tr class="highlight"><td><strong>D — Non-installer buyers</strong></td><td>Asset managers, IPP funds, EPCs with dev arms, energy consultants. <em>Capital deployers, not installers.</em></td><td class="num">~150-250</td><td><span class="pill green">£495-£1,500/mo<br>portfolio subscription</span></td><td><strong>Highest LTV — sales-led portfolio product</strong></td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p><strong>Real demand universe = Group A + Group D = ~300-550 firms.</strong> Plus a freemium funnel into Group B as they grow.</p>
   </section>
 
   <section class="section">
     <div class="section-head"><span class="num">4</span><h2>Tier 1 — sweet-spot direct buyers (~350-600 companies)</h2></div>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Segment</th><th>UK count</th><th>WTP</th><th>Example UK firms</th></tr></thead>
       <tbody>
         <tr><td>Independent commercial solar developers</td><td class="num">~250-400</td><td class="num">£250-£395/site</td><td>Sungift Energy · Custom Solar · Push Energy · Joju Solar · Egni Co-op · BSR Energy</td></tr>
         <tr><td>Commercial EPCs with C&I dev arms</td><td class="num">~50-100</td><td class="num">£500-£2k/site</td><td>EvoEnergy commercial · Solarsense · Anesco · Atrato Onsite Energy</td></tr>
         <tr><td>IPP funds / asset managers</td><td class="num">~50-100</td><td class="num">£495-£1.5k/mo sub</td><td>Foresight Solar · Bluefield · Atrato Capital · Octopus Energy Generation · Gresham House · NextEnergy Capital · JLEN · Greencoat</td></tr>
       </tbody>
-    </table>
+    </table></div>
   </section>
 
   <section class="section">
@@ -167,7 +170,7 @@
     <p>Verifiable: a proprietary tool of this kind would be visible (marketing, platform engineering hires, investor decks). It isn't. The major UK commercial solar players manage the screening process today through a manual, fragmented hodgepodge — pieced together per site by experienced engineers.</p>
 
     <div class="sub-head">The 7-tool hodgepodge they use today</div>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Tool / source</th><th>What it gives</th><th>What it doesn't</th></tr></thead>
       <tbody>
         <tr><td><strong>DNO online heatmaps</strong> — free</td><td>Substation capacity colour-coding</td><td>No queue position, no curtailment forecast, no fee, no comparables</td></tr>
@@ -178,11 +181,11 @@
         <tr><td><strong>Relationship calls</strong> with DNO connections engineers</td><td>The "real" answer</td><td>Doesn't scale; depends on personal relationships</td></tr>
         <tr><td><strong>Solar design tools</strong> (SolarEdge, OpenSolar, Aurora)</td><td>Design + proposals</td><td>None do grid screening or DNO logic</td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p><strong>Typical workflow per site: 30 min to 4 hours.</strong> Done dozens of times per year per developer on sites that mostly never materialise.</p>
 
     <div class="sub-head">What the specific named players actually use</div>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Firm</th><th>Their reality today</th></tr></thead>
       <tbody>
         <tr><td><strong>BSR Energy</strong></td><td>Standard DNO portal + Excel + relationships. No published tool.</td></tr>
@@ -192,7 +195,7 @@
         <tr><td><strong>EvoEnergy commercial</strong></td><td>More sophisticated internal Excel. No published software.</td></tr>
         <tr><td><strong>Anesco</strong></td><td>Internal tools at utility-scale (>5MW), not commercial sub-5MW.</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <div class="quote">
       <strong>One caveat — IPP funds may have internal tools.</strong> Foresight, Bluefield, Atrato, Octopus Renewables very likely have internal Excel/Power BI tools built by in-house analysts. But they're bespoke, fragile, one-or-two-person-maintained, and fall apart on staff turnover. <strong>That's an opportunity, not a threat:</strong> our pitch becomes <em>"replace your fragile internal tool with a maintained product priced like one analyst-day per month."</em>
@@ -209,14 +212,14 @@
 
   <section class="section">
     <div class="section-head"><span class="num">6</span><h2>Tier 3 — channel multiplier (the asymmetric bet)</h2></div>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>Channel</th><th>Count</th><th>Why it matters</th></tr></thead>
       <tbody>
         <tr class="highlight"><td><strong>Solar design tool vendors</strong></td><td class="num">3-5</td><td><strong>SolarEdge Designer · Easy-PV · OpenSolar · PVsyst · Aurora Solar.</strong> Each has tens of thousands of installer users. Land one integration = 10× distribution overnight. <em>Worth a parallel approach from day 1.</em></td></tr>
         <tr><td>MCS installer networks/co-ops</td><td class="num">~5-15</td><td>Referral relationships</td></tr>
         <tr><td>Trade bodies</td><td class="num">3</td><td>Solar Energy UK · REA · STA — content + sponsorship + endorsement</td></tr>
       </tbody>
-    </table>
+    </table></div>
   </section>
 
   <section class="section">
@@ -249,7 +252,7 @@
 
   <section class="section">
     <div class="section-head"><span class="num">8</span><h2>First 5 discovery calls (this week)</h2></div>
-    <table>
+    <div class="table-wrap"><table>
       <thead><tr><th>#</th><th>Target type</th><th>Example firms</th><th>What we learn</th></tr></thead>
       <tbody>
         <tr><td class="num">1</td><td>Independent commercial developer</td><td>Sungift Energy · Custom Solar · BSR Energy</td><td>Price elasticity at £250-£395 per site</td></tr>
@@ -258,7 +261,7 @@
         <tr><td class="num">4</td><td>Energy consultant / landowner advisor</td><td>From Kevin Doyle's network</td><td>Whether the tool sells <em>through</em> advisors as a referral</td></tr>
         <tr><td class="num">5</td><td>Channel-partner candidate</td><td>OpenSolar UK partner · SolarEdge Designer power user</td><td>Whether the embedded-integration play is realistic</td></tr>
       </tbody>
-    </table>
+    </table></div>
   </section>
 
   <section class="section">
