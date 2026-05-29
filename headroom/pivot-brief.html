@@ -23,9 +23,11 @@
   .product-nav a{padding:7px 14px;color:var(--muted);text-decoration:none;font-size:14px;border-radius:8px;font-weight:500;transition:all .15s}
   .product-nav a:hover{color:var(--text);background:var(--panel-2)}
   .product-nav a.active{background:var(--accent-bg);color:var(--accent-dim);font-weight:600}
+  .user-chip{display:flex;align-items:center;gap:8px;padding:6px 12px;background:var(--panel);border:1px solid var(--border);border-radius:999px;font-size:13px;color:var(--text)}
+  .user-chip .avatar{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#0f172a,#475569);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
 
   /* Layout */
-  .container{max-width:960px;margin:0 auto;padding:40px 32px 64px}
+  .container{max-width:1180px;margin:0 auto;padding:40px 32px 64px}
   .doc-head{margin-bottom:26px}
   .doc-badge{font-size:11px;padding:4px 10px;border-radius:999px;background:var(--accent-bg);color:var(--accent-dim);border:1px solid rgba(101,163,13,.3);font-weight:600;letter-spacing:.04em;display:inline-block;margin-bottom:14px}
   h1{font-size:36px;line-height:1.1;letter-spacing:-.02em;font-weight:800;margin-bottom:14px}
@@ -94,6 +96,7 @@
     <a href="./market-brief.html">Market brief</a>
     <a href="./pivot-brief.html" class="active">Pivot brief</a>
   </nav>
+  <div class="user-chip"><div class="avatar">A</div><span>Atrato Capital · demo</span></div>
 </header>
 
 <div class="container">
