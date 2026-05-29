@@ -183,6 +183,14 @@
   .data-source a:hover{text-decoration:underline}
   .live-pulse{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:pulse 2s infinite;margin-right:6px;vertical-align:middle}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(22,163,74,.5)}70%{box-shadow:0 0 0 8px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+
+.nav-toggle{display:none}
+@media(max-width:720px){
+  .nav-toggle{display:flex;align-items:center;justify-content:center;background:var(--panel);border:1px solid var(--border);border-radius:8px;width:40px;height:34px;font-size:17px;line-height:1;cursor:pointer;color:var(--text)}
+  .nav{display:none!important;position:absolute;top:calc(100% + 6px);right:12px;min-width:210px;flex-direction:column;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:8px;box-shadow:0 12px 32px rgba(15,23,42,.16);gap:2px;z-index:60}
+  .nav.open{display:flex!important}
+  .nav a{padding:10px 12px}
+}
 </style>
 </head>
 <body>
@@ -199,6 +207,7 @@
     <a href="./market-brief.html" style="padding:7px 12px;border-radius:8px;color:var(--muted);text-decoration:none;font-weight:500;font-size:13px">Market brief</a>
     <a href="./pivot-brief.html" style="padding:7px 12px;border-radius:8px;color:var(--muted);text-decoration:none;font-weight:500;font-size:13px">Pivot brief</a>
   </nav>
+  <button class="nav-toggle" aria-label="Menu" onclick="this.closest('header').querySelector('.nav').classList.toggle('open')">☰</button>
 </header>
 
 <div class="container">

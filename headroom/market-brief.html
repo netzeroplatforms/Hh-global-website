@@ -82,6 +82,14 @@
   footer{color:var(--muted);font-size:13px;padding:24px 4px 8px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   footer a{color:var(--accent-dim);text-decoration:none;font-weight:500}
   @media print{body{background:#fff;background-image:none}.section{break-inside:avoid}header.app{position:static}.container{max-width:none;padding:18px}}
+
+.nav-toggle{display:none}
+@media(max-width:720px){
+  .nav-toggle{display:flex;align-items:center;justify-content:center;background:var(--panel);border:1px solid var(--border);border-radius:8px;width:40px;height:34px;font-size:17px;line-height:1;cursor:pointer;color:var(--text)}
+  .product-nav{display:none;position:absolute;top:calc(100% + 6px);right:12px;min-width:210px;flex-direction:column;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:8px;box-shadow:0 12px 32px rgba(15,23,42,.16);gap:2px;z-index:60}
+  .product-nav.open{display:flex}
+  .product-nav a{padding:10px 12px}
+}
 </style>
 </head>
 <body>
@@ -99,6 +107,7 @@
     <a href="./market-brief.html" class="active">Market brief</a>
     <a href="./pivot-brief.html">Pivot brief</a>
   </nav>
+  <button class="nav-toggle" aria-label="Menu" onclick="this.closest('header').querySelector('.product-nav').classList.toggle('open')">☰</button>
 </header>
 
 <div class="container">
