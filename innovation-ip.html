@@ -123,7 +123,7 @@
  z-index: 200;
  padding: 6px 0;
  }
- .dropdown:hover .dropdown-menu { display: block; }
+ .dropdown:hover .dropdown-menu, .dropdown.open .dropdown-menu { display: block; }
  .dropdown-menu a {
  display: block;
  padding: 10px 20px;
@@ -1424,5 +1424,30 @@
  });
 </script>
  <script src="review-mode.js" defer></script>
+<script>
+ // Touch-friendly dropdowns: first tap opens the menu (no double-tap needed),
+ // tapping a menu item or outside closes it. Pointer/hover devices keep :hover.
+ (function () {
+   var touch = window.matchMedia('(hover: none)').matches;
+   if (!touch) return;
+   document.querySelectorAll('.dropdown > a').forEach(function (link) {
+     link.addEventListener('click', function (e) {
+       var dd = link.parentElement;
+       if (!dd.classList.contains('open')) {
+         e.preventDefault();
+         document.querySelectorAll('.dropdown.open').forEach(function (o) {
+           if (o !== dd) o.classList.remove('open');
+         });
+         dd.classList.add('open');
+       }
+     });
+   });
+   document.addEventListener('click', function (e) {
+     if (!e.target.closest('.dropdown')) {
+       document.querySelectorAll('.dropdown.open').forEach(function (o) { o.classList.remove('open'); });
+     }
+   });
+ })();
+</script>
 </body>
 </html>
