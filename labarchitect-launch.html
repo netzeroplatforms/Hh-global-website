@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Launching LabArchitect™ | A message from Sam White, HH Global Holdings</title>
+  <meta name="description" content="From empty room to audit-ready. Sam White launches LabArchitect, HH Global Holdings' complete eight-module laboratory deployment system. ISO 17025/15189 compliant from inception, not retrofitted.">
+
+  <!-- Open Graph / LinkedIn link preview -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="HH Global Holdings">
+  <meta property="og:title" content="Launching LabArchitect™ — from empty room to audit-ready">
+  <meta property="og:description" content="Most labs are built twice. LabArchitect builds compliance in from inception, so accreditation becomes the natural endpoint of how the lab already operates. A message from Sam White.">
+  <meta property="og:url" content="https://hhglobalholdings.com/labarchitect-launch.html">
+  <meta property="og:image" content="https://hhglobalholdings.com/hero-bg-cells.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Launching LabArchitect™ — from empty room to audit-ready">
+  <meta name="twitter:description" content="HH Global Holdings' complete eight-module laboratory deployment system. ISO 17025/15189 compliant from inception, not retrofitted.">
+  <meta name="twitter:image" content="https://hhglobalholdings.com/hero-bg-cells.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1F3F;
+      --navy-mid: #152D55;
+      --gold: #C9AA7D;
+      --gold-light: #D8BF94;
+      --cream: #FAF8F5;
+      --cream-dark: #F0EDE7;
+      --text: #1A1A2E;
+      --text-mid: #4A5568;
+      --border: #E2DDD5;
+      --white: #FFFFFF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--text);
+      line-height: 1.55;
+      background:
+        linear-gradient(rgba(250,248,245,0.92), rgba(250,248,245,0.92)),
+        url('neuro-bg.jpg') center/cover fixed no-repeat;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 500; line-height: 1.2; }
+
+    /* Top bar */
+    .topbar {
+      background: var(--navy);
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 50;
+    }
+    .topbar .brand { color: var(--gold); font-family: 'Playfair Display', serif; font-weight: 600; font-size: 20px; letter-spacing: 1px; text-decoration: none; }
+    .topbar a.home { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px; letter-spacing: 0.4px; }
+    .topbar a.home:hover { color: var(--gold); }
+
+    /* Hero band */
+    .launch-hero {
+      background:
+        linear-gradient(160deg, rgba(11,31,63,0.78) 0%, rgba(21,45,85,0.78) 50%, rgba(30,58,110,0.74) 100%),
+        url('hero-bg-cells.jpg') center/cover no-repeat;
+      color: var(--white);
+      padding: 64px 24px 56px;
+      text-align: center;
+    }
+    .launch-hero .tag {
+      color: var(--gold); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; margin-bottom: 18px;
+    }
+    .launch-hero h1 { font-size: clamp(30px, 5vw, 50px); color: var(--white); margin-bottom: 14px; }
+    .launch-hero h1 em { color: var(--gold); font-style: italic; }
+    .launch-hero p.sub { font-size: 16px; color: rgba(255,255,255,0.82); max-width: 640px; margin: 0 auto; }
+
+    /* Post card */
+    .wrap { max-width: 760px; margin: -36px auto 64px; padding: 0 20px; }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      box-shadow: 0 16px 48px rgba(11,31,63,0.12);
+      overflow: hidden;
+    }
+    .card-head {
+      display: flex; align-items: center; gap: 14px;
+      padding: 22px 32px;
+      border-bottom: 1px solid var(--border);
+      background: var(--cream);
+    }
+    .avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--navy); color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-weight: 600; font-size: 20px;
+      flex-shrink: 0;
+    }
+    .who .name { font-weight: 600; font-size: 16px; color: var(--navy); }
+    .who .role { font-size: 13px; color: var(--text-mid); }
+
+    .post { padding: 30px 32px 8px; }
+    .post p { margin-bottom: 16px; font-size: 16.5px; color: #232838; }
+    .post p.lead { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 500; color: var(--navy); line-height: 1.35; }
+    .post .brandname { color: var(--navy); font-weight: 700; }
+    .post ul { list-style: none; margin: 4px 0 18px; padding: 0; }
+    .post ul li { position: relative; padding-left: 26px; margin-bottom: 11px; font-size: 16px; color: #232838; }
+    .post ul li::before { content: '✓'; position: absolute; left: 0; top: 1px; color: var(--gold); font-weight: 700; }
+    .post .tags { color: var(--navy); font-weight: 500; font-size: 14.5px; margin-top: 6px; }
+    .post .linkline a { color: var(--navy-mid); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--gold); }
+
+    .actions { padding: 8px 32px 30px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 4px; font-weight: 600; font-size: 14px; letter-spacing: 0.3px; cursor: pointer; text-decoration: none; border: 1px solid transparent; transition: all .2s; }
+    .btn-primary { background: var(--gold); color: var(--navy); }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-ghost { background: transparent; color: var(--navy); border-color: var(--border); }
+    .btn-ghost:hover { border-color: var(--navy); }
+    .copied { color: #2F855A; font-size: 13px; align-self: center; font-weight: 600; display: none; }
+
+    footer { text-align: center; padding: 28px 20px 48px; color: var(--text-mid); font-size: 13px; }
+    footer a { color: var(--navy-mid); text-decoration: none; border-bottom: 1px solid var(--gold); }
+
+    @media (max-width: 600px) {
+      .post, .actions, .card-head { padding-left: 22px; padding-right: 22px; }
+      .launch-hero { padding: 48px 18px 44px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a class="brand" href="index.html">HH</a>
+    <a class="home" href="labarchitect.html">Explore LabArchitect™ &rarr;</a>
+  </div>
+
+  <section class="launch-hero">
+    <div class="tag">LabArchitect™ · Now Live</div>
+    <h1>From Empty Room <em>to Audit-Ready.</em></h1>
+    <p class="sub">A message from Sam White on the launch of HH Global Holdings' complete laboratory deployment system.</p>
+  </section>
+
+  <div class="wrap">
+    <div class="card">
+      <div class="card-head">
+        <div class="avatar">SW</div>
+        <div class="who">
+          <div class="name">Sam White</div>
+          <div class="role">Chief Executive Officer, HH Global Holdings</div>
+        </div>
+      </div>
+
+      <div class="post" id="postBody">
+        <p class="lead">When I talk to organisations standing up regulated laboratory capability, I hear the same story. The lab gets built twice.</p>
+        <p>First on a budget. Then again, painfully, when the auditors arrive and the documentation, traceability, and quality systems don't hold up.</p>
+        <p>I have seen what that second build costs. Capital, time to revenue, and scientific reputation. Retrofitting ISO 17025/15189 onto a working laboratory is the most expensive mistake in regulated science.</p>
+        <p>So at HH Global Holdings we built a better way, and today I am proud to launch it: <span class="brandname">LabArchitect™</span>.</p>
+        <p>LabArchitect™ is our complete eight-module laboratory deployment system. We design, equip, and validate regulated laboratories so that compliance is built in from inception, not bolted on later.</p>
+        <p>We invert the usual sequence. We build the governance, validation, traceability, and reporting architecture before the lab opens, so accreditation becomes the natural endpoint of how the lab already operates, not a separate project.</p>
+        <p>One partner. One accountability line. From governance and infrastructure through to digital systems, quality control, and defensible reporting.</p>
+        <p>Here is what that gives you:</p>
+        <ul>
+          <li>An audit-ready laboratory from day one, not six months after opening</li>
+          <li>Defensible methods and defensible data, in audit, in regulator review, and in court</li>
+          <li>One accountable team across the whole build, with no subcontractor handoff gaps</li>
+          <li>Your scientists trained on their own SOPs and systems, not generic frameworks</li>
+          <li>A clear path to accreditation, where the submission pack is a by-product of how the lab already runs</li>
+        </ul>
+        <p>I built LabArchitect™ for organisations that need their first lab to be their last. Built right, accredited cleanly, defensible from day one.</p>
+        <p>If you are planning a new laboratory, or rescuing one that is fighting its accreditation, I would like to hear from you.</p>
+        <p class="linkline">Explore the eight modules: <a href="labarchitect.html">hhglobalholdings.com/labarchitect.html</a></p>
+        <p class="tags">#LabArchitect #ISO17025 #ISO15189 #LaboratoryAccreditation #RegulatedScience #OneHealth #HHGlobalHoldings</p>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="copyBtn">Copy post text</button>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fhhglobalholdings.com%2Flabarchitect-launch.html" target="_blank" rel="noopener">Share on LinkedIn</a>
+        <span class="copied" id="copiedMsg">Copied to clipboard</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    HH Global Holdings · One Health, One Solution &nbsp;·&nbsp; <a href="index.html">hhglobalholdings.com</a>
+  </footer>
+
+  <script>
+    // Plain-text version of the post for one-click copy into LinkedIn
+    var POST_TEXT = [
+      "When I talk to organisations standing up regulated laboratory capability, I hear the same story. The lab gets built twice.",
+      "",
+      "First on a budget. Then again, painfully, when the auditors arrive and the documentation, traceability, and quality systems don't hold up.",
+      "",
+      "I have seen what that second build costs. Capital, time to revenue, and scientific reputation. Retrofitting ISO 17025/15189 onto a working laboratory is the most expensive mistake in regulated science.",
+      "",
+      "So at HH Global Holdings we built a better way, and today I am proud to launch it: LabArchitect™.",
+      "",
+      "LabArchitect™ is our complete eight-module laboratory deployment system. We design, equip, and validate regulated laboratories so that compliance is built in from inception, not bolted on later.",
+      "",
+      "We invert the usual sequence. We build the governance, validation, traceability, and reporting architecture before the lab opens, so accreditation becomes the natural endpoint of how the lab already operates, not a separate project.",
+      "",
+      "One partner. One accountability line. From governance and infrastructure through to digital systems, quality control, and defensible reporting.",
+      "",
+      "Here is what that gives you:",
+      "• An audit-ready laboratory from day one, not six months after opening",
+      "• Defensible methods and defensible data, in audit, in regulator review, and in court",
+      "• One accountable team across the whole build, with no subcontractor handoff gaps",
+      "• Your scientists trained on their own SOPs and systems, not generic frameworks",
+      "• A clear path to accreditation, where the submission pack is a by-product of how the lab already runs",
+      "",
+      "I built LabArchitect™ for organisations that need their first lab to be their last. Built right, accredited cleanly, defensible from day one.",
+      "",
+      "If you are planning a new laboratory, or rescuing one that is fighting its accreditation, I would like to hear from you.",
+      "",
+      "Explore the eight modules: hhglobalholdings.com/labarchitect.html",
+      "",
+      "#LabArchitect #ISO17025 #ISO15189 #LaboratoryAccreditation #RegulatedScience #OneHealth #HHGlobalHoldings"
+    ].join("\n");
+
+    document.getElementById('copyBtn').addEventListener('click', function () {
+      navigator.clipboard.writeText(POST_TEXT).then(function () {
+        var msg = document.getElementById('copiedMsg');
+        msg.style.display = 'inline';
+        setTimeout(function () { msg.style.display = 'none'; }, 2600);
+      });
+    });
+  </script>
+</body>
+</html>
